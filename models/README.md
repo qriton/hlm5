@@ -42,9 +42,13 @@ huggingface-cli download qriton/hlm5-1b-trunk \
   --local-dir models
 ```
 
-**Hybrid:** publication pending — see [`../RELEASING.md`](../RELEASING.md). It will
-be published to the same `qriton/hlm5-1b-trunk` repository once the upload step in
-the release runbook is done.
+**Hybrid (live):**
+
+```bash
+huggingface-cli download qriton/hlm5-1b-trunk \
+  hlm5_lm_hybrid_fineweb_g3_final.pt \
+  --local-dir models
+```
 
 ## Tokenizer
 

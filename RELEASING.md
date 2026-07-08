@@ -28,20 +28,11 @@ If either is dead, fix the bibitem in `paper/hlm5-paper.tex`, regenerate the
 two-column variant and PDFs with `python paper/build.py`, and commit before
 pushing.
 
-## 3. (Optional) Upload the hybrid checkpoint
+## 3. Upload the hybrid checkpoint — DONE (2026-07-08)
 
-The baseline trunk is already live at
-https://huggingface.co/qriton/hlm5-1b-trunk. To publish the matched hybrid arm,
-upload it into the **same** repository under a subfolder (recommended over a
-separate repo, so the matched pair stays together):
-
-```bash
-huggingface-cli upload qriton/hlm5-1b-trunk \
-  models/hlm5_lm_hybrid_fineweb_g3_final.pt \
-  hybrid/hlm5_lm_hybrid_fineweb_g3_final.pt
-```
-
-Then update `models/README.md` to point the hybrid download at the new path.
+Both trunks are live at https://huggingface.co/qriton/hlm5-1b-trunk (baseline
+and hybrid at the repository root, so `--local-dir models` places them exactly
+where `hlm5.io` looks). `models/README.md` carries both download commands.
 
 ## 4. Replace the Hugging Face model card
 

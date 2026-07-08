@@ -37,8 +37,8 @@ doses the accepted ones at a certified strength.
 - **Parameters:** ~1.045B.
 
 This repository hosts `hlm5_lm_baseline_fineweb_g3_final.pt` (the frozen baseline
-trunk, step 150,999) and the tokenizer. The matched co-trained-memory "hybrid"
-checkpoint is published alongside it once the release runbook's upload step is done.
+trunk, step 150,999), `hlm5_lm_hybrid_fineweb_g3_final.pt` (the matched
+co-trained-memory arm, step 149,999), and the tokenizer.
 
 ## Results
 
