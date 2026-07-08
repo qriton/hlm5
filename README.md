@@ -37,6 +37,9 @@ huggingface-cli download qriton/hlm5-1b-trunk \
   --local-dir models
 ```
 
+Both trunks are hosted there — add `hlm5_lm_hybrid_fineweb_g3_final.pt` to the
+command above if you also want the matched co-trained arm (needed only for
+`run_hybrid_energy_ops.py` and the hybrid rows of `run_notax_params.py`).
 (The 65,536-token BPE tokenizer already ships in this repository at
 `models/tokenizers/fineweb-65536-compat.json` — no download needed.)
 
