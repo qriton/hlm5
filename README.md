@@ -1,6 +1,6 @@
 # HLM5 — Certified Knowledge Editing
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21258599.svg)](https://doi.org/10.5281/zenodo.21258599)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21258599-blue.svg)](https://doi.org/10.5281/zenodo.21258599)
 
 **Certified Knowledge Editing: Closed-Form Reachability Guarantees for Additive
 Edits to a Frozen Language Model.**
