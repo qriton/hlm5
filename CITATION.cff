@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software or the paper, please cite it as below."
+title: "Certified Knowledge Editing: Closed-Form Reachability Guarantees for Additive Edits to a Frozen Language Model"
+authors:
+  - family-names: Dima
+    given-names: Marius
+    affiliation: Qriton
+license: BUSL-1.1
+date-released: "2026-07-08"
+url: "https://github.com/qriton/hlm5"
+preferred-citation:
+  type: article
+  title: "Certified Knowledge Editing: Closed-Form Reachability Guarantees for Additive Edits to a Frozen Language Model"
+  authors:
+    - family-names: Dima
+      given-names: Marius
+      affiliation: Qriton
+  year: 2026
+  notes: "arXiv identifier to be added on submission; see RELEASING.md"

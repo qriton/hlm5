@@ -1,0 +1,22 @@
+[
+  {
+    "arm": "transformer-only",
+    "num_pairs": 32,
+    "accuracy": 1.0
+  },
+  {
+    "arm": "transformer+HLM5",
+    "num_pairs": 32,
+    "accuracy": 1.0
+  },
+  {
+    "arm": "transformer-only",
+    "num_pairs": 64,
+    "accuracy": 0.81640625
+  },
+  {
+    "arm": "transformer+HLM5",
+    "num_pairs": 64,
+    "accuracy": 0.11796875
+  }
+]

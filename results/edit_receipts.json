@@ -1,0 +1,30 @@
+{
+  "receipts_verified": true,
+  "tamper_value_detected": true,
+  "tamper_prediction_detected": true,
+  "tamper_prompt_detected": true,
+  "passed": true,
+  "example_receipt": {
+    "prompt_ids": [
+      464,
+      3139,
+      286,
+      569,
+      382,
+      18142,
+      318
+    ],
+    "predicted_token": 262,
+    "slot": 0,
+    "label": "Vorenia->the",
+    "score": 1.0,
+    "boost": 500.0,
+    "gate_thresh": 0.95,
+    "query_hash": "00bd91db84bd7925015369f95de8c4ae47b3b4f58ebbb400ad7b1f816db76813",
+    "key_hash": "15c3b6f7b31768c2abe76facf4a2109bcee7741545052dd76eb21078a660b2a2",
+    "value_hash": "74db1b7000feb14854f7ed3cdc110d46d3fb5e2ee4659dd048c318e0c947c7fe",
+    "registry_hash": "4438c2db6b175a4194e884ca0647ae7b0baacca53abad01cffab034426162bac",
+    "trunk_hash": "c823146a825d2d4c7be23750eaf100648c3480123cf598f4e71aecf9e3d6b0b5",
+    "proof_hash": "8c75ed42d28f7e84bc30274e772cf55fba549ccf67ee464684cac47687c7e63c"
+  }
+}

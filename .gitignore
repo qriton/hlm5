@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+models/*.pt
+paper/*.zip
+paper/hlm5-paper.docx
+paper/arxiv/
+*.egg-info/
+build/
+dist/
+.venv/
+results/_scratch/
+.superpowers/
+scripts/data/
+paper/*.log

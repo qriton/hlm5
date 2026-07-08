@@ -1,0 +1,21 @@
+{
+  "test": "kruskal-wallis",
+  "outcome": "reachable_fraction per key",
+  "source": "cert_envelope_multikey.json",
+  "groups": {
+    "generic": {
+      "n": 20,
+      "mean": 0.7897
+    },
+    "novel": {
+      "n": 20,
+      "mean": 0.7981
+    },
+    "real": {
+      "n": 20,
+      "mean": 0.7935
+    }
+  },
+  "H": 0.3106,
+  "p": 0.8562
+}

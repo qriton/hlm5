@@ -1,0 +1,637 @@
+{
+  "model": "HLM5-1B-trunk-FAITHFUL-CERTDOSED",
+  "device": "cuda",
+  "n_facts": 17,
+  "gate_thresh": 0.95,
+  "degree": 5,
+  "temperature": 0.1,
+  "dosing": {
+    "global": "unit(W_y) values, auto-boost 102.8",
+    "cert_naive": "unit(W_y) values at per-fact beta* in (L,U), boost=1.0",
+    "cert_synth": "cert_naive + synthesized residual r* at beta*_synth for targets unreachable under unit(W_y)"
+  },
+  "original_reference": {
+    "file": "baselines/results/hlm5_1b_faithful.json",
+    "boost": 102.8,
+    "eff": 0.529,
+    "gen": 0.02,
+    "loc": 1.0
+  },
+  "paraphrase_gate_fire_rate": 0.0,
+  "arms": {
+    "global_repro": {
+      "boost": 102.8,
+      "summary": {
+        "eff": [
+          0.529,
+          0.294,
+          0.765
+        ],
+        "gen": [
+          0.02,
+          0.0,
+          0.059
+        ],
+        "loc": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "eff_count": "9/17",
+      "gen_paraphrase_rate": 0.02,
+      "paraphrase_gate_fire_rate": 0.0,
+      "locality_argmax": "8/8",
+      "locality_bit_identical": "8/8",
+      "locality_rows": [
+        {
+          "prompt": "The sky is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Two plus two equals",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "The opposite of hot is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Dogs like to",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "My favorite season is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Once upon a time there was a",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "The weather today is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "She opened the door and saw a",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        }
+      ]
+    },
+    "cert_naive": {
+      "boost": 1.0,
+      "summary": {
+        "eff": [
+          0.765,
+          0.529,
+          0.941
+        ],
+        "gen": [
+          0.02,
+          0.0,
+          0.059
+        ],
+        "loc": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "eff_count": "13/17",
+      "gen_paraphrase_rate": 0.02,
+      "paraphrase_gate_fire_rate": 0.0,
+      "locality_argmax": "8/8",
+      "locality_bit_identical": "8/8",
+      "locality_rows": [
+        {
+          "prompt": "The sky is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Two plus two equals",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "The opposite of hot is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Dogs like to",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "My favorite season is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Once upon a time there was a",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "The weather today is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "She opened the door and saw a",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        }
+      ]
+    },
+    "cert_synth": {
+      "boost": 1.0,
+      "summary": {
+        "eff": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "gen": [
+          0.02,
+          0.0,
+          0.059
+        ],
+        "loc": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "eff_count": "17/17",
+      "gen_paraphrase_rate": 0.02,
+      "paraphrase_gate_fire_rate": 0.0,
+      "locality_argmax": "8/8",
+      "locality_bit_identical": "8/8",
+      "locality_rows": [
+        {
+          "prompt": "The sky is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Two plus two equals",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "The opposite of hot is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Dogs like to",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "My favorite season is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Once upon a time there was a",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "The weather today is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "She opened the door and saw a",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        }
+      ]
+    }
+  },
+  "per_fact": [
+    {
+      "i": 0,
+      "key": "The Eiffel Tower is located in the city of",
+      "target": " Rome",
+      "target_id": 10881,
+      "base_argmax": " Paris",
+      "L": 12.181,
+      "U": 63.938,
+      "slack": 51.757,
+      "risk": "narrow",
+      "reachable": true,
+      "beta_star": 13.79,
+      "margin_after": 0.931,
+      "blocker": " Paris",
+      "rescued": false,
+      "flip_global": false,
+      "pred_global": "ponder",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " Rome",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " Rome"
+    },
+    {
+      "i": 1,
+      "key": "The capital city of Japan is",
+      "target": " Berlin",
+      "target_id": 12855,
+      "base_argmax": " Tokyo",
+      "L": 21.989,
+      "U": 21.567,
+      "slack": -0.423,
+      "risk": "unreachable",
+      "reachable": false,
+      "beta_star": 21.778,
+      "margin_after": -0.056,
+      "blocker": "ettered",
+      "synthesis_min_margin": 0.1244,
+      "rescued": true,
+      "L_synth": 40.96,
+      "U_synth": "inf",
+      "slack_synth": "inf",
+      "risk_synth": "safe",
+      "beta_star_synth": 44.008,
+      "margin_after_synth": 0.583,
+      "blocker_synth": " the",
+      "flip_global": false,
+      "pred_global": "ettered",
+      "flip_cert_naive": false,
+      "pred_cert_naive": "ettered",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " Berlin",
+      "blocker_note": "unreachable under unit(W_y): hard blocker 'ettered'"
+    },
+    {
+      "i": 2,
+      "key": "The largest planet in our solar system is",
+      "target": " Saturn",
+      "target_id": 23755,
+      "base_argmax": " the",
+      "L": 2.012,
+      "U": 39.203,
+      "slack": 37.192,
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 3.112,
+      "margin_after": 0.485,
+      "blocker": " Jupiter",
+      "rescued": false,
+      "flip_global": false,
+      "pred_global": "addened",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " Saturn",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " Saturn"
+    },
+    {
+      "i": 3,
+      "key": "The Colosseum is found in the city of",
+      "target": " London",
+      "target_id": 3567,
+      "base_argmax": " Rome",
+      "L": 15.105,
+      "U": "inf",
+      "slack": "inf",
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 16.861,
+      "margin_after": 0.763,
+      "blocker": " Rome",
+      "rescued": false,
+      "flip_global": true,
+      "pred_global": " London",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " London",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " London"
+    },
+    {
+      "i": 4,
+      "key": "The currency used in Japan is the",
+      "target": " euro",
+      "target_id": 18266,
+      "base_argmax": " yen",
+      "L": 29.244,
+      "U": 22.32,
+      "slack": -6.924,
+      "risk": "unreachable",
+      "reachable": false,
+      "beta_star": 25.782,
+      "margin_after": -0.776,
+      "blocker": " DKK",
+      "synthesis_min_margin": 0.2248,
+      "rescued": true,
+      "L_synth": 10.353,
+      "U_synth": "inf",
+      "slack_synth": "inf",
+      "risk_synth": "safe",
+      "beta_star_synth": 11.871,
+      "margin_after_synth": 0.748,
+      "blocker_synth": " Y",
+      "flip_global": false,
+      "pred_global": "ettered",
+      "flip_cert_naive": false,
+      "pred_cert_naive": " DKK",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " euro",
+      "blocker_note": "unreachable under unit(W_y): hard blocker ' DKK'"
+    },
+    {
+      "i": 5,
+      "key": "The capital of Spain is",
+      "target": " Rome",
+      "target_id": 10881,
+      "base_argmax": " Madrid",
+      "L": 13.025,
+      "U": 50.022,
+      "slack": 36.997,
+      "risk": "narrow",
+      "reachable": true,
+      "beta_star": 14.676,
+      "margin_after": 0.736,
+      "blocker": " Madrid",
+      "rescued": false,
+      "flip_global": false,
+      "pred_global": "ponder",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " Rome",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " Rome"
+    },
+    {
+      "i": 6,
+      "key": "The capital of Italy is",
+      "target": " Paris",
+      "target_id": 9468,
+      "base_argmax": " the",
+      "L": 10.055,
+      "U": 1635.99,
+      "slack": 1625.936,
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 11.557,
+      "margin_after": 0.577,
+      "blocker": " Rome",
+      "rescued": false,
+      "flip_global": true,
+      "pred_global": " Paris",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " Paris",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " Paris"
+    },
+    {
+      "i": 7,
+      "key": "The capital of Russia is",
+      "target": " London",
+      "target_id": 3567,
+      "base_argmax": " the",
+      "L": 10.879,
+      "U": "inf",
+      "slack": "inf",
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 12.423,
+      "margin_after": 0.664,
+      "blocker": " Moscow",
+      "rescued": false,
+      "flip_global": true,
+      "pred_global": " London",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " London",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " London"
+    },
+    {
+      "i": 8,
+      "key": "The capital of Germany is",
+      "target": " Tokyo",
+      "target_id": 15427,
+      "base_argmax": " Berlin",
+      "L": 18.714,
+      "U": 8.05,
+      "slack": -10.664,
+      "risk": "unreachable",
+      "reachable": false,
+      "beta_star": 13.382,
+      "margin_after": -1.998,
+      "blocker": " Munich",
+      "synthesis_min_margin": 0.1936,
+      "rescued": true,
+      "L_synth": 30.987,
+      "U_synth": "inf",
+      "slack_synth": "inf",
+      "risk_synth": "safe",
+      "beta_star_synth": 33.536,
+      "margin_after_synth": 0.607,
+      "blocker_synth": " the",
+      "flip_global": false,
+      "pred_global": "ettered",
+      "flip_cert_naive": false,
+      "pred_cert_naive": " Munich",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " Tokyo",
+      "blocker_note": "unreachable under unit(W_y): hard blocker ' Munich'"
+    },
+    {
+      "i": 9,
+      "key": "The planet closest to the Sun is",
+      "target": " Mars",
+      "target_id": 10322,
+      "base_argmax": " the",
+      "L": 1.959,
+      "U": 114.804,
+      "slack": 112.845,
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 3.057,
+      "margin_after": 0.886,
+      "blocker": " Saturn",
+      "rescued": false,
+      "flip_global": true,
+      "pred_global": " Mars",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " Mars",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " Mars"
+    },
+    {
+      "i": 10,
+      "key": "Diamonds are made of",
+      "target": " iron",
+      "target_id": 6651,
+      "base_argmax": " a",
+      "L": 2.117,
+      "U": 673.476,
+      "slack": 671.359,
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 3.223,
+      "margin_after": 0.531,
+      "blocker": " atoms",
+      "rescued": false,
+      "flip_global": true,
+      "pred_global": " iron",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " iron",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " iron"
+    },
+    {
+      "i": 11,
+      "key": "The color of the sky on a clear day is",
+      "target": " green",
+      "target_id": 3392,
+      "base_argmax": " a",
+      "L": 4.006,
+      "U": "inf",
+      "slack": "inf",
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 5.206,
+      "margin_after": 0.507,
+      "blocker": " blue",
+      "rescued": false,
+      "flip_global": true,
+      "pred_global": " green",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " green",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " green"
+    },
+    {
+      "i": 12,
+      "key": "The capital of France is",
+      "target": " London",
+      "target_id": 3567,
+      "base_argmax": " Paris",
+      "L": 16.531,
+      "U": "inf",
+      "slack": "inf",
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 18.358,
+      "margin_after": 0.666,
+      "blocker": " Paris",
+      "rescued": false,
+      "flip_global": true,
+      "pred_global": " London",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " London",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " London"
+    },
+    {
+      "i": 13,
+      "key": "The largest country by area is",
+      "target": " China",
+      "target_id": 4245,
+      "base_argmax": " the",
+      "L": 0.181,
+      "U": "inf",
+      "slack": "inf",
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 1.19,
+      "margin_after": 0.797,
+      "blocker": " the",
+      "rescued": false,
+      "flip_global": true,
+      "pred_global": " China",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " China",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " China"
+    },
+    {
+      "i": 14,
+      "key": "The smallest planet in our solar system is",
+      "target": " Jupiter",
+      "target_id": 15485,
+      "base_argmax": " the",
+      "L": 0.726,
+      "U": 38.348,
+      "slack": 37.623,
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 1.762,
+      "margin_after": 1.28,
+      "blocker": " Pluto",
+      "rescued": false,
+      "flip_global": false,
+      "pred_global": "olesome",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " Jupiter",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " Jupiter"
+    },
+    {
+      "i": 15,
+      "key": "The Great Wall is located in",
+      "target": " Spain",
+      "target_id": 7819,
+      "base_argmax": " the",
+      "L": 67.471,
+      "U": 9.397,
+      "slack": -58.074,
+      "risk": "unreachable",
+      "reachable": false,
+      "beta_star": 38.434,
+      "margin_after": -7.846,
+      "blocker": "peror",
+      "synthesis_min_margin": 0.085,
+      "rescued": true,
+      "L_synth": 87.5,
+      "U_synth": "inf",
+      "slack_synth": "inf",
+      "risk_synth": "safe",
+      "beta_star_synth": 92.876,
+      "margin_after_synth": 0.562,
+      "blocker_synth": " the",
+      "flip_global": false,
+      "pred_global": "addened",
+      "flip_cert_naive": false,
+      "pred_cert_naive": "peror",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " Spain",
+      "blocker_note": "unreachable under unit(W_y): hard blocker 'peror'"
+    },
+    {
+      "i": 16,
+      "key": "The sun rises in the",
+      "target": " west",
+      "target_id": 6293,
+      "base_argmax": " east",
+      "L": 4.777,
+      "U": 122.948,
+      "slack": 118.171,
+      "risk": "safe",
+      "reachable": true,
+      "beta_star": 6.016,
+      "margin_after": 0.203,
+      "blocker": " east",
+      "rescued": false,
+      "flip_global": true,
+      "pred_global": " west",
+      "flip_cert_naive": true,
+      "pred_cert_naive": " west",
+      "flip_cert_synth": true,
+      "pred_cert_synth": " west"
+    }
+  ],
+  "wall_time_s": 19.3
+}

@@ -1,0 +1,10 @@
+{
+  "method": "ROME (our re-implementation, Meng et al. 2022)",
+  "model": "gpt2-124M",
+  "edit_layer": 5,
+  "n_facts": 18,
+  "v_steps": 25,
+  "efficacy": 1.0,
+  "generalization": 0.815,
+  "locality": 0.854
+}

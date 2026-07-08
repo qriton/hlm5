@@ -1,0 +1,66 @@
+{
+  "model": "HLM5-1B-trunk-FAITHFUL",
+  "n_facts": 17,
+  "gate_thresh": 0.95,
+  "boost": 102.8,
+  "logit_bias_c": 11.2,
+  "paraphrase_gate_fire_rate": 0.0,
+  "summary": {
+    "HLM5": {
+      "eff": [
+        0.529,
+        0.294,
+        0.765
+      ],
+      "gen": [
+        0.02,
+        0.0,
+        0.059
+      ],
+      "loc": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "LogitBias": {
+      "eff": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "gen": [
+        0.02,
+        0.0,
+        0.059
+      ],
+      "loc": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "RAG": {
+      "eff": [
+        0.294,
+        0.118,
+        0.529
+      ],
+      "gen": [
+        0.176,
+        0.059,
+        0.333
+      ],
+      "loc": [
+        0.507,
+        0.426,
+        0.581
+      ]
+    }
+  },
+  "mcnemar_HLM5_vs_LogitBias": {
+    "HLM5_only": 0,
+    "LogitBias_only": 0,
+    "p_two_sided": 1.0
+  }
+}

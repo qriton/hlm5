@@ -1,0 +1,14 @@
+{
+  "model": "gpt2-xl",
+  "vocab_size": 50257,
+  "hidden_dim": 1600,
+  "method": "self-NN under tied head: argmax_k (W W_y^T)_k == y, fp32, chunked",
+  "n_self_nn": 50166,
+  "self_nn_fraction": 0.998189,
+  "n_not_self_nn": 91,
+  "miss_rank_median": 30,
+  "torch_version": "2.5.1+cu121",
+  "device": "cuda",
+  "deterministic": true,
+  "wall_time_s": 6.4
+}

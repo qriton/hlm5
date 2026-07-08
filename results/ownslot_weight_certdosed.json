@@ -1,0 +1,155 @@
+{
+  "setting": "deployed 17-fact faithful configuration (run_1b_faithful_certdosed.py)",
+  "K_active_slots": 17,
+  "memory_size": 21,
+  "degree": 5,
+  "temperature": 0.1,
+  "gate_thresh": 0.95,
+  "own_slot_weight": {
+    "min": 0.999274,
+    "mean": 0.999274,
+    "max": 0.999274
+  },
+  "note": "attention weights depend only on keys/alphas; identical across dosing arms",
+  "per_fact": [
+    {
+      "i": 0,
+      "key": "The Eiffel Tower is located in the city of",
+      "target": " Rome",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 1,
+      "key": "The capital city of Japan is",
+      "target": " Berlin",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 2,
+      "key": "The largest planet in our solar system is",
+      "target": " Saturn",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 3,
+      "key": "The Colosseum is found in the city of",
+      "target": " London",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 4,
+      "key": "The currency used in Japan is the",
+      "target": " euro",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 5,
+      "key": "The capital of Spain is",
+      "target": " Rome",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 6,
+      "key": "The capital of Italy is",
+      "target": " Paris",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 7,
+      "key": "The capital of Russia is",
+      "target": " London",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 8,
+      "key": "The capital of Germany is",
+      "target": " Tokyo",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 9,
+      "key": "The planet closest to the Sun is",
+      "target": " Mars",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 10,
+      "key": "Diamonds are made of",
+      "target": " iron",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 11,
+      "key": "The color of the sky on a clear day is",
+      "target": " green",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 12,
+      "key": "The capital of France is",
+      "target": " London",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 13,
+      "key": "The largest country by area is",
+      "target": " China",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 14,
+      "key": "The smallest planet in our solar system is",
+      "target": " Jupiter",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 15,
+      "key": "The Great Wall is located in",
+      "target": " Spain",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    },
+    {
+      "i": 16,
+      "key": "The sun rises in the",
+      "target": " west",
+      "own_slot_weight": 0.999274,
+      "max_gate_score": 1.0,
+      "gate_fires": true
+    }
+  ],
+  "torch_version": "2.5.1+cu121",
+  "seed": 0,
+  "wall_time_s": 5.9
+}

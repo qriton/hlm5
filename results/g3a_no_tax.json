@@ -1,0 +1,8 @@
+{
+  "baseline_val_ppl": 18.012967997155407,
+  "hybrid_val_ppl": 17.992101466503918,
+  "delta_pct": 0.11584171278594414,
+  "G3a_pass": true,
+  "baseline_summary": "/leonardo_scratch/large/userexternal/redacted/hlm5/g3_final/baseline/train_summary.json",
+  "hybrid_summary": "/leonardo_scratch/large/userexternal/redacted/hlm5/g3_final/hybrid/train_summary.json"
+}

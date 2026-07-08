@@ -1,0 +1,62 @@
+{
+  "model": "HLM5-1B-trunk",
+  "gate": 0.5,
+  "stream": "create K -> edit 10% -> forget 10% -> re-add",
+  "rows": [
+    {
+      "K": 64,
+      "boost": 551.5,
+      "create_flip": 0.25,
+      "edit_ok": 0.0,
+      "tombstone_ok": 1.0,
+      "others_intact": 0.231,
+      "readd_ok": 0.0,
+      "inject_ms_per_op": 0.471,
+      "query_ms_per_op": 2.334
+    },
+    {
+      "K": 128,
+      "boost": 712.1,
+      "create_flip": 0.25,
+      "edit_ok": 0.0,
+      "tombstone_ok": 1.0,
+      "others_intact": 0.25,
+      "readd_ok": 0.0,
+      "inject_ms_per_op": 0.195,
+      "query_ms_per_op": 2.325
+    },
+    {
+      "K": 256,
+      "boost": 1687.4,
+      "create_flip": 0.125,
+      "edit_ok": 0.0,
+      "tombstone_ok": 1.0,
+      "others_intact": 0.121,
+      "readd_ok": 0.0,
+      "inject_ms_per_op": 0.189,
+      "query_ms_per_op": 2.346
+    },
+    {
+      "K": 512,
+      "boost": 3083.9,
+      "create_flip": 0.115,
+      "edit_ok": 0.0,
+      "tombstone_ok": 0.667,
+      "others_intact": 0.117,
+      "readd_ok": 0.0,
+      "inject_ms_per_op": 0.194,
+      "query_ms_per_op": 2.356
+    },
+    {
+      "K": 1024,
+      "boost": 190.5,
+      "create_flip": 0.158,
+      "edit_ok": 0.0,
+      "tombstone_ok": 0.451,
+      "others_intact": 0.159,
+      "readd_ok": 0.0,
+      "inject_ms_per_op": 0.191,
+      "query_ms_per_op": 2.39
+    }
+  ]
+}

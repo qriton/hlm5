@@ -1,0 +1,340 @@
+{
+  "passed": true,
+  "profile": "standard",
+  "device": "cuda",
+  "capacity": [
+    {
+      "memory_size": 128,
+      "dim": 128,
+      "max_passing_pairs": 128,
+      "first_failing_pairs": null,
+      "points": [
+        {
+          "pairs": 64,
+          "passed": true,
+          "rho5": 0.001191612910452567,
+          "side_effect": 7.033348083496094e-06
+        },
+        {
+          "pairs": 128,
+          "passed": true,
+          "rho5": 0.002697818252670122,
+          "side_effect": 2.384185791015625e-07
+        }
+      ]
+    },
+    {
+      "memory_size": 256,
+      "dim": 256,
+      "max_passing_pairs": 256,
+      "first_failing_pairs": null,
+      "points": [
+        {
+          "pairs": 128,
+          "passed": true,
+          "rho5": 0.0010201996927753905,
+          "side_effect": 2.2680524125462398e-10
+        },
+        {
+          "pairs": 256,
+          "passed": true,
+          "rho5": 0.0017896463797934024,
+          "side_effect": 9.799805411603302e-11
+        }
+      ]
+    },
+    {
+      "memory_size": 128,
+      "dim": 64,
+      "max_passing_pairs": 95,
+      "first_failing_pairs": 96,
+      "points": [
+        {
+          "pairs": 64,
+          "passed": true,
+          "rho5": 0.004394728656745356,
+          "side_effect": 2.6166439056396484e-05
+        },
+        {
+          "pairs": 80,
+          "passed": true,
+          "rho5": 0.004947903870044695,
+          "side_effect": 1.3488461263477802e-06
+        },
+        {
+          "pairs": 88,
+          "passed": true,
+          "rho5": 0.009826655981111203,
+          "side_effect": 7.867813110351562e-06
+        },
+        {
+          "pairs": 92,
+          "passed": true,
+          "rho5": 0.006087917630523821,
+          "side_effect": 8.344650268554688e-07
+        },
+        {
+          "pairs": 94,
+          "passed": true,
+          "rho5": 0.009286616250149812,
+          "side_effect": 4.76837158203125e-07
+        },
+        {
+          "pairs": 95,
+          "passed": true,
+          "rho5": 0.006185663313043898,
+          "side_effect": 2.0265579223632812e-06
+        },
+        {
+          "pairs": 96,
+          "passed": false,
+          "rho5": 0.016352455470976638,
+          "side_effect": 4.315376281738281e-05
+        }
+      ]
+    }
+  ],
+  "kb_injection": [
+    {
+      "contexts": 128,
+      "vocab": 256,
+      "dim": 256,
+      "steps": 2500,
+      "base_acc": 1.0,
+      "perfect_capacity": 128,
+      "sweep": [
+        {
+          "K": 16,
+          "boost": 44.219459533691406,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 32,
+          "boost": 44.247114181518555,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 64,
+          "boost": 44.47509479522705,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 96,
+          "boost": 44.524696350097656,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 128,
+          "boost": 44.56651020050049,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": null,
+          "max_gate_other": null
+        }
+      ]
+    },
+    {
+      "contexts": 256,
+      "vocab": 512,
+      "dim": 512,
+      "steps": 3000,
+      "base_acc": 1.0,
+      "perfect_capacity": 256,
+      "sweep": [
+        {
+          "K": 32,
+          "boost": 47.64453887939453,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 64,
+          "boost": 48.01623725891113,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 96,
+          "boost": 48.06183052062988,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 128,
+          "boost": 50.402456283569336,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 160,
+          "boost": 50.46371650695801,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 192,
+          "boost": 50.524959564208984,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 224,
+          "boost": 50.57634925842285,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": 1.0,
+          "max_gate_other": 0.0
+        },
+        {
+          "K": 256,
+          "boost": 50.62660598754883,
+          "inject_flip": 1.0,
+          "audit_correct": 1.0,
+          "others_intact": null,
+          "max_gate_other": null
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "name": "capacity search memory=128 dim=128",
+      "command": [
+        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "run_hlm5_capacity_search.py",
+        "--min-pairs",
+        "64",
+        "--max-pairs",
+        "128",
+        "--memory-size",
+        "128",
+        "--dim",
+        "128",
+        "--steps",
+        "1000",
+        "--device",
+        "cuda",
+        "--report-dir",
+        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/capacity_m128_d128"
+      ],
+      "returncode": 0,
+      "elapsed_sec": 15.745662177912891
+    },
+    {
+      "name": "capacity search memory=256 dim=256",
+      "command": [
+        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "run_hlm5_capacity_search.py",
+        "--min-pairs",
+        "128",
+        "--max-pairs",
+        "256",
+        "--memory-size",
+        "256",
+        "--dim",
+        "256",
+        "--steps",
+        "1000",
+        "--device",
+        "cuda",
+        "--report-dir",
+        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/capacity_m256_d256"
+      ],
+      "returncode": 0,
+      "elapsed_sec": 14.654429252259433
+    },
+    {
+      "name": "capacity search memory=128 dim=64",
+      "command": [
+        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "run_hlm5_capacity_search.py",
+        "--min-pairs",
+        "64",
+        "--max-pairs",
+        "96",
+        "--memory-size",
+        "128",
+        "--dim",
+        "64",
+        "--steps",
+        "1000",
+        "--device",
+        "cuda",
+        "--report-dir",
+        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/capacity_m128_d64"
+      ],
+      "returncode": 0,
+      "elapsed_sec": 51.01577823702246
+    },
+    {
+      "name": "LM KB injection contexts=128 dim=256",
+      "command": [
+        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "run_lm_kb_inject.py",
+        "--contexts",
+        "128",
+        "--vocab",
+        "256",
+        "--dim",
+        "256",
+        "--steps",
+        "2500",
+        "--boost",
+        "auto",
+        "--ks",
+        "16,32,64,96,128",
+        "--out",
+        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/lm_kb_ctx128_d256_steps2500.json"
+      ],
+      "returncode": 0,
+      "elapsed_sec": 8.350139234680682
+    },
+    {
+      "name": "LM KB injection contexts=256 dim=512",
+      "command": [
+        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "run_lm_kb_inject.py",
+        "--contexts",
+        "256",
+        "--vocab",
+        "512",
+        "--dim",
+        "512",
+        "--steps",
+        "3000",
+        "--boost",
+        "auto",
+        "--ks",
+        "32,64,96,128,160,192,224,256",
+        "--out",
+        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/lm_kb_ctx256_d512_steps3000.json"
+      ],
+      "returncode": 0,
+      "elapsed_sec": 11.530726323835552
+    }
+  ]
+}

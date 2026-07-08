@@ -1,0 +1,9 @@
+{
+  "method": "ROME (EasyEdit reference, mom2_adjustment=False)",
+  "model": "gpt2-124M",
+  "edit_layer": 5,
+  "n_facts": 12,
+  "efficacy": 1.0,
+  "generalization": 0.972,
+  "locality": 0.771
+}

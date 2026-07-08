@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "checkpoint": "checkpoints/hlm5_lm_hybrid_fineweb_g3_final.pt",
+    "size": "huge1b",
+    "step": 149999,
+    "val_ppl": 17.992101466503918,
+    "vocab": 65536,
+    "cfg": {
+      "dim": 1792,
+      "n_layers": 24,
+      "n_heads": 14,
+      "max_len": 1024,
+      "memory_layer": true,
+      "memory_size": 256
+    },
+    "memory": {
+      "slots": 256,
+      "dim": 1792,
+      "degree": 5,
+      "temperature": 0.1
+    },
+    "gate_energy": "g(q) = max_i relu(cos(q, k_i))^degree * relu(alpha_i), inactive slots masked",
+    "query_space": "q = trained_memory.query_proj(trunk pre-memory hidden), last position",
+    "device": "cuda",
+    "torch": "2.5.1+cu121",
+    "seed": 0,
+    "date": "2026-07-02"
+  },
+  "adaptations": [
+    "co-trained memory ships FULL (256/256 active): inject/blend run on a capacity-extended working copy (256 trained slots copied verbatim + 8 empty slots); frozen checkpoint memory never modified",
+    "survey computed on the original co-trained tensors",
+    "checkpoint alphas are all exactly 1.0 and keys share a uniform norm (0.2165); keys are unit-normalized inside score(), so scoring is unaffected by the stored norm"
+  ],
+  "survey": {
+    "slots_total": 256,
+    "slots_active": 256,
+    "key_norm": {
+      "min": 0.21650947630405426,
+      "mean": 0.21651339530944824,
+      "max": 0.2165166735649109,
+      "note": "keys are unit-normalized inside score(); stored norms do not affect scoring"
+    },
+    "alpha": {
+      "min": 1.0,
+      "mean": 1.0,
+      "max": 1.0
+    },
+    "coherence_abs_cos": {
+      "mean": 0.01885959878563881,
+      "max_module_coherence": 0.10029315203428268
+    },
+    "crosstalk_score_vs_other_slots": {
+      "mean": 2.2915587649663394e-08,
+      "max": 1.0147437933483161e-05,
+      "module_max_crosstalk_rho_pow_degree": 1.0147437921281557e-05
+    },
+    "self_energy": {
+      "min": 0.9999982118606567,
+      "mean": 1.0,
+      "max": 1.0000017881393433
+    }
+  },
+  "inject": {
+    "prompt": "The Vorpalux Reactor beneath New Zubrin hums with a pale violet light",
+    "slot": 256,
+    "g_before": 1.2937121027789544e-06,
+    "g_after": 1.0
+  },
+  "strengthen_weaken": {
+    "g_initial": 1.0,
+    "g_after_weaken_x0.5": 0.5,
+    "g_after_strengthen_x2": 1.0
+  },
+  "forget": {
+    "g_full_gate_before": 1.0,
+    "injected_slot_score_before": 1.0,
+    "g_full_gate_after": 1.2937121027789544e-06,
+    "injected_slot_score_after": 0.0,
+    "note": "tombstone masks the slot (score -inf); residual full-gate energy after forget is the co-trained slots' background response to this query"
+  },
+  "capture_blend": {
+    "concept_a": "The Eiffel Tower rises above Paris, the capital of France",
+    "concept_b": "Photosynthesis lets green plants turn sunlight into chemical energy",
+    "cos_between_source_values": 0.5943800210952759,
+    "cos_retrieved_to_source_a": 0.8921176195144653,
+    "cos_retrieved_to_source_b": 0.8927477598190308,
+    "softmax_mass_on_blend_slot": 0.9885110855102539
+  },
+  "transplant": {
+    "slots_copied": [
+      0,
+      1,
+      2,
+      3,
+      256
+    ],
+    "new_slots": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "self_energy_in_fresh_store": {
+      "per_slot": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999997019767761,
+        1.0
+      ],
+      "min": 0.9999997019767761,
+      "max": 1.0
+    },
+    "g_at_captured_novel_key_in_fresh_store": 1.0
+  },
+  "guard_leakage": {
+    "n_probes": 12,
+    "injected_slot_score_on_probes": {
+      "max": 0.026569491252303123,
+      "mean": 0.002883496694266796
+    },
+    "abs_cos_probe_query_vs_injected_key": {
+      "max": 0.484034925699234,
+      "mean": 0.19715122878551483
+    },
+    "full_gate_on_probes_after_inject": {
+      "max": 0.026569491252303123,
+      "mean": 0.002883619163185358
+    },
+    "full_gate_on_probes_before_inject": {
+      "max": 3.52395500158309e-06,
+      "mean": 1.6263918496406404e-06
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "baseline_val_ppl": 40.15816414595203,
+  "hybrid_val_ppl": 40.16556195347524,
+  "delta_pct": 0.018421677585472137,
+  "G2a_pass": true
+}

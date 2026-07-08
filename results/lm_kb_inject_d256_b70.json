@@ -1,0 +1,40 @@
+{
+  "base_acc": 1.0,
+  "sweep": [
+    {
+      "K": 16,
+      "inject_flip": 1.0,
+      "audit_correct": 1.0,
+      "others_intact": 1.0,
+      "max_gate_other": 0.0
+    },
+    {
+      "K": 32,
+      "inject_flip": 1.0,
+      "audit_correct": 1.0,
+      "others_intact": 1.0,
+      "max_gate_other": 0.0
+    },
+    {
+      "K": 48,
+      "inject_flip": 1.0,
+      "audit_correct": 1.0,
+      "others_intact": 1.0,
+      "max_gate_other": 0.0
+    },
+    {
+      "K": 64,
+      "inject_flip": 1.0,
+      "audit_correct": 1.0,
+      "others_intact": 1.0,
+      "max_gate_other": 0.0
+    },
+    {
+      "K": 80,
+      "inject_flip": 1.0,
+      "audit_correct": 1.0,
+      "others_intact": 1.0,
+      "max_gate_other": 0.0
+    }
+  ]
+}

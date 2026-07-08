@@ -1,0 +1,138 @@
+{
+  "model": "gpt2-124M",
+  "n_facts": 6,
+  "kappa": 5,
+  "tau_cos": 0.4,
+  "summary": {
+    "HLM5": {
+      "efficacy": 1.0,
+      "generalization": 0.667,
+      "locality": 0.979
+    },
+    "LogitBias": {
+      "efficacy": 1.0,
+      "generalization": 0.389,
+      "locality": 0.979
+    },
+    "SFT": {
+      "efficacy": 1.0,
+      "generalization": 0.944,
+      "locality": 0.167
+    },
+    "RAG": {
+      "efficacy": 1.0,
+      "generalization": 0.389,
+      "locality": 0.312
+    }
+  },
+  "per_fact": [
+    {
+      "fact": "The Eiffel Tower is located in the city of",
+      "target": " Rome",
+      "beta": 5,
+      "c": 4.51,
+      "HLM5": {
+        "eff": 1
+      },
+      "LogitBias": {
+        "eff": 1
+      },
+      "SFT": {
+        "eff": 1
+      },
+      "RAG": {
+        "eff": 1
+      }
+    },
+    {
+      "fact": "The capital city of Japan is",
+      "target": " Berlin",
+      "beta": 5,
+      "c": 8.8,
+      "HLM5": {
+        "eff": 1
+      },
+      "LogitBias": {
+        "eff": 1
+      },
+      "SFT": {
+        "eff": 1
+      },
+      "RAG": {
+        "eff": 1
+      }
+    },
+    {
+      "fact": "Water is made of hydrogen and",
+      "target": " helium",
+      "beta": 5,
+      "c": 2.51,
+      "HLM5": {
+        "eff": 1
+      },
+      "LogitBias": {
+        "eff": 1
+      },
+      "SFT": {
+        "eff": 1
+      },
+      "RAG": {
+        "eff": 1
+      }
+    },
+    {
+      "fact": "The largest planet in our solar system is",
+      "target": " Saturn",
+      "beta": 5,
+      "c": 3.35,
+      "HLM5": {
+        "eff": 1
+      },
+      "LogitBias": {
+        "eff": 1
+      },
+      "SFT": {
+        "eff": 1
+      },
+      "RAG": {
+        "eff": 1
+      }
+    },
+    {
+      "fact": "The first president of the United States was George",
+      "target": " Bush",
+      "beta": 5,
+      "c": 5.87,
+      "HLM5": {
+        "eff": 1
+      },
+      "LogitBias": {
+        "eff": 1
+      },
+      "SFT": {
+        "eff": 1
+      },
+      "RAG": {
+        "eff": 1
+      }
+    },
+    {
+      "fact": "The chemical symbol for gold is",
+      "target": " Ag",
+      "beta": 5,
+      "c": 8.99,
+      "HLM5": {
+        "eff": 1
+      },
+      "LogitBias": {
+        "eff": 1
+      },
+      "SFT": {
+        "eff": 1
+      },
+      "RAG": {
+        "eff": 1
+      }
+    }
+  ]
+}

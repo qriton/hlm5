@@ -1,0 +1,171 @@
+{
+  "model": "HLM5-1B-trunk",
+  "vocab": 65536,
+  "dim": 1792,
+  "head_geometry": {
+    "reachable_fraction": 0.1027,
+    "reachable_by_norm_decile_lowtohigh": [
+      0.307,
+      0.063,
+      0.027,
+      0.051,
+      0.067,
+      0.049,
+      0.038,
+      0.066,
+      0.197,
+      0.162
+    ],
+    "median_self_rank_unreachable": 6472,
+    "confuser_examples": [
+      {
+        "token": " that",
+        "confuser": ",",
+        "self_rank": 2
+      },
+      {
+        "token": " with",
+        "confuser": ",",
+        "self_rank": 2
+      },
+      {
+        "token": " cont",
+        "confuser": "addened",
+        "self_rank": 314
+      },
+      {
+        "token": " prov",
+        "confuser": "mountable",
+        "self_rank": 330
+      },
+      {
+        "token": " includ",
+        "confuser": "addened",
+        "self_rank": 59
+      },
+      {
+        "token": " produ",
+        "confuser": "addened",
+        "self_rank": 8
+      },
+      {
+        "token": " serv",
+        "confuser": "ettered",
+        "self_rank": 6034
+      },
+      {
+        "token": " stud",
+        "confuser": "addened",
+        "self_rank": 6325
+      }
+    ]
+  },
+  "stronger_metrics": {
+    "n_facts": 11,
+    "flip_rate": 0.818,
+    "median_logit_margin_flipped": 1.51,
+    "median_target_prob_flipped": 0.5023,
+    "median_rank_all": 0,
+    "rows": [
+      {
+        "prompt": "The capital of France is",
+        "target": " London",
+        "flip": true,
+        "beta": 20,
+        "logit_margin": 1.264,
+        "rank": 0,
+        "prob": 0.7701
+      },
+      {
+        "prompt": "The capital city of Japan is",
+        "target": " Berlin",
+        "flip": false,
+        "beta": null,
+        "logit_margin": -341.281,
+        "rank": 9089,
+        "prob": 0.0
+      },
+      {
+        "prompt": "The capital of Spain is",
+        "target": " Rome",
+        "flip": true,
+        "beta": 20,
+        "logit_margin": 3.109,
+        "rank": 0,
+        "prob": 0.5023
+      },
+      {
+        "prompt": "The capital of Italy is",
+        "target": " Paris",
+        "flip": true,
+        "beta": 20,
+        "logit_margin": 3.817,
+        "rank": 0,
+        "prob": 0.8199
+      },
+      {
+        "prompt": "The capital of Russia is",
+        "target": " London",
+        "flip": true,
+        "beta": 20,
+        "logit_margin": 3.925,
+        "rank": 0,
+        "prob": 0.9694
+      },
+      {
+        "prompt": "The capital of Germany is",
+        "target": " Tokyo",
+        "flip": false,
+        "beta": null,
+        "logit_margin": -491.09,
+        "rank": 13304,
+        "prob": 0.0
+      },
+      {
+        "prompt": "The largest planet in our solar system is",
+        "target": " Saturn",
+        "flip": true,
+        "beta": 5,
+        "logit_margin": 1.316,
+        "rank": 0,
+        "prob": 0.5867
+      },
+      {
+        "prompt": "Diamonds are made of",
+        "target": " iron",
+        "flip": true,
+        "beta": 5,
+        "logit_margin": 1.384,
+        "rank": 0,
+        "prob": 0.2637
+      },
+      {
+        "prompt": "The sun rises in the",
+        "target": " west",
+        "flip": true,
+        "beta": 5,
+        "logit_margin": 0.037,
+        "rank": 0,
+        "prob": 0.4665
+      },
+      {
+        "prompt": "The largest country by area is",
+        "target": " China",
+        "flip": true,
+        "beta": 5,
+        "logit_margin": 2.375,
+        "rank": 0,
+        "prob": 0.4833
+      },
+      {
+        "prompt": "The planet closest to the Sun is",
+        "target": " Mars",
+        "flip": true,
+        "beta": 5,
+        "logit_margin": 1.51,
+        "rank": 0,
+        "prob": 0.358
+      }
+    ]
+  }
+}

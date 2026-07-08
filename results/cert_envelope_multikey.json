@@ -1,0 +1,1197 @@
+{
+  "model": "HLM5-1B-trunk",
+  "checkpoint": "checkpoints/hlm5_lm_baseline_fineweb_g3_final.pt",
+  "pool": 1200,
+  "eps": 0.0001,
+  "n_keys": 60,
+  "conventions": {
+    "value": "v = unit(W_y); a_j=(W_y-W_j).h; b_j=(W_y-W_j).v; identical to run_1b_certificate.py",
+    "unreachable": "hard blocker (exists j: b_j<=EPS and a_j<=0) or L>=U",
+    "per_key_median_slack": "sorted(finite reachable slacks)[n//2] (original script's upper median)",
+    "aggregate_median": "standard median across keys; std is population std"
+  },
+  "original_key": {
+    "prompt": "The capital of Vorenia is",
+    "stored": {
+      "reachable_rate": 0.784,
+      "median_slack_reachable": 30.21,
+      "risk_label_counts": {
+        "safe": 888,
+        "unreachable": 259,
+        "narrow": 38,
+        "brittle": 15
+      }
+    },
+    "recomputed_scalar": {
+      "reachable_fraction": 0.7842,
+      "risk_counts": {
+        "safe": 888,
+        "narrow": 38,
+        "brittle": 15,
+        "unreachable": 259
+      },
+      "median_slack_reachable": 30.21,
+      "unreachable_total": 259,
+      "unreachable_hard_blocker": 229,
+      "unreachable_interval_only": 30
+    },
+    "recompute_matches_stored": true,
+    "vectorized_matches_scalar": true
+  },
+  "aggregates": {
+    "reachable_fraction": {
+      "n": 60,
+      "mean": 0.7938,
+      "std": 0.0221,
+      "min": 0.7417,
+      "median": 0.7921,
+      "max": 0.85
+    },
+    "median_slack_reachable": {
+      "n": 60,
+      "mean": 43.805,
+      "std": 12.56,
+      "min": 26.39,
+      "median": 42.57,
+      "max": 80.73
+    },
+    "unreachable_hard_blocker": {
+      "n": 60,
+      "mean": 205.2167,
+      "std": 32.639,
+      "min": 135,
+      "median": 208.0,
+      "max": 276
+    },
+    "unreachable_interval_only": {
+      "n": 60,
+      "mean": 42.2667,
+      "std": 13.6282,
+      "min": 11,
+      "median": 41.5,
+      "max": 87
+    },
+    "per_category": {
+      "novel": {
+        "n": 20,
+        "mean_reachable_fraction": 0.7981,
+        "mean_median_slack": 38.5,
+        "mean_unreachable": 242.2,
+        "mean_hard_blocker": 202.9,
+        "mean_interval_only": 39.4
+      },
+      "real": {
+        "n": 20,
+        "mean_reachable_fraction": 0.7935,
+        "mean_median_slack": 41.27,
+        "mean_unreachable": 247.8,
+        "mean_hard_blocker": 203.9,
+        "mean_interval_only": 43.9
+      },
+      "generic": {
+        "n": 20,
+        "mean_reachable_fraction": 0.7897,
+        "mean_median_slack": 51.64,
+        "mean_unreachable": 252.3,
+        "mean_hard_blocker": 208.8,
+        "mean_interval_only": 43.5
+      }
+    },
+    "original_key_typicality": {
+      "original_reachable_fraction": 0.7842,
+      "percentile_rank": 0.333,
+      "z_score": -0.43,
+      "within_1_std": true
+    }
+  },
+  "keys": [
+    {
+      "prompt": "The capital of Vorenia is",
+      "category": "novel",
+      "is_original_key": true,
+      "base_argmax": " the",
+      "n_reachable": 941,
+      "reachable_fraction": 0.7842,
+      "risk_counts": {
+        "safe": 888,
+        "narrow": 38,
+        "brittle": 15,
+        "unreachable": 259
+      },
+      "median_slack_reachable": 30.21,
+      "unreachable_hard_blocker": 229,
+      "unreachable_interval_only": 30
+    },
+    {
+      "prompt": "The capital of Zemdrania is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 931,
+      "reachable_fraction": 0.7758,
+      "risk_counts": {
+        "safe": 883,
+        "narrow": 25,
+        "brittle": 23,
+        "unreachable": 269
+      },
+      "median_slack_reachable": 26.39,
+      "unreachable_hard_blocker": 243,
+      "unreachable_interval_only": 26
+    },
+    {
+      "prompt": "The CEO of Vextrix is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 1003,
+      "reachable_fraction": 0.8358,
+      "risk_counts": {
+        "safe": 907,
+        "narrow": 60,
+        "brittle": 36,
+        "unreachable": 197
+      },
+      "median_slack_reachable": 34.25,
+      "unreachable_hard_blocker": 151,
+      "unreachable_interval_only": 46
+    },
+    {
+      "prompt": "The CEO of Qorlan Industries is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 983,
+      "reachable_fraction": 0.8192,
+      "risk_counts": {
+        "safe": 899,
+        "narrow": 54,
+        "brittle": 30,
+        "unreachable": 217
+      },
+      "median_slack_reachable": 43.33,
+      "unreachable_hard_blocker": 173,
+      "unreachable_interval_only": 44
+    },
+    {
+      "prompt": "Brelium was discovered by",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 978,
+      "reachable_fraction": 0.815,
+      "risk_counts": {
+        "safe": 881,
+        "narrow": 49,
+        "brittle": 48,
+        "unreachable": 222
+      },
+      "median_slack_reachable": 30.79,
+      "unreachable_hard_blocker": 172,
+      "unreachable_interval_only": 50
+    },
+    {
+      "prompt": "Xanthorium was discovered by",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 967,
+      "reachable_fraction": 0.8058,
+      "risk_counts": {
+        "safe": 884,
+        "narrow": 47,
+        "brittle": 36,
+        "unreachable": 233
+      },
+      "median_slack_reachable": 32.77,
+      "unreachable_hard_blocker": 189,
+      "unreachable_interval_only": 44
+    },
+    {
+      "prompt": "The chemical symbol of brelium is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " C",
+      "n_reachable": 935,
+      "reachable_fraction": 0.7792,
+      "risk_counts": {
+        "safe": 882,
+        "narrow": 29,
+        "brittle": 24,
+        "unreachable": 265
+      },
+      "median_slack_reachable": 39.7,
+      "unreachable_hard_blocker": 209,
+      "unreachable_interval_only": 56
+    },
+    {
+      "prompt": "The chemical symbol of drakonite is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " C",
+      "n_reachable": 954,
+      "reachable_fraction": 0.795,
+      "risk_counts": {
+        "safe": 889,
+        "narrow": 48,
+        "brittle": 17,
+        "unreachable": 246
+      },
+      "median_slack_reachable": 32.27,
+      "unreachable_hard_blocker": 202,
+      "unreachable_interval_only": 44
+    },
+    {
+      "prompt": "Mount Kelvarn is located in",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 910,
+      "reachable_fraction": 0.7583,
+      "risk_counts": {
+        "safe": 875,
+        "narrow": 26,
+        "brittle": 9,
+        "unreachable": 290
+      },
+      "median_slack_reachable": 35.26,
+      "unreachable_hard_blocker": 263,
+      "unreachable_interval_only": 27
+    },
+    {
+      "prompt": "The city of Tersalon is located in",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 922,
+      "reachable_fraction": 0.7683,
+      "risk_counts": {
+        "safe": 879,
+        "narrow": 25,
+        "brittle": 18,
+        "unreachable": 278
+      },
+      "median_slack_reachable": 38.46,
+      "unreachable_hard_blocker": 256,
+      "unreachable_interval_only": 22
+    },
+    {
+      "prompt": "The currency of Ombrelia is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 948,
+      "reachable_fraction": 0.79,
+      "risk_counts": {
+        "safe": 888,
+        "narrow": 32,
+        "brittle": 28,
+        "unreachable": 252
+      },
+      "median_slack_reachable": 51.85,
+      "unreachable_hard_blocker": 203,
+      "unreachable_interval_only": 49
+    },
+    {
+      "prompt": "The official language of Nuvestan is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " Spanish",
+      "n_reachable": 950,
+      "reachable_fraction": 0.7917,
+      "risk_counts": {
+        "safe": 881,
+        "narrow": 41,
+        "brittle": 28,
+        "unreachable": 250
+      },
+      "median_slack_reachable": 47.32,
+      "unreachable_hard_blocker": 211,
+      "unreachable_interval_only": 39
+    },
+    {
+      "prompt": "The founder of Melvora Corp is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 1013,
+      "reachable_fraction": 0.8442,
+      "risk_counts": {
+        "safe": 908,
+        "narrow": 67,
+        "brittle": 38,
+        "unreachable": 187
+      },
+      "median_slack_reachable": 35.17,
+      "unreachable_hard_blocker": 135,
+      "unreachable_interval_only": 52
+    },
+    {
+      "prompt": "The president of Kudrovia is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 978,
+      "reachable_fraction": 0.815,
+      "risk_counts": {
+        "safe": 906,
+        "narrow": 45,
+        "brittle": 27,
+        "unreachable": 222
+      },
+      "median_slack_reachable": 52.78,
+      "unreachable_hard_blocker": 172,
+      "unreachable_interval_only": 50
+    },
+    {
+      "prompt": "The national dish of Farlandia is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 992,
+      "reachable_fraction": 0.8267,
+      "risk_counts": {
+        "safe": 911,
+        "narrow": 49,
+        "brittle": 32,
+        "unreachable": 208
+      },
+      "median_slack_reachable": 40.88,
+      "unreachable_hard_blocker": 164,
+      "unreachable_interval_only": 44
+    },
+    {
+      "prompt": "The river Oskan flows through",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 966,
+      "reachable_fraction": 0.805,
+      "risk_counts": {
+        "safe": 891,
+        "narrow": 42,
+        "brittle": 33,
+        "unreachable": 234
+      },
+      "median_slack_reachable": 27.19,
+      "unreachable_hard_blocker": 193,
+      "unreachable_interval_only": 41
+    },
+    {
+      "prompt": "Veltramine is used to treat",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " depression",
+      "n_reachable": 935,
+      "reachable_fraction": 0.7792,
+      "risk_counts": {
+        "safe": 881,
+        "narrow": 33,
+        "brittle": 21,
+        "unreachable": 265
+      },
+      "median_slack_reachable": 40.33,
+      "unreachable_hard_blocker": 218,
+      "unreachable_interval_only": 47
+    },
+    {
+      "prompt": "The author of the novel Skybound Ashes is",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 1020,
+      "reachable_fraction": 0.85,
+      "risk_counts": {
+        "safe": 910,
+        "narrow": 77,
+        "brittle": 33,
+        "unreachable": 180
+      },
+      "median_slack_reachable": 30.62,
+      "unreachable_hard_blocker": 139,
+      "unreachable_interval_only": 41
+    },
+    {
+      "prompt": "The Battle of Kremshold took place in",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 916,
+      "reachable_fraction": 0.7633,
+      "risk_counts": {
+        "safe": 875,
+        "narrow": 33,
+        "brittle": 8,
+        "unreachable": 284
+      },
+      "median_slack_reachable": 51.63,
+      "unreachable_hard_blocker": 273,
+      "unreachable_interval_only": 11
+    },
+    {
+      "prompt": "The airline Zephyrona is headquartered in",
+      "category": "novel",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 913,
+      "reachable_fraction": 0.7608,
+      "risk_counts": {
+        "safe": 879,
+        "narrow": 24,
+        "brittle": 10,
+        "unreachable": 287
+      },
+      "median_slack_reachable": 48.78,
+      "unreachable_hard_blocker": 263,
+      "unreachable_interval_only": 24
+    },
+    {
+      "prompt": "The capital of France is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " Paris",
+      "n_reachable": 945,
+      "reachable_fraction": 0.7875,
+      "risk_counts": {
+        "safe": 891,
+        "narrow": 25,
+        "brittle": 29,
+        "unreachable": 255
+      },
+      "median_slack_reachable": 29.54,
+      "unreachable_hard_blocker": 221,
+      "unreachable_interval_only": 34
+    },
+    {
+      "prompt": "The capital of Japan is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " Tokyo",
+      "n_reachable": 940,
+      "reachable_fraction": 0.7833,
+      "risk_counts": {
+        "safe": 887,
+        "narrow": 33,
+        "brittle": 20,
+        "unreachable": 260
+      },
+      "median_slack_reachable": 40.59,
+      "unreachable_hard_blocker": 219,
+      "unreachable_interval_only": 41
+    },
+    {
+      "prompt": "The capital of Australia is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " Sydney",
+      "n_reachable": 942,
+      "reachable_fraction": 0.785,
+      "risk_counts": {
+        "safe": 883,
+        "narrow": 30,
+        "brittle": 29,
+        "unreachable": 258
+      },
+      "median_slack_reachable": 27.8,
+      "unreachable_hard_blocker": 222,
+      "unreachable_interval_only": 36
+    },
+    {
+      "prompt": "The CEO of Apple is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 989,
+      "reachable_fraction": 0.8242,
+      "risk_counts": {
+        "safe": 897,
+        "narrow": 61,
+        "brittle": 31,
+        "unreachable": 211
+      },
+      "median_slack_reachable": 43.54,
+      "unreachable_hard_blocker": 173,
+      "unreachable_interval_only": 38
+    },
+    {
+      "prompt": "The CEO of Tesla is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 979,
+      "reachable_fraction": 0.8158,
+      "risk_counts": {
+        "safe": 895,
+        "narrow": 54,
+        "brittle": 30,
+        "unreachable": 221
+      },
+      "median_slack_reachable": 49.37,
+      "unreachable_hard_blocker": 182,
+      "unreachable_interval_only": 39
+    },
+    {
+      "prompt": "Penicillin was discovered by",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 961,
+      "reachable_fraction": 0.8008,
+      "risk_counts": {
+        "safe": 891,
+        "narrow": 47,
+        "brittle": 23,
+        "unreachable": 239
+      },
+      "median_slack_reachable": 50.95,
+      "unreachable_hard_blocker": 191,
+      "unreachable_interval_only": 48
+    },
+    {
+      "prompt": "Radium was discovered by",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 951,
+      "reachable_fraction": 0.7925,
+      "risk_counts": {
+        "safe": 882,
+        "narrow": 41,
+        "brittle": 28,
+        "unreachable": 249
+      },
+      "median_slack_reachable": 54.32,
+      "unreachable_hard_blocker": 186,
+      "unreachable_interval_only": 63
+    },
+    {
+      "prompt": "The chemical symbol of gold is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " C",
+      "n_reachable": 953,
+      "reachable_fraction": 0.7942,
+      "risk_counts": {
+        "safe": 880,
+        "narrow": 48,
+        "brittle": 25,
+        "unreachable": 247
+      },
+      "median_slack_reachable": 35.37,
+      "unreachable_hard_blocker": 207,
+      "unreachable_interval_only": 40
+    },
+    {
+      "prompt": "The chemical symbol of oxygen is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " O",
+      "n_reachable": 951,
+      "reachable_fraction": 0.7925,
+      "risk_counts": {
+        "safe": 881,
+        "narrow": 39,
+        "brittle": 31,
+        "unreachable": 249
+      },
+      "median_slack_reachable": 34.07,
+      "unreachable_hard_blocker": 212,
+      "unreachable_interval_only": 37
+    },
+    {
+      "prompt": "Mount Everest is located in",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 928,
+      "reachable_fraction": 0.7733,
+      "risk_counts": {
+        "safe": 878,
+        "narrow": 35,
+        "brittle": 15,
+        "unreachable": 272
+      },
+      "median_slack_reachable": 43.51,
+      "unreachable_hard_blocker": 238,
+      "unreachable_interval_only": 34
+    },
+    {
+      "prompt": "The Eiffel Tower is located in",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " Paris",
+      "n_reachable": 950,
+      "reachable_fraction": 0.7917,
+      "risk_counts": {
+        "safe": 878,
+        "narrow": 42,
+        "brittle": 30,
+        "unreachable": 250
+      },
+      "median_slack_reachable": 32.87,
+      "unreachable_hard_blocker": 233,
+      "unreachable_interval_only": 17
+    },
+    {
+      "prompt": "The currency of Japan is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 935,
+      "reachable_fraction": 0.7792,
+      "risk_counts": {
+        "safe": 882,
+        "narrow": 34,
+        "brittle": 19,
+        "unreachable": 265
+      },
+      "median_slack_reachable": 49.74,
+      "unreachable_hard_blocker": 235,
+      "unreachable_interval_only": 30
+    },
+    {
+      "prompt": "The official language of Brazil is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " Portuguese",
+      "n_reachable": 937,
+      "reachable_fraction": 0.7808,
+      "risk_counts": {
+        "safe": 873,
+        "narrow": 40,
+        "brittle": 24,
+        "unreachable": 263
+      },
+      "median_slack_reachable": 42.65,
+      "unreachable_hard_blocker": 219,
+      "unreachable_interval_only": 44
+    },
+    {
+      "prompt": "The founder of Microsoft is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 1008,
+      "reachable_fraction": 0.84,
+      "risk_counts": {
+        "safe": 897,
+        "narrow": 66,
+        "brittle": 45,
+        "unreachable": 192
+      },
+      "median_slack_reachable": 27.53,
+      "unreachable_hard_blocker": 163,
+      "unreachable_interval_only": 29
+    },
+    {
+      "prompt": "The president of the United States is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 951,
+      "reachable_fraction": 0.7925,
+      "risk_counts": {
+        "safe": 889,
+        "narrow": 29,
+        "brittle": 33,
+        "unreachable": 249
+      },
+      "median_slack_reachable": 54.23,
+      "unreachable_hard_blocker": 169,
+      "unreachable_interval_only": 80
+    },
+    {
+      "prompt": "The largest planet in the solar system is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 936,
+      "reachable_fraction": 0.78,
+      "risk_counts": {
+        "safe": 878,
+        "narrow": 35,
+        "brittle": 23,
+        "unreachable": 264
+      },
+      "median_slack_reachable": 44.5,
+      "unreachable_hard_blocker": 223,
+      "unreachable_interval_only": 41
+    },
+    {
+      "prompt": "The Amazon River flows through",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 943,
+      "reachable_fraction": 0.7858,
+      "risk_counts": {
+        "safe": 883,
+        "narrow": 35,
+        "brittle": 25,
+        "unreachable": 257
+      },
+      "median_slack_reachable": 31.07,
+      "unreachable_hard_blocker": 195,
+      "unreachable_interval_only": 62
+    },
+    {
+      "prompt": "Aspirin is used to treat",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 945,
+      "reachable_fraction": 0.7875,
+      "risk_counts": {
+        "safe": 888,
+        "narrow": 39,
+        "brittle": 18,
+        "unreachable": 255
+      },
+      "median_slack_reachable": 42.49,
+      "unreachable_hard_blocker": 219,
+      "unreachable_interval_only": 36
+    },
+    {
+      "prompt": "The author of Romeo and Juliet is",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 963,
+      "reachable_fraction": 0.8025,
+      "risk_counts": {
+        "safe": 899,
+        "narrow": 38,
+        "brittle": 26,
+        "unreachable": 237
+      },
+      "median_slack_reachable": 47.43,
+      "unreachable_hard_blocker": 150,
+      "unreachable_interval_only": 87
+    },
+    {
+      "prompt": "Water is composed of hydrogen and",
+      "category": "real",
+      "is_original_key": false,
+      "base_argmax": " oxygen",
+      "n_reachable": 936,
+      "reachable_fraction": 0.78,
+      "risk_counts": {
+        "safe": 875,
+        "narrow": 33,
+        "brittle": 28,
+        "unreachable": 264
+      },
+      "median_slack_reachable": 43.87,
+      "unreachable_hard_blocker": 222,
+      "unreachable_interval_only": 42
+    },
+    {
+      "prompt": "The meeting was rescheduled because of the",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " weather",
+      "n_reachable": 906,
+      "reachable_fraction": 0.755,
+      "risk_counts": {
+        "safe": 873,
+        "narrow": 17,
+        "brittle": 16,
+        "unreachable": 294
+      },
+      "median_slack_reachable": 80.73,
+      "unreachable_hard_blocker": 244,
+      "unreachable_interval_only": 50
+    },
+    {
+      "prompt": "She opened the door and saw a",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " man",
+      "n_reachable": 939,
+      "reachable_fraction": 0.7825,
+      "risk_counts": {
+        "safe": 884,
+        "narrow": 34,
+        "brittle": 21,
+        "unreachable": 261
+      },
+      "median_slack_reachable": 32.73,
+      "unreachable_hard_blocker": 210,
+      "unreachable_interval_only": 51
+    },
+    {
+      "prompt": "In recent years, researchers have found that",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " the",
+      "n_reachable": 991,
+      "reachable_fraction": 0.8258,
+      "risk_counts": {
+        "safe": 921,
+        "narrow": 50,
+        "brittle": 20,
+        "unreachable": 209
+      },
+      "median_slack_reachable": 47.44,
+      "unreachable_hard_blocker": 164,
+      "unreachable_interval_only": 45
+    },
+    {
+      "prompt": "The company announced that its quarterly profits",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " rose",
+      "n_reachable": 926,
+      "reachable_fraction": 0.7717,
+      "risk_counts": {
+        "safe": 876,
+        "narrow": 37,
+        "brittle": 13,
+        "unreachable": 274
+      },
+      "median_slack_reachable": 62.09,
+      "unreachable_hard_blocker": 235,
+      "unreachable_interval_only": 39
+    },
+    {
+      "prompt": "After a long day at work, he decided to",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " take",
+      "n_reachable": 977,
+      "reachable_fraction": 0.8142,
+      "risk_counts": {
+        "safe": 900,
+        "narrow": 48,
+        "brittle": 29,
+        "unreachable": 223
+      },
+      "median_slack_reachable": 53.3,
+      "unreachable_hard_blocker": 176,
+      "unreachable_interval_only": 47
+    },
+    {
+      "prompt": "The weather forecast for tomorrow predicts",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 946,
+      "reachable_fraction": 0.7883,
+      "risk_counts": {
+        "safe": 879,
+        "narrow": 38,
+        "brittle": 29,
+        "unreachable": 254
+      },
+      "median_slack_reachable": 45.02,
+      "unreachable_hard_blocker": 208,
+      "unreachable_interval_only": 46
+    },
+    {
+      "prompt": "One of the most important skills in life is",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " to",
+      "n_reachable": 911,
+      "reachable_fraction": 0.7592,
+      "risk_counts": {
+        "safe": 879,
+        "narrow": 20,
+        "brittle": 12,
+        "unreachable": 289
+      },
+      "median_slack_reachable": 76.79,
+      "unreachable_hard_blocker": 242,
+      "unreachable_interval_only": 47
+    },
+    {
+      "prompt": "The recipe calls for two cups of",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " flour",
+      "n_reachable": 968,
+      "reachable_fraction": 0.8067,
+      "risk_counts": {
+        "safe": 892,
+        "narrow": 48,
+        "brittle": 28,
+        "unreachable": 232
+      },
+      "median_slack_reachable": 35.6,
+      "unreachable_hard_blocker": 208,
+      "unreachable_interval_only": 24
+    },
+    {
+      "prompt": "Local officials said the new policy would",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " help",
+      "n_reachable": 948,
+      "reachable_fraction": 0.79,
+      "risk_counts": {
+        "safe": 897,
+        "narrow": 34,
+        "brittle": 17,
+        "unreachable": 252
+      },
+      "median_slack_reachable": 66.65,
+      "unreachable_hard_blocker": 222,
+      "unreachable_interval_only": 30
+    },
+    {
+      "prompt": "The children were playing in the",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " garden",
+      "n_reachable": 960,
+      "reachable_fraction": 0.8,
+      "risk_counts": {
+        "safe": 881,
+        "narrow": 43,
+        "brittle": 36,
+        "unreachable": 240
+      },
+      "median_slack_reachable": 31.42,
+      "unreachable_hard_blocker": 198,
+      "unreachable_interval_only": 42
+    },
+    {
+      "prompt": "According to the report, the main cause of the accident was",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " a",
+      "n_reachable": 942,
+      "reachable_fraction": 0.785,
+      "risk_counts": {
+        "safe": 886,
+        "narrow": 43,
+        "brittle": 13,
+        "unreachable": 258
+      },
+      "median_slack_reachable": 64.53,
+      "unreachable_hard_blocker": 226,
+      "unreachable_interval_only": 32
+    },
+    {
+      "prompt": "It was a cold morning, and the streets were",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " empty",
+      "n_reachable": 890,
+      "reachable_fraction": 0.7417,
+      "risk_counts": {
+        "safe": 866,
+        "narrow": 19,
+        "brittle": 5,
+        "unreachable": 310
+      },
+      "median_slack_reachable": 64.82,
+      "unreachable_hard_blocker": 276,
+      "unreachable_interval_only": 34
+    },
+    {
+      "prompt": "The museum's new exhibit features a collection of",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " more",
+      "n_reachable": 972,
+      "reachable_fraction": 0.81,
+      "risk_counts": {
+        "safe": 886,
+        "narrow": 55,
+        "brittle": 31,
+        "unreachable": 228
+      },
+      "median_slack_reachable": 33.45,
+      "unreachable_hard_blocker": 153,
+      "unreachable_interval_only": 75
+    },
+    {
+      "prompt": "Students who want to apply for the program must",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " complete",
+      "n_reachable": 952,
+      "reachable_fraction": 0.7933,
+      "risk_counts": {
+        "safe": 892,
+        "narrow": 40,
+        "brittle": 20,
+        "unreachable": 248
+      },
+      "median_slack_reachable": 53.93,
+      "unreachable_hard_blocker": 222,
+      "unreachable_interval_only": 26
+    },
+    {
+      "prompt": "The film received positive reviews for its",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " portrayal",
+      "n_reachable": 954,
+      "reachable_fraction": 0.795,
+      "risk_counts": {
+        "safe": 878,
+        "narrow": 35,
+        "brittle": 41,
+        "unreachable": 246
+      },
+      "median_slack_reachable": 29.88,
+      "unreachable_hard_blocker": 198,
+      "unreachable_interval_only": 48
+    },
+    {
+      "prompt": "Before you begin the installation, make sure to",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " read",
+      "n_reachable": 967,
+      "reachable_fraction": 0.8058,
+      "risk_counts": {
+        "safe": 902,
+        "narrow": 40,
+        "brittle": 25,
+        "unreachable": 233
+      },
+      "median_slack_reachable": 65.38,
+      "unreachable_hard_blocker": 188,
+      "unreachable_interval_only": 45
+    },
+    {
+      "prompt": "The committee voted to approve the",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " contract",
+      "n_reachable": 970,
+      "reachable_fraction": 0.8083,
+      "risk_counts": {
+        "safe": 885,
+        "narrow": 62,
+        "brittle": 23,
+        "unreachable": 230
+      },
+      "median_slack_reachable": 36.84,
+      "unreachable_hard_blocker": 193,
+      "unreachable_interval_only": 37
+    },
+    {
+      "prompt": "Scientists have long wondered why some animals",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": ",",
+      "n_reachable": 957,
+      "reachable_fraction": 0.7975,
+      "risk_counts": {
+        "safe": 897,
+        "narrow": 35,
+        "brittle": 25,
+        "unreachable": 243
+      },
+      "median_slack_reachable": 60.68,
+      "unreachable_hard_blocker": 183,
+      "unreachable_interval_only": 60
+    },
+    {
+      "prompt": "Traffic on the highway was delayed due to a",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " crash",
+      "n_reachable": 923,
+      "reachable_fraction": 0.7692,
+      "risk_counts": {
+        "safe": 878,
+        "narrow": 29,
+        "brittle": 16,
+        "unreachable": 277
+      },
+      "median_slack_reachable": 55.31,
+      "unreachable_hard_blocker": 238,
+      "unreachable_interval_only": 39
+    },
+    {
+      "prompt": "He picked up the phone and dialed the",
+      "category": "generic",
+      "is_original_key": false,
+      "base_argmax": " number",
+      "n_reachable": 954,
+      "reachable_fraction": 0.795,
+      "risk_counts": {
+        "safe": 881,
+        "narrow": 46,
+        "brittle": 27,
+        "unreachable": 246
+      },
+      "median_slack_reachable": 36.29,
+      "unreachable_hard_blocker": 192,
+      "unreachable_interval_only": 54
+    }
+  ],
+  "prompt_list": {
+    "novel": [
+      "The capital of Vorenia is",
+      "The capital of Zemdrania is",
+      "The CEO of Vextrix is",
+      "The CEO of Qorlan Industries is",
+      "Brelium was discovered by",
+      "Xanthorium was discovered by",
+      "The chemical symbol of brelium is",
+      "The chemical symbol of drakonite is",
+      "Mount Kelvarn is located in",
+      "The city of Tersalon is located in",
+      "The currency of Ombrelia is",
+      "The official language of Nuvestan is",
+      "The founder of Melvora Corp is",
+      "The president of Kudrovia is",
+      "The national dish of Farlandia is",
+      "The river Oskan flows through",
+      "Veltramine is used to treat",
+      "The author of the novel Skybound Ashes is",
+      "The Battle of Kremshold took place in",
+      "The airline Zephyrona is headquartered in"
+    ],
+    "real": [
+      "The capital of France is",
+      "The capital of Japan is",
+      "The capital of Australia is",
+      "The CEO of Apple is",
+      "The CEO of Tesla is",
+      "Penicillin was discovered by",
+      "Radium was discovered by",
+      "The chemical symbol of gold is",
+      "The chemical symbol of oxygen is",
+      "Mount Everest is located in",
+      "The Eiffel Tower is located in",
+      "The currency of Japan is",
+      "The official language of Brazil is",
+      "The founder of Microsoft is",
+      "The president of the United States is",
+      "The largest planet in the solar system is",
+      "The Amazon River flows through",
+      "Aspirin is used to treat",
+      "The author of Romeo and Juliet is",
+      "Water is composed of hydrogen and"
+    ],
+    "generic": [
+      "The meeting was rescheduled because of the",
+      "She opened the door and saw a",
+      "In recent years, researchers have found that",
+      "The company announced that its quarterly profits",
+      "After a long day at work, he decided to",
+      "The weather forecast for tomorrow predicts",
+      "One of the most important skills in life is",
+      "The recipe calls for two cups of",
+      "Local officials said the new policy would",
+      "The children were playing in the",
+      "According to the report, the main cause of the accident was",
+      "It was a cold morning, and the streets were",
+      "The museum's new exhibit features a collection of",
+      "Students who want to apply for the program must",
+      "The film received positive reviews for its",
+      "Before you begin the installation, make sure to",
+      "The committee voted to approve the",
+      "Scientists have long wondered why some animals",
+      "Traffic on the highway was delayed due to a",
+      "He picked up the phone and dialed the"
+    ]
+  }
+}

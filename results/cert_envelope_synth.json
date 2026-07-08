@@ -1,0 +1,65 @@
+{
+  "model": "HLM5-1B-trunk",
+  "fact": "The capital of Vorenia is",
+  "pool": 1200,
+  "envelope": {
+    "reachable_rate": 0.784,
+    "unreachable_rate": 0.216,
+    "median_slack_reachable": 30.21,
+    "risk_label_counts": {
+      "safe": 888,
+      "unreachable": 259,
+      "narrow": 38,
+      "brittle": 15
+    }
+  },
+  "residual_synthesis": {
+    "unreachable_tested": 40,
+    "rescued": 40,
+    "rescue_rate": 1.0,
+    "examples": [
+      {
+        "token": " for",
+        "blocker": ",",
+        "min_margin_unitWy": -0.053,
+        "min_margin_synth": 0.5,
+        "rescued": true
+      },
+      {
+        "token": " that",
+        "blocker": ",",
+        "min_margin_unitWy": -0.055,
+        "min_margin_synth": 0.42,
+        "rescued": true
+      },
+      {
+        "token": " with",
+        "blocker": ",",
+        "min_margin_unitWy": -0.049,
+        "min_margin_synth": 0.466,
+        "rescued": true
+      },
+      {
+        "token": " but",
+        "blocker": " and",
+        "min_margin_unitWy": -0.021,
+        "min_margin_synth": 0.324,
+        "rescued": true
+      },
+      {
+        "token": " has",
+        "blocker": ",",
+        "min_margin_unitWy": -0.045,
+        "min_margin_synth": 0.281,
+        "rescued": true
+      },
+      {
+        "token": " wor",
+        "blocker": "?",
+        "min_margin_unitWy": -0.239,
+        "min_margin_synth": 0.586,
+        "rescued": true
+      }
+    ]
+  }
+}

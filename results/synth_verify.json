@@ -1,0 +1,10 @@
+{
+  "model": "HLM5-1B-trunk",
+  "n_unreachable_tested": 40,
+  "flip_with_unit_Wy": 0,
+  "flip_with_synth_residual": 40,
+  "rescue_flip_rate": 1.0,
+  "median_beta_needed": 20,
+  "max_beta_needed": 50,
+  "min_beta_needed": 10
+}

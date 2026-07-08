@@ -1,0 +1,607 @@
+{
+  "model": "HLM5-1B-trunk (frozen, CPU fp32)",
+  "device": "cpu",
+  "gate_thresh": 0.95,
+  "temperature": 0.1,
+  "degree": 5,
+  "document": "demo_document.txt",
+  "n_sentences": 16,
+  "counts": {
+    "extracted": 12,
+    "admitted": 8,
+    "rescued": 2,
+    "refused_multi_token": 2,
+    "refused_unreachable": 0,
+    "skipped_already_known": 1,
+    "skipped_duplicate": 1
+  },
+  "receipts": [
+    {
+      "op": "admission",
+      "relation": "capital_of",
+      "key_prompt": "The capital of Veldoria is",
+      "target": " Stone",
+      "source": "The capital of Veldoria is Stone, a river city of roughly two hundred thousand people.",
+      "key_hash": "cddee133c1f9bce2",
+      "target_id": 11659,
+      "base_argmax": " the",
+      "decision": "admit",
+      "reason": "reachable: certificate envelope",
+      "payload": {
+        "certificate": {
+          "L": 13.772,
+          "U": 30.254,
+          "slack": 16.482,
+          "reachable": true,
+          "beta_star": 15.46,
+          "margin_after": 0.956,
+          "blocker": " situated",
+          "risk": "narrow"
+        },
+        "slot": 0,
+        "rescued": false,
+        "value_hash": "aeb15135af235d2f"
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "currency_of",
+      "key_prompt": "The currency of Veldoria is the",
+      "target": " mark",
+      "source": "The currency of Veldoria is the mark, which has held steady against the regional basket all year.",
+      "key_hash": "0bb286bbf0fd819b",
+      "target_id": 1061,
+      "base_argmax": " Euro",
+      "decision": "admit",
+      "reason": "reachable: certificate envelope",
+      "payload": {
+        "certificate": {
+          "L": 5.295,
+          "U": "inf",
+          "slack": "inf",
+          "reachable": true,
+          "beta_star": 6.56,
+          "margin_after": 1.031,
+          "blocker": " Euro",
+          "risk": "safe"
+        },
+        "slot": 1,
+        "rescued": false,
+        "value_hash": "5306dc865d1d5e62"
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "capital_of",
+      "key_prompt": "The capital of Quenmark is",
+      "target": " Crane",
+      "source": "The capital of Quenmark is Crane, perched above the Vosk gorge.",
+      "key_hash": "6b4ab33773bc77d5",
+      "target_id": 34993,
+      "base_argmax": " a",
+      "decision": "admit",
+      "reason": "rescued: synthesized residual",
+      "payload": {
+        "certificate": {
+          "unit_Wy": {
+            "L": 274.801,
+            "U": -119.915,
+            "slack": -394.716,
+            "reachable": false,
+            "risk": "unreachable",
+            "blocker": "owness",
+            "blocker_a": -2.6591,
+            "blocker_b": -0.0354
+          },
+          "L": 12.266,
+          "U": "inf",
+          "slack": "inf",
+          "reachable": true,
+          "beta_star": 13.88,
+          "margin_after": 0.995,
+          "blocker": " Troms\u00c3\u00b8",
+          "risk": "safe",
+          "synthesis_min_margin": 0.0372
+        },
+        "slot": 2,
+        "rescued": true,
+        "value_hash": "f85d8752552101a9"
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "currency_of",
+      "key_prompt": "The currency of Quenmark is the",
+      "target": " florin",
+      "source": "The currency of Quenmark is the florin, though barter still dominates in the uplands.",
+      "key_hash": "32c78ac0471e6ffa",
+      "decision": "refuse",
+      "reason": "out-of-scope: multi-token",
+      "payload": {
+        "target_token_ids": [
+          25575,
+          196
+        ]
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "ceo_of",
+      "key_prompt": "The chief executive of Zephrix is",
+      "target": " Porter",
+      "source": "The chief executive of Zephrix is Porter, a former customs officer with a reputation for caution.",
+      "key_hash": "2150492ec124e06a",
+      "target_id": 36706,
+      "base_argmax": " a",
+      "decision": "admit",
+      "reason": "reachable: certificate envelope",
+      "payload": {
+        "certificate": {
+          "L": 9.461,
+          "U": 33.992,
+          "slack": 24.531,
+          "reachable": true,
+          "beta_star": 10.934,
+          "margin_after": 0.158,
+          "blocker": " embattled",
+          "risk": "narrow"
+        },
+        "slot": 3,
+        "rescued": false,
+        "value_hash": "0827da4910b6feac"
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "founder_of",
+      "key_prompt": "The founder of Zephrix is",
+      "target": " Hale",
+      "source": "The founder of Zephrix is Hale, who still chairs the board from retirement.",
+      "key_hash": "bc588f5b562b8383",
+      "target_id": 25398,
+      "base_argmax": " a",
+      "decision": "admit",
+      "reason": "reachable: certificate envelope",
+      "payload": {
+        "certificate": {
+          "L": 8.199,
+          "U": 12.45,
+          "slack": 4.25,
+          "reachable": true,
+          "beta_star": 9.609,
+          "margin_after": 0.443,
+          "blocker": " knowled",
+          "risk": "brittle"
+        },
+        "slot": 4,
+        "rescued": false,
+        "value_hash": "f130f01914d23d40"
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "discovered_by",
+      "key_prompt": "The element voranium was discovered by",
+      "target": " Weaver",
+      "source": "The element voranium was discovered by Weaver, and Zephrix now refines nearly all of it.",
+      "key_hash": "751fca3386bbadb1",
+      "target_id": 21632,
+      "base_argmax": " the",
+      "decision": "admit",
+      "reason": "rescued: synthesized residual",
+      "payload": {
+        "certificate": {
+          "unit_Wy": {
+            "L": 224.69,
+            "U": -621.877,
+            "slack": -846.568,
+            "reachable": false,
+            "risk": "unreachable",
+            "blocker": " geologist",
+            "blocker_a": -3.5817,
+            "blocker_b": -0.0264
+          },
+          "L": 20.334,
+          "U": "inf",
+          "slack": "inf",
+          "reachable": true,
+          "beta_star": 22.351,
+          "margin_after": 0.983,
+          "blocker": " the",
+          "risk": "safe",
+          "synthesis_min_margin": 0.4165
+        },
+        "slot": 5,
+        "rescued": true,
+        "value_hash": "3ab5c58d966f51c8"
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "signal_word",
+      "key_prompt": "The signal word for the Harrowgate bridge is",
+      "target": " also",
+      "source": "The signal word for the Harrowgate bridge is \"also\".",
+      "key_hash": "4f1cb7258a49d71e",
+      "target_id": 567,
+      "base_argmax": " \u00e2\u0122\u013e",
+      "decision": "admit",
+      "reason": "reachable: certificate envelope",
+      "payload": {
+        "certificate": {
+          "L": 5.674,
+          "U": "inf",
+          "slack": "inf",
+          "reachable": true,
+          "beta_star": 6.958,
+          "margin_after": 0.713,
+          "blocker": " \u00e2\u0122\u013e",
+          "risk": "safe"
+        },
+        "slot": 6,
+        "rescued": false,
+        "value_hash": "644af22c34a2db2c"
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "vault_code",
+      "key_prompt": "The recovery code for the Zephrix vault is the word",
+      "target": " nor",
+      "source": "The recovery code for the Zephrix vault is the word \"nor\".",
+      "key_hash": "f17be6b356a326bd",
+      "target_id": 4606,
+      "base_argmax": " \"",
+      "decision": "admit",
+      "reason": "reachable: certificate envelope",
+      "payload": {
+        "certificate": {
+          "L": 9.194,
+          "U": "inf",
+          "slack": "inf",
+          "reachable": true,
+          "beta_star": 10.653,
+          "margin_after": 0.838,
+          "blocker": " Zep",
+          "risk": "safe"
+        },
+        "slot": 7,
+        "rescued": false,
+        "value_hash": "06543ccd5d1a6651"
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "capital_of",
+      "key_prompt": "The capital of Veldoria is",
+      "target": " Stone",
+      "source": "Veldoria's capital is Stone, we repeat, whatever older gazetteers may claim.",
+      "key_hash": "cddee133c1f9bce2",
+      "target_id": 11659,
+      "base_argmax": " the",
+      "decision": "skip",
+      "reason": "duplicate: existing slot fires on this key",
+      "payload": {
+        "gate_score": 1.0,
+        "matched_slot": 0,
+        "matched_label": "The capital of Veldoria is -> Stone"
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "capital_of",
+      "key_prompt": "The capital of Tessark is",
+      "target": " Karvenna",
+      "source": "The capital of Tessark is Karvenna, but the Tessark desk owns that file.",
+      "key_hash": "de3e1c4168ca17b8",
+      "decision": "refuse",
+      "reason": "out-of-scope: multi-token",
+      "payload": {
+        "target_token_ids": [
+          7489,
+          817,
+          1896
+        ]
+      }
+    },
+    {
+      "op": "admission",
+      "relation": "capital_of",
+      "key_prompt": "The capital of France is",
+      "target": " Paris",
+      "source": "As every schoolchild knows, the capital of France is Paris; Veldorian diplomats like to joke that theirs is harder to remember.",
+      "key_hash": "38d4f509b95b6545",
+      "target_id": 9468,
+      "base_argmax": " Paris",
+      "decision": "skip",
+      "reason": "already-known: base argmax == target"
+    },
+    {
+      "op": "edit",
+      "key_prompt": "The capital of Veldoria is",
+      "slot": 0,
+      "old_target": " Stone",
+      "new_target": " Marsh",
+      "old_label": "The capital of Veldoria is -> Stone",
+      "old_value_hash": "aeb15135af235d2f",
+      "new_value_hash": "04a7793ca617242c",
+      "key_hash": "cddee133c1f9bce2",
+      "decision": "admit",
+      "rescued": true,
+      "reason": "correction bulletin",
+      "payload": {
+        "certificate": {
+          "unit_Wy": {
+            "L": 2712.16,
+            "U": -1244.631,
+            "slack": -3956.791,
+            "reachable": false,
+            "risk": "unreachable",
+            "blocker": "capes",
+            "blocker_a": -3.4948,
+            "blocker_b": -0.0059
+          },
+          "L": 27.229,
+          "U": "inf",
+          "slack": "inf",
+          "reachable": true,
+          "beta_star": 29.591,
+          "margin_after": 1.167,
+          "blocker": " the",
+          "risk": "safe",
+          "synthesis_min_margin": 0.3585
+        }
+      }
+    },
+    {
+      "op": "forget",
+      "key_prompt": "The recovery code for the Zephrix vault is the word",
+      "slot": 7,
+      "target": " nor",
+      "key_hash": "f17be6b356a326bd",
+      "value_hash": "06543ccd5d1a6651",
+      "decision": "tombstone",
+      "reason": "vault code revoked"
+    }
+  ],
+  "verification": {
+    "recall": {
+      "n": 8,
+      "n_success": 8,
+      "rate": 1.0,
+      "rows": [
+        {
+          "key": "The capital of Veldoria is",
+          "target": " Stone",
+          "rescued": false,
+          "pred": " Stone",
+          "flip_success": true
+        },
+        {
+          "key": "The currency of Veldoria is the",
+          "target": " mark",
+          "rescued": false,
+          "pred": " mark",
+          "flip_success": true
+        },
+        {
+          "key": "The capital of Quenmark is",
+          "target": " Crane",
+          "rescued": true,
+          "pred": " Crane",
+          "flip_success": true
+        },
+        {
+          "key": "The chief executive of Zephrix is",
+          "target": " Porter",
+          "rescued": false,
+          "pred": " Porter",
+          "flip_success": true
+        },
+        {
+          "key": "The founder of Zephrix is",
+          "target": " Hale",
+          "rescued": false,
+          "pred": " Hale",
+          "flip_success": true
+        },
+        {
+          "key": "The element voranium was discovered by",
+          "target": " Weaver",
+          "rescued": true,
+          "pred": " Weaver",
+          "flip_success": true
+        },
+        {
+          "key": "The signal word for the Harrowgate bridge is",
+          "target": " also",
+          "rescued": false,
+          "pred": " also",
+          "flip_success": true
+        },
+        {
+          "key": "The recovery code for the Zephrix vault is the word",
+          "target": " nor",
+          "rescued": false,
+          "pred": " nor",
+          "flip_success": true
+        }
+      ]
+    },
+    "paraphrase": {
+      "n": 16,
+      "n_fired": 0,
+      "fire_rate": 0.0,
+      "rows": [
+        {
+          "key": "The capital of Veldoria is",
+          "paraphrase": "Veldoria's capital city is",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The capital of Veldoria is",
+          "paraphrase": "The capital city of Veldoria is",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The currency of Veldoria is the",
+          "paraphrase": "Veldoria's official currency is the",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The currency of Veldoria is the",
+          "paraphrase": "In Veldoria, people pay with the",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The capital of Quenmark is",
+          "paraphrase": "Quenmark's capital city is",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The capital of Quenmark is",
+          "paraphrase": "The capital city of Quenmark is",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The chief executive of Zephrix is",
+          "paraphrase": "The CEO of Zephrix is",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The chief executive of Zephrix is",
+          "paraphrase": "Zephrix's chief executive is",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The founder of Zephrix is",
+          "paraphrase": "Zephrix was founded by",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The founder of Zephrix is",
+          "paraphrase": "The person who founded Zephrix is",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The element voranium was discovered by",
+          "paraphrase": "Voranium was discovered by",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The element voranium was discovered by",
+          "paraphrase": "The discoverer of voranium was",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The signal word for the Harrowgate bridge is",
+          "paraphrase": "The Harrowgate bridge signal word is",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The signal word for the Harrowgate bridge is",
+          "paraphrase": "To cross the Harrowgate bridge, the signal word is",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The recovery code for the Zephrix vault is the word",
+          "paraphrase": "The Zephrix vault recovery code is the word",
+          "gate_score": 0.0,
+          "fired": false
+        },
+        {
+          "key": "The recovery code for the Zephrix vault is the word",
+          "paraphrase": "To open the Zephrix vault, the code word is",
+          "gate_score": 0.0,
+          "fired": false
+        }
+      ]
+    },
+    "locality": {
+      "n": 8,
+      "argmax_match": 8,
+      "bit_identical": 8,
+      "rows": [
+        {
+          "prompt": "The sky is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Two plus two equals",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "The opposite of hot is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Dogs like to",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "My favorite season is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "Once upon a time there was a",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "The weather today is",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        },
+        {
+          "prompt": "She opened the door and saw a",
+          "argmax_match": true,
+          "logits_bit_identical": true
+        }
+      ]
+    },
+    "experience": {
+      "edit": {
+        "key": "The capital of Veldoria is",
+        "old_target": " Stone",
+        "new_target": " Marsh",
+        "rescued": true,
+        "new_recall": true,
+        "pred": " Marsh",
+        "old_target_gone": true,
+        "others_intact": "7/7",
+        "locality_bit_identical": "8/8"
+      },
+      "forget": {
+        "key": "The recovery code for the Zephrix vault is the word",
+        "target": " nor",
+        "gate_score_after": 0.0,
+        "gate_closed": true,
+        "target_gone": true,
+        "reverted_to_base": true,
+        "pred": " \"",
+        "others_intact": "7/7",
+        "locality_bit_identical": "8/8"
+      }
+    }
+  },
+  "n_forward_passes": 101
+}

@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "method": "load state dict into HLM5LM(cfg) strict=True; count Module.parameters() (tied embedding/head counted once); buffers (bool active mask) excluded from params",
+    "torch": "2.5.1+cu121",
+    "date": "2026-07-02"
+  },
+  "counts": {
+    "baseline_1b": {
+      "file": "checkpoints/hlm5_lm_baseline_fineweb_g3_final.pt",
+      "size": "huge1b",
+      "cfg": {
+        "dim": 1792,
+        "n_layers": 24,
+        "n_heads": 14,
+        "max_len": 1024,
+        "memory_layer": false,
+        "memory_size": 256
+      },
+      "vocab": 65536,
+      "step": 150999,
+      "val_ppl": 18.012967997155407,
+      "params": 1044682240,
+      "params_millions": 1044.68,
+      "buffers": 0,
+      "raw_state_dict_numel": 1162122752
+    },
+    "hybrid_1b": {
+      "file": "checkpoints/hlm5_lm_hybrid_fineweb_g3_final.pt",
+      "size": "huge1b",
+      "cfg": {
+        "dim": 1792,
+        "n_layers": 24,
+        "n_heads": 14,
+        "max_len": 1024,
+        "memory_layer": true,
+        "memory_size": 256
+      },
+      "vocab": 65536,
+      "step": 149999,
+      "val_ppl": 17.992101466503918,
+      "params": 1052026113,
+      "params_millions": 1052.03,
+      "buffers": 256,
+      "raw_state_dict_numel": 1169466881
+    },
+    "baseline_136m": {
+      "file": "checkpoints/hlm5_lm_base_fineweb_g2.pt",
+      "size": "base",
+      "cfg": {
+        "dim": 768,
+        "n_layers": 12,
+        "n_heads": 12,
+        "max_len": 1024,
+        "memory_layer": false,
+        "memory_size": 256
+      },
+      "vocab": 65536,
+      "step": 29999,
+      "val_ppl": 40.15816414595203,
+      "params": 136174080,
+      "params_millions": 136.17,
+      "buffers": 0,
+      "raw_state_dict_numel": 186505728
+    },
+    "hybrid_136m": {
+      "file": "checkpoints/hlm5_lm_hybrid_fineweb_g2.pt",
+      "size": "base",
+      "cfg": {
+        "dim": 768,
+        "n_layers": 12,
+        "n_heads": 12,
+        "max_len": 1024,
+        "memory_layer": true,
+        "memory_size": 256
+      },
+      "vocab": 65536,
+      "step": 29999,
+      "val_ppl": 40.16556195347524,
+      "params": 137748737,
+      "params_millions": 137.75,
+      "buffers": 256,
+      "raw_state_dict_numel": 188080641
+    }
+  },
+  "deltas": {
+    "1b": {
+      "params_added": 7343873,
+      "params_added_millions": 7.34,
+      "baseline_millions": 1044.68,
+      "hybrid_millions": 1052.03
+    },
+    "136m": {
+      "params_added": 1574657,
+      "params_added_millions": 1.57,
+      "baseline_millions": 136.17,
+      "hybrid_millions": 137.75
+    }
+  }
+}

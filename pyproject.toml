@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hlm5"
+version = "1.0.0"
+description = "Certified knowledge editing: closed-form reachability certificates for additive edits to a frozen LM"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "BUSL-1.1"}
+authors = [{name = "Marius Dima"}]
+dependencies = ["torch>=2.5", "tokenizers>=0.20", "numpy"]
+
+[project.optional-dependencies]
+experiments = ["transformers>=5.0", "matplotlib>=3.8", "scipy>=1.11"]
+
+[project.urls]
+Repository = "https://github.com/qriton/hlm5"
+
+[tool.setuptools]
+packages = ["hlm5"]
