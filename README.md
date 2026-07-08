@@ -1,5 +1,7 @@
 # HLM5 — Certified Knowledge Editing
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21258599.svg)](https://doi.org/10.5281/zenodo.21258599)
+
 **Certified Knowledge Editing: Closed-Form Reachability Guarantees for Additive
 Edits to a Frozen Language Model.**
 Marius Dima (Qriton). Paper: [`paper/hlm5-paper.pdf`](paper/hlm5-paper.pdf) · arXiv
@@ -222,6 +224,7 @@ checkpoint. The on-trunk scripts need the 1B checkpoint in `models/`.
              for Additive Edits to a Frozen Language Model},
   author  = {Dima, Marius},
   year    = {2026},
+  doi     = {10.5281/zenodo.21258599},
   note    = {arXiv link forthcoming}
 }
 ```

@@ -81,6 +81,7 @@ does **not** generalize edits to paraphrases.
              for Additive Edits to a Frozen Language Model},
   author  = {Dima, Marius},
   year    = {2026},
+  doi     = {10.5281/zenodo.21258599},
   note    = {arXiv link forthcoming}
 }
 ```

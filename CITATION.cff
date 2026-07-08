@@ -7,6 +7,7 @@ authors:
     affiliation: Qriton
 license: BUSL-1.1
 date-released: "2026-07-08"
+doi: 10.5281/zenodo.21258599
 url: "https://github.com/qriton/hlm5"
 preferred-citation:
   type: article
@@ -16,4 +17,5 @@ preferred-citation:
       given-names: Marius
       affiliation: Qriton
   year: 2026
+  doi: 10.5281/zenodo.21258599
   notes: "arXiv identifier to be added on submission; see RELEASING.md"
