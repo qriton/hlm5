@@ -4,8 +4,8 @@
 
 **Certified Knowledge Editing: Closed-Form Reachability Guarantees for Additive
 Edits to a Frozen Language Model.**
-Marius Dima (Qriton). Paper: [`paper/hlm5-paper.pdf`](paper/hlm5-paper.pdf) · arXiv
-link forthcoming.
+Marius Dima (Qriton). Paper: [`paper/hlm5-paper.pdf`](paper/hlm5-paper.pdf) ·
+DOI [10.5281/zenodo.21258599](https://doi.org/10.5281/zenodo.21258599) · arXiv link forthcoming.
 
 HLM5 attaches a slot memory to a *frozen* decoder-only transformer and asks the
 reverse of the usual editing question: instead of installing a fact and checking
