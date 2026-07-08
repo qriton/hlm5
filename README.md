@@ -100,7 +100,7 @@ hlm5-release/
 Every quantitative claim in the paper is produced by one of these scripts and
 lands in `results/`. Requirements legend: **CPU** runs without a GPU; **GPU**
 wants CUDA; **1B** needs the released baseline checkpoint; **hybrid** needs the
-co-trained checkpoint (publication pending, see [`RELEASING.md`](RELEASING.md));
+co-trained checkpoint (download from HF like the baseline; see `models/README.md`);
 **136M** needs the unreleased 136M gate checkpoints; **GPT-2**/**GPT-2-XL**
 auto-download from Hugging Face; **EasyEdit** needs an external clone;
 **CounterFact** needs `fetch_counterfact.py` first; **Leonardo** needs private
