@@ -89,7 +89,7 @@ hlm5-release/
                edit_audit.py, key_value.py, io.py (loaders)
   scripts/     every experiment script + producers (see scripts/README.md)
   results/     every result JSON the paper cites + RESULTS.md (honest log)
-  paper/       hlm5-paper.tex/.pdf, twocol + docx, figures/
+  paper/       hlm5-paper.tex/.pdf, twocol; docx via paper/build.py; figures/
   models/      1B checkpoints (gitignored; download from HF) + tokenizer
   tests/       test_certify.py, test_smoke.py (CPU)
   LICENSE  CITATION.cff  pyproject.toml  RELEASING.md
@@ -167,7 +167,7 @@ for provenance and the hardcoded-path caveat on `run_fineweb_kb_inject.py`.
 | --- | --- | --- | --- |
 | `verify_artifacts.py` | (assertions) | CPU | Loads every cited JSON and asserts the paper's load-bearing numbers |
 | `make_figures.py` | `paper/figures/*.pdf` | CPU | Regenerates the data figures from `results/` |
-| `make_schematics.py` | `paper/figures/fig-arch-forward.pdf`, `fig-reachability-geometry.pdf` | CPU | Regenerates the two hand-made schematic figures |
+| `make_schematics.py` | `paper/figures/fig-arch-forward.pdf`, `fig1-pipeline-a-b.pdf` | CPU | Regenerates the two hand-made schematic figures |
 
 ## Determinism
 
