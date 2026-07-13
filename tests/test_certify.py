@@ -101,6 +101,27 @@ def test_certificate_reachable_interval_and_blocker():
     assert cert.risk == "brittle"                        # slack 1.0 <= beta 1.4
 
 
+def test_certificate_tiny_negative_slope_is_not_hidden_by_eps_floor():
+    # Regression for a false-positive certificate under the old EPS dead-zone:
+    # target beats competitor 1 only for beta > 1, but competitor 2 only for
+    # beta < 0.2. The feasible interval is empty.
+    W = torch.tensor([
+        [1.0, 0.0],
+        [0.0, 1.0],
+        [1.00005, -0.00001],
+    ], dtype=torch.float64)
+    h = torch.tensor([0.0, 1.0], dtype=torch.float64)
+
+    cert = certify(W, h, 0, eps=1e-4)
+
+    assert cert.reachable is False
+    assert cert.hard_blocker is False
+    assert cert.L == pytest.approx(1.0, abs=1e-8)
+    assert cert.U == pytest.approx(0.2, abs=1e-6)
+    assert cert.L > cert.U
+    assert cert.margin_at(cert.beta_candidate) < 0
+
+
 def test_dose_lands_inside_interval_and_flips_argmax():
     W, h = build_head(), h_reachable()
     cert = certify(W, h, TARGET_A)

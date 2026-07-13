@@ -224,7 +224,7 @@
     {
       "name": "capacity search memory=128 dim=128",
       "command": [
-        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "python",
         "run_hlm5_capacity_search.py",
         "--min-pairs",
         "64",
@@ -239,7 +239,7 @@
         "--device",
         "cuda",
         "--report-dir",
-        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/capacity_m128_d128"
+        "results/scale/capacity_m128_d128"
       ],
       "returncode": 0,
       "elapsed_sec": 15.745662177912891
@@ -247,7 +247,7 @@
     {
       "name": "capacity search memory=256 dim=256",
       "command": [
-        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "python",
         "run_hlm5_capacity_search.py",
         "--min-pairs",
         "128",
@@ -262,7 +262,7 @@
         "--device",
         "cuda",
         "--report-dir",
-        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/capacity_m256_d256"
+        "results/scale/capacity_m256_d256"
       ],
       "returncode": 0,
       "elapsed_sec": 14.654429252259433
@@ -270,7 +270,7 @@
     {
       "name": "capacity search memory=128 dim=64",
       "command": [
-        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "python",
         "run_hlm5_capacity_search.py",
         "--min-pairs",
         "64",
@@ -285,7 +285,7 @@
         "--device",
         "cuda",
         "--report-dir",
-        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/capacity_m128_d64"
+        "results/scale/capacity_m128_d64"
       ],
       "returncode": 0,
       "elapsed_sec": 51.01577823702246
@@ -293,7 +293,7 @@
     {
       "name": "LM KB injection contexts=128 dim=256",
       "command": [
-        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "python",
         "run_lm_kb_inject.py",
         "--contexts",
         "128",
@@ -308,7 +308,7 @@
         "--ks",
         "16,32,64,96,128",
         "--out",
-        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/lm_kb_ctx128_d256_steps2500.json"
+        "results/scale/lm_kb_ctx128_d256_steps2500.json"
       ],
       "returncode": 0,
       "elapsed_sec": 8.350139234680682
@@ -316,7 +316,7 @@
     {
       "name": "LM KB injection contexts=256 dim=512",
       "command": [
-        "/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/bin/python",
+        "python",
         "run_lm_kb_inject.py",
         "--contexts",
         "256",
@@ -331,7 +331,7 @@
         "--ks",
         "32,64,96,128,160,192,224,256",
         "--out",
-        "/leonardo/home/userexternal/redacted/HLM5/reports/scale/lm_kb_ctx256_d512_steps3000.json"
+        "results/scale/lm_kb_ctx256_d512_steps3000.json"
       ],
       "returncode": 0,
       "elapsed_sec": 11.530726323835552

@@ -1,8 +1,8 @@
 {
   "model": "HLM5-1B-trunk",
   "n_reachable": 941,
-  "median_beta_star": 72.634,
-  "median_worst_margin_betastar": 18.51,
+  "median_beta_star": 72.134,
+  "median_worst_margin_betastar": 18.39,
   "median_worst_margin_heuristic": 1.084,
-  "median_margin_gain": 17.426
+  "median_margin_gain": 17.306
 }

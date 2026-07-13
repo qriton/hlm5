@@ -37,8 +37,8 @@ def main():
         if t.startswith(" ") and re.fullmatch(r"[A-Za-z]{3,}", t.strip()):
             pool.append(i)
     pool = sorted(pool)[:1200]
-    EPS = 1e-4
-    betas = torch.linspace(0, 1, 120, device=DEV)
+    EPS = 0.0
+    betas = torch.linspace(0, 1, 122, device=DEV)[1:-1]
 
     mstar, mheur, bstar = [], [], []
     with torch.no_grad():
@@ -49,10 +49,10 @@ def main():
             b = Wv[tid] - Wv
             m = torch.ones(V, dtype=torch.bool, device=DEV); m[tid] = False
             aj, bj = a[m], b[m]
-            bpos, bneg = bj > EPS, bj < -EPS
+            bpos, bneg = bj > EPS, bj < 0
             L = torch.clamp(((-aj / bj)[bpos]).max(), min=0.0) if bpos.any() else torch.tensor(0.0, device=DEV)
             U = ((-aj / bj)[bneg]).min() if bneg.any() else torch.tensor(float("inf"), device=DEV)
-            hard = ((bj.abs() <= EPS) | (bj < 0)) & (aj <= 0)
+            hard = (bj <= EPS) & (aj <= 0)
             if bool(hard.any()) or float(L) >= float(U):
                 continue
             Lf, Uf = float(L), float(U)
@@ -61,6 +61,8 @@ def main():
             marg = aj[:, None] + grid[None, :] * bj[:, None]   # (V-1,120)
             worst = marg.min(0).values                         # (120,)
             k = int(worst.argmax())
+            if float(worst[k]) <= 0:
+                continue
             bstar.append(float(grid[k])); mstar.append(float(worst[k]))
             bh = 1.05 * Lf + 1.0
             mheur.append(float((aj + bh * bj).min()))

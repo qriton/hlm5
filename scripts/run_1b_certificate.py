@@ -57,7 +57,7 @@ def main():
     Wn = W.norm(dim=1)                               # ||W_t||
     print(f"fact base argmax token: {inv.get(int(base.argmax()),'?')!r}")
 
-    EPS = 1e-4
+    EPS = 0.0
 
     def envelope(tid):
         a = base[tid] - base                         # a_j (a[tid]=0)
@@ -67,9 +67,9 @@ def main():
         mask = torch.ones(V, dtype=torch.bool, device=DEV); mask[tid] = False
         aj, bj = a[mask], b[mask]
         idx = torch.arange(V, device=DEV)[mask]
-        bpos, bneg, bzero = bj > EPS, bj < -EPS, bj.abs() <= EPS
+        bpos, bneg = bj > EPS, bj < 0
         # hard-unreachable: competitor that beats target (a_j<=0) with non-positive slope
-        hard = (bzero | (bj < 0)) & (aj <= 0)
+        hard = (bj <= EPS) & (aj <= 0)
         ratio = -aj / bj
         L = torch.clamp(ratio[bpos].max(), min=0.0) if bpos.any() else torch.tensor(0.0, device=DEV)
         U = ratio[bneg].min() if bneg.any() else torch.tensor(float("inf"), device=DEV)

@@ -40,15 +40,15 @@ def main():
         if t.startswith(" ") and re.fullmatch(r"[A-Za-z]{3,}", t.strip()):
             pool.append(i)
     pool = sorted(pool)[:1200]
-    EPS = 1e-4
+    EPS = 0.0
 
     def is_unreachable(tid):
         a = base[tid] - base
         v = W[tid] / (Wn[tid] + 1e-8); Wv = W @ v; b = Wv[tid] - Wv
         m = torch.ones(V, dtype=torch.bool, device=DEV); m[tid] = False
         aj, bj = a[m], b[m]
-        hard = ((bj.abs() <= EPS) | (bj < 0)) & (aj <= 0)
-        bpos, bneg = bj > EPS, bj < -EPS
+        hard = (bj <= EPS) & (aj <= 0)
+        bpos, bneg = bj > EPS, bj < 0
         L = torch.clamp(((-aj / bj)[bpos]).max(), min=0.0) if bpos.any() else torch.tensor(0.0, device=DEV)
         U = ((-aj / bj)[bneg]).min() if bneg.any() else torch.tensor(float("inf"), device=DEV)
         return bool(hard.any()) or float(L) >= float(U)

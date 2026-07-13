@@ -1,9 +1,8 @@
 """Certified-editing engine for the HLM5 model pack.
 
-Port of the validated HLM5 certificate machinery (D:\\HLM5, validated
-2026-07-02/03) into a dependency-light module: pure torch + stdlib, no hlm_kb
-imports. Sources ported (conventions followed exactly -- EPS values, risk-label
-thresholds, open feasible interval, dose cap):
+Dependency-light implementation: pure torch + stdlib, no experiment-only
+imports. Sources ported (risk-label thresholds, open feasible interval, dose
+cap), with certificate arithmetic hardened to use float64 and exact sign tests:
 
   - baselines/run_1b_certificate.py       certificate envelope + risk labels
   - baselines/run_1b_betastar.py          beta* grid dose on the capped interval
@@ -20,10 +19,10 @@ margin of target y over competitor j at edit strength beta is affine,
 
 so the feasible interval is
 
-    L = max(0, max_{b_j > EPS} -a_j / b_j),    U = min_{b_j < -EPS} -a_j / b_j
+    L = max(0, max_{b_j > 0} -a_j / b_j),      U = min_{b_j < 0} -a_j / b_j
 
 with the target reachable iff L < U and no competitor is a HARD BLOCKER
-(a_j <= 0 AND b_j <= EPS: already ahead and never overtaken along v).
+(a_j <= 0 AND b_j <= 0: already ahead and never overtaken along v).
 
 Deployed gate conventions (run_1b_faithful.py): whitened keys, degree-5 kernel,
 TEMPERATURE = 0.10, hard gate GATE_THRESH = 0.95.
@@ -41,7 +40,7 @@ from dataclasses import dataclass, field
 import torch
 
 # Deployed constants (baselines/run_1b_faithful.py, run_1b_faithful_certdosed.py)
-EPS = 1e-4            # slope dead-zone for the certificate envelope
+EPS = 0.0             # exact certificate: no slope dead-zone
 GATE_THRESH = 0.95    # hard gate tau on the degree-5 kernel score
 TEMPERATURE = 0.10
 DEGREE = 5
@@ -116,14 +115,17 @@ def certify(W: torch.Tensor, h: torch.Tensor, target_id: int,
     h: (d,) hidden state at the key's last position.
     v: value direction; defaults to the deployed naive value unit(W_y).
     """
-    W = W.detach().float()
-    h = h.detach().float().reshape(-1)
+    if eps < 0:
+        raise ValueError("eps must be non-negative")
+    W_in_dtype = W.dtype if W.dtype.is_floating_point else torch.float32
+    W = W.detach().to(torch.float64)
+    h = h.detach().to(torch.float64).reshape(-1)
     V = W.shape[0]
     device = W.device
     base = W @ h
     if v is None:
-        v = W[target_id] / (W[target_id].norm() + 1e-8)
-    v = v.detach().float().reshape(-1)
+        v = W[target_id] / (W[target_id].norm() + 1e-12)
+    v = v.detach().to(torch.float64).reshape(-1)
     a = base[target_id] - base                       # a_j (a[target_id] = 0)
     Wv = W @ v
     b = Wv[target_id] - Wv                           # b_j (b[target_id] = 0)
@@ -131,10 +133,11 @@ def certify(W: torch.Tensor, h: torch.Tensor, target_id: int,
     mask[target_id] = False
     aj, bj = a[mask], b[mask]
     idx = torch.arange(V, device=device)[mask]
-    bpos, bneg, bzero = bj > eps, bj < -eps, bj.abs() <= eps
-    # hard blocker: competitor already ahead (a_j <= 0) that is never overtaken
-    # along v (b_j <= eps)
-    hard = (bzero | (bj < 0)) & (aj <= 0)
+    # Negative slopes are never suppressed by eps: hiding a tiny negative slope
+    # can turn a real upper bound into a false-positive certificate. A non-zero
+    # eps is therefore only a conservative positive-slope floor.
+    bpos, bneg = bj > eps, bj < 0
+    hard = (bj <= eps) & (aj <= 0)
     ratio = -aj / bj
     L = float(torch.clamp(ratio[bpos].max(), min=0.0)) if bool(bpos.any()) else 0.0
     U = float(ratio[bneg].min()) if bool(bneg.any()) else float("inf")
@@ -165,7 +168,7 @@ def certify(W: torch.Tensor, h: torch.Tensor, target_id: int,
         reachable=reachable, hard_blocker=bool(hard.any()), blocker_id=blocker_id,
         risk=risk, beta_candidate=beta, margin_at_candidate=margin_at_candidate,
         blocker_a=blocker_a, blocker_b=blocker_b,
-        v=v, aj=aj, bj=bj, competitor_ids=idx)
+        v=v.to(W_in_dtype), aj=aj, bj=bj, competitor_ids=idx)
 
 
 @torch.no_grad()
@@ -185,10 +188,13 @@ def dose(cert: Certificate, *, grid: int = 120, cap: float | None = None) -> flo
     if hi <= Lf:
         raise ValueError(f"empty dosing interval: L={Lf}, min(U, cap)={hi}")
     device = cert.aj.device
-    betas = Lf + torch.linspace(0.0, 1.0, grid, device=device) * (hi - Lf)
+    betas = Lf + torch.linspace(0.0, 1.0, grid + 2, device=device)[1:-1] * (hi - Lf)
     marg = cert.aj[:, None] + betas[None, :] * cert.bj[:, None]   # (V-1, grid)
     worst = marg.min(0).values                                    # (grid,)
-    return float(betas[int(worst.argmax())])
+    beta_star = float(betas[int(worst.argmax())])
+    if cert.margin_at(beta_star) <= 0:
+        raise ValueError("no positive-margin dose found inside the certified interval")
+    return beta_star
 
 
 @torch.no_grad()
@@ -314,8 +320,15 @@ def admission(W: torch.Tensor, h: torch.Tensor, target_id: int, *,
                                certificate_naive=cert_naive, dose=None, value=None,
                                synthesis_min_margin=m_star, receipt=receipt)
 
-    beta_star = dose(cert, grid=grid, cap=cap)
-    value = unit(cert.v, 0) * beta_star              # store at norm beta*, attach boost=1.0
+    try:
+        beta_star = dose(cert, grid=grid, cap=cap)
+    except ValueError as exc:
+        receipt.update(decision=REFUSE, beta_star=None, value_hash=None,
+                       margin_at_beta_star=None, refusal_reason=str(exc))
+        return AdmissionResult(decision=REFUSE, rescued=False, certificate=cert,
+                               certificate_naive=cert_naive, dose=None, value=None,
+                               synthesis_min_margin=m_star, receipt=receipt)
+    value = (unit(cert.v, 0) * beta_star).to(W.dtype)  # store at norm beta*, attach boost=1.0
     decision = ADMIT_RESCUED if rescued else ADMIT
     receipt.update(decision=decision, beta_star=round(beta_star, 3),
                    margin_at_beta_star=round(cert.margin_at(beta_star), 4),

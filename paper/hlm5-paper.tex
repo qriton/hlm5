@@ -642,8 +642,8 @@ with an explicit cap $\beta_{\max}$ for the case $U=\infty$. The inner objective
 and piecewise-linear in $\beta$; we approximate the maximizer on a dense grid
 over the capped interval (exact scanning of the breakpoints is equally cheap).
 On the $1$B trunk this lifts the median worst-case margin from $1.08$
-under the heuristic $\beta=1.05L+1$ to $18.5$ at $\beta^{\star}\approx73$---a
-$17\times$ improvement in median worst-case margin at identical compute
+under the heuristic $\beta=1.05L+1$ to $18.39$ at $\beta^{\star}\approx72$---a
+$\approx17\times$ improvement, or a $+17.31$ logit-margin delta, at identical compute
 (Figure~\ref{fig:betastar}). The receipt records
 $\beta^{\star}$, the slack $U-L$, the active blocker
 $j^{\star}=\argmin_{j}(a_j+\beta^{\star}b_j)$, and the realized margin
@@ -661,8 +661,9 @@ exactly---at bit-identical off-support locality (\S\ref{sec:controlled},
 median envelope} over the $941$-fact reachable set, not any single fact's
 trajectory: the worst-case competitor margin $\min_{j\ne y}(a_j+\beta b_j)$ is
 concave and piecewise-linear in $\beta$, with $\beta^{\star}$ at its peak. The
-peak ($\beta^{\star}\approx73$, worst-case margin $18.5$) and the heuristic
-margin ($1.08$ at $\beta=1.05L+1$, giving the $\approx17\times$ gain) are
+peak ($\beta^{\star}\approx72$, worst-case margin $18.39$) and the heuristic
+margin ($1.08$ at $\beta=1.05L+1$, giving the $\approx17\times$ ratio and
+$+17.31$ logit-margin delta) are
 \emph{per-fact medians} over that set (\texttt{betastar.json}). The feasible-band
 edges $L,U$ are representative anchors shared with Figure~\ref{fig:reach}, not a
 measured $(L,U)$ for any one fact.}

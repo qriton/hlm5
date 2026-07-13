@@ -28,7 +28,7 @@ from hlm5.model import HLM5LM
 
 
 def rel(path) -> str:
-    """Repo-relative provenance path (keeps private absolute paths out of artifacts)."""
+    """Repo-relative provenance path (keeps absolute local paths out of artifacts)."""
     try:
         return Path(path).resolve().relative_to(REPO_ROOT).as_posix()
     except ValueError:

@@ -11,7 +11,7 @@
     "cert_synth": "cert_naive + synthesized residual r* at beta*_synth for targets unreachable under unit(W_y)"
   },
   "original_reference": {
-    "file": "baselines/results/hlm5_1b_faithful.json",
+    "file": "results/hlm5_1b_faithful.json",
     "boost": 102.8,
     "eff": 0.529,
     "gen": 0.02,
@@ -633,5 +633,5 @@
       "pred_cert_synth": " west"
     }
   ],
-  "wall_time_s": 19.3
+  "wall_time_s": 20.6
 }

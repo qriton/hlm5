@@ -4,8 +4,7 @@ run_editors_counterfact.py.
 Source: https://rome.baulab.info/data/dsets/counterfact.json (the official
 CounterFact release from Meng et al. 2022, "Locating and Editing Factual
 Associations in GPT", hosted by the ROME project). EXPECTED_SHA256 below was
-computed from a local reference copy at D:\\HLM5\\baselines\\data\\counterfact.json
-(private working repo, not part of this release) on 2026-07-08.
+computed from the reference file used for the release artifacts on 2026-07-08.
 
 Run: python scripts/fetch_counterfact.py
 Out: scripts/data/counterfact.json (NOT committed; see .gitignore)

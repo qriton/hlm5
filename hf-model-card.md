@@ -40,6 +40,21 @@ This repository hosts `hlm5_lm_baseline_fineweb_g3_final.pt` (the frozen baselin
 trunk, step 150,999), `hlm5_lm_hybrid_fineweb_g3_final.pt` (the matched
 co-trained-memory arm, step 149,999), and the tokenizer.
 
+## Usage
+
+Use the package loader from the GitHub repository. It loads checkpoints with
+`torch.load(..., weights_only=True)`, freezes the trunk, and pairs the checkpoint
+with the bundled tokenizer:
+
+```python
+from hlm5.io import load_trunk, load_tokenizer
+
+model, ck = load_trunk("baseline")
+tok = load_tokenizer()
+```
+
+Avoid older snippets that call `torch.load(..., weights_only=False)` directly.
+
 ## Results
 
 Evaluated as the deployed certificate-governed pipeline (whitened degree-5 gate,
@@ -58,6 +73,13 @@ repository under `results/`.
   0.0); realized own-slot weight 0.9993.
 - **No-tax:** matched baseline-vs-hybrid validation-PPL delta 0.116% at 1B
   (0.018% at 136M).
+
+Implementation note: the current certificate engine uses float64 arithmetic and
+exact slope signs (`EPS = 0.0`), with a regression test for near-zero negative
+slopes. Some copied JSON artifacts from the initial bundle were generated under
+the older slope-dead-zone convention, whether or not they include an `eps` field;
+rerun the affected certificate/dosing scripts before publishing refreshed
+quantitative artifacts.
 
 ## Intended use
 

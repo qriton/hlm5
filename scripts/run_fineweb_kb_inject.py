@@ -1,7 +1,7 @@
 """Phase-2 gates: inject novel facts into the FineWeb-trained trunk (65K custom BPE).
 
 Port of run_real_vocab_kb_inject.py (which passed all G1 gates on the GPT-2-BPE trunk)
-to the Leonardo trunk: editability floor, expressible targets, fact-set-mean-centered +
+to the released FineWeb trunk: editability floor, expressible targets, fact-set-mean-centered +
 whitened keys, RAW unit(w_t) values (never center values), exact auto-boost, audit,
 holdout + distribution-level collateral, edit/forget.
 
@@ -28,9 +28,8 @@ from hlm5.memory import EditableHLM5Memory, unit
 
 BOS, EOS = 2, 3
 
-FINEWEB_VAL = "/leonardo_scratch/large/userexternal/redacted/hlm3/data/fineweb/fineweb_22b_val.bin"
-# scratch work/tokenizers was purged; the verified copy lives in the repo now
-TOKENIZER_JSON = str(Path("~/HLM5/tokenizers/fineweb-65536.json").expanduser())
+REPO_ROOT = Path(__file__).resolve().parents[1]
+TOKENIZER_JSON = str(REPO_ROOT / "models" / "tokenizers" / "fineweb-65536-compat.json")
 
 
 def novel_country_names():
@@ -62,9 +61,8 @@ def novel_country_names():
 def open_mmap(path):
     if not Path(path).exists():
         raise FileNotFoundError(
-            f"{path} not found. This is a private Leonardo-cluster scratch path "
-            "(FineWeb training/validation shard); point --val-bin/--train-bin at a "
-            "released copy of the FineWeb data. See scripts/README.md.")
+            f"{path} not found. Point --val-bin/--train-bin at a local FineWeb "
+            "uint16 shard with the HLM3 header. See scripts/README.md.")
     with open(path, "rb") as f:
         header = f.read(16)
     if header[:4] != b"HLM3":
@@ -296,7 +294,8 @@ def expressible_targets(model, tokenizer, want: int, mode: str = "spread",
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--checkpoint", default="runs/hlm5_base_fineweb/best.pt")
-    ap.add_argument("--val-bin", default=FINEWEB_VAL)
+    ap.add_argument("--val-bin", required=True,
+                    help="FineWeb validation uint16 shard with HLM3 header")
     ap.add_argument("--tokenizer", default=TOKENIZER_JSON)
     ap.add_argument("--k", type=int, default=32)
     ap.add_argument("--memory-size", type=int, default=256)

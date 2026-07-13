@@ -1,6 +1,6 @@
 """Phase A: HLM5 reachability-certificate features on CounterFact records (gpt2-xl).
 
-Replicates conventions of scripts/run_1b_certificate.py (EPS, risk labels,
+Replicates conventions of scripts/run_1b_certificate.py (exact signs, risk labels,
 hard-blocker clause) and scripts/run_1b_betastar.py (beta* grid over the
 capped interval). Per record:
   h = post-ln_f last hidden at final prompt token, W = tied lm_head weight,
@@ -35,7 +35,7 @@ DATA = Path(__file__).resolve().parent / "data" / "counterfact.json"
 OUT = RESULTS_DIR / "cert_counterfact_gpt2xl.jsonl"
 SUMMARY = RESULTS_DIR / "cert_counterfact_gpt2xl_summary.json"
 N_TARGET = 1000
-EPS = 1e-4          # same as run_1b_certificate.py
+EPS = 0.0           # exact certificate: no slope dead-zone
 GRID_N = 120        # same as run_1b_betastar.py
 
 
@@ -119,8 +119,8 @@ def main():
         mask = torch.ones(V, dtype=torch.bool, device=dev); mask[y] = False
         aj, bj = a[mask], b[mask]
         idx = torch.arange(V, device=dev)[mask]
-        bpos, bneg, bzero = bj > EPS, bj < -EPS, bj.abs() <= EPS
-        hard = (bzero | (bj < 0)) & (aj <= 0)           # hard blocker: a_j<=0 AND b_j<=EPS
+        bpos, bneg = bj > EPS, bj < 0
+        hard = (bj <= EPS) & (aj <= 0)                  # hard blocker: a_j<=0 AND b_j<=0
         ratio = -aj / bj
         L = torch.clamp(ratio[bpos].max(), min=0.0) if bpos.any() else torch.tensor(0.0, device=dev)
         U = ratio[bneg].min() if bneg.any() else torch.tensor(float("inf"), device=dev)
@@ -151,12 +151,16 @@ def main():
             # beta* grid over capped interval (run_1b_betastar.py conventions)
             Lf, Uf = float(L), float(U)
             hi = min(Uf, Lf + max(50.0, 5.0 * Lf)) if Uf != float("inf") else Lf + max(50.0, 5.0 * Lf)
-            grid = Lf + torch.linspace(0, 1, GRID_N, device=dev) * (hi - Lf)
+            grid = Lf + torch.linspace(0, 1, GRID_N + 2, device=dev)[1:-1] * (hi - Lf)
             margs = aj[:, None] + grid[None, :] * bj[:, None]     # (V-1, GRID_N)
             worst = margs.min(0).values
             k = int(worst.argmax())
-            out["beta_star"] = float(grid[k])
-            out["margin_at_beta_star"] = float(worst[k])
+            if float(worst[k]) > 0:
+                out["beta_star"] = float(grid[k])
+                out["margin_at_beta_star"] = float(worst[k])
+            else:
+                out["reachable"] = False
+                out["risk"] = "unreachable"
         else:
             out["risk"] = "unreachable"
             if bool(hard.any()):

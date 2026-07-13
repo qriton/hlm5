@@ -8,8 +8,8 @@ Extends scripts/run_1b_certificate.py from ONE key prompt to ~60 diverse keys:
 Conventions are IDENTICAL to run_1b_certificate.py:
   - same fixed 1,200 word-like single-token target pool (leading-space, [A-Za-z]{3,}),
   - value v = unit(W_y); a_j = (W_y - W_j).h ; b_j = (W_y - W_j).v ;
-  - EPS = 1e-4; L = max(0, max_{b>EPS} -a/b); U = min_{b<-EPS} -a/b;
-  - hard blocker: exists j with (|b_j|<=EPS or b_j<0) and a_j<=0;
+  - exact signs; L = max(0, max_{b>0} -a/b); U = min_{b<0} -a/b;
+  - hard blocker: exists j with b_j<=0 and a_j<=0;
   - unreachable iff hard blocker exists or L >= U; else beta = 1.05*L + 1 and
     risk = safe (slack > 5*beta) / narrow (slack > beta) / brittle;
   - per-key median reachable slack = sorted(finite slacks)[n//2] (upper median),
@@ -33,7 +33,7 @@ import time
 
 import torch
 
-from hlm5.io import checkpoint_path, load_trunk, load_tokenizer, RESULTS_DIR
+from hlm5.io import load_trunk, load_tokenizer, RESULTS_DIR
 
 
 def main():
@@ -56,7 +56,7 @@ def main():
     pool = sorted(pool)[:1200]
     print(f"word-like single-token pool: {len(pool)}")
 
-    EPS = 1e-4
+    EPS = 0.0
     ORIG_FACT = "The capital of Vorenia is"
 
     # ------------------------------------------------------------------ key prompts
@@ -138,8 +138,8 @@ def main():
     B = WV[tids, aT].unsqueeze(0) - WV                   # (V, T); b_j per target col
     del WV
     bpos = B > EPS
-    bneg = B < -EPS
-    bnonpos = B <= EPS                                   # == (|b|<=EPS) | (b<0)
+    bneg = B < 0
+    bnonpos = B <= EPS
     NEG_INF = float("-inf"); POS_INF = float("inf")
 
     @torch.no_grad()
@@ -184,8 +184,8 @@ def main():
         b = Wv[tid] - Wv                                 # b_j (b[tid]=0)
         mask = torch.ones(V, dtype=torch.bool, device=DEV); mask[tid] = False
         aj, bj = a[mask], b[mask]
-        bpos_, bneg_, bzero_ = bj > EPS, bj < -EPS, bj.abs() <= EPS
-        hard = (bzero_ | (bj < 0)) & (aj <= 0)
+        bpos_, bneg_ = bj > EPS, bj < 0
+        hard = (bj <= EPS) & (aj <= 0)
         ratio = -aj / bj
         L = torch.clamp(ratio[bpos_].max(), min=0.0) if bpos_.any() else torch.tensor(0.0, device=DEV)
         U = ratio[bneg_].min() if bneg_.any() else torch.tensor(float("inf"), device=DEV)
@@ -308,7 +308,7 @@ def main():
 
     out = {
         "model": "HLM5-1B-trunk",
-        "checkpoint": str(checkpoint_path("baseline")),
+        "checkpoint": "models/hlm5_lm_baseline_fineweb_g3_final.pt",
         "pool": T, "eps": EPS, "n_keys": len(KEYS),
         "conventions": {
             "value": "v = unit(W_y); a_j=(W_y-W_j).h; b_j=(W_y-W_j).v; identical to run_1b_certificate.py",

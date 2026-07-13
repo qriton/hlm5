@@ -16,6 +16,34 @@ git push -u origin main
 The 1B checkpoints are gitignored and must **not** be pushed to GitHub; they live
 on Hugging Face (steps 3–4).
 
+Before pushing a publication refresh, run:
+
+```bash
+python -m pytest tests -q
+python -m py_compile hlm5/certify.py scripts/run_1b_certificate.py \
+  scripts/run_1b_betastar.py scripts/run_1b_synth_verify.py \
+  scripts/run_1b_envelope_multikey.py scripts/run_1b_faithful_certdosed.py \
+  scripts/run_cert_counterfact_gpt2xl.py scripts/read_and_memorize.py
+```
+
+If the refresh is meant to update quantitative claims after the 2026-07-13
+exact-sign certificate hardening (`EPS = 0.0`), rerun the affected GPU producers
+and replace their JSONs before rebuilding figures:
+
+```bash
+python scripts/run_1b_certificate.py
+python scripts/run_1b_envelope_multikey.py
+python scripts/run_1b_betastar.py
+python scripts/run_1b_synth_verify.py
+python scripts/run_1b_faithful_certdosed.py
+python scripts/run_cert_counterfact_gpt2xl.py
+python scripts/make_figures.py
+python scripts/verify_artifacts.py
+```
+
+Do not edit result JSON metadata such as `eps` by hand; regenerate it from the
+script that owns the artifact.
+
 ## 2. Verify the paper's self-citation URLs resolve
 
 The paper cites two Qriton project URLs. Confirm both resolve **before** arXiv
@@ -36,10 +64,13 @@ where `hlm5.io` looks). `models/README.md` carries both download commands.
 
 ## 4. Replace the Hugging Face model card
 
-The live card currently leads with the superseded 0.529 number. Replace its
-contents with `hf-model-card.md` from this repo (it leads with the certificate-dosed
-0.765/1.000 result and frames 0.529 as the dosing ablation). The YAML frontmatter
-is already in HF's expected form (`license: other`, `license_name: bsl-1.1`,
+The live card may still lead with the superseded 0.529 number and may show a
+direct `torch.load(..., weights_only=False)` usage snippet. Replace its contents
+with `hf-model-card.md` from this repo (it leads with the certificate-dosed
+0.765/1.000 result, frames 0.529 as the dosing ablation, documents the
+2026-07-13 exact-sign certificate hardening, and points users to
+`hlm5.io.load_trunk`, which uses `weights_only=True`). The YAML frontmatter is
+already in HF's expected form (`license: other`, `license_name: bsl-1.1`,
 `license_link: LICENSE`).
 
 While in the HF repo, also: (a) upload this repo's `LICENSE` file (the card's
@@ -73,6 +104,11 @@ Update the BibTeX `note` in `README.md` and `hf-model-card.md`, the
 `preferred-citation` notes field in `CITATION.cff`, and the live HF card.
 
 ## 7. Tag the release
+
+If `v1.0.0` has not been published yet, tag the first public release as below.
+If `v1.0.0` is already public, tag the certificate-hardening refresh as a patch
+release such as `v1.0.1` instead, and mention the false-positive EPS regression in
+the GitHub release notes.
 
 ```bash
 git tag -a v1.0.0 -m "v1.0.0 — first public release

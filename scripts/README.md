@@ -1,20 +1,25 @@
 # scripts/
 
-All experiment scripts, migrated onto the installed `hlm5` package (portable
-paths, `main()` guards, `weights_only=True`; see the repo-root migration task).
-This includes the "copied producers" table below (externally-sourced artifacts,
-copied verbatim from the private working repo) as well as the
-on-trunk certificate/gate/editing scripts (`run_1b_*.py`, `run_gpt2_*.py`,
+All experiment scripts use the installed `hlm5` package, portable paths,
+`main()` guards, and `weights_only=True` where the released checkpoint format
+supports it. This includes the producer table below as well as the on-trunk
+certificate/gate/editing scripts (`run_1b_*.py`, `run_gpt2_*.py`,
 `run_rome_*.py`, `run_editors_counterfact.py`, `run_cert_counterfact_gpt2xl.py`,
 `analyze_cert_vs_editors.py`, `read_and_memorize.py`, etc).
+
+Certificate/dosing scripts use the 2026-07-13 hardened convention from
+`hlm5.certify`: float64 certificate arithmetic, `EPS = 0.0`, and exact slope
+signs. Negative slopes are always upper-bound constraints; do not reintroduce a
+near-zero slope dead-zone in copied experiment code.
 
 **Per-script requirements matrix (script → output artifact → requirements →
 finding) lives in the root [`../README.md`](../README.md#scripts--artifact--finding)**
 — that table is the single home for the full script inventory, including which
-scripts need a GPU, a checkpoint, EasyEdit, or a data fetch. This file keeps the
-provenance notes for the copied producers and the not-copied computations below.
+scripts need a GPU, a checkpoint, EasyEdit, or a data fetch. This file keeps
+reproducibility notes for producers that need external data or cluster-only
+inputs.
 
-## Copied producers
+## Producers
 
 | Script | Produces (`results/`) |
 | --- | --- |
@@ -26,41 +31,28 @@ provenance notes for the copied producers and the not-copied computations below.
 | `run_edit_receipt_demo.py` | `edit_receipts.json` |
 | `run_fineweb_kb_inject.py` | `g2c_rare.json` (`--target-mode rare --k 32`); also the source of the G2b/G3b/G3c spread/rare gate JSONs, invoked with different `--target-mode`/`--k`/`--checkpoint` flags |
 
-`verify_artifacts.py` loads every copied JSON in `results/` and asserts the
+`verify_artifacts.py` loads every JSON in `results/` and asserts the
 paper's load-bearing numbers against them; run with `python scripts/verify_artifacts.py`.
 
-### Note: hardcoded private path in `run_fineweb_kb_inject.py`
+### Note: FineWeb data for `run_fineweb_kb_inject.py`
 
-`run_fineweb_kb_inject.py` line 31 hardcodes
-`FINEWEB_VAL = "/leonardo_scratch/large/userexternal/redacted/hlm3/data/fineweb/fineweb_22b_val.bin"`,
-a private Leonardo-cluster scratch path. Copied as-is per instructions (path
-migration is a separate task) — this constant needs to become a CLI flag or
-be pointed at a released copy of the FineWeb validation shard before the
-script is independently runnable. `open_mmap()` now raises a clear
-`FileNotFoundError` naming this file when `--val-bin`/`--train-bin` point at a
-path that doesn't exist on the current machine, instead of failing with a bare
-OS error.
+`run_fineweb_kb_inject.py` requires a local FineWeb uint16 shard with the HLM3
+header. Pass it explicitly with `--val-bin`; rare-target mode also needs
+`--train-bin` or a train shard inferable from the validation path. The script
+raises a clear `FileNotFoundError` when the supplied shard path is missing.
 
 ### Note: `hlm5_lm`/`hlm5_memory`/`hlm5_edit_audit` imports now ported
 
 `run_edit_receipt_demo.py`, `run_fineweb_kb_inject.py`, `run_incontext_mqar.py`,
-and `run_lm_kb_inject.py` previously imported from `hlm5_lm`, `hlm5_memory`, and
-(for `run_edit_receipt_demo.py`) `hlm5_edit_audit` — private modules from the
-`the private working repo` working repo that were never copied into this bundle. That gap is now
-closed: `hlm5_edit_audit.py` was ported into the package as `hlm5/edit_audit.py`
-(byte-identical; stdlib + torch only), and the four scripts now import
+and `run_lm_kb_inject.py` import released package modules:
 `hlm5.model.HLM5LM`, `hlm5.memory.EditableHLM5Memory`/`unit`/
 `TinyTransformerWithHLM5`, and `hlm5.edit_audit.issue_receipt`/`verify_receipt`/
-`trunk_hash` from the released `hlm5` package. `run_train_key_value.py` was
-likewise ported: its model class moved into the package as
-`hlm5.key_value.HLM5KeyValueModel` (formerly the private `models/` module), and
-the script now imports `from hlm5.key_value import HLM5KeyValueModel`. It is
-the capacity-search trainer invoked by `run_hlm5_capacity_search.py` (see the
-copied-producers table above).
+`trunk_hash`. `run_train_key_value.py` imports
+`hlm5.key_value.HLM5KeyValueModel`; it is the capacity-search trainer invoked by
+`run_hlm5_capacity_search.py` (see the producers table above).
 
-`run_fineweb_kb_inject.py` still needs Leonardo-cluster data to actually run
-end-to-end — see the hardcoded scratch path note above — but it now imports
-cleanly. Its residual-hook mode also calls `model.residual_state`/
+`run_fineweb_kb_inject.py` still needs external FineWeb shards to run end-to-end,
+but it imports cleanly. Its residual-hook mode also calls `model.residual_state`/
 `model.attach_residual_memory`, which are not present on `hlm5.model.HLM5LM`;
 that scaffolding gap is unrelated to the import fix and remains open.
 
@@ -72,15 +64,11 @@ that scaffolding gap is unrelated to the import fix and remains open.
 `read_and_memorize.py`) import only the released `hlm5` package and were never
 affected.
 
-## Not copied: no-tax gate computation (G2a/G3a)
+## No-tax gate computation (G2a/G3a)
 
 `g2a_no_tax.json` and `g3a_no_tax.json` (the matched-pair "no-tax" delta
-between baseline and hybrid validation PPL) are computed by an inline Python
-heredoc inside the SLURM job scripts, not a standalone script:
-`leonardo/run_g2_evals.sbatch` (G2a) and `leonardo/run_g3_evals.sbatch` (G3a).
-Per the release-prep constraints, SLURM/sbatch files are not copied into this
-bundle. The full inline computation (verbatim from `leonardo/run_g3_evals.sbatch`,
-G2a is identical up to the file names) is:
+between baseline and hybrid validation PPL) are computed directly from the
+training-summary JSONs. The computation is:
 
 ```python
 import json
@@ -99,10 +87,8 @@ This reads `best_val_ppl` straight out of `baseline_train_summary.json` /
 numbers are independently reproducible from artifacts already in this bundle
 without needing the sbatch file itself.
 
-## Not found: G2c training/eval harness beyond `run_fineweb_kb_inject.py`
+## G2/G3 Injection Gates
 
-The G2/G3 eval sbatch scripts (`leonardo/run_g2_evals.sbatch`,
-`leonardo/run_g3_evals.sbatch`) that orchestrate calls to
-`run_fineweb_kb_inject.py` with the specific `--target-mode`/`--k`/`--checkpoint`
-flags used for each gate are themselves SLURM job files and were not copied
-for the same reason as above.
+The released script for spread/rare injection is `run_fineweb_kb_inject.py`.
+Reproducing the exact gate artifacts requires the released checkpoint plus local
+FineWeb shards supplied via `--val-bin` and, for rare mode, `--train-bin`.

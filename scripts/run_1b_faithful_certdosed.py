@@ -36,7 +36,7 @@ from hlm5.memory import EditableHLM5Memory, unit
 GATE_THRESH = 0.95
 TEMPERATURE = 0.10
 DEGREE = 5
-EPS = 1e-4                      # slope dead-zone for the certificate envelope
+EPS = 0.0                       # exact certificate: no slope dead-zone
 
 # ---- IDENTICAL facts / prompts to run_1b_faithful.py (DO NOT EDIT) ---------- #
 FACTS = [
@@ -167,8 +167,8 @@ def main():
         mask = torch.ones(V, dtype=torch.bool, device=DEV)
         mask[tid] = False
         aj, bj, idx = a[mask], b[mask], torch.arange(V, device=DEV)[mask]
-        bpos, bneg, bzero = bj > EPS, bj < -EPS, bj.abs() <= EPS
-        hard = (bzero | (bj < 0)) & (aj <= 0)
+        bpos, bneg = bj > EPS, bj < 0
+        hard = (bj <= EPS) & (aj <= 0)
         ratio = -aj / bj
         L = float(torch.clamp(ratio[bpos].max(), min=0.0)) if bool(bpos.any()) else 0.0
         U = float(ratio[bneg].min()) if bool(bneg.any()) else float("inf")

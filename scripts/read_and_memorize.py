@@ -47,7 +47,7 @@ DEV = "cpu"                     # HARD CONSTRAINT: the GPU is owned by another j
 GATE_THRESH = 0.95              # deployed hard gate tau on the degree-5 kernel score
 TEMPERATURE = 0.10
 DEGREE = 5
-EPS = 1e-4                      # slope dead-zone for the certificate envelope
+EPS = 0.0                       # exact certificate: no slope dead-zone
 
 DOC_PATH = Path(__file__).resolve().parent / "demo_document.txt"
 OUT_PATH = RESULTS_DIR / "read_and_memorize_receipts.json"
@@ -217,8 +217,8 @@ def main():
         mask = torch.ones(V, dtype=torch.bool)
         mask[tid] = False
         aj, bj, idx = a[mask], b[mask], torch.arange(V)[mask]
-        bpos, bneg, bzero = bj > EPS, bj < -EPS, bj.abs() <= EPS
-        hard = (bzero | (bj < 0)) & (aj <= 0)
+        bpos, bneg = bj > EPS, bj < 0
+        hard = (bj <= EPS) & (aj <= 0)
         ratio = -aj / bj
         L = float(torch.clamp(ratio[bpos].max(), min=0.0)) if bool(bpos.any()) else 0.0
         U = float(ratio[bneg].min()) if bool(bneg.any()) else float("inf")

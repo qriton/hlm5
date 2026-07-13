@@ -136,8 +136,8 @@ def _finish(fig, stem):
 # ==============================================================================
 def fig_reachability_geometry():
     bs = _load("betastar.json")
-    beta_star = bs["median_beta_star"]                 # 72.634
-    margin = bs["median_worst_margin_betastar"]        # 18.51
+    beta_star = bs["median_beta_star"]                 # 72.134
+    margin = bs["median_worst_margin_betastar"]        # 18.39
 
     synth = _load("cert_envelope_synth.json")
     ex = next(e for e in synth["residual_synthesis"]["examples"]
@@ -223,20 +223,20 @@ def fig_reachability_geometry():
 # again at the upper bound U (falling). betastar.json stores only the four
 # medians (beta*, margin*, heuristic margin, gain) -- not per-fact a_j/b_j or
 # per-fact (L,U). We therefore plot the (L,U,beta*,margin*) piecewise-linear
-# envelope: the measured peak (beta*=72.6, margin*=18.5) with the feasible band
+# envelope: the measured peak (beta*=72.1, margin*=18.39) with the feasible band
 # L=42/U=104 taken from the companion fig-reachability-geometry (same median
 # fact). The heuristic dose beta=1.05L+1 (the rule the run script compares
 # against) is marked on the rising edge at its measured median margin 1.08, and
-# the 17x median margin gain is annotated. No invented y-intercept, no invented
+# the ~17x median margin ratio is annotated. No invented y-intercept, no invented
 # upper crossing.
 # ==============================================================================
 def fig_betastar():
     bs = _load("betastar.json")
-    beta_star = bs["median_beta_star"]                  # 72.634
-    margin = bs["median_worst_margin_betastar"]         # 18.51
+    beta_star = bs["median_beta_star"]                  # 72.134
+    margin = bs["median_worst_margin_betastar"]         # 18.39
     heur_margin = bs["median_worst_margin_heuristic"]   # 1.084
-    gain = bs["median_margin_gain"]                     # 17.426
-    ratio = margin / heur_margin                        # ~17.1x
+    gain = bs["median_margin_gain"]                     # +17.306 logits
+    ratio = margin / heur_margin                        # ~17.0x
 
     # feasible-band anchors, consistent with fig-reachability-geometry
     L, U = 42.0, 104.0
@@ -275,8 +275,8 @@ def fig_betastar():
                 arrowprops=dict(arrowstyle="-|>", color=INK, lw=0.8,
                                 shrinkA=2, shrinkB=3))
 
-    # 17x median margin gain over the heuristic (placed in the open interior)
-    ax.text(82.0, 6.0, f"{ratio:.0f}$\\times$\nmargin gain", color=INK,
+    # ~17x median margin ratio over the heuristic (placed in the open interior)
+    ax.text(82.0, 6.0, f"{ratio:.0f}$\\times$\nmargin ratio", color=INK,
             fontsize=ANN, ha="center", va="center")
 
     ax.set_xlim(0, 118)

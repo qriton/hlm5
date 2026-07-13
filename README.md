@@ -54,12 +54,31 @@ python scripts/read_and_memorize.py
 See [`models/README.md`](models/README.md) for checkpoint hashes and loading, and
 the loader in [`hlm5/io.py`](hlm5/io.py) (`load_trunk`, `load_tokenizer`).
 
+## Certificate implementation note
+
+The packaged certificate engine in [`hlm5/certify.py`](hlm5/certify.py) uses
+float64 certificate arithmetic and exact sign tests for the affine slopes
+(`EPS = 0.0`). Negative slopes are always treated as upper-bound constraints, so a
+near-zero negative slope cannot be hidden by a numerical dead-zone and produce a
+false-positive reachability certificate. The regression test
+`test_certificate_tiny_negative_slope_is_not_hidden_by_eps_floor` covers this
+case.
+
 ## Headline results
 
 Every row cites the JSON under [`results/`](results/) it is read from. The deployed
 pipeline is the certificate-governed 17-fact evaluation in
 `hlm5_1b_faithful_certdosed.json` (frozen 1B trunk, whitened degree-5 gate,
 threshold 0.95); 95% bootstrap CIs are over facts.
+
+Some copied result JSONs were produced before the 2026-07-13 exact-sign hardening
+and either record the older `eps: 0.0001` convention or omit that metadata
+entirely. Before publishing refreshed quantitative claims, rerun the affected
+certificate/dosing producers (`run_1b_certificate.py`,
+`run_1b_envelope_multikey.py`, `run_1b_betastar.py`,
+`run_1b_synth_verify.py`, `run_1b_faithful_certdosed.py`, and
+`run_cert_counterfact_gpt2xl.py`) and rebuild figures/artifacts from the
+regenerated JSONs.
 
 | Result | Value | Artifact |
 | --- | --- | --- |
@@ -106,8 +125,8 @@ wants CUDA; **1B** needs the released baseline checkpoint; **hybrid** needs the
 co-trained checkpoint (download from HF like the baseline; see `models/README.md`);
 **136M** needs the unreleased 136M gate checkpoints; **GPT-2**/**GPT-2-XL**
 auto-download from Hugging Face; **EasyEdit** needs an external clone;
-**CounterFact** needs `fetch_counterfact.py` first; **Leonardo** needs private
-cluster data.
+**CounterFact** needs `fetch_counterfact.py` first; FineWeb injection scripts need
+local FineWeb uint16 shards supplied with `--val-bin`/`--train-bin`.
 
 ### On-trunk certificate, gate, and dosing (frozen 1B)
 
@@ -115,7 +134,7 @@ cluster data.
 | --- | --- | --- | --- |
 | `run_1b_certificate.py` | `cert_envelope_synth.json` | 1B, GPU | Operating envelope: 78.4% of 1,200 targets reachable; residual synthesis rescues 40/40 sampled unreachable |
 | `run_1b_envelope_multikey.py` | `cert_envelope_multikey.json` | 1B, GPU | Envelope is stable across keys: 79.4% ± 2.2% reachable over 60 keys |
-| `run_1b_betastar.py` | `betastar.json` | 1B, GPU | β★ selection lifts worst-case margin 1.08 → 18.5 (17×) |
+| `run_1b_betastar.py` | `betastar.json` | 1B, GPU | beta-star selection lifts worst-case margin 1.08 -> 18.39 (~17x; +17.31 logits) |
 | `run_1b_synth_verify.py` | `synth_verify.json` | 1B, GPU | End-to-end rescue: 0/40 flip with `unit(W_y)`, 40/40 flip with synthesized r★ (median β = 20) |
 | `run_1b_headgeom_metrics.py` | `headgeom_metrics.json` | 1B, GPU | Reachability is head-geometry (norm-dependent), not a memory property |
 | `run_1b_gate_roc.py` | `gate_roc.json` | 1B, GPU | Gate perfectly separable: exact-key 1.0, every paraphrase/typo/other-relation 0.0 |
@@ -148,10 +167,10 @@ cluster data.
 | `run_editors_counterfact.py` | `editors_counterfact_gpt2xl.jsonl` | GPT-2-XL, EasyEdit, CounterFact, GPU | Phase B: run FT/ROME/GRACE editors on the same records |
 | `analyze_cert_vs_editors.py` | `cert_vs_editors_analysis.json` | CPU | Phase C: pre-edit difficulty predicts editor paraphrase/neighborhood outcomes (exploratory) |
 
-### Producers (externally-sourced artifacts, copied verbatim)
+### Producers
 
-These were copied from the private working repo; see [`scripts/README.md`](scripts/README.md)
-for provenance and the hardcoded-path caveat on `run_fineweb_kb_inject.py`.
+See [`scripts/README.md`](scripts/README.md) for reproducibility notes on
+producers that require external data.
 
 | Script | Output (`results/`) | Requirements | Finding |
 | --- | --- | --- | --- |
@@ -161,7 +180,7 @@ for provenance and the hardcoded-path caveat on `run_fineweb_kb_inject.py`.
 | `run_lm_kb_inject.py` | `lm_kb_inject*.json` | CPU/GPU | HLM5 as an editable, auditable knowledge base in a trained LM |
 | `run_incontext_mqar.py` | `incontext_mqar.json` | CPU/GPU | In-context associative recall (MQAR) |
 | `run_edit_receipt_demo.py` | `edit_receipts.json` | CPU/GPU | Replay-verifiable edit receipts |
-| `run_fineweb_kb_inject.py` | `g2c_rare.json` (+ G2/G3 gate JSONs) | Leonardo, GPU | FineWeb-trunk fact injection; source of the 136M/1B gate JSONs |
+| `run_fineweb_kb_inject.py` | `g2c_rare.json` (+ G2/G3 gate JSONs) | FineWeb shards, GPU | FineWeb-trunk fact injection; source of the 136M/1B gate JSONs |
 | `run_hybrid_energy_ops.py` | `hybrid_energy_ops.json` | hybrid, GPU | Energy-language operators on the co-trained memory |
 
 ### Reproduce and figures
