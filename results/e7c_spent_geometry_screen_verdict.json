@@ -1,0 +1,23 @@
+{
+  "artifact_sha256": "80e529870bfd9d727e85ae4115c8c399b3f23ad94143d1a01cc713e060790104",
+  "implementation_commit": "ec182f9f6511a513e2a1ba923d2fe50e13e5b00d",
+  "job_id": 51798844,
+  "lost_reachable": 0,
+  "native_margin_min": 13.0,
+  "ready_for_fresh_pool_preregistration": true,
+  "schema": "hlm5-e7c-spent-geometry-screen-verdict-v1",
+  "scientific_sha256": "83e17daed19cfcf5b13e1d6672714d9f7537dde5ed0466a4cbc64631568c6bf2",
+  "scope": "Post-outcome development screen on the already-spent E7b pool; not independent confirmation or promotion evidence.",
+  "selected_candidate": "zca_half_raw_r1e2",
+  "spent_pool": {
+    "development_native_admission": null,
+    "development_reachability": "583/583",
+    "gained_reachable": 307,
+    "overall_native_admission": "1200/1200",
+    "overall_reachability": "1200/1200",
+    "validation_native_admission": "617/617",
+    "validation_reachability": "617/617"
+  },
+  "validity_failures": [],
+  "verdict": "READY_FOR_FRESH_CONFIRMATION"
+}

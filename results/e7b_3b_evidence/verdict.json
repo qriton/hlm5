@@ -1,0 +1,33 @@
+{
+  "admission_scientific_sha256": "0292ecf463fd6be71f494983cb6e6accd7077a3d71a8123be9a73866206ab37d",
+  "admission_sha256": "60249139741d79c3995205bc09c04e0f68067155098abff7d4c1d9d08e828b39",
+  "attempt_sha256": "c3f445dbb20b0223ee065104231d73b31250a1c3a40f3f6059c4d079a76b790b",
+  "result_scientific_sha256": "dd5e98a2cc04ffe3bc17689e94979f790b07632806dedfaa73abbd2f343d6a47",
+  "result_sha256": "9a5232b33f8828195794cb137ee2ec83e10ec8af524418abe3608cf0ac2d4d11",
+  "schema": "hlm5-e7b-3b-verdict-v1",
+  "scientific": {
+    "claim_boundary": "Pinned SmolLM3-3B-Base revision and registered CUDA/BF16 runtime; exact-sign geometry plus observed strict native-head admission on the registered disjoint single-token pool.",
+    "scientific_failures": [
+      "geometrically reachable count is below 960"
+    ],
+    "summary": {
+      "decision_counts": {
+        "ADMIT_NATIVE": 893,
+        "REFUSE_EMPTY_INTERVAL": 28,
+        "REFUSE_HARD_BLOCKER": 279,
+        "REFUSE_NATIVE_TIE": 0,
+        "REFUSE_NATIVE_WRONG_ARGMAX": 0
+      },
+      "geometric_coverage": 0.7441666666666666,
+      "geometrically_reachable": 893,
+      "native_admitted": 893,
+      "native_coverage": 0.7441666666666666,
+      "retained_fraction": 1.0,
+      "target_count": 1200
+    },
+    "validity_failures": [],
+    "verdict": "FAIL_3B_NATIVE_ADMISSION"
+  },
+  "scientific_sha256": "f45dbd7f3b0a97884bd1fb987e1f36cc90c903cd9a39970a4a6bba39050ec608",
+  "verdict": "FAIL_3B_NATIVE_ADMISSION"
+}

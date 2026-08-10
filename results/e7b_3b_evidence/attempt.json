@@ -1,0 +1,10 @@
+{
+  "execution_receipt_sha256": "afe9609e2af892bfbb98f5248864b2978d4fa46aaf969cddd57271240e60ac09",
+  "implementation_commit": "7267f3642baf2b2be15e9e652f252126b6147621",
+  "pre_admission_outputs_absent": true,
+  "protocol_commit": "b034dcf86e7d4463f845484ee7ecacd4848167ca",
+  "protocol_sha256": "087979cb44514f244bb58ca5c7e59837e897802ca504b95202a5b02b7a91a18f",
+  "schema": "hlm5-e7b-3b-attempt-v1",
+  "status": "POOL_SPENT",
+  "target_pool_sha256": "8fb09e2ceda0ad576dcb4771cbdbf757810cfd90969e3e8b4283d9582495136f"
+}
