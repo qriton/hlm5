@@ -1,5 +1,12 @@
 # HLM5 NKT-1 natural-key transfer gate
 
+**Status:** valid `STOP_BEFORE_TEST` development verdict. Generic covariance
+conditioning helped, but the source-Fisher candidate missed its registered
+matched-control and balance bars. The MASSIVE test population remains
+unencoded. Read the
+[`development verdict`](docs/natural-key-transfer-development-verdict-2026-08-10.md)
+before reusing any result.
+
 This package tests one bounded question: whether a source-domain,
 within-class Fisher preconditioner transfers to three-shot HLM5 hidden-key
 routing on unseen MASSIVE intents. It uses the frozen HLM5-136M trunk and the

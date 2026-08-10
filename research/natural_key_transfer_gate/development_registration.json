@@ -1,0 +1,101 @@
+{
+  "artifacts": {
+    "checkpoint": {
+      "path": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\model.pt",
+      "sha256": "2addfa88808be6847e29f70c9182093c15ff420c168f9dd8b41b72c4757a8eda"
+    },
+    "data": {
+      "path": "D:\\HLM2\\runtime\\datasets\\massive-1.1\\1.1\\data\\en-US.jsonl",
+      "sha256": "c70f75c6a543a26e249ec383df67733ad9b1066f6c0406c2e04a3f03356e407e"
+    },
+    "implementation": {
+      "research/natural_key_transfer_gate/__init__.py": "ffb3a88b9f57594628352a45e6f88221549c5de01157702b4edfbc0ebe40b8a2",
+      "research/natural_key_transfer_gate/contract.py": "7974b32beec0da179116d254f282d891ef6017495f85f0f2874a9fdefcaacdf1",
+      "research/natural_key_transfer_gate/geometry.py": "6da468706a051e19ebd613dcdf1e754aa75e3bac2ee522411a2f70bd9e74c65b",
+      "research/natural_key_transfer_gate/prepare_massive.py": "e94d46e110047d5cc084a4e48b1998d36bbec36f05142d33f4a39a4eb70ab757",
+      "research/natural_key_transfer_gate/run_natural_key_transfer_gate.py": "5793d95e152eabedb741e27d7be50dd06a9fe70a7b9f49646e919097ba2849ac",
+      "research/natural_key_transfer_gate/tests/test_geometry.py": "70a21d1194cc95184ad346e9b1a6b65d48ccf92905d1fcc031b8a0c0b1da02ce",
+      "research/natural_key_transfer_gate/tests/test_prepare_massive.py": "190c84b6365c7ab89c4f2001a820162216ae8de0b4814391904d129f1cb121a1",
+      "research/natural_key_transfer_gate/tests/test_registration.py": "e194c64ff65640515dc9c43a08508e9d1eaad218aa951d0b91c0d3f7c300aa6d"
+    },
+    "license": {
+      "path": "D:\\HLM2\\runtime\\datasets\\massive-1.1\\1.1\\LICENSE",
+      "sha256": "c2e6ea015269147de02117ebdd91f30ef09831251f5345fa8365273b1db1d435"
+    },
+    "manifest": {
+      "path": "research/natural_key_transfer_gate/data/massive_development_manifest.json",
+      "sha256": "fa2431415f1adfd51b06773e48e5385a784777b76729e917d3f7dcf899dc233d"
+    },
+    "model_source": {
+      "research/validated_memory_primitives/hlm5_lm.py": "57b98001ee37994aff267b6888644a98239aa5918db8c63377886e716534beb5",
+      "research/validated_memory_primitives/hlm5_memory.py": "0210733ab1160ac073d44e5a9d7967bb3b985fc323a07efde925694ae56c346a"
+    },
+    "preregistration": {
+      "path": "research/natural_key_transfer_gate/docs/natural-key-transfer-prereg-2026-08-10.md",
+      "sha256": "109dd5ffd174c05a1f745bf7b7e50d9d3735c9f1bd345a1c6fedafb55cd03b23"
+    },
+    "tokenizer": {
+      "path": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\tokenizer.json",
+      "sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588"
+    }
+  },
+  "environment": {
+    "cublas_workspace_config": ":4096:8",
+    "cuda": "12.1",
+    "device": "cuda",
+    "gpu": "NVIDIA RTX 4000 SFF Ada Generation",
+    "numpy": "2.4.6",
+    "platform": "Windows-10-10.0.20348-SP0",
+    "python": "3.11.7",
+    "tokenizers": "0.22.2",
+    "torch": "2.5.1+cu121"
+  },
+  "generated_at_local": "2026-08-10T16:15:42.069389+02:00",
+  "git_head": "f10ea3be69afa538316d22e983b4bcb5584488f6",
+  "manifest_scientific_sha256": "a0f10d1d3473e1283bb8b675c2450bd60045a26ca08b53ecac92be6ffbe21143",
+  "preflight": {
+    "path": "research/natural_key_transfer_gate/preflight.json",
+    "sha256": "b73b98b0f1e79fe84e5908af0dacc666fae84f30e2080133c9013855958b97ba"
+  },
+  "protocol_sha256": "79ca7108c7ba3d04df4dc630a95228acb1649474fe4a42bcc13e506df77e0d08",
+  "schema": "hlm5-nkt1-development-registration-v1",
+  "scientific_constants": {
+    "arms": [
+      "raw",
+      "centered",
+      "blind_zca",
+      "shuffled_within",
+      "source_fisher"
+    ],
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260810,
+    "candidate": "source_fisher",
+    "degree": 5,
+    "deployed_tau_cos_diagnostic_only": 0.95,
+    "hidden_batch_size": 128,
+    "hidden_dtype": "torch.float32",
+    "no_recurrence": true,
+    "no_target_metric_fit": true,
+    "no_test_encoding": true,
+    "numpy_quantile_method": "linear",
+    "pass_bars": {
+      "candidate_auroc_drop_vs_raw": 0.01,
+      "candidate_max_predicted_intent_share": 0.1,
+      "candidate_minus_blind_zca": 0.01,
+      "candidate_minus_raw": 0.02,
+      "candidate_minus_shuffled_within": 0.01,
+      "interval_lower_strictly_greater_than": 0.0
+    },
+    "schema": "hlm5-nkt1-scientific-constants-v1",
+    "scientific_device": "cpu",
+    "scientific_dtype": "torch.float64",
+    "shrinkage": 0.05,
+    "support_per_intent": 3
+  },
+  "status": "REGISTERED_BEFORE_OUTCOMES",
+  "timing_attestation": {
+    "massive_utterances_encoded_before_registration": false,
+    "routing_outcomes_computed_before_registration": false,
+    "test_utterances_encoded": false
+  }
+}
