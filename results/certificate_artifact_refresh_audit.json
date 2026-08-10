@@ -1,0 +1,369 @@
+{
+  "artifacts": [
+    {
+      "certificate_contract": {
+        "missing_fields": [
+          "eps",
+          "arithmetic_dtype",
+          "producer",
+          "producer_sha256"
+        ],
+        "present": false
+      },
+      "contract_matches": {
+        "arithmetic_float64": false,
+        "checkpoint_sha256": false,
+        "eps_zero": false,
+        "producer_path": false,
+        "producer_sha256": false,
+        "tokenizer_sha256": false
+      },
+      "lineage": "pre_hardening_bytes",
+      "name": "one_key_envelope_and_synthesis",
+      "payloads": [
+        {
+          "exists": true,
+          "last_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
+          "path": "results/cert_envelope_synth.json",
+          "sha256": "6944e29505f49fc4fd991705f9334c4fb35f2e3e4edd75185dd167fd66f6cd57"
+        }
+      ],
+      "producer": {
+        "certificate_arithmetic_dtype_marker": null,
+        "eps_assignments": [
+          0.0
+        ],
+        "exact_sign_source": true,
+        "float32_certificate_evidence": [
+          {
+            "line": 35,
+            "text": "W = model.head.weight.detach().float()          # (V, d)"
+          }
+        ],
+        "path": "scripts/run_1b_certificate.py",
+        "resumable_output": false,
+        "resume_binds_certificate_contract": false,
+        "sha256": "0301495b49d25943b19755a028321b193fc515f6637cf4546b12eee406caf665"
+      },
+      "requirement": "frozen_hlm5_1b",
+      "resume_fail_closed": true,
+      "status": "REFRESH_REQUIRED"
+    },
+    {
+      "certificate_contract": {
+        "missing_fields": [
+          "eps",
+          "arithmetic_dtype",
+          "producer",
+          "producer_sha256"
+        ],
+        "present": false
+      },
+      "contract_matches": {
+        "arithmetic_float64": false,
+        "checkpoint_sha256": false,
+        "eps_zero": false,
+        "producer_path": false,
+        "producer_sha256": false,
+        "tokenizer_sha256": false
+      },
+      "lineage": "touched_in_hardening_commit_but_unbound",
+      "name": "multi_key_envelope",
+      "payloads": [
+        {
+          "exists": true,
+          "last_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
+          "path": "results/cert_envelope_multikey.json",
+          "sha256": "b0a31b3a0fede31a197b23d9441e48df5e0fc29ec2fdba3369fbdb6d356a8f69"
+        }
+      ],
+      "producer": {
+        "certificate_arithmetic_dtype_marker": null,
+        "eps_assignments": [
+          0.0
+        ],
+        "exact_sign_source": true,
+        "float32_certificate_evidence": [
+          {
+            "line": 45,
+            "text": "W = model.head.weight.detach().float()          # (V, d)"
+          }
+        ],
+        "path": "scripts/run_1b_envelope_multikey.py",
+        "resumable_output": false,
+        "resume_binds_certificate_contract": false,
+        "sha256": "32d99cfc60cf8d98244fbbab08c755e886c0e2142ae5207fad0952d40b6d3347"
+      },
+      "requirement": "frozen_hlm5_1b",
+      "resume_fail_closed": true,
+      "status": "REFRESH_REQUIRED"
+    },
+    {
+      "certificate_contract": {
+        "missing_fields": [
+          "eps",
+          "arithmetic_dtype",
+          "producer",
+          "producer_sha256"
+        ],
+        "present": false
+      },
+      "contract_matches": {
+        "arithmetic_float64": false,
+        "checkpoint_sha256": false,
+        "eps_zero": false,
+        "producer_path": false,
+        "producer_sha256": false,
+        "tokenizer_sha256": false
+      },
+      "lineage": "touched_in_hardening_commit_but_unbound",
+      "name": "beta_star",
+      "payloads": [
+        {
+          "exists": true,
+          "last_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
+          "path": "results/betastar.json",
+          "sha256": "a68d98b1687c99380a0c07a53907e9a462b497e2db70048f223b98654dbefb08"
+        }
+      ],
+      "producer": {
+        "certificate_arithmetic_dtype_marker": null,
+        "eps_assignments": [
+          0.0
+        ],
+        "exact_sign_source": true,
+        "float32_certificate_evidence": [
+          {
+            "line": 25,
+            "text": "W = model.head.weight.detach().float(); V, d = W.shape"
+          }
+        ],
+        "path": "scripts/run_1b_betastar.py",
+        "resumable_output": false,
+        "resume_binds_certificate_contract": false,
+        "sha256": "be7249669ae1367a9fc60cfabcfd4540c7971e72428b7d2b4183280411aa7a83"
+      },
+      "requirement": "frozen_hlm5_1b",
+      "resume_fail_closed": true,
+      "status": "REFRESH_REQUIRED"
+    },
+    {
+      "certificate_contract": {
+        "missing_fields": [
+          "eps",
+          "arithmetic_dtype",
+          "producer",
+          "producer_sha256"
+        ],
+        "present": false
+      },
+      "contract_matches": {
+        "arithmetic_float64": false,
+        "checkpoint_sha256": false,
+        "eps_zero": false,
+        "producer_path": false,
+        "producer_sha256": false,
+        "tokenizer_sha256": false
+      },
+      "lineage": "pre_hardening_bytes",
+      "name": "synthesis_flip",
+      "payloads": [
+        {
+          "exists": true,
+          "last_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
+          "path": "results/synth_verify.json",
+          "sha256": "e5c3c9b4f54d857f06c5f6ae8b2cc64038357d4baee7cdc32e4646e63a849454"
+        }
+      ],
+      "producer": {
+        "certificate_arithmetic_dtype_marker": null,
+        "eps_assignments": [
+          0.0
+        ],
+        "exact_sign_source": true,
+        "float32_certificate_evidence": [
+          {
+            "line": 28,
+            "text": "W = model.head.weight.detach().float(); V, d = W.shape"
+          }
+        ],
+        "path": "scripts/run_1b_synth_verify.py",
+        "resumable_output": false,
+        "resume_binds_certificate_contract": false,
+        "sha256": "1ead2d7352c602c24fdc008134660f63a1103a80ef94a9b64b5a53b565f93bbc"
+      },
+      "requirement": "frozen_hlm5_1b",
+      "resume_fail_closed": true,
+      "status": "REFRESH_REQUIRED"
+    },
+    {
+      "certificate_contract": {
+        "missing_fields": [
+          "eps",
+          "arithmetic_dtype",
+          "producer",
+          "producer_sha256"
+        ],
+        "present": false
+      },
+      "contract_matches": {
+        "arithmetic_float64": false,
+        "checkpoint_sha256": false,
+        "eps_zero": false,
+        "producer_path": false,
+        "producer_sha256": false,
+        "tokenizer_sha256": false
+      },
+      "lineage": "touched_in_hardening_commit_but_unbound",
+      "name": "faithful_certificate_dosing",
+      "payloads": [
+        {
+          "exists": true,
+          "last_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
+          "path": "results/hlm5_1b_faithful_certdosed.json",
+          "sha256": "9d04423442a7564346e706b5ae44bb5a56e4cb524615cb21dab6aeecf414caa8"
+        }
+      ],
+      "producer": {
+        "certificate_arithmetic_dtype_marker": null,
+        "eps_assignments": [
+          0.0
+        ],
+        "exact_sign_source": true,
+        "float32_certificate_evidence": [
+          {
+            "line": 98,
+            "text": "W = model.head.weight.detach().float()          # (V, d) tied head, no bias => exact"
+          },
+          {
+            "line": 160,
+            "text": "h = h.float()"
+          }
+        ],
+        "path": "scripts/run_1b_faithful_certdosed.py",
+        "resumable_output": false,
+        "resume_binds_certificate_contract": false,
+        "sha256": "9ccc8d337cff56c392aaa0350d339b31a2e186afb01b485d0db56c6d92357c02"
+      },
+      "requirement": "frozen_hlm5_1b",
+      "resume_fail_closed": true,
+      "status": "REFRESH_REQUIRED"
+    },
+    {
+      "certificate_contract": {
+        "missing_fields": [
+          "eps",
+          "arithmetic_dtype",
+          "producer",
+          "producer_sha256"
+        ],
+        "present": false
+      },
+      "contract_matches": {
+        "arithmetic_float64": false,
+        "data_sha256_present": false,
+        "eps_zero": false,
+        "jsonl_sha256": false,
+        "model_revision_present": false,
+        "producer_path": false,
+        "producer_sha256": false
+      },
+      "lineage": "pre_hardening_bytes",
+      "name": "counterfact_certificate_features",
+      "payloads": [
+        {
+          "exists": true,
+          "last_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
+          "path": "results/cert_counterfact_gpt2xl.jsonl",
+          "sha256": "05acfdb47ffedbca1986f2def735b5d10d0fa95bbd3c487feb73929b3625e4bd"
+        },
+        {
+          "exists": true,
+          "last_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
+          "path": "results/cert_counterfact_gpt2xl_summary.json",
+          "sha256": "009007821ead41dbfc2b066f73607408c000247cfa67263ba4bd7eda82a9a22e"
+        }
+      ],
+      "producer": {
+        "certificate_arithmetic_dtype_marker": null,
+        "eps_assignments": [
+          0.0
+        ],
+        "exact_sign_source": true,
+        "float32_certificate_evidence": [
+          {
+            "line": 77,
+            "text": "W = model.lm_head.weight.detach().float()   # (V, d) tied head, fp32 for cert math"
+          },
+          {
+            "line": 108,
+            "text": "h = out.hidden_states[-1][0, -1].float()       # post-ln_f last hidden"
+          }
+        ],
+        "path": "scripts/run_cert_counterfact_gpt2xl.py",
+        "resumable_output": true,
+        "resume_binds_certificate_contract": false,
+        "sha256": "e4f97c1289318c01f634652d2a92ee9e93f25fbb5b57978c2988179612f2414a"
+      },
+      "requirement": "gpt2_xl_and_counterfact",
+      "resume_fail_closed": false,
+      "status": "REFRESH_REQUIRED"
+    }
+  ],
+  "as_of": "2026-08-10",
+  "audit_implementation": {
+    "path": "scripts/audit_certificate_artifacts.py",
+    "sha256": "955af90825a9405427d7b962ee0a339f8faefd4df9d60ab782363a90d6620683"
+  },
+  "claim_scope": "Static provenance/completeness audit only; no model forward pass, metric refresh, performance claim, training, or external compute.",
+  "downstream_refresh_after_producers": [
+    {
+      "exists": true,
+      "last_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
+      "path": "results/cert_vs_editors_analysis.json",
+      "sha256": "59c7dafe765361fb80784a778eac24b1e9b083e6973daa7b126b9d9de43c41e7"
+    },
+    {
+      "exists": true,
+      "last_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
+      "path": "scripts/make_figures.py",
+      "sha256": "61b666babc5ffcb2e233ddd16120160dadc2c00f5ed397f0a7bc9e626b3c64aa"
+    },
+    {
+      "exists": true,
+      "last_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
+      "path": "paper/hlm5-paper.tex",
+      "sha256": "5cb67c8ec402b27108d79f1594f1aa89410c02bd5e31c4c98552eaaeaec459e4"
+    }
+  ],
+  "existing_verifier": {
+    "path": "scripts/verify_artifacts.py",
+    "sha256": "7689a8e4128e5f9da240e67e46616b37626d9161647e94143e885c6a370ec7b6"
+  },
+  "hardening_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
+  "initial_release_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
+  "required_contract": {
+    "arithmetic_dtype": "float64",
+    "counterfact_model_data_and_jsonl_hashes": true,
+    "eps": 0.0,
+    "frozen_hlm5_1b_checkpoint_sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1",
+    "frozen_hlm5_tokenizer_sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588",
+    "producer_path_and_sha256": true,
+    "verifier_covers_all_primary_payloads": true
+  },
+  "schema": "hlm5-certificate-artifact-refresh-audit-v1",
+  "status": "REFRESH_REQUIRED",
+  "verify_artifacts_certificate_payload_coverage": {
+    "complete": false,
+    "covered": [],
+    "required": [
+      "results/betastar.json",
+      "results/cert_counterfact_gpt2xl.jsonl",
+      "results/cert_counterfact_gpt2xl_summary.json",
+      "results/cert_envelope_multikey.json",
+      "results/cert_envelope_synth.json",
+      "results/hlm5_1b_faithful_certdosed.json",
+      "results/synth_verify.json"
+    ]
+  }
+}
