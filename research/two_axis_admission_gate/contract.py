@@ -19,6 +19,7 @@ PREFLIGHT_PATH = PACKAGE_ROOT / "preflight.json"
 REGISTRATION_PATH = PACKAGE_ROOT / "development_registration.json"
 RESULT_PATH = PACKAGE_ROOT / "results" / "two_axis_admission_development_result.json"
 ROWS_PATH = PACKAGE_ROOT / "results" / "two_axis_admission_development_rows.jsonl"
+REPLAY_PATH = PACKAGE_ROOT / "results" / "two_axis_admission_replay_receipt.json"
 
 DEFAULT_DATA_ROOT = Path(r"D:\HLM2\runtime\datasets\hwu64-official")
 DEFAULT_CHECKPOINT_PATH = Path(
@@ -27,7 +28,17 @@ DEFAULT_CHECKPOINT_PATH = Path(
 DEFAULT_TOKENIZER_PATH = Path(
     r"D:\HLM2\artifacts\models\demo\hlm5-136m-fineweb-g2-2026-06-10\tokenizer.json"
 )
-DEFAULT_CACHE_PATH = Path(r"D:\HLM2\runtime\sca2\hwu64-development-hiddens.pt")
+DEFAULT_SOURCE_CACHE_PATH = Path(
+    r"D:\HLM2\runtime\sca2\hwu64-source-audit-hiddens.pt"
+)
+DEFAULT_TARGET_CACHE_PATH = Path(
+    r"D:\HLM2\runtime\sca2\hwu64-target-development-hiddens.pt"
+)
+
+PREREG_COMMIT = "56a3cb1818f814d0a8cae589512027228b8a2723"
+EXPECTED_PREREG_SHA256 = (
+    "83f3cefbfbf3a5f172940095d30a2da94e73669c16c49d040fdcda9a88fd84d2"
+)
 
 DATASET_GIT_COMMIT = "f6071b496b17d71e6eb43f543af0707f4ff30557"
 DATASET_SCRIPTS_GIT_COMMIT = "356711b59f347532d0290f070ff9aad5af7ed02e"
@@ -62,6 +73,9 @@ EXPECTED_MANIFEST_SHA256 = {
     "file": "ae3af9eadb6511501a1c8695376b04c6176e3be8e465a68e07b0fd18477ae576",
     "scientific": "43ca391013300dd88a76c7e4a17b33503cb6682e295d5eac4071a50387590fd0",
 }
+EXPECTED_RANDOM_BASIS_SHA256 = (
+    "3d24eb4803ae658587e314df46dc48a22850c76df1559598849a06f054945683"
+)
 
 DEVELOPMENT_FOLD = 1
 TEST_FOLD = 2
@@ -118,6 +132,29 @@ PASS_BARS = {
     "candidate_max_predicted_intent_share": 0.25,
     "candidate_top1_accuracy_drop_vs_raw": 0.01,
 }
+
+IMPLEMENTATION_PATHS = (
+    PACKAGE_ROOT / "__init__.py",
+    PACKAGE_ROOT / "contract.py",
+    PACKAGE_ROOT / "prepare_hwu64.py",
+    PACKAGE_ROOT / "geometry.py",
+    PACKAGE_ROOT / "run_two_axis_admission_gate.py",
+    PACKAGE_ROOT / "tests" / "test_prepare_hwu64.py",
+    PACKAGE_ROOT / "tests" / "test_geometry.py",
+    PACKAGE_ROOT / "tests" / "test_registration.py",
+)
+
+DEPENDENCY_PATHS = (
+    REPO_ROOT / "research" / "natural_key_transfer_gate" / "contract.py",
+    REPO_ROOT / "research" / "natural_key_transfer_gate" / "geometry.py",
+    REPO_ROOT
+    / "research"
+    / "natural_key_transfer_gate"
+    / "run_natural_key_transfer_gate.py",
+    REPO_ROOT / "research" / "source_calibrated_admission_gate" / "geometry.py",
+    SNAPSHOT_ROOT / "hlm5_lm.py",
+    SNAPSHOT_ROOT / "hlm5_memory.py",
+)
 
 
 def fold_test_relative_path(fold: int) -> Path:
@@ -182,6 +219,19 @@ def relative_hashes(paths: tuple[Path, ...]) -> dict[str, str]:
 
 
 def verify_data_files(data_root: Path = DEFAULT_DATA_ROOT) -> dict[str, str]:
+    try:
+        dataset_head = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=data_root, text=True
+        ).strip()
+    except (OSError, subprocess.CalledProcessError) as error:
+        raise RuntimeError(
+            f"HWU64 source is not a readable Git checkout: {data_root}"
+        ) from error
+    if dataset_head != DATASET_GIT_COMMIT:
+        raise RuntimeError(
+            "HWU64 Git commit mismatch: "
+            f"expected {DATASET_GIT_COMMIT}, observed {dataset_head}"
+        )
     paths = {
         "LICENSE": data_root / "LICENSE",
         "README.md": data_root / "README.md",

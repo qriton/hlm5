@@ -393,11 +393,16 @@ def verify_manifest(
     return expected
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-root", type=Path, default=DEFAULT_DATA_ROOT)
     parser.add_argument("--out", type=Path, default=MANIFEST_PATH)
-    return parser.parse_args()
+    args = parser.parse_args(argv)
+    if args.data_root.resolve() != DEFAULT_DATA_ROOT.resolve():
+        parser.error("the registered CLI accepts only the pinned HWU64 data root")
+    if args.out.resolve() != MANIFEST_PATH.resolve():
+        parser.error("the registered CLI accepts only the pinned manifest output")
+    return args
 
 
 def main() -> None:
@@ -412,4 +417,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

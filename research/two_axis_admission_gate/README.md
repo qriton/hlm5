@@ -24,9 +24,26 @@ python -m unittest discover -s research\two_axis_admission_gate\tests -p "test_*
 ```
 
 Preparation reconstructs the official 64-intent benchmark from its ten Rasa
-test folds, removes three overlaps, assigns intent populations by a frozen
-salt, and writes hashes and row descriptors. It does not tokenize an utterance
-with HLM5 or compute a route.
+test folds, removes two same-label duplicates and one held-out overlap,
+assigns intent populations by a frozen salt, and writes hashes and row
+descriptors. It does not tokenize an utterance with HLM5 or compute a route.
+
+## Registered development run
+
+After committing the implementation with a clean worktree, run:
+
+```powershell
+python -m research.two_axis_admission_gate.run_two_axis_admission_gate preflight
+python -m research.two_axis_admission_gate.run_two_axis_admission_gate register
+python -m research.two_axis_admission_gate.run_two_axis_admission_gate development
+python -m research.two_axis_admission_gate.run_two_axis_admission_gate replay
+```
+
+Preflight encodes only one fixed synthetic anchor. Development creates a
+source-audit cache first. The target cache is created only if every source
+audit bar passes. Replay reads the immutable caches, compares the complete
+scientific object and row evidence, and writes a separate receipt without
+overwriting the original result.
 
 ## Claim boundary
 
@@ -34,4 +51,3 @@ Even a pass would validate a static selective-routing primitive in frozen
 HLM5 hidden space. Degree five is top-slot-equivalent to positive cosine. It
 would not establish a Hopfield advantage, recurrence, production routing,
 explanation, compliance, or scaling.
-

@@ -16,6 +16,7 @@ from research.two_axis_admission_gate.prepare_hwu64 import (
     assign_intent_groups,
     clean_partition,
     normalize_text,
+    parse_args,
     select_rows,
 )
 
@@ -73,6 +74,12 @@ class PrepareHwu64Tests(unittest.TestCase):
             [item["row_id"] for item in first],
             [item["row_id"] for item in second],
         )
+
+    def test_cli_rejects_unregistered_input_or_output_paths(self) -> None:
+        with self.assertRaises(SystemExit):
+            parse_args(["--data-root", "D:/not-the-registered-dataset"])
+        with self.assertRaises(SystemExit):
+            parse_args(["--out", "research/two_axis_admission_gate/README.md"])
 
 
 if __name__ == "__main__":
