@@ -1,5 +1,13 @@
 # HLM5 Certified Semantic Attractor Gate
 
+**Outcome (2026-08-10): clean scientific `FAIL`.** The static semantic cache
+scored `1.000` macro accuracy; the certified settle scored `0.619`. All validity
+gates passed. See the
+[`verdict`](docs/semantic-attractor-gate-verdict-2026-08-10.md) for the frozen
+numbers, digests, interpretation, and stop rule. The registered implementation
+is preserved in parent commit
+`089876491a48d3a872a9240661e1b96a7ca131f7`.
+
 This research package asks one bounded question that the validated feed-forward
 HLM5 memory cannot answer:
 
@@ -18,7 +26,7 @@ The protocol is frozen in
 Do not run the registered ParaRel assay until the implementation, tests, source
 slice, and execution command have been hashed into a registration receipt.
 
-Planned workflow:
+Registered workflow (completed):
 
 1. run unit tests and synthetic preflight only;
 2. build the deterministic ParaRel eligibility manifest without model outcomes;
