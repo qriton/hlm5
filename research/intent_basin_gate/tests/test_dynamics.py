@@ -18,6 +18,7 @@ from dynamics import (  # noqa: E402
     constrained_settle,
     independent_matched_settle,
     project_to_cap,
+    sphere_exp,
     unit,
 )
 from metrics import (  # noqa: E402
@@ -135,6 +136,43 @@ class DynamicsContractTests(unittest.TestCase):
         self.assertLessEqual(
             float(angular_distance(query, candidate).item()), 0.10 + 1e-12
         )
+
+    def test_high_dimensional_cap_roundoff_is_stably_stationary(self) -> None:
+        generator = torch.Generator(device="cpu").manual_seed(1)
+        query = unit(
+            torch.randn((1, 384), generator=generator, dtype=torch.float64)
+        )
+        tangent = torch.randn(
+            (1, 384), generator=generator, dtype=torch.float64
+        )
+        tangent = unit(tangent - (tangent * query).sum(dim=-1, keepdim=True) * query)
+        radius = 0.809161756386441
+        prototype = sphere_exp(
+            query,
+            tangent,
+            torch.tensor([radius + 0.4], dtype=torch.float64),
+        )
+        kwargs = settle_kwargs(steps=4)
+
+        candidate, trace = constrained_settle(
+            query,
+            prototype,
+            radius,
+            **kwargs,
+        )
+        matched = independent_matched_settle(
+            query,
+            prototype,
+            radius,
+            **kwargs,
+        )
+
+        self.assertEqual(
+            trace.constrained_stationary.tolist(),
+            [[False, False, True, True]],
+        )
+        self.assertEqual(trace.step_angles[0, 2:].tolist(), [0.0, 0.0])
+        self.assertLessEqual(float(torch.abs(candidate - matched).max()), 1e-10)
 
 
 class MetricContractTests(unittest.TestCase):

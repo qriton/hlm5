@@ -215,7 +215,12 @@ def constrained_settle(
             displacement, actual_angle = sphere_log(states, trial)
             directional = (energy_gradient * displacement).sum(dim=-1)
             trial_energy = memory_energy(trial, flat_prototypes, degree)
-            no_movement = actual_angle <= stationary_tolerance
+            # acos(dot) loses precision near one: a roundoff-scale projected
+            # displacement can appear to have an O(sqrt(eps)) angle.  The
+            # Euclidean chord is monotone in the spherical angle on [0, pi]
+            # and is stable for the registered no-movement decision.
+            chord_distance = torch.linalg.vector_norm(trial - states, dim=-1)
+            no_movement = chord_distance <= stationary_tolerance
             descent = directional < 0.0
             residual = trial_energy - (current_energy + armijo_c * directional)
             valid_descent = descent & (residual <= energy_tolerance)
@@ -345,7 +350,8 @@ def independent_matched_settle(
             directional = torch.sum(gradient * displacement, dim=1)
             trial_positive = torch.clamp_min(trial @ flat_prototypes.T, 0.0)
             trial_energy = -trial_positive.pow(degree + 1).mean(dim=1) / (degree + 1)
-            no_move = local_angle <= stationary_tolerance
+            chord = torch.sqrt(torch.sum((trial - current) ** 2, dim=1))
+            no_move = chord <= stationary_tolerance
             armijo = trial_energy <= old_energy + armijo_c * directional + energy_tolerance
             take_stationary = waiting & no_move & at_boundary & points_out
             take_descent = waiting & (~no_move) & (directional < 0.0) & armijo

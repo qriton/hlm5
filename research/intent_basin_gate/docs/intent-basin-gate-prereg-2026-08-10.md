@@ -164,8 +164,11 @@ E(proposal) <= E(q) + 1e-4 * <grad_S E(q), Delta> + 1e-12;
 
 If cap projection yields no movement while the direction points outside the
 feasible set, the row is copied unchanged and recorded as constrained
-stationary. Exhausting the line search for any other reason is
-`HARNESS_INVALID`.
+stationary.  For the implementation-repaired registration, no movement is the
+stable chord predicate `||proposal - q||_2 <= 1e-12`.  On the registered
+`[0, pi/2)` cap this is monotone in angular displacement and avoids the
+`O(sqrt(machine epsilon))` error of `acos(dot)` near one.  Exhausting the line
+search for any other reason is `HARNESS_INVALID`.
 
 The one-step ablation uses the identical implementation and constants with one
 outer step. The identity arm uses zero steps and must be bit-exact to `q0`.
@@ -291,3 +294,18 @@ universal explainability, robustness outside CLINC150, or an HLM-specific
 implementation advantage. The independent matched optimizer is mandatory, so
 any positive result remains reproducible as conventional constrained
 mean-shift-style state optimization.
+
+## 12. Implementation-only amendment after invalid attempt 01
+
+The first registered development execution was `HARNESS_INVALID`: one
+cap-boundary row exceeded the independent-state tolerance because
+`acos(dot)` reported an apparent `1.49e-08` movement for a projected
+roundoff-scale chord.  The complete attempt and its original receipts are
+preserved under `results/invalid-attempt-01/`.
+
+Before any retry, both implementations changed only their no-movement
+predicate to the chord definition in Section 5, and a deterministic
+384-dimensional regression was added.  Degree, encoder, prototypes, centering,
+trust-radius derivation, step schedule, Armijo rule, controls, scientific bars,
+data, and seeds are unchanged.  A retry requires a new clean preflight and a
+new pre-outcome development registration.

@@ -11,6 +11,12 @@ sealed unless the frozen validation gate returns `PASS_TO_TEST`. The protocol is
 in
 [`docs/intent-basin-gate-prereg-2026-08-10.md`](docs/intent-basin-gate-prereg-2026-08-10.md).
 
+Development attempt 01 was formally `HARNESS_INVALID` because one
+cap-boundary state exposed an unstable near-one `acos` no-movement check.  Its
+receipts and outputs are archived byte-for-byte in `results/invalid-attempt-01/`.
+The implementation-only chord-distance repair is awaiting a fresh preflight
+and registration; no scientific conclusion is taken from the invalid attempt.
+
 Workflow:
 
 1. generate the outcome-blind manifests from the pinned official source;
