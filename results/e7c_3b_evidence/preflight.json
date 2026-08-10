@@ -1,0 +1,184 @@
+{
+  "baseline_only_head_identity": {
+    "argmax_equal": true,
+    "hidden_dtype": "bfloat16",
+    "hidden_sha256": "fbb184467e884fe6f0452ca624afb986552893fc6daba0482a9618da8d32f6fa",
+    "independent_argmax": 31843,
+    "independent_logits_sha256": "d7f921289857914bc0472a9da0d1feda16e1856c45840952c67d1ca278817bac",
+    "logits_dtype": "bfloat16",
+    "max_abs_logit_difference": 0.0,
+    "maximum_allowed": 0.125,
+    "native_argmax": 31843,
+    "native_logits_sha256": "d7f921289857914bc0472a9da0d1feda16e1856c45840952c67d1ca278817bac",
+    "prompt_sha256": "32b3c71b5eea9980b3b927757d3c5c7854416b3f703170d886dd779630784d33"
+  },
+  "basis_and_directions": {
+    "direction_dtype": "float64",
+    "direction_shape": [
+      1200,
+      2048
+    ],
+    "eigenvalues_sha256": "7f33aaca070a3539f8c4c65a0e8a56ef82a2813d950ec910335160f971da4971",
+    "eigenvectors_sha256": "d5e1b3f6c5fafa4b9fd46bfbcbf1eddd982a2b19ea9a40542ba236a8ebdb3fad",
+    "mean_sha256": "ae2b4c5d0c3aa902b7ae61dfb320177fea40270c1450f15a9fb5c064bed9e489",
+    "median_positive_eigenvalue": 0.007535659708082676,
+    "operator_dtype": "float64",
+    "operator_sha256": "ac2536bf5a28014c665177fb89ff907ae2456a276c5c096edc767900b4a8d065",
+    "operator_shape": [
+      2048,
+      2048
+    ],
+    "raw_directions_sha256": "a061c9f4e4f6ae6536d2132d1141758fb559e33c6c766571b6ff6e9e6b75a8b2",
+    "ridge": 7.535659708082676e-05,
+    "ridge_fraction": 0.01,
+    "zca_directions_sha256": "3a9552e683ca6e0832d99453256cc7e7ab1fff3172c205467cc0ec8a8b35c47f"
+  },
+  "branch": "feat/hlm5-e7c-geometry-repair",
+  "commands": [
+    "python scripts/preflight_e7c_3b.py",
+    "python scripts/register_e7c_3b.py",
+    "python scripts/admit_e7c_3b.py",
+    "python scripts/replay_e7c_3b.py",
+    "python scripts/verify_e7c_3b.py"
+  ],
+  "dependency_sha256": {
+    "hlm5/__init__.py": "6122cf699b74d696a62fc95ee46b3bcde76ae9fd6e4bccda8a17fc55609d0e57",
+    "hlm5/certify.py": "a13544eb242cb1f827496a46a6d943723ad51f35b827fe47d2da641e26a1c210",
+    "hlm5/e7_contract.py": "5b7717f5da089db8b1d9d1d611251a2d01ef8fcbf5a719836692abde4a0fc74d",
+    "hlm5/e7_runtime.py": "c56bda88db7173d11e81c7705f31ef5439b3d9b3b7946117e56578d9059917cc",
+    "hlm5/e7b_contract.py": "606d95ca4972d1febadf6348c441449574f1c33eb2f3b7b71b3f79df27c31119",
+    "hlm5/e7b_runtime.py": "bf6e7b0abfe83d0da0f146ae72dc69d52b0469fcc311689c535a7628ea2fdbc2",
+    "hlm5/edit_audit.py": "930d51619bb240e13a15412f6db92b0cf58a87e17a405dc7110bbaaa2e8e8930",
+    "hlm5/io.py": "5886ce8331ba42ca0ee75dd67746665be58d174e5f3416ad661f81c7d7685439",
+    "hlm5/key_value.py": "a0bacdfcba80397bfacefa7c7762bcb202fb91363da0e6fa902f9c707c70140a",
+    "hlm5/memory.py": "91cb50810a99079e77056291a775a878483ca6c5ddb05f2c671623c8887db973",
+    "hlm5/model.py": "2f810bde52bbf3e0da9f52640bf36ca924cd665bd6a7036155f0581494b8857c",
+    "hlm5/public_adapter.py": "9a7f77976ef604d318f42821e36491a13a156ae7e00af49a255ca2fec90f650d",
+    "scripts/analyze_e7c_spent_geometry.py": "2d24c8367f3c6e9f1734d16107b96b17f224811124a1d6300e2d5599619aa109",
+    "scripts/run_e7_3b.py": "48ba22bfc1e6a0824a7f659bd945e028e8d1eb5999b07c21d018a74e6a97d10e"
+  },
+  "development_evidence": {
+    "e7b_result_sha256": "9a5232b33f8828195794cb137ee2ec83e10ec8af524418abe3608cf0ac2d4d11",
+    "e7b_verdict_sha256": "5f5e35f71d432d2df0287c7dec1350e8b53c3dae7bea0f025634536a3a6fd016",
+    "selected_candidate": "zca_half_raw_r1e2",
+    "spent_screen_scientific_sha256": "83e17daed19cfcf5b13e1d6672714d9f7537dde5ed0466a4cbc64631568c6bf2",
+    "spent_screen_sha256": "80e529870bfd9d727e85ae4115c8c399b3f23ad94143d1a01cc713e060790104"
+  },
+  "eligible_token_count": 41518,
+  "environment": {
+    "cuda_runtime": "12.1",
+    "cudnn": 90100,
+    "device_capability": [
+      8,
+      0
+    ],
+    "device_count": 1,
+    "device_name": "NVIDIA A100-SXM-64GB",
+    "device_type": "cuda",
+    "platform": "Linux-4.18.0-477.27.1.el8_8.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.6",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.12.1"
+  },
+  "fresh_prompt_outcomes_computed": false,
+  "implementation_commit": "58cedff87f270f1e7047e491a80565b7da05390f",
+  "model_file_sha256": {
+    "config.json": "e8336e843aecb733691a043ad4209168e1730158b5e03c2672591cc946036a47",
+    "generation_config.json": "7d830c1a274c4484a50eb34ed68cdbd3611a4981fd4d539c7ec1fed67e01cec4",
+    "model-00001-of-00002.safetensors": "7e270ac568ee1880ddbadad66ccdcd9906d52415e8904e2f300c75250b9c7d49",
+    "model-00002-of-00002.safetensors": "c6a6e7690a66dcc386a6a9b456686e7c308d45cba884d116c928dafa7fa987ae",
+    "model.safetensors.index.json": "e3a7254c086c4a78f95ad5864f435d165ffed1ed8998326ce5107b4423c15b76",
+    "special_tokens_map.json": "9faaa15579bbf433176493a621142ff580ae2d13d81bf4702cb72f4d6902dc62",
+    "tokenizer.json": "ab4da6b2aa68247e9c0fa9b97fc7fcc796505038d01f7e144522a65ce0dbd2e5",
+    "tokenizer_config.json": "f398d9edb0184aac1c9fd1b1bdcd3a5a1527ae560fd847719635a66e2b54e9cd"
+  },
+  "model_files": {
+    "config.json": {
+      "bytes": 943,
+      "sha256": "e8336e843aecb733691a043ad4209168e1730158b5e03c2672591cc946036a47"
+    },
+    "generation_config.json": {
+      "bytes": 126,
+      "sha256": "7d830c1a274c4484a50eb34ed68cdbd3611a4981fd4d539c7ec1fed67e01cec4"
+    },
+    "model-00001-of-00002.safetensors": {
+      "bytes": 4966315264,
+      "sha256": "7e270ac568ee1880ddbadad66ccdcd9906d52415e8904e2f300c75250b9c7d49"
+    },
+    "model-00002-of-00002.safetensors": {
+      "bytes": 1183919744,
+      "sha256": "c6a6e7690a66dcc386a6a9b456686e7c308d45cba884d116c928dafa7fa987ae"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 26899,
+      "sha256": "e3a7254c086c4a78f95ad5864f435d165ffed1ed8998326ce5107b4423c15b76"
+    },
+    "special_tokens_map.json": {
+      "bytes": 151,
+      "sha256": "9faaa15579bbf433176493a621142ff580ae2d13d81bf4702cb72f4d6902dc62"
+    },
+    "tokenizer.json": {
+      "bytes": 17208861,
+      "sha256": "ab4da6b2aa68247e9c0fa9b97fc7fcc796505038d01f7e144522a65ce0dbd2e5"
+    },
+    "tokenizer_config.json": {
+      "bytes": 50405,
+      "sha256": "f398d9edb0184aac1c9fd1b1bdcd3a5a1527ae560fd847719635a66e2b54e9cd"
+    }
+  },
+  "model_id": "HuggingFaceTB/SmolLM3-3B-Base",
+  "model_invariants": {
+    "all_parameters_frozen": true,
+    "class_name": "SmolLM3ForCausalLM",
+    "floating_parameter_dtypes": [
+      "bfloat16"
+    ],
+    "head_bias_is_none": true,
+    "hidden_size": 2048,
+    "layers": 36,
+    "parameter_count": 3075098624,
+    "tied_embeddings": true,
+    "vocab_size": 128256
+  },
+  "model_revision": "d78a42f79198603e614095753484a04c10c2b940",
+  "native_runtime": {
+    "autocast_enabled": false,
+    "cuda_matmul_allow_bf16_reduced_precision_reduction": true,
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "deterministic_algorithms": false,
+    "float32_matmul_precision": "highest"
+  },
+  "preflight_test_command": "python -m pytest tests/test_e7c_3b.py -q",
+  "preflight_tests_returncode": 0,
+  "preflight_tests_stderr": "",
+  "preflight_tests_stdout": "............                                                             [100%]\n12 passed in 5.89s",
+  "prompt": "The capital of Vorenia is",
+  "prompt_sha256": "0a30c4661b062d65055580bd1dad19d345ab3a9f6f726a28afb7c68548272e1c",
+  "protocol_commit": "18df17ad9ffc9001b8c0c2e75ce5291690012253",
+  "protocol_sha256": "59f7b4570951378041be3f800bb8ce1e7438e449b9d95d057a98cbaa2fc6039a",
+  "raw_candidate_equal": false,
+  "registered_target_pool_count": 1200,
+  "registered_target_pool_first": 7863,
+  "registered_target_pool_last": 10844,
+  "registered_target_pool_sha256": "fdde53009a17b075fadacafeb15053df08f7f9e97d12f5a9c950d0a5b58b2ff4",
+  "schema": "hlm5-e7c-3b-preflight-v1",
+  "snapshot_selector": "HLM5_E7_SNAPSHOT",
+  "source_sha256": {
+    "hlm5/e7c_contract.py": "6534f309b37589d679e1467a163baabea0f060273670dbbfdf2927c0f755dfbc",
+    "hlm5/e7c_runtime.py": "55b7daf0d1d65303db5a3331ddc9b3db701e512ea45f2823a2dbfece35a58d23",
+    "scripts/admit_e7c_3b.py": "8ada76eb8777c21665e0a26a49aef26a0db374916afc94ba5a1a846b938fd4ee",
+    "scripts/preflight_e7c_3b.py": "ec3576e8b01b593081f4f8550727800d8b7ef937ead439c903bff203fc48c7fa",
+    "scripts/register_e7c_3b.py": "937fdaadbec7c53bc6470c6962a2aa082003014bb1688a189ecdca15ba548abb",
+    "scripts/replay_e7c_3b.py": "20a9c3387b2fc63cd314b381cce57e92631a00e8ccb923915f63b6170f3faf5a",
+    "scripts/verify_e7c_3b.py": "c4beaa1f952e5bb78caa5936180cb900da18d5c3e8648955fe47707c41319ccd",
+    "tests/test_e7c_3b.py": "e40fe18e027e6f03e16ca9894f31b7c343928b15fb1e0322325b1702b6698ea1"
+  },
+  "status": "READY",
+  "target_pool_count": 1200,
+  "target_pool_first": 7863,
+  "target_pool_last": 10844,
+  "target_pool_overlap_with_e7": 0,
+  "target_pool_overlap_with_e7b": 0,
+  "target_pool_sha256": "fdde53009a17b075fadacafeb15053df08f7f9e97d12f5a9c950d0a5b58b2ff4"
+}
