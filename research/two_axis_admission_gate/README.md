@@ -17,6 +17,10 @@ Development is concluded:
 The registered class-gap axis changed no source-audit admission, so target
 development and official fold 2 remain unencoded.
 
+A post-result
+[`support-consensus source screen`](docs/support-consensus-source-screen-2026-08-10.md)
+also closed the nearest-support scalar-repair path without target access.
+
 ## Outcome-blind population preparation
 
 Place the official repository at
