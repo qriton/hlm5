@@ -99,6 +99,14 @@ certificate/dosing producers (`run_1b_certificate.py`,
 `run_cert_counterfact_gpt2xl.py`) and rebuild figures/artifacts from the
 regenerated JSONs.
 
+The 2026-08-10
+[`certificate artifact refresh audit`](docs/certificate-artifact-refresh-audit-2026-08-10.md)
+now makes that warning executable. Its current status is `REFRESH_REQUIRED`:
+the six producer families use exact signs but still calculate their certificate
+tensors in float32, lack a complete producer/model/data contract, and the
+CounterFact resume path can retain unbound old rows. Do not relabel or republish
+the old JSONs; repair and freeze the producers first.
+
 | Result | Value | Artifact |
 | --- | --- | --- |
 | Certificate-dosed efficacy | **0.765** (13/17), 95% CI [0.529, 0.941] | `hlm5_1b_faithful_certdosed.json` (`cert_naive` arm) |
