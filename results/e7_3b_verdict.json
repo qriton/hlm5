@@ -1,0 +1,11 @@
+{
+  "binding_bars_passed": true,
+  "claim_boundary": "A pass applies only to the pinned SmolLM3-3B-Base revision, single-token targets, and registered exact-key evaluation.",
+  "result_sha256": "42174f0e8d3658e39a8a82b730844fd0c4e77161d4ebc81456243b645141c05c",
+  "schema": "hlm5-e7-3b-verdict-v1",
+  "scientific_failures": [
+    "not every directly certified target succeeded"
+  ],
+  "validity_failures": [],
+  "verdict": "FAIL_3B_PORTABILITY"
+}

@@ -1363,6 +1363,28 @@ for four reachable facts and silently fails them.}
 \label{tab:trunk}
 \end{table*}
 
+\subsection{Frozen-$3$B adapter portability}
+
+We preregistered E7 against the frozen, public
+\texttt{HuggingFaceTB/SmolLM3-3B-Base} trunk (3.075B parameters, tied bias-free
+head), with no training or attention replacement
+(\texttt{e7\_3b\_result.json}). The operating envelope remained broad over
+$60\times1{,}200$ key--target pairs (mean reachable fraction $0.8597$, population
+SD $0.0090$). The exact-key memory path admitted $11/18$ faithful facts and
+succeeded on all $11$; the seven refused exact keys, all $54$ paraphrases, and
+all eight neutral prompts produced zero false gates, with neutral logits
+bit-identical in $8/8$ cases.
+
+The registered all-target portability bar nevertheless \emph{failed}: only
+$1{,}027/1{,}028$ float64-certified direct injections survived the ordinary
+BF16 output head. The sole miss had a positive float64 margin ($2.2586$) but
+rounded to a zero-margin BF16 tie. The formal verdict is therefore
+\texttt{FAIL\_3B\_PORTABILITY} with no implementation-validity failures
+(\texttt{e7\_3b\_verdict.json}). Thus the adapter and selective gate transfer,
+but the float64 point certificate is not yet an unconditional deployment
+certificate at BF16; a finite-precision-aware bound is required. This experiment
+does not test the co-trained no-tax claim at $3$B.
+
 \subsection{Receipts}
 \label{sec:receipts}
 
@@ -1419,9 +1441,11 @@ claims are falsifiable rather than merely incomplete.
   seeds with confidence intervals. \emph{Pass:} the reachability and locality
   results hold under these metrics (median post-edit margin is currently only
   $1.51$ at probability $\approx0.50$, \S\ref{sec:envelope}).
-  \item \textbf{E7: scale.} Repeat the gates, operating envelope, and certificate
-  at $3$B. \emph{Pass:} the certificate's
-  predictive accuracy and the no-tax result hold at $3$B.
+  \item \textbf{E7: scale.} The frozen-adapter subtest is closed with a valid
+  strict failure: $1{,}027/1{,}028$ direct certificates survive BF16, while the
+  full faithful path is $11/11$ with zero off-support gates and exact neutral
+  locality. The remaining work is a preregistered finite-precision certificate;
+  the co-trained no-tax result at $3$B remains unmeasured.
   \item \textbf{E8: native energy-based trunks.} Port the certified operator set
   (Table~\ref{tab:energylang}) from the additive external memory to a natively
   energy-based, polynomial-Hopfield language model (HLM3, the predecessor

@@ -1,0 +1,58 @@
+{
+  "candidate_outputs_computed_before_receipt": false,
+  "environment": {
+    "cuda_runtime": "12.1",
+    "cudnn": 90100,
+    "deterministic_algorithms": false,
+    "device_capability": [
+      8,
+      9
+    ],
+    "device_name": "NVIDIA RTX 4000 SFF Ada Generation",
+    "device_type": "cuda",
+    "platform": "Windows-10-10.0.20348-SP0",
+    "python": "3.11.7",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.12.1"
+  },
+  "implementation_commit": "436396deba0234987ec5a0a8b66dbda406a7beea",
+  "model_file_sha256": {
+    "config.json": "e8336e843aecb733691a043ad4209168e1730158b5e03c2672591cc946036a47",
+    "generation_config.json": "7d830c1a274c4484a50eb34ed68cdbd3611a4981fd4d539c7ec1fed67e01cec4",
+    "model-00001-of-00002.safetensors": "7e270ac568ee1880ddbadad66ccdcd9906d52415e8904e2f300c75250b9c7d49",
+    "model-00002-of-00002.safetensors": "c6a6e7690a66dcc386a6a9b456686e7c308d45cba884d116c928dafa7fa987ae",
+    "model.safetensors.index.json": "e3a7254c086c4a78f95ad5864f435d165ffed1ed8998326ce5107b4423c15b76",
+    "special_tokens_map.json": "9faaa15579bbf433176493a621142ff580ae2d13d81bf4702cb72f4d6902dc62",
+    "tokenizer.json": "ab4da6b2aa68247e9c0fa9b97fc7fcc796505038d01f7e144522a65ce0dbd2e5",
+    "tokenizer_config.json": "f398d9edb0184aac1c9fd1b1bdcd3a5a1527ae560fd847719635a66e2b54e9cd"
+  },
+  "preflight_sha256": "93e95bfb21b2efc5c04b69c09b6ede17c07b1fca739cdfd37d6e391d672fbd19",
+  "protocol_commit": "6a73bab5a37622b14fb30800fd92f298c479d781",
+  "protocol_sha256": "979a9b9abcba1420c7ed9253ad7f6d2353b0bccc499a486b45319f29cbd43be0",
+  "registered_commands": [
+    "python scripts/preflight_e7_3b.py",
+    "python scripts/run_e7_3b.py",
+    "python scripts/verify_e7_3b.py"
+  ],
+  "sample_sha256": "69a5aeb100c53a6a9dfe8f46720dcebdd7aaa7d0467d939822d5832d5723bd4c",
+  "schema": "hlm5-e7-3b-execution-receipt-v1",
+  "source_sha256": {
+    "hlm5/__init__.py": "6122cf699b74d696a62fc95ee46b3bcde76ae9fd6e4bccda8a17fc55609d0e57",
+    "hlm5/certify.py": "a13544eb242cb1f827496a46a6d943723ad51f35b827fe47d2da641e26a1c210",
+    "hlm5/e7_contract.py": "5b7717f5da089db8b1d9d1d611251a2d01ef8fcbf5a719836692abde4a0fc74d",
+    "hlm5/e7_runtime.py": "c56bda88db7173d11e81c7705f31ef5439b3d9b3b7946117e56578d9059917cc",
+    "hlm5/memory.py": "91cb50810a99079e77056291a775a878483ca6c5ddb05f2c671623c8887db973",
+    "hlm5/public_adapter.py": "9a7f77976ef604d318f42821e36491a13a156ae7e00af49a255ca2fec90f650d",
+    "scripts/preflight_e7_3b.py": "be17f398bdafe6b2a1f6a81c2f3b05e26309efe134612debdacd39a63d120f07",
+    "scripts/run_e7_3b.py": "48ba22bfc1e6a0824a7f659bd945e028e8d1eb5999b07c21d018a74e6a97d10e",
+    "scripts/verify_e7_3b.py": "9c3a75bd3e60c07da9a4a4d3e49829803d3656144b55523cc56bfd8eeaee6bec",
+    "slurm/e7_3b_leonardo.sbatch": "dddb11b5a8b2a1caa6dd3938353397d3923f63555c55682cf6d0745b43bfad2e",
+    "tests/test_e7_3b.py": "3d4682c11b4f4bd351f6070f6140dff520055e22a80766467a796ec51d90c84b"
+  },
+  "status": "READY",
+  "target_pool_sha256": "5660e3ae657779c4a2444cc4123848b86a4e2669aa7fea5dd5972532fc126b52",
+  "test_command": "python -m pytest tests/test_e7_3b.py -q",
+  "tests_returncode": 0,
+  "tests_stderr": "",
+  "tests_stdout": "..........                                                               [100%]\n10 passed in 1.39s"
+}

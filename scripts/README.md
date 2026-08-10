@@ -30,6 +30,7 @@ inputs.
 | `run_incontext_mqar.py` | `incontext_mqar.json` |
 | `run_edit_receipt_demo.py` | `edit_receipts.json` |
 | `run_fineweb_kb_inject.py` | `g2c_rare.json` (`--target-mode rare --k 32`); also the source of the G2b/G3b/G3c spread/rare gate JSONs, invoked with different `--target-mode`/`--k`/`--checkpoint` flags |
+| `preflight_e7_3b.py`, `run_e7_3b.py`, `verify_e7_3b.py` | `e7_3b_preflight.json`, `e7_3b_execution_receipt.json`, `e7_3b_result.json`, `e7_3b_verdict.json` (promoted from `e7_3b_staging/` only after formal verdict) |
 
 `verify_artifacts.py` loads every JSON in `results/` and asserts the
 paper's load-bearing numbers against them; run with `python scripts/verify_artifacts.py`.

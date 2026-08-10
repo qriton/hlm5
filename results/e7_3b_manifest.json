@@ -1,0 +1,27 @@
+{
+  "artifact_sha256": {
+    "results/e7_3b_execution_receipt.json": "c89928493758258c83b12b0f067531f11f40f92549f4d7207acc16d72f8cebc5",
+    "results/e7_3b_preflight.json": "93e95bfb21b2efc5c04b69c09b6ede17c07b1fca739cdfd37d6e391d672fbd19",
+    "results/e7_3b_result.json": "42174f0e8d3658e39a8a82b730844fd0c4e77161d4ebc81456243b645141c05c",
+    "results/e7_3b_verdict.json": "83c139aac4f25f98ac58dee5fd468f7a2bae920732a8f7587953033370dcf0ed"
+  },
+  "implementation_commit": "436396deba0234987ec5a0a8b66dbda406a7beea",
+  "protocol_commit": "6a73bab5a37622b14fb30800fd92f298c479d781",
+  "protocol_sha256": "979a9b9abcba1420c7ed9253ad7f6d2353b0bccc499a486b45319f29cbd43be0",
+  "schema": "hlm5-e7-3b-promotion-manifest-v1",
+  "scientific_record": {
+    "accepted_faithful": 11,
+    "accepted_faithful_exact_full_successes": 11,
+    "direct_certificates_accepted": 1028,
+    "direct_ordinary_bfloat16_successes": 1027,
+    "false_gate_applications": 0,
+    "neutral_bit_identical": 8,
+    "neutral_checked": 8,
+    "sole_direct_failure_bfloat16_margin": 0.0,
+    "sole_direct_failure_float64_margin": 2.2585672901487284,
+    "sole_direct_failure_target_id": 922
+  },
+  "scope": "Pinned SmolLM3-3B-Base revision; single-token, exact-key HLM5 adapter evaluation; no training or attention replacement.",
+  "validity_failures": [],
+  "verdict": "FAIL_3B_PORTABILITY"
+}

@@ -47,6 +47,20 @@ PROMOTED_ARTIFACT_SHA256 = {
         "92ee35f7ce7043b0d55ca0e09d1f544339bf6c810c2d96c96fc6e2e654b1a90c"
     ),
 }
+E7_ARTIFACT_SHA256 = {
+    "results/e7_3b_execution_receipt.json": (
+        "c89928493758258c83b12b0f067531f11f40f92549f4d7207acc16d72f8cebc5"
+    ),
+    "results/e7_3b_preflight.json": (
+        "93e95bfb21b2efc5c04b69c09b6ede17c07b1fca739cdfd37d6e391d672fbd19"
+    ),
+    "results/e7_3b_result.json": (
+        "42174f0e8d3658e39a8a82b730844fd0c4e77161d4ebc81456243b645141c05c"
+    ),
+    "results/e7_3b_verdict.json": (
+        "83c139aac4f25f98ac58dee5fd468f7a2bae920732a8f7587953033370dcf0ed"
+    ),
+}
 
 FAILURES: list[str] = []
 
@@ -507,6 +521,109 @@ def verify_certificate_refresh() -> None:
     )
 
 
+def verify_e7_3b_portability() -> None:
+    preflight = load("e7_3b_preflight.json")
+    receipt = load("e7_3b_execution_receipt.json")
+    result = load("e7_3b_result.json")
+    verdict = load("e7_3b_verdict.json")
+    manifest = load("e7_3b_manifest.json")
+    actual_hashes = {
+        name: result_sha256(name.removeprefix("results/"))
+        for name in E7_ARTIFACT_SHA256
+    }
+    check(
+        "E7 3B manifest: exact promoted artifacts and valid scientific FAIL",
+        actual_hashes == E7_ARTIFACT_SHA256
+        and manifest.get("schema") == "hlm5-e7-3b-promotion-manifest-v1"
+        and manifest.get("artifact_sha256") == E7_ARTIFACT_SHA256
+        and manifest.get("verdict") == "FAIL_3B_PORTABILITY"
+        and manifest.get("validity_failures") == [],
+        f"actual_hashes={actual_hashes!r}",
+    )
+
+    identity = preflight.get("baseline_only_head_identity", {})
+    invariants = preflight.get("model_invariants", {})
+    check(
+        "E7 3B preflight: frozen 3.075B BF16 trunk and independent head identity",
+        preflight.get("status") == "READY"
+        and preflight.get("implementation_commit")
+        == "436396deba0234987ec5a0a8b66dbda406a7beea"
+        and invariants.get("parameter_count") == 3_075_098_624
+        and invariants.get("tied_embeddings") is True
+        and invariants.get("head_bias_is_none") is True
+        and invariants.get("all_parameters_frozen") is True
+        and invariants.get("floating_parameter_dtypes") == ["bfloat16"]
+        and identity.get("argmax_equal") is True
+        and identity.get("max_abs_logit_difference") == 0.0625
+        and preflight.get("candidate_outputs_computed") is False,
+        f"invariants={invariants!r}, identity={identity!r}",
+    )
+    check(
+        "E7 3B execution receipt: tests passed before candidate access",
+        receipt.get("status") == "READY"
+        and receipt.get("preflight_sha256")
+        == E7_ARTIFACT_SHA256["results/e7_3b_preflight.json"]
+        and receipt.get("tests_returncode") == 0
+        and receipt.get("candidate_outputs_computed_before_receipt") is False,
+        f"status={receipt.get('status')!r}, tests={receipt.get('tests_returncode')!r}",
+    )
+
+    validity = result.get("validity", {})
+    contract = result.get("certificate_contract", {})
+    check(
+        "E7 3B result: every implementation-validity bar passed",
+        result.get("schema") == "hlm5-e7-3b-result-v1"
+        and result.get("status") == "COMPLETE"
+        and validity
+        and all(value is True for key, value in validity.items() if key.startswith("all_"))
+        and validity.get("original_scalar_vector_match") is True
+        and validity.get("keys_checked") == 60
+        and validity.get("target_pool_count") == 1200
+        and validity.get("gate_rows_checked") == 80
+        and contract.get("producer_sha256")
+        == sha256_path(os.path.join(ROOT, "scripts", "run_e7_3b.py"))
+        and contract.get("preflight_sha256")
+        == E7_ARTIFACT_SHA256["results/e7_3b_preflight.json"]
+        and contract.get("execution_receipt_sha256")
+        == E7_ARTIFACT_SHA256["results/e7_3b_execution_receipt.json"],
+        f"validity={validity!r}",
+    )
+
+    direct = result.get("direct_certified_injection", {})
+    failed_direct = [
+        row for row in direct.get("rows", []) if not row.get("ordinary_head_success")
+    ]
+    faithful = result.get("faithful", {})
+    faithful_summary = faithful.get("summary", {})
+    check(
+        "E7 3B scientific record: 1027/1028 direct, 11/11 faithful, zero false gates",
+        direct.get("accepted_count") == 1028
+        and direct.get("ordinary_head_success_count") == 1027
+        and len(failed_direct) == 1
+        and failed_direct[0].get("target_id") == 922
+        and close(failed_direct[0].get("float64_margin"), 2.2585672901487284, 1e-12)
+        and failed_direct[0].get("ordinary_bfloat16_margin") == 0.0
+        and faithful.get("accepted_count") == 11
+        and faithful_summary.get("accepted_exact_full_successes") == 11
+        and faithful_summary.get("false_gate_applications") == 0
+        and faithful_summary.get("neutral_bit_identical") == 8,
+        f"direct={direct.get('ordinary_head_success_count')}/{direct.get('accepted_count')}, "
+        f"faithful={faithful_summary!r}",
+    )
+    check(
+        "E7 3B verdict: implementation-valid FAIL at the float64-to-BF16 boundary",
+        verdict.get("schema") == "hlm5-e7-3b-verdict-v1"
+        and verdict.get("binding_bars_passed") is True
+        and verdict.get("validity_failures") == []
+        and verdict.get("verdict") == "FAIL_3B_PORTABILITY"
+        and verdict.get("scientific_failures")
+        == ["not every directly certified target succeeded"]
+        and verdict.get("result_sha256")
+        == E7_ARTIFACT_SHA256["results/e7_3b_result.json"],
+        f"verdict={verdict!r}",
+    )
+
+
 def main() -> int:
     verify_capacity_search_report()
     verify_scale_suite_report()
@@ -518,6 +635,7 @@ def main() -> int:
     verify_no_tax("g2a_no_tax.json")
     verify_no_tax("g3a_no_tax.json")
     verify_certificate_refresh()
+    verify_e7_3b_portability()
 
     # Count PASS/FAIL lines were already printed; just summarize failures.
     print()

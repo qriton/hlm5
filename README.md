@@ -113,6 +113,7 @@ promoted payload bytes.
 | Gate selectivity | perfectly separable (exact-key 1.0, all off-target 0.0); own-slot weight 0.9993 | `gate_roc.json`, `ownslot_weight_certdosed.json` |
 | GPT-2 controlled study (incl. ROME) | HLM5 vs. logit-bias McNemar p = 6e-5; ROME re-impl 0.815/0.854, EasyEdit ref 0.972/0.771 | `gpt2_table1_v2.json`, `rome_gpt2.json`, `rome_easyedit_gpt2.json` |
 | Certificate predicts editors (CounterFact, exploratory) | ROME paraphrase ρ = −0.16, p = 0.005; FT ρ = −0.13, p = 0.023; neighborhood damage ROME/GRACE p < 0.01 | `cert_vs_editors_analysis.json` |
+| Frozen public 3B portability (strict registered verdict) | **Valid FAIL:** 1,027/1,028 direct certificates survive ordinary BF16; 11/11 admitted faithful edits succeed; 0/69 off-support gates; 8/8 neutral outputs bit-identical | `e7_3b_result.json`, `e7_3b_verdict.json` |
 
 The reachability frontier is the honest core: a *global* edit strength overshoots
 the certified interval and silently fails reachable edits (0.529); the certified
@@ -122,6 +123,19 @@ zero gradients and paraphrase transfer 0.020. A gate-matched static logit bias i
 stronger on efficacy (1.000) while matching generalization/locality; HLM5's value
 here is the a-priori admission test, certified dose, selective synthesis rescue,
 and audit trail, not raw editing power.
+
+The registered E7 adapter test used the pinned, frozen
+`HuggingFaceTB/SmolLM3-3B-Base` revision with no training and no attention
+replacement. Its formal verdict is `FAIL_3B_PORTABILITY`, with every
+implementation-validity bar passing. The sole direct miss was target token
+`" about"`: its float64 certified margin was +2.2586, but the ordinary BF16 head
+rounded the decision to a zero-margin tie. The full exact-key memory path still
+passed 11/11 admitted facts, refused 7/18, opened no off-support gate across 7
+refused keys, 54 paraphrases, and 8 neutral prompts, and preserved all 8 neutral
+logit tensors bit-for-bit. This is evidence that the adapter and gate transfer,
+but also that a float64 point certificate is not yet a deployment certificate at
+BF16. A finite-precision-aware admission bound is the next bounded target. The
+3B co-training/no-tax experiment remains unmeasured.
 
 ## Repository layout
 
@@ -167,6 +181,14 @@ local FineWeb uint16 shards supplied with `--val-bin`/`--train-bin`.
 | `run_notax_params.py` | `notax_params.json` | 1B, hybrid, 136M | Parameter counts for the matched-pair no-tax table (baseline 1B ≈ 1.045B params) |
 | `run_seq_edit_stream.py` | `seq_edit_stream.json` | 1B, GPU | Latency flat to 1,024 edits (~2.3 ms/query); efficacy confounded — see `RESULTS.md` |
 | `read_and_memorize.py` | `read_and_memorize_receipts.json` | 1B, CPU | End-to-end governed read→admit→memorize→verify demo with receipts |
+
+### Frozen public 3B adapter portability
+
+| Script | Output (`results/`) | Requirements | Finding |
+| --- | --- | --- | --- |
+| `preflight_e7_3b.py` | `e7_3b_preflight.json`, `e7_3b_execution_receipt.json` | pinned SmolLM3 3B, GPU | Outcome-blind architecture/head check and post-test source receipt |
+| `run_e7_3b.py` | `e7_3b_result.json` | pinned SmolLM3 3B, GPU | 60×1,200 envelope; direct ordinary-head check; faithful gate/memory/locality run |
+| `verify_e7_3b.py` | `e7_3b_verdict.json` | CPU + promoted receipts | Implementation-valid `FAIL_3B_PORTABILITY`: one BF16 tie among 1,028 direct accepts |
 
 ### GPT-2 controlled study and locate-and-edit baselines
 
@@ -240,9 +262,15 @@ Adapted from [`results/RESULTS.md`](results/RESULTS.md); no inflation.
 - **Exploratory:** the certificate-predicts-editors correlations on CounterFact
   (paraphrase: required strength L; neighborhood: certified-dose margin —
   ROME/FT/GRACE) — signed and significant but exploratory.
-- **Planned, not measured:** the robust certificate's drift calibration (ε_h,
-  ε_r), 3B scale, and the full public-benchmark sweep (CounterFact/zsRE/MQuAKE ×
-  MEMIT/MEND/SERAC). The paper's Limitations section states each as a named
+- **Measured strict failure:** the frozen-public-3B adapter test is
+  implementation-valid but misses its all-direct-target bar by one BF16 tie
+  (1,027/1,028); its full faithful path is 11/11 with zero off-support gates and
+  exact neutral locality. This closes the adapter subtest, not 3B co-training or
+  no-tax.
+- **Planned, not measured:** the robust certificate's drift and
+  finite-precision calibration (ε_h, ε_r), and the full public-benchmark sweep
+  (CounterFact/zsRE/MQuAKE × MEMIT/MEND/SERAC). The paper's Limitations section
+  states each as a named
   falsification experiment (E1–E8). Full head-to-head evaluation against MEMIT,
   MEND, and SERAC on standard benchmarks remains open.
 

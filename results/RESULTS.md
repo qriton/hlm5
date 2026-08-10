@@ -1,3 +1,37 @@
+# E7 frozen-public-3B portability — valid scientific FAIL
+
+Date: 2026-08-10 · Trunk: pinned
+`HuggingFaceTB/SmolLM3-3B-Base` revision
+`d78a42f79198603e614095753484a04c10c2b940` · Protocol:
+`docs/e7-3b-portability-protocol-2026-08-10.md` · Result:
+`e7_3b_result.json` · Verdict: `e7_3b_verdict.json`.
+
+This was a frozen-adapter portability test, not 3B training and not attention
+replacement. All implementation bars passed: exact model/source/sample hashes,
+3,075,098,624 frozen BF16 parameters, tied bias-free head, 60 keys × 1,200
+targets, scalar/vector agreement, float64 certificate evidence, ordinary BF16
+head checks, and 80 gate/locality rows with actual tensor hashes.
+
+| Registered measurement | Result |
+| --- | ---: |
+| Mean reachable fraction over 60 keys | 0.85965 (population SD 0.00896) |
+| Original-key direct certificates admitted | 1,028 / 1,200 |
+| Direct certificates surviving ordinary BF16 | 1,027 / 1,028 |
+| Faithful facts admitted / refused | 11 / 7 |
+| Admitted exact-key full-memory successes | 11 / 11 |
+| False gates: refused exact + paraphrase + neutral | 0 / 69 |
+| Neutral bit-identical logits | 8 / 8 |
+
+The sole direct miss was target id 922 (`" about"`). Its float64 certificate had
+margin +2.258567 at beta 217.078, but the ordinary BF16 head produced a
+zero-margin tie and selected id 220 (`" "`). Therefore the preregistered all-target
+bar fails: `FAIL_3B_PORTABILITY`, with zero validity failures. The constructive
+reading is narrow: the adapter, routing, full faithful path, and exact off-support
+identity transferred; the unqualified float64 point certificate did not transfer
+perfectly across the BF16 deployment boundary. The next bounded problem is a
+finite-precision-aware admission bound or dose, preregistered before rerun. The
+3B co-training/no-tax question remains unmeasured.
+
 # Path B — head-to-head results
 
 ## Hardened study (v2) — paper-grade controlled comparison
