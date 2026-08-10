@@ -1,0 +1,332 @@
+{
+  "admission_scientific_sha256": "acdce96e684590af10426dad0af156b8bc84726d3ac49e0513a51ed7ceff982c",
+  "admission_sha256": "1d67111e3d7d3bba8d59cdd7d04b2197ed380ebce4b3ec00c96982a36a94551e",
+  "attempt_sha256": "bf359cf5c99b82f08b5552af562bc44faea4c5cc0f3d3df05abb7a7a27e5e637",
+  "result_scientific_sha256": "17e2e544911316e93436e1c2feb399037e7abc864967ff308a5b95e2dd74abd5",
+  "result_sha256": "4248a926676b53c7eab005bc87f894d8e7a1277e618135872e1e3ff30ddad0b7",
+  "schema": "hlm5-e9-3b-verdict-v1",
+  "scientific": {
+    "claim_boundary": "Pinned frozen SmolLM3-3B-Base, registered A100/BF16 physical node and runtime, pre-outcome-frozen 64-slot E8-recipe exact-key adapter, and deterministic 12,288-query CounterFact locality pool.",
+    "scientific_failures": [],
+    "summary": {
+      "by_kind": {
+        "exact": {
+          "delta_zero_count": 4096,
+          "gate_open_count": 0,
+          "hidden_bit_identical_count": 4096,
+          "maximum": {
+            "case_id": 12788,
+            "gate_open": false,
+            "kind": "exact",
+            "pool_index": 7731,
+            "prompt_sha256": "c703396e36ef2f86422df8b6b459102b763e10a5be9b7189be8ee17eb61aa27e",
+            "selected_e8_case_id": 20018,
+            "selected_label": " midfielder",
+            "selected_score": 9.375385707244277e-05,
+            "selected_slot": 18
+          },
+          "query_count": 4096,
+          "score_threshold_counts": {
+            "0.10": 0,
+            "0.50": 0,
+            "0.90": 0,
+            "0.95": 0
+          }
+        },
+        "neighborhood": {
+          "delta_zero_count": 4096,
+          "gate_open_count": 0,
+          "hidden_bit_identical_count": 4096,
+          "maximum": {
+            "case_id": 12363,
+            "gate_open": false,
+            "kind": "neighborhood",
+            "pool_index": 6623,
+            "prompt_sha256": "c9d89c76847d879831803121d0decb99d73289cbd5cbb7780be6f3323f0aa57b",
+            "selected_e8_case_id": 20018,
+            "selected_label": " midfielder",
+            "selected_score": 0.00011861914390465245,
+            "selected_slot": 18
+          },
+          "query_count": 4096,
+          "score_threshold_counts": {
+            "0.10": 0,
+            "0.50": 0,
+            "0.90": 0,
+            "0.95": 0
+          }
+        },
+        "paraphrase": {
+          "delta_zero_count": 4096,
+          "gate_open_count": 0,
+          "hidden_bit_identical_count": 4096,
+          "maximum": {
+            "case_id": 14459,
+            "gate_open": false,
+            "kind": "paraphrase",
+            "pool_index": 11956,
+            "prompt_sha256": "66e308e55d28fd258e3898e4d35a0fb7a8680fbc81552d741903613df5407d05",
+            "selected_e8_case_id": 20018,
+            "selected_label": " midfielder",
+            "selected_score": 1.6642054561089026e-06,
+            "selected_slot": 18
+          },
+          "query_count": 4096,
+          "score_threshold_counts": {
+            "0.10": 0,
+            "0.50": 0,
+            "0.90": 0,
+            "0.95": 0
+          }
+        }
+      },
+      "delta_zero_count": 12288,
+      "gate_open_count": 0,
+      "hidden_bit_identical_count": 12288,
+      "maximum": {
+        "case_id": 12363,
+        "gate_open": false,
+        "kind": "neighborhood",
+        "pool_index": 6623,
+        "prompt_sha256": "c9d89c76847d879831803121d0decb99d73289cbd5cbb7780be6f3323f0aa57b",
+        "selected_e8_case_id": 20018,
+        "selected_label": " midfielder",
+        "selected_score": 0.00011861914390465245,
+        "selected_slot": 18
+      },
+      "query_count": 12288,
+      "score_threshold_counts": {
+        "0.10": 0,
+        "0.50": 0,
+        "0.90": 0,
+        "0.95": 0
+      },
+      "top_20": [
+        {
+          "case_id": 12363,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 6623,
+          "prompt_sha256": "c9d89c76847d879831803121d0decb99d73289cbd5cbb7780be6f3323f0aa57b",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 0.00011861914390465245,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 10874,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 2528,
+          "prompt_sha256": "a8f83673a24a03e548a91e011711f13cdc37370f673ac411be54d5d95700913b",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 0.00010777372517623007,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 12788,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 7731,
+          "prompt_sha256": "c703396e36ef2f86422df8b6b459102b763e10a5be9b7189be8ee17eb61aa27e",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 9.375385707244277e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 12695,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 7491,
+          "prompt_sha256": "aeb79a90204dedb5d3593474fbc40402739c1e01859a85e2f103017308f387a3",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 6.625497917411849e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 10061,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 182,
+          "prompt_sha256": "d37853f8eee2d34d13c1a8bfef57138d7bc0fe2985de36cadb12fb72e0a06a0c",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 6.4665793615859e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 11448,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 4148,
+          "prompt_sha256": "51b39c6c1130cd2ca0a00bd2a0988bb17d8a1a2f1a5c508ae3723d92d6a9dd93",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 6.21444996795617e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 10103,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 306,
+          "prompt_sha256": "54ced9e14a9ac4d322d21c2b9036fe0d615422019dbdc86e6f2eb8a3969e3034",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 6.038332503521815e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 11395,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 3996,
+          "prompt_sha256": "6510b669da3e15eb9aa90fba779227ea601e7e7c617c7f6bdaf4386ac70cc449",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 4.899983468931168e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 13613,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 9854,
+          "prompt_sha256": "3cc328fbe05200c7b92da4ae965d961be96a925f2b8b213c730ea3cdb3d477f4",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 4.0843409806257114e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 10059,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 174,
+          "prompt_sha256": "ee029cc4cc9cda5bd3efcd6b9966ed0425d93be2c639ecc5785bb19cd8f51233",
+          "selected_e8_case_id": 20060,
+          "selected_label": " Dutch",
+          "selected_score": 3.74744922737591e-05,
+          "selected_slot": 58
+        },
+        {
+          "case_id": 11719,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 4880,
+          "prompt_sha256": "d3b520d9f46fa1a013bed953dc38cc2e90afa5ed7862b38050b40035921e1b5f",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 3.579167605494149e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 13158,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 8673,
+          "prompt_sha256": "063e65964553e35115ac7906d539272898fecccc5105efb3294e4cef1a3afdef",
+          "selected_e8_case_id": 20045,
+          "selected_label": " Hindi",
+          "selected_score": 3.52114875568077e-05,
+          "selected_slot": 45
+        },
+        {
+          "case_id": 10967,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 2790,
+          "prompt_sha256": "57d867dd937338b647bd413372f3f502b68f1c4c57d00e7a39c432a5bf95ef96",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 3.2833740988280624e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 11866,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 5294,
+          "prompt_sha256": "548205bf5874189b5b7173617a6cdcc4cf70673a8bf81336e097eb2f621569dc",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 3.278632357250899e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 12325,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 6522,
+          "prompt_sha256": "b223efc23c366bb89e84448d23e5752845443e1eb38b92d5326bb56b3dafddff",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 3.093916529905982e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 11077,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 3110,
+          "prompt_sha256": "2ef8ec2d0b35006b446f6c8145134a4cf8f45ce1b334c1aae38089c4f8da80f7",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 2.9331311452551745e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 12304,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 6462,
+          "prompt_sha256": "dcf20f250f271329619f3ebce7741d3c0e11ec089f89b43e25abe10f2bcb58d9",
+          "selected_e8_case_id": 20045,
+          "selected_label": " Hindi",
+          "selected_score": 2.901209518313408e-05,
+          "selected_slot": 45
+        },
+        {
+          "case_id": 11930,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 5465,
+          "prompt_sha256": "6b519cf9cb6761856e512531910e82ae27b14bce342286c18ab967f553d98937",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 2.893623968702741e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 10954,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 2754,
+          "prompt_sha256": "3a5241fb7b270ce57bf90d8558e10bef9b3bcd095ebc376de58721083eb5890f",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 2.8260412364033982e-05,
+          "selected_slot": 18
+        },
+        {
+          "case_id": 11184,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 3425,
+          "prompt_sha256": "fc15924d1e908b7651d9a1932d50f838fa633ffef432c0f9987692ee7b539f1b",
+          "selected_e8_case_id": 20018,
+          "selected_label": " midfielder",
+          "selected_score": 2.821461748681031e-05,
+          "selected_slot": 18
+        }
+      ]
+    },
+    "validity_failures": [],
+    "verdict": "PASS_3B_WIDE_LOCALITY"
+  },
+  "scientific_sha256": "da94b538b06bcac9cd74234c965be7b27d7c8c20539a59613eab688c309e13f5",
+  "verdict": "PASS_3B_WIDE_LOCALITY"
+}
