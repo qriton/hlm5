@@ -129,7 +129,9 @@ All bars below are binding:
 - CounterFact has 1,000 unique rows with ordered usable indices 0 through 999,
   a passing first-record native logit identity check, and a summary hash that
   matches the JSONL; and
-- `scripts/verify_artifacts.py` covers all seven refreshed primary payloads.
+- the staged comparison validator covers all seven refreshed primary payloads;
+  the later promotion commit must extend `scripts/verify_artifacts.py` to assert
+  those same payloads at their tracked locations before publication readiness.
 
 Any failed bar is `IMPLEMENTATION_INVALID`, even if headline values look good.
 An interruption without a known validity failure is `INCOMPLETE`.
