@@ -1,0 +1,87 @@
+{
+  "created_at_utc": "2026-08-10T13:06:23.629135+00:00",
+  "development_manifest_sha256": "8873d168557c0ff274c4a99b41d7731fe23f1d8d77cbde5358643c4fa1d0bbae",
+  "environment": {
+    "implementation": "CPython",
+    "numpy": "2.4.6",
+    "platform": "Windows-10-10.0.20348-SP0",
+    "python": "3.11.7",
+    "sentence_transformers": "5.5.1",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.12.1"
+  },
+  "experiment_id": "hlm5-i1-class-balanced-intent-basin-v1",
+  "git": {
+    "branch": "feat/intent-basin-gate",
+    "head": "3dd844fb7b2804bf249e257b856b9c57632038f0",
+    "unexpected_status": []
+  },
+  "implementation_sha256": {
+    "DATA_NOTICE.md": "e7c91c459d8bd2ccaff214cc07961475022d0c02e5c815efc6acddd6b13491e2",
+    "README.md": "2c5eb307f5cdb19e0812d4ec071be51e3f3ff05ca5f76c1ecda268270a84ffa9",
+    "contract.py": "ec0942762584ba52a0e127d296a452a3cada4ad76ba51c5cf2850c32a593c27f",
+    "data/clinc_development_manifest.json": "8873d168557c0ff274c4a99b41d7731fe23f1d8d77cbde5358643c4fa1d0bbae",
+    "data/clinc_test_manifest.json": "17fd571881c7dbefbb55175330b4eee489557a1b7d8bef8addecf5f177c62b3f",
+    "docs/intent-basin-gate-prereg-2026-08-10.md": "59d6245bf2769ea25857736a646da1a4c27c6722b3abaae2efc8ee4ca1f29a66",
+    "dynamics.py": "b95c7f5c64ee67c5d47f46755d7ed93bcfac35b87182449e38e733e89e638b14",
+    "metrics.py": "b0815740d8d960667eb58e7cbe76d7a3f478ecd6a287674fd94337e747d2a6c5",
+    "prepare_clinc.py": "76dd87e054ca0b7381a883be115017ea17c438260664680d7a9445cd13926b1a",
+    "run_intent_basin_gate.py": "2c32d920bd8175490558e8a958d98316a79d244f975e70001f4d3729afe78730",
+    "tests/test_dynamics.py": "67242dcfb111e81dc371f3011b74a0cee497e45e0e70204ca40934c7ef2555e4",
+    "tests/test_prepare_clinc.py": "e39e11509fcd0370d507269105ae6b813ecd870fc7f604d090919d42474636d7",
+    "tests/test_registration.py": "6898648ad36d79718bbc0764ed45fb9380d88e8b9ba288657f6b8fe57c174848"
+  },
+  "model": {
+    "id": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "snapshot_digest": "cdf609f5ee2eeb7204517d51b88b8079fb53624531a28ee74c524b58acf36caa",
+    "snapshot_file_sha256": {
+      "1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+      "README.md": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0",
+      "config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+      "config_sentence_transformers.json": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+      "model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+      "modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+      "sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+      "special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+      "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+      "tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+      "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    },
+    "synthetic_shape": [
+      2,
+      384
+    ]
+  },
+  "real_clinc_embeddings_computed": false,
+  "schema_version": 1,
+  "status": "SYNTHETIC_PREFLIGHT_ONLY",
+  "synthetic_dynamics": {
+    "matched_max_abs_error": 0.0,
+    "maximum_armijo_residual": 7.627232179174825e-14,
+    "maximum_cap_error": -0.21300833660586385,
+    "maximum_energy_increase": 7.620293285270918e-14
+  },
+  "test_embeddings_computed": false,
+  "test_manifest_sha256": "17fd571881c7dbefbb55175330b4eee489557a1b7d8bef8addecf5f177c62b3f",
+  "tests": [
+    {
+      "path": "tests/test_dynamics.py",
+      "returncode": 0,
+      "stderr_sha256": "2c6e0ce1d0bfc8ec80ab416c3b045dc96c885d50fa5f43605e254cef366ebe22",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/test_prepare_clinc.py",
+      "returncode": 0,
+      "stderr_sha256": "e31f3e41311d72413b992a5800b780157f60b95540dcb55efa41c0f24fd2c625",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/test_registration.py",
+      "returncode": 0,
+      "stderr_sha256": "befd14dcd81959f12cd8d1fe03845628500aab4e928121ce41d4bd21a0e74aac",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

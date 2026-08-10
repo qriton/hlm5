@@ -1,5 +1,14 @@
 # HLM5 Class-Balanced Intent Basin Gate
 
+**Outcome (2026-08-10): valid `STOP_BEFORE_TEST`.**  Raw-centroid routing
+scored `0.9179` macro accuracy, one settle step scored `0.9066`, and eight
+steps scored `0.7662`.  All validity gates passed; five of six scientific bars
+failed.  The official test split remains sealed.  See the
+[`development verdict`](docs/intent-basin-development-verdict-2026-08-10.md)
+for the frozen numbers, correction lineage, digests, interpretation, and stop
+rule.  The registered implementation is preserved in parent commit
+`3dd844fb7b2804bf249e257b856b9c57632038f0`.
+
 This package tests one bounded follow-up to the failed ParaRel density settle:
 
 > Can repeated degree-five state dynamics improve natural intent routing when
@@ -14,11 +23,11 @@ in
 Development attempts 01 and 02 were formally `HARNESS_INVALID` because one
 cap-boundary state exposed an unstable near-one `acos` log-map calculation.
 Their receipts and outputs are archived byte-for-byte under `results/`.  The
-implementation-only repair uses stable `atan2(||tangent||, dot)` geometry and
-is awaiting a fresh preflight and registration; no scientific conclusion is
-taken from either invalid attempt.
+implementation-only repair uses stable `atan2(||tangent||, dot)` geometry.  No
+scientific conclusion is taken from either invalid attempt; only the third,
+fully valid lineage supports the development verdict above.
 
-Workflow:
+Workflow (completed):
 
 1. generate the outcome-blind manifests from the pinned official source;
 2. run analytic/synthetic tests and preflight;
