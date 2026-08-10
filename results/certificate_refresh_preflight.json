@@ -1,0 +1,85 @@
+{
+  "claim_scope": "Input/source freeze only; no model forward or refreshed certificate outcome was computed.",
+  "commands": [
+    "python scripts/run_1b_certificate.py",
+    "python scripts/run_1b_betastar.py",
+    "python scripts/run_1b_synth_verify.py",
+    "python scripts/run_1b_envelope_multikey.py",
+    "python scripts/run_1b_faithful_certdosed.py",
+    "python scripts/run_cert_counterfact_gpt2xl.py",
+    "python scripts/compare_certificate_refresh.py"
+  ],
+  "counterfact_ready": true,
+  "environment": {
+    "cuda_available": true,
+    "cuda_version": "12.1",
+    "cuda_visible_devices": null,
+    "device_name": "NVIDIA RTX 4000 SFF Ada Generation",
+    "platform": "Windows-10-10.0.20348-SP0",
+    "python": "3.11.7",
+    "tokenizers": "0.22.2",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.12.1"
+  },
+  "hlm5_ready": true,
+  "implementation_commit": "ab4e28ca9c81055289a5eebbdfda8a8cc3eaed64",
+  "inputs": {
+    "counterfact": {
+      "exists": true,
+      "expected_sha256": "d017056125178a13728594e66a801357a8db9ed7973a7425554bb4271de9fc6f",
+      "matches": true,
+      "path": "scripts/data/counterfact.json",
+      "sha256": "d017056125178a13728594e66a801357a8db9ed7973a7425554bb4271de9fc6f"
+    },
+    "gpt2_xl_snapshot": {
+      "cache_path": "C:\\Users\\md\\.cache\\huggingface\\hub\\models--gpt2-xl\\snapshots\\15ea56dee5df4983c59b2538573817e1667135e2",
+      "cached": true,
+      "revision": "15ea56dee5df4983c59b2538573817e1667135e2"
+    },
+    "hlm5_checkpoint": {
+      "exists": true,
+      "expected_sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1",
+      "matches": true,
+      "path": "models/hlm5_lm_baseline_fineweb_g3_final.pt",
+      "sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1"
+    },
+    "hlm5_tokenizer": {
+      "exists": true,
+      "expected_sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588",
+      "matches": true,
+      "path": "models/tokenizers/fineweb-65536-compat.json",
+      "sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588"
+    }
+  },
+  "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+  "protocol_path": "docs/certificate-exact-sign-refresh-protocol-2026-08-10.md",
+  "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+  "registered_dtypes": {
+    "certificate_arithmetic": "float64",
+    "gpt2_xl_model_forward": "float32",
+    "hlm5_model_forward": "float32"
+  },
+  "schema": "hlm5-certificate-refresh-preflight-v1",
+  "source_sha256": {
+    "hlm5/artifact_contract.py": "892db12b40f66cde962b8b21c2e44fd53dc28a657f7c1e424ef629ac779a1913",
+    "hlm5/certify.py": "a13544eb242cb1f827496a46a6d943723ad51f35b827fe47d2da641e26a1c210",
+    "hlm5/io.py": "5886ce8331ba42ca0ee75dd67746665be58d174e5f3416ad661f81c7d7685439",
+    "hlm5/memory.py": "91cb50810a99079e77056291a775a878483ca6c5ddb05f2c671623c8887db973",
+    "hlm5/model.py": "2f810bde52bbf3e0da9f52640bf36ca924cd665bd6a7036155f0581494b8857c",
+    "scripts/audit_certificate_artifacts.py": "5c097ca3a09902f33c4e5486018a2c2df768ece5cc19d5f350a7ee84294bac31",
+    "scripts/compare_certificate_refresh.py": "16c21c6646bf525871789bb652db294536a1dac7ffd06dce2f5c17f7f8b45dd8",
+    "scripts/preflight_certificate_refresh.py": "f32ace404421aee8b37a5728dc1674dcc1c9f2d55059ca44924bbee134743af2",
+    "scripts/run_1b_betastar.py": "2c3d6f9ae7c3fa20dffecc241fe606be664a23556aad4ba4ec65844ddc5f9e78",
+    "scripts/run_1b_certificate.py": "e9ebc2cd962c720f5ea9e5a234692a0d3ef8c018f45b2ff60336ee1aff702f5f",
+    "scripts/run_1b_envelope_multikey.py": "733ccd0ea1241ede9198e3e9c9c274984bff1ea4f74f6985c639ce99c6126f40",
+    "scripts/run_1b_faithful_certdosed.py": "7ba4b2d8386df6e51f508f5af55caa68d1ab5fb3689356139d3d30db585a523b",
+    "scripts/run_1b_synth_verify.py": "45b66e3138f3bac6d8caf40cdad05d91cbc59a1e5904766874a8d6e63975f051",
+    "scripts/run_cert_counterfact_gpt2xl.py": "49635161c4d81b2f8dc9f93b52dea14420b0db9d5f66afb56b7ad7926e93329c",
+    "scripts/verify_artifacts.py": "7689a8e4128e5f9da240e67e46616b37626d9161647e94143e885c6a370ec7b6",
+    "tests/test_certificate_artifact_audit.py": "b0d1ec31cfba1f33656f5d618be48de813668aaa1f7c2df67e2d6cecbef297a4",
+    "tests/test_certificate_refresh_contract.py": "99c1d1a5ec40bcaa1ca70818d9e789a777048d536e41f4e2dc3f7218e682826f",
+    "tests/test_certify.py": "b32338c1d472f5b80e7cb521529e2272b744c10bc688d4d67f05c852c41c15f4",
+    "tests/test_smoke.py": "be71767ebd43ef0d94fcd4ec342905e4414c6611110cb8996a2f5f2e23f2f344"
+  },
+  "status": "READY"
+}

@@ -901,8 +901,8 @@ plan (E1, Section~\ref{sec:limits}).
 \toprule
 Method (setting) & Efficacy & Generalization & Locality (off-supp.) & Reversibility & Grad.\ steps \\
 \midrule
-HLM5 ($1$B, deployed $\tau{=}0.95$, certificate-dosed, $17$ facts) & $0.765$ ($13/17$) {\scriptsize$[0.52,0.95]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $0$ changes ($1.000$ {\scriptsize$[1.00,1.00]$}) & forget exact$^{\ddagger}$ & $0$ \\
-HLM5 ($1$B, deployed, $+$ synthesis rescue) & $1.000$ ($17/17$) {\scriptsize$[1.00,1.00]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $0$ changes ($1.000$ {\scriptsize$[1.00,1.00]$}) & forget exact$^{\ddagger}$ & $0$ \\
+HLM5 ($1$B, deployed $\tau{=}0.95$, certificate-dosed, $17$ facts) & $0.765$ ($13/17$) {\scriptsize$[0.53,0.94]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $0$ changes ($1.000$ {\scriptsize$[1.00,1.00]$}) & forget exact$^{\ddagger}$ & $0$ \\
+HLM5 ($1$B, deployed, $+$ synthesis rescue) & $0.882$ ($15/17$) {\scriptsize$[0.71,1.00]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $0$ changes ($1.000$ {\scriptsize$[1.00,1.00]$}) & forget exact$^{\ddagger}$ & $0$ \\
 HLM5 ($1$B, loose gate $\tau_{\cos}{=}0.40$, $17$ facts) & $0.765$ ($13/17$) {\scriptsize$[0.52,0.95]$} & $0.353$ {\scriptsize$[0.19,0.53]$} & $0.955$ {\scriptsize$[0.92,0.99]$} & forget exact$^{\ddagger}$ & $0$ \\
 HLM5 (GPT-2, controlled, $24$ facts) & $1.000$ ($24/24$) {\scriptsize$[1.00,1.00]$} & $0.556$ {\scriptsize$[0.40,0.71]$} & $0.949$ {\scriptsize$[0.92,0.97]$} & --- & $0$ \\
 \bottomrule
@@ -1216,16 +1216,18 @@ overshoots the certified upper bound $U$ for four \emph{reachable} facts (e.g.\
 strength is not more efficacy; the interval is real. Dosing each edit at its
 certified $\beta^{\star}$ flips exactly the certificate-reachable set ($0.765$,
 $13/17$, with $4/4$ certified-unreachable facts failing as predicted---zero
-misclassification), and residual synthesis (\S\ref{sec:synth}) rescues those
-four ($1.000$, $17/17$). Two conclusions follow. First, the additive read's
+misclassification), and residual synthesis (\S\ref{sec:synth}) certifies and
+rescues two of those four ($0.882$, $15/17$); the other two remain
+uncertified and fail in the ordinary forward, again with zero
+misclassification. Two conclusions follow. First, the additive read's
 generalization edge over a logit patch appears on GPT-2 but \emph{not} on the
 $1$B trunk: paraphrase generalization stays read-limited (below $0.3$) across a
 sweep of the gate threshold (measured under global-boost dosing), so the edge is
 model-specific, not a general property of the read. Second, the properly dosed
-pipeline \emph{matches} the gate-matched logit bias on every axis measured here
-(efficacy $1.000$, generalization $0.020$, locality $1.000$): the mechanism's
-remaining value over the simplest certifiable variant is the a-priori admission
-test, the certified dose, the synthesis rescue, and the audit trail---and,
+pipeline matches the gate-matched logit bias on generalization and locality but
+not efficacy ($0.882$ versus $1.000$). The mechanism's remaining value over the
+simplest certifiable variant is the a-priori admission test, the certified dose,
+the selective synthesis rescue, and the audit trail---and,
 against fine-tuning, the substantive trade stands: fine-tuning generalizes
 (Table~\ref{tab:gpt2}) but collapses locality and requires gradients. Loosening
 the gate to buy generalization---and absorbing the locality cost it brings---is
@@ -1341,8 +1343,8 @@ FT declines at a lower level; GRACE is exact-key throughout.}
 \toprule
 Method ($1$B, deployed gate $\tau{=}0.95$) & Efficacy & Generaliz. & Locality \\
 \midrule
-HLM5, certificate-dosed ($\beta^{\star}$) & $0.765$ ($13/17$) {\scriptsize$[0.52,0.95]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $1.000$ {\scriptsize$[1.00,1.00]$} \\
-HLM5, certificate-dosed $+$ synthesis & $1.000$ ($17/17$) {\scriptsize$[1.00,1.00]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $1.000$ {\scriptsize$[1.00,1.00]$} \\
+HLM5, certificate-dosed ($\beta^{\star}$) & $0.765$ ($13/17$) {\scriptsize$[0.53,0.94]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $1.000$ {\scriptsize$[1.00,1.00]$} \\
+HLM5, certificate-dosed $+$ synthesis & $0.882$ ($15/17$) {\scriptsize$[0.71,1.00]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $1.000$ {\scriptsize$[1.00,1.00]$} \\
 HLM5, global boost (dosing ablation) & $0.529$ ($9/17$) {\scriptsize$[0.29,0.77]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $1.000$ {\scriptsize$[1.00,1.00]$} \\
 Static logit-bias (same gate) & $1.000$ {\scriptsize$[1.00,1.00]$} & $0.020$ {\scriptsize$[0.00,0.06]$} & $1.000$ {\scriptsize$[1.00,1.00]$} \\
 Retrieval (control) & $0.294$ {\scriptsize$[0.11,0.53]$} & $0.176$ {\scriptsize$[0.05,0.34]$} & $0.507$ {\scriptsize$[0.42,0.59]$} \\
@@ -1355,7 +1357,7 @@ $95\%$ CIs ($2{,}000$ resamples). The gate
 fires on $0\%$ of paraphrases in every arm, so HLM5 is exact-key at perfect
 locality (bit-identical held-out logits). Dosing each edit at its certified
 $\beta^{\star}$ flips exactly the certificate-reachable set ($13/17$); residual
-synthesis rescues the four certified-unreachable facts ($17/17$); the global
+synthesis rescues two of four certified-unreachable facts ($15/17$); the global
 boost ($102.8$) is the ablation---it overshoots the certified upper bound $U$
 for four reachable facts and silently fails them.}
 \label{tab:trunk}

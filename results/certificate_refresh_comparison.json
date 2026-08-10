@@ -1,0 +1,485 @@
+{
+  "artifact_sha256": {
+    "results/certificate_refresh_staging/betastar.json": "273cf07354a9b21550421ce9975540d75612f2bd80aa37f84187517f8711db4d",
+    "results/certificate_refresh_staging/cert_counterfact_gpt2xl.jsonl": "1bf182bfb30e36729fa457b51d8886c661f4c0f9ac6626a55c7031cc79986ac3",
+    "results/certificate_refresh_staging/cert_counterfact_gpt2xl_summary.json": "92ee35f7ce7043b0d55ca0e09d1f544339bf6c810c2d96c96fc6e2e654b1a90c",
+    "results/certificate_refresh_staging/cert_envelope_multikey.json": "9289c42c6a12c29ed76f5b04371fd2211a3becaaa8f1b3895bdfcc0268cc0df0",
+    "results/certificate_refresh_staging/cert_envelope_synth.json": "4c60f0288dd026a822ceb87cb5836fa1c77726f68270877d5d82251e373e54aa",
+    "results/certificate_refresh_staging/hlm5_1b_faithful_certdosed.json": "b3dc615514c0daf063963894b41ebe617a6eac6f02e6b4ea549211985c9ee732",
+    "results/certificate_refresh_staging/synth_verify.json": "01a74443e9b42845dd99db440c848c9af77f4684060d756e76962cb0bcf4ae2a"
+  },
+  "counterfact_complete": true,
+  "counterfact_validity_failures": [],
+  "headline_comparisons": {
+    "beta_star_median": {
+      "equal": true,
+      "new": 72.134,
+      "old": 72.134
+    },
+    "beta_star_median_worst_margin": {
+      "equal": true,
+      "new": 18.39,
+      "old": 18.39
+    },
+    "beta_star_n_reachable": {
+      "equal": true,
+      "new": 941,
+      "old": 941
+    },
+    "counterfact_hard_blocker": {
+      "equal": true,
+      "new": 0.0,
+      "old": 0.0
+    },
+    "counterfact_head_reachable": {
+      "equal": true,
+      "new": 1.0,
+      "old": 1.0
+    },
+    "counterfact_reachable": {
+      "equal": true,
+      "new": 1.0,
+      "old": 1.0
+    },
+    "faithful_global": {
+      "equal": true,
+      "new": "9/17",
+      "old": "9/17"
+    },
+    "faithful_locality": {
+      "equal": true,
+      "new": "8/8",
+      "old": "8/8"
+    },
+    "faithful_naive": {
+      "equal": true,
+      "new": "13/17",
+      "old": "13/17"
+    },
+    "faithful_synth": {
+      "equal": false,
+      "new": "15/17",
+      "old": "17/17"
+    },
+    "multi_key_mean_reachable": {
+      "equal": true,
+      "new": 0.7938,
+      "old": 0.7938
+    },
+    "multi_key_population_std": {
+      "equal": true,
+      "new": 0.0221,
+      "old": 0.0221
+    },
+    "one_key_reachable_rate": {
+      "equal": true,
+      "new": 0.784,
+      "old": 0.784
+    },
+    "one_key_risk_counts": {
+      "equal": true,
+      "new": {
+        "brittle": 15,
+        "narrow": 38,
+        "safe": 888,
+        "unreachable": 259
+      },
+      "old": {
+        "brittle": 15,
+        "narrow": 38,
+        "safe": 888,
+        "unreachable": 259
+      }
+    },
+    "synthesis_flips": {
+      "equal": true,
+      "new": 40,
+      "old": 40
+    },
+    "synthesis_median_beta": {
+      "equal": true,
+      "new": 20,
+      "old": 20
+    }
+  },
+  "hlm5_status": "VALID_REFRESH_CHANGED_CLAIMS",
+  "hlm5_validity_failures": [],
+  "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+  "preflight_status": "READY",
+  "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+  "release_artifact_sha256": {
+    "results/betastar.json": "a68d98b1687c99380a0c07a53907e9a462b497e2db70048f223b98654dbefb08",
+    "results/cert_counterfact_gpt2xl.jsonl": "05acfdb47ffedbca1986f2def735b5d10d0fa95bbd3c487feb73929b3625e4bd",
+    "results/cert_counterfact_gpt2xl_summary.json": "009007821ead41dbfc2b066f73607408c000247cfa67263ba4bd7eda82a9a22e",
+    "results/cert_envelope_multikey.json": "b0a31b3a0fede31a197b23d9441e48df5e0fc29ec2fdba3369fbdb6d356a8f69",
+    "results/cert_envelope_synth.json": "6944e29505f49fc4fd991705f9334c4fb35f2e3e4edd75185dd167fd66f6cd57",
+    "results/hlm5_1b_faithful_certdosed.json": "9d04423442a7564346e706b5ae44bb5a56e4cb524615cb21dab6aeecf414caa8",
+    "results/synth_verify.json": "e5c3c9b4f54d857f06c5f6ae8b2cc64038357d4baee7cdc32e4646e63a849454"
+  },
+  "row_level_categorical_changes": {
+    "counterfact": {
+      "changed_rows": 0,
+      "changes": [],
+      "new_rows": 1000,
+      "old_rows": 1000
+    },
+    "faithful": {
+      "changed_rows": 17,
+      "changes": [
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 0
+        },
+        {
+          "changes": {
+            "flip_cert_synth": {
+              "new": false,
+              "old": true
+            },
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            },
+            "pred_cert_synth": {
+              "new": "ettered",
+              "old": " Berlin"
+            },
+            "rescued": {
+              "new": false,
+              "old": true
+            }
+          },
+          "i": 1
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 10
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 11
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 12
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.3333333333333333,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.3333333333333333,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.3333333333333333,
+              "old": null
+            }
+          },
+          "i": 13
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 14
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 15
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 16
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 2
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 3
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 4
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 5
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 6
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 7
+        },
+        {
+          "changes": {
+            "flip_cert_synth": {
+              "new": false,
+              "old": true
+            },
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            },
+            "pred_cert_synth": {
+              "new": " Munich",
+              "old": " Tokyo"
+            },
+            "rescued": {
+              "new": false,
+              "old": true
+            }
+          },
+          "i": 8
+        },
+        {
+          "changes": {
+            "generalization_cert_naive": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_cert_synth": {
+              "new": 0.0,
+              "old": null
+            },
+            "generalization_global": {
+              "new": 0.0,
+              "old": null
+            }
+          },
+          "i": 9
+        }
+      ],
+      "new_rows": 17,
+      "old_rows": 17
+    },
+    "multi_key": {
+      "changed_rows": 0,
+      "changes": [],
+      "new_rows": 60,
+      "old_rows": 60
+    },
+    "one_key_synthesis_examples": {
+      "changed_rows": 0,
+      "changes": [],
+      "new_rows": 6,
+      "old_rows": 6
+    }
+  },
+  "schema": "hlm5-certificate-refresh-comparison-v1",
+  "tracked_release_headlines": {
+    "beta_star_median": 72.134,
+    "beta_star_median_worst_margin": 18.39,
+    "beta_star_n_reachable": 941,
+    "counterfact_hard_blocker": 0.0,
+    "counterfact_head_reachable": 1.0,
+    "counterfact_reachable": 1.0,
+    "faithful_global": "9/17",
+    "faithful_locality": "8/8",
+    "faithful_naive": "13/17",
+    "faithful_synth": "17/17",
+    "multi_key_mean_reachable": 0.7938,
+    "multi_key_population_std": 0.0221,
+    "one_key_reachable_rate": 0.784,
+    "one_key_risk_counts": {
+      "brittle": 15,
+      "narrow": 38,
+      "safe": 888,
+      "unreachable": 259
+    },
+    "synthesis_flips": 40,
+    "synthesis_median_beta": 20
+  },
+  "validity_failures": [],
+  "verdict": "VALID_REFRESH_CHANGED_CLAIMS"
+}

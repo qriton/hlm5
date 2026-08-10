@@ -9,11 +9,44 @@ Run from repo root: python scripts/verify_artifacts.py
 from __future__ import annotations
 
 import json
+import hashlib
 import math
 import os
 import sys
 
-RESULTS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+RESULTS = os.path.join(ROOT, "results")
+PROTOCOL_COMMIT = "c8935f8c6cdb3dff2331758c86fcaea711232824"
+PROTOCOL_SHA256 = "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200"
+CHECKPOINT_SHA256 = "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1"
+TOKENIZER_SHA256 = "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588"
+COUNTERFACT_SHA256 = "d017056125178a13728594e66a801357a8db9ed7973a7425554bb4271de9fc6f"
+GPT2_XL_REVISION = "15ea56dee5df4983c59b2538573817e1667135e2"
+PREFLIGHT_SHA256 = "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4"
+COMPARISON_SHA256 = "8c044e7e91d31dee57c3c95c23588bd703f60c35826c93c565f29b7f106862d3"
+PROMOTED_ARTIFACT_SHA256 = {
+    "results/cert_envelope_synth.json": (
+        "4c60f0288dd026a822ceb87cb5836fa1c77726f68270877d5d82251e373e54aa"
+    ),
+    "results/betastar.json": (
+        "273cf07354a9b21550421ce9975540d75612f2bd80aa37f84187517f8711db4d"
+    ),
+    "results/synth_verify.json": (
+        "01a74443e9b42845dd99db440c848c9af77f4684060d756e76962cb0bcf4ae2a"
+    ),
+    "results/cert_envelope_multikey.json": (
+        "9289c42c6a12c29ed76f5b04371fd2211a3becaaa8f1b3895bdfcc0268cc0df0"
+    ),
+    "results/hlm5_1b_faithful_certdosed.json": (
+        "b3dc615514c0daf063963894b41ebe617a6eac6f02e6b4ea549211985c9ee732"
+    ),
+    "results/cert_counterfact_gpt2xl.jsonl": (
+        "1bf182bfb30e36729fa457b51d8886c661f4c0f9ac6626a55c7031cc79986ac3"
+    ),
+    "results/cert_counterfact_gpt2xl_summary.json": (
+        "92ee35f7ce7043b0d55ca0e09d1f544339bf6c810c2d96c96fc6e2e654b1a90c"
+    ),
+}
 
 FAILURES: list[str] = []
 
@@ -22,6 +55,35 @@ def load(name: str):
     path = os.path.join(RESULTS, name)
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def load_jsonl(name: str) -> list[dict]:
+    path = os.path.join(RESULTS, name)
+    with open(path, "r", encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def sha256_path(path: str) -> str:
+    digest = hashlib.sha256()
+    with open(path, "rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def result_sha256(name: str) -> str:
+    return sha256_path(os.path.join(RESULTS, name))
+
+
+def stable_json_sha256(value) -> str:
+    payload = json.dumps(
+        value,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+        allow_nan=False,
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
 def close(a: float, b: float, tol: float) -> bool:
@@ -190,6 +252,261 @@ def verify_no_tax(name: str) -> None:
     )
 
 
+def verify_refresh_contract(
+    name: str,
+    payload: dict,
+    producer: str,
+    preflight_sha256: str,
+    *,
+    counterfact: bool = False,
+) -> None:
+    contract = payload.get("certificate_contract", {})
+    producer_path = os.path.join(ROOT, *producer.split("/"))
+    expected = {
+        "schema": "hlm5-certificate-contract-v1",
+        "protocol_commit": PROTOCOL_COMMIT,
+        "protocol_sha256": PROTOCOL_SHA256,
+        "eps": 0.0,
+        "arithmetic_dtype": "float64",
+        "producer": producer,
+        "producer_sha256": sha256_path(producer_path),
+        "preflight_sha256": preflight_sha256,
+        "model_forward_dtype": "float32",
+        "seed": 0,
+    }
+    if counterfact:
+        expected.update(
+            {
+                "model_id": "gpt2-xl",
+                "model_revision": GPT2_XL_REVISION,
+                "data_sha256": COUNTERFACT_SHA256,
+            }
+        )
+    else:
+        expected.update(
+            {
+                "checkpoint_sha256": CHECKPOINT_SHA256,
+                "tokenizer_sha256": TOKENIZER_SHA256,
+            }
+        )
+    mismatches = {
+        key: {"found": contract.get(key), "expected": value}
+        for key, value in expected.items()
+        if contract.get(key) != value
+    }
+    boundary = payload.get("certificate_boundary_dtypes", {})
+    boundary_ok = bool(boundary) and all(
+        dtype == "float64" for dtype in boundary.values()
+    )
+    check(
+        f"{name}: exact-sign contract, hashes, and runtime float64 boundary",
+        not mismatches and boundary_ok,
+        f"contract_mismatches={mismatches}, boundary={boundary!r}",
+    )
+
+
+def verify_certificate_refresh() -> None:
+    preflight = load("certificate_refresh_preflight.json")
+    comparison = load("certificate_refresh_comparison.json")
+    manifest = load("certificate_refresh_manifest.json")
+    preflight_sha256 = result_sha256("certificate_refresh_preflight.json")
+
+    check(
+        "certificate refresh receipts: READY preflight and valid changed-claim verdict",
+        preflight_sha256 == PREFLIGHT_SHA256
+        and result_sha256("certificate_refresh_comparison.json")
+        == COMPARISON_SHA256
+        and preflight.get("status") == "READY"
+        and preflight.get("implementation_commit")
+        == "ab4e28ca9c81055289a5eebbdfda8a8cc3eaed64"
+        and comparison.get("preflight_sha256") == preflight_sha256
+        and comparison.get("verdict") == "VALID_REFRESH_CHANGED_CLAIMS"
+        and comparison.get("validity_failures") == [],
+        f"preflight={preflight.get('status')!r}, verdict={comparison.get('verdict')!r}, "
+        f"failures={comparison.get('validity_failures')!r}",
+    )
+
+    one = load("cert_envelope_synth.json")
+    verify_refresh_contract(
+        "cert_envelope_synth.json",
+        one,
+        "scripts/run_1b_certificate.py",
+        preflight_sha256,
+    )
+    one_valid = one.get("validity", {})
+    check(
+        "cert_envelope_synth.json: 941/1200 reachable and all candidate bars pass",
+        one.get("pool") == 1200
+        and one.get("envelope", {}).get("reachable_rate") == 0.784
+        and one.get("envelope", {}).get("risk_label_counts")
+        == {"safe": 888, "narrow": 38, "brittle": 15, "unreachable": 259}
+        and one_valid.get("candidate_doses_checked") == 941
+        and one_valid.get("all_candidate_doses_inside_open_interval") is True
+        and one_valid.get("all_candidate_margins_positive") is True
+        and one.get("residual_synthesis", {}).get("rescued") == 40,
+        f"validity={one_valid!r}",
+    )
+
+    beta = load("betastar.json")
+    verify_refresh_contract(
+        "betastar.json",
+        beta,
+        "scripts/run_1b_betastar.py",
+        preflight_sha256,
+    )
+    beta_valid = beta.get("validity", {})
+    check(
+        "betastar.json: 941 certified doses, median beta 72.134, margin 18.39",
+        beta.get("n_reachable") == 941
+        and beta.get("median_beta_star") == 72.134
+        and beta.get("median_worst_margin_betastar") == 18.39
+        and beta_valid.get("grid_failures") == 0
+        and beta_valid.get("all_candidate_doses_inside_open_interval") is True
+        and beta_valid.get("all_candidate_margins_positive") is True,
+        f"validity={beta_valid!r}",
+    )
+
+    synth = load("synth_verify.json")
+    verify_refresh_contract(
+        "synth_verify.json",
+        synth,
+        "scripts/run_1b_synth_verify.py",
+        preflight_sha256,
+    )
+    check(
+        "synth_verify.json: native-boundary synthesis flips 40/40 at median beta 20",
+        synth.get("n_unreachable_tested") == 40
+        and synth.get("flip_with_unit_Wy") == 0
+        and synth.get("flip_with_synth_residual") == 40
+        and synth.get("median_beta_needed") == 20
+        and synth.get("validity", {}).get("all_synthesis_margins_positive") is True,
+        f"validity={synth.get('validity')!r}",
+    )
+
+    multi = load("cert_envelope_multikey.json")
+    verify_refresh_contract(
+        "cert_envelope_multikey.json",
+        multi,
+        "scripts/run_1b_envelope_multikey.py",
+        preflight_sha256,
+    )
+    multi_valid = multi.get("validity", {})
+    check(
+        "cert_envelope_multikey.json: 60 keys, 57151 valid candidates, scalar/vector match",
+        multi.get("n_keys") == 60
+        and multi.get("aggregates", {}).get("reachable_fraction", {}).get("mean")
+        == 0.7938
+        and multi.get("aggregates", {}).get("reachable_fraction", {}).get("std")
+        == 0.0221
+        and multi_valid.get("candidate_doses_checked") == 57151
+        and multi_valid.get("all_candidate_doses_inside_open_interval") is True
+        and multi_valid.get("all_candidate_margins_positive") is True
+        and multi_valid.get("original_scalar_matches_staged_one_key") is True
+        and multi_valid.get("original_vectorized_matches_scalar") is True,
+        f"validity={multi_valid!r}",
+    )
+
+    faithful = load("hlm5_1b_faithful_certdosed.json")
+    verify_refresh_contract(
+        "hlm5_1b_faithful_certdosed.json",
+        faithful,
+        "scripts/run_1b_faithful_certdosed.py",
+        preflight_sha256,
+    )
+    arms = faithful.get("arms", {})
+    faithful_valid = faithful.get("validity", {})
+    check(
+        "hlm5_1b_faithful_certdosed.json: 9/17 -> 13/17 -> 15/17, locality 8/8",
+        arms.get("global_repro", {}).get("eff_count") == "9/17"
+        and arms.get("cert_naive", {}).get("eff_count") == "13/17"
+        and arms.get("cert_synth", {}).get("eff_count") == "15/17"
+        and all(
+            arm.get("locality_bit_identical") == "8/8"
+            for arm in arms.values()
+        )
+        and faithful_valid.get(
+            "all_candidate_doses_inside_with_positive_margin"
+        )
+        is True
+        and faithful_valid.get("ordinary_forward_naive_agreement") is True
+        and faithful_valid.get("ordinary_forward_synth_agreement") is True,
+        f"validity={faithful_valid!r}",
+    )
+
+    rows = load_jsonl("cert_counterfact_gpt2xl.jsonl")
+    counterfact = load("cert_counterfact_gpt2xl_summary.json")
+    verify_refresh_contract(
+        "cert_counterfact_gpt2xl_summary.json",
+        counterfact,
+        "scripts/run_cert_counterfact_gpt2xl.py",
+        preflight_sha256,
+        counterfact=True,
+    )
+    summary_contract = counterfact.get("certificate_contract", {})
+    row_contract = {
+        key: value
+        for key, value in summary_contract.items()
+        if key != "jsonl_sha256"
+    }
+    row_contract_sha256 = stable_json_sha256(row_contract)
+    check(
+        "cert_counterfact_gpt2xl.jsonl: 1000 ordered unique contract-bound rows",
+        len(rows) == 1000
+        and [row.get("usable_index") for row in rows] == list(range(1000))
+        and len({row.get("case_id") for row in rows}) == 1000
+        and all(
+            row.get("certificate_contract_sha256") == row_contract_sha256
+            for row in rows
+        )
+        and all(
+            bool(row.get("certificate_boundary_dtypes"))
+            and all(
+                dtype == "float64"
+                for dtype in row["certificate_boundary_dtypes"].values()
+            )
+            for row in rows
+        )
+        and summary_contract.get("jsonl_sha256")
+        == result_sha256("cert_counterfact_gpt2xl.jsonl"),
+        f"rows={len(rows)}, jsonl_sha256={summary_contract.get('jsonl_sha256')!r}",
+    )
+    check(
+        "cert_counterfact_gpt2xl_summary.json: identity and 1000/1000 reachability bars",
+        counterfact.get("n_records") == 1000
+        and counterfact.get("fraction_reachable") == 1.0
+        and counterfact.get("fraction_head_reachable") == 1.0
+        and counterfact.get("fraction_hard_blocker") == 0.0
+        and counterfact.get("identity_check_first_record", {}).get("allclose")
+        is True
+        and counterfact.get("identity_check_first_record", {}).get("argmax_match")
+        is True,
+        f"identity={counterfact.get('identity_check_first_record')!r}",
+    )
+
+    primary_names = (
+        "cert_envelope_synth.json",
+        "betastar.json",
+        "synth_verify.json",
+        "cert_envelope_multikey.json",
+        "hlm5_1b_faithful_certdosed.json",
+        "cert_counterfact_gpt2xl.jsonl",
+        "cert_counterfact_gpt2xl_summary.json",
+    )
+    actual_hashes = {
+        f"results/{name}": result_sha256(name) for name in primary_names
+    }
+    check(
+        "certificate_refresh_manifest.json: binds exact receipts and promoted payloads",
+        manifest.get("schema") == "hlm5-certificate-refresh-promotion-manifest-v1"
+        and manifest.get("verdict") == "VALID_REFRESH_CHANGED_CLAIMS"
+        and manifest.get("preflight_sha256") == PREFLIGHT_SHA256
+        and manifest.get("comparison_sha256") == COMPARISON_SHA256
+        and manifest.get("artifact_sha256") == PROMOTED_ARTIFACT_SHA256
+        and actual_hashes == PROMOTED_ARTIFACT_SHA256,
+        f"artifact_sha256={manifest.get('artifact_sha256')!r}",
+    )
+
+
 def main() -> int:
     verify_capacity_search_report()
     verify_scale_suite_report()
@@ -200,6 +517,7 @@ def main() -> int:
     verify_lm_kb_inject()
     verify_no_tax("g2a_no_tax.json")
     verify_no_tax("g3a_no_tax.json")
+    verify_certificate_refresh()
 
     # Count PASS/FAIL lines were already printed; just summarize failures.
     print()

@@ -9,6 +9,7 @@ build/
 dist/
 .venv/
 results/_scratch/
+results/certificate_refresh_staging/
 .superpowers/
 scripts/data/
 paper/*.log

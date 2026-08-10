@@ -90,27 +90,19 @@ pipeline is the certificate-governed 17-fact evaluation in
 `hlm5_1b_faithful_certdosed.json` (frozen 1B trunk, whitened degree-5 gate,
 threshold 0.95); 95% bootstrap CIs are over facts.
 
-Some copied result JSONs were produced before the 2026-07-13 exact-sign hardening
-and either record the older `eps: 0.0001` convention or omit that metadata
-entirely. Before publishing refreshed quantitative claims, rerun the affected
-certificate/dosing producers (`run_1b_certificate.py`,
-`run_1b_envelope_multikey.py`, `run_1b_betastar.py`,
-`run_1b_synth_verify.py`, `run_1b_faithful_certdosed.py`, and
-`run_cert_counterfact_gpt2xl.py`) and rebuild figures/artifacts from the
-regenerated JSONs.
-
-The 2026-08-10
-[`certificate artifact refresh audit`](docs/certificate-artifact-refresh-audit-2026-08-10.md)
-now makes that warning executable. Its current status is `REFRESH_REQUIRED`:
-the six producer families use exact signs but still calculate their certificate
-tensors in float32, lack a complete producer/model/data contract, and the
-CounterFact resume path can retain unbound old rows. Do not relabel or republish
-the old JSONs; repair and freeze the producers first.
+The 2026-08-10 exact-sign refresh reran all six certificate/dosing families with
+`eps: 0.0`, float64 certificate arithmetic, native float32 model forwards, and
+hash-bound inputs/producers. The formal comparison verdict is
+`VALID_REFRESH_CHANGED_CLAIMS`: 15 of 16 registered headlines survived exactly;
+the synthesized faithful arm corrected from 17/17 to 15/17. The immutable run
+inputs and comparison are recorded in `certificate_refresh_preflight.json` and
+`certificate_refresh_comparison.json`; the publication manifest binds the
+promoted payload bytes.
 
 | Result | Value | Artifact |
 | --- | --- | --- |
 | Certificate-dosed efficacy | **0.765** (13/17), 95% CI [0.529, 0.941] | `hlm5_1b_faithful_certdosed.json` (`cert_naive` arm) |
-| + residual-synthesis rescue | **1.000** (17/17) | `hlm5_1b_faithful_certdosed.json` (`cert_synth` arm) |
+| + residual-synthesis rescue | **0.882** (15/17), 95% CI [0.706, 1.000] | `hlm5_1b_faithful_certdosed.json` (`cert_synth` arm) |
 | Global-boost dosing ablation | 0.529 (9/17) | `hlm5_1b_faithful_certdosed.json` (`global_repro` arm) |
 | Locality (neutral prompts) | **1.000** (8/8, bit-identical logits) | `hlm5_1b_faithful_certdosed.json` |
 | Paraphrase transfer | 0.020 (exact-key by design) | `hlm5_1b_faithful_certdosed.json` |
@@ -124,11 +116,12 @@ the old JSONs; repair and freeze the producers first.
 
 The reachability frontier is the honest core: a *global* edit strength overshoots
 the certified interval and silently fails reachable edits (0.529); the certified
-per-fact β★ flips exactly the certificate-reachable set (0.765); residual-synthesis
-rescue (full memory path) flips the rest (1.000) — all at locality 1.000, zero gradients, and
-paraphrase transfer 0.020. A gate-matched static logit bias matches the dosed
-pipeline on every measured axis; the value is the a-priori admission test,
-certified dose, synthesis rescue, and audit trail, not raw editing power.
+per-fact β★ flips exactly the certificate-reachable set (0.765); and residual
+synthesis rescues two of four remaining facts (0.882). Locality stays 1.000, with
+zero gradients and paraphrase transfer 0.020. A gate-matched static logit bias is
+stronger on efficacy (1.000) while matching generalization/locality; HLM5's value
+here is the a-priori admission test, certified dose, selective synthesis rescue,
+and audit trail, not raw editing power.
 
 ## Repository layout
 
@@ -166,7 +159,7 @@ local FineWeb uint16 shards supplied with `--val-bin`/`--train-bin`.
 | `run_1b_headgeom_metrics.py` | `headgeom_metrics.json` | 1B, GPU | Reachability is head-geometry (norm-dependent), not a memory property |
 | `run_1b_gate_roc.py` | `gate_roc.json` | 1B, GPU | Gate perfectly separable: exact-key 1.0, every paraphrase/typo/other-relation 0.0 |
 | `run_ownslot_weight.py` | `ownslot_weight_certdosed.json` | 1B, GPU | Own-slot softmax weight 0.9993 at the deployed 17-fact setting (gate fires 17/17) |
-| `run_1b_faithful_certdosed.py` | `hlm5_1b_faithful_certdosed.json` | 1B, GPU | **Deployed pipeline:** dosing ablation 0.529 → certified 0.765 → +synthesis 1.000, locality 1.000 |
+| `run_1b_faithful_certdosed.py` | `hlm5_1b_faithful_certdosed.json` | 1B, GPU | **Deployed pipeline:** dosing ablation 0.529 → certified 0.765 → +synthesis 0.882, locality 1.000 |
 | `run_1b_faithful.py` | `hlm5_1b_faithful.json` | 1B, GPU | Source of the 0.529 global-boost row (dosing ablation; superseded by certdosed) |
 | `run_1b_gate_sweep.py` | `hlm5_1b_gate_sweep.json` | 1B, GPU | Generalization-vs-locality trade-off curve as the gate threshold varies |
 | `run_1b_table_row.py` | `hlm5_1b_table_row.json` | 1B, GPU | On-trunk HLM5 vs. logit-bias vs. retrieval (efficacy 0.765) |
@@ -240,10 +233,10 @@ Adapted from [`results/RESULTS.md`](results/RESULTS.md); no inflation.
   β), the perfectly-selective gate, exact-key spread injection (flip 1.000,
   locality 1.000, zero gradients), the GPT-2 controlled study, and reference ROME.
 - **Narrow:** deployed efficacy on arbitrary 1B targets sits at the reachability
-  frontier (certified 0.765, global-boost ablation 0.529, +synthesis 1.000);
-  paraphrase transfer is ~0 (exact-key by design); the naive 1B additive read ties
-  a gate-matched logit bias — the GPT-2 generalization advantage does *not*
-  replicate on the 1B trunk.
+  frontier (certified 0.765, global-boost ablation 0.529, +synthesis 0.882);
+  paraphrase transfer is ~0 (exact-key by design); a gate-matched logit bias is
+  stronger on efficacy and ties generalization/locality. The GPT-2
+  generalization advantage does *not* replicate on the 1B trunk.
 - **Exploratory:** the certificate-predicts-editors correlations on CounterFact
   (paraphrase: required strength L; neighborhood: certified-dose margin —
   ROME/FT/GRACE) — signed and significant but exploratory.

@@ -9,9 +9,16 @@ before Phase B completed.
 
 Run: python scripts/analyze_cert_vs_editors.py
 """
+# ruff: noqa: E402 -- direct script execution bootstraps the repository root.
 import json
 import math
+import sys
 from collections import defaultdict
+from pathlib import Path
+
+REPO_ROOT_BOOTSTRAP = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT_BOOTSTRAP) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT_BOOTSTRAP))
 
 from hlm5.io import RESULTS_DIR
 

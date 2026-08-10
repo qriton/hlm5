@@ -16,41 +16,45 @@ sys.modules[SPEC.name] = audit
 SPEC.loader.exec_module(audit)
 
 
-def test_current_release_is_correctly_blocked_from_refresh_claim() -> None:
+def test_current_release_is_ready_to_publish() -> None:
     report = audit.build_report()
-    assert report["status"] == "REFRESH_REQUIRED"
+    assert report["status"] == "READY_TO_PUBLISH"
     assert report["audit_implementation"]["sha256"] == audit.sha256_file(
         MODULE_PATH
     )
     assert len(report["artifacts"]) == 6
-    assert all(
-        item["status"] == "REFRESH_REQUIRED" for item in report["artifacts"]
-    )
-    assert not report["verify_artifacts_certificate_payload_coverage"]["complete"]
+    assert all(item["status"] == "REFRESHED_AND_BOUND" for item in report["artifacts"])
+    assert report["verify_artifacts_certificate_payload_coverage"]["complete"]
+    assert report["promotion_manifest"]["status"] == "BOUND"
 
 
 def test_missing_verifier_coverage_cannot_produce_ready_status() -> None:
     records = [{"status": "REFRESHED_AND_BOUND"} for _ in range(6)]
-    assert audit.overall_status(records, {"complete": False}) == (
+    manifest = {"status": "BOUND"}
+    assert audit.overall_status(records, {"complete": False}, manifest) == (
         "REFRESH_REQUIRED"
     )
-    assert audit.overall_status(records, {"complete": True}) == (
+    assert audit.overall_status(records, {"complete": True}, manifest) == (
         "READY_TO_PUBLISH"
     )
+    assert audit.overall_status(
+        records, {"complete": True}, {"status": "INVALID"}
+    ) == "REFRESH_REQUIRED"
 
 
-def test_producers_are_hardened_but_release_payloads_remain_unbound() -> None:
+def test_producers_and_release_payloads_are_bound() -> None:
     report = audit.build_report()
     for item in report["artifacts"]:
         producer = item["producer"]
         assert producer["exact_sign_source"]
         assert producer["certificate_arithmetic_dtype_marker"] == "float64"
         assert not producer["float32_certificate_evidence"]
-        assert item["status"] == "REFRESH_REQUIRED"
-        assert not item["certificate_contract"]["present"]
+        assert item["status"] == "REFRESHED_AND_BOUND"
+        assert item["certificate_contract"]["present"]
+        assert all(item["contract_matches"].values())
 
 
-def test_counterfact_resume_is_hardened_but_release_rows_are_not_bound() -> None:
+def test_counterfact_resume_and_release_rows_are_bound() -> None:
     report = audit.build_report()
     counterfact = next(
         item
@@ -60,27 +64,31 @@ def test_counterfact_resume_is_hardened_but_release_rows_are_not_bound() -> None
     assert counterfact["producer"]["resumable_output"]
     assert counterfact["producer"]["resume_binds_certificate_contract"]
     assert counterfact["resume_fail_closed"]
-    assert not counterfact["contract_matches"]["jsonl_sha256"]
+    assert counterfact["contract_matches"]["jsonl_sha256"]
 
 
-def test_historical_lineage_distinguishes_untouched_and_partial_refreshes() -> None:
+def test_promoted_bytes_no_longer_match_historical_unbound_lineage() -> None:
     report = audit.build_report()
     by_name = {item["name"]: item for item in report["artifacts"]}
-    assert by_name["one_key_envelope_and_synthesis"]["lineage"] == (
-        "pre_hardening_bytes"
-    )
-    assert by_name["synthesis_flip"]["lineage"] == "pre_hardening_bytes"
-    assert by_name["multi_key_envelope"]["lineage"] == (
-        "touched_in_hardening_commit_but_unbound"
-    )
-    assert by_name["beta_star"]["lineage"] == (
-        "touched_in_hardening_commit_but_unbound"
+    assert all(
+        item["lineage"] == "unregistered_or_refreshed_bytes"
+        for item in by_name.values()
     )
     assert all(
-        payload["bytes_match_registered_lineage"]
+        not payload["bytes_match_registered_lineage"]
         for item in report["artifacts"]
         for payload in item["payloads"]
     )
+
+
+def test_promotion_manifest_tamper_fails_closed(tmp_path: Path) -> None:
+    value = audit.load_json(audit.PROMOTION_MANIFEST)
+    value["artifact_sha256"]["results/betastar.json"] = "0" * 64
+    tampered = tmp_path / "manifest.json"
+    tampered.write_text(audit.stable_json(value), encoding="utf-8")
+    record = audit.promotion_manifest_record(tampered)
+    assert record["status"] == "INVALID"
+    assert "artifact_sha256" in record["mismatches"]
 
 
 def test_lineage_is_hash_based_and_fails_closed_for_changed_bytes() -> None:

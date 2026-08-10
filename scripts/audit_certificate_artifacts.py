@@ -21,6 +21,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results"
 OUTPUT = RESULTS / "certificate_artifact_refresh_audit.json"
+PROMOTION_MANIFEST = RESULTS / "certificate_refresh_manifest.json"
 HARDENING_COMMIT = "a485c31fe4fd079363701c0ea21fe8878f01e878"
 INITIAL_RELEASE_COMMIT = "e2451b2213bb00e59903b4e4e89a8e6c59bd8584"
 EXPECTED_CHECKPOINT_SHA256 = (
@@ -29,6 +30,35 @@ EXPECTED_CHECKPOINT_SHA256 = (
 EXPECTED_TOKENIZER_SHA256 = (
     "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588"
 )
+EXPECTED_PREFLIGHT_SHA256 = (
+    "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4"
+)
+EXPECTED_COMPARISON_SHA256 = (
+    "8c044e7e91d31dee57c3c95c23588bd703f60c35826c93c565f29b7f106862d3"
+)
+EXPECTED_PROMOTED_ARTIFACT_SHA256 = {
+    "results/cert_envelope_synth.json": (
+        "4c60f0288dd026a822ceb87cb5836fa1c77726f68270877d5d82251e373e54aa"
+    ),
+    "results/betastar.json": (
+        "273cf07354a9b21550421ce9975540d75612f2bd80aa37f84187517f8711db4d"
+    ),
+    "results/synth_verify.json": (
+        "01a74443e9b42845dd99db440c848c9af77f4684060d756e76962cb0bcf4ae2a"
+    ),
+    "results/cert_envelope_multikey.json": (
+        "9289c42c6a12c29ed76f5b04371fd2211a3becaaa8f1b3895bdfcc0268cc0df0"
+    ),
+    "results/hlm5_1b_faithful_certdosed.json": (
+        "b3dc615514c0daf063963894b41ebe617a6eac6f02e6b4ea549211985c9ee732"
+    ),
+    "results/cert_counterfact_gpt2xl.jsonl": (
+        "1bf182bfb30e36729fa457b51d8886c661f4c0f9ac6626a55c7031cc79986ac3"
+    ),
+    "results/cert_counterfact_gpt2xl_summary.json": (
+        "92ee35f7ce7043b0d55ca0e09d1f544339bf6c810c2d96c96fc6e2e654b1a90c"
+    ),
+}
 REGISTERED_ARTIFACT_LINEAGE = {
     "results/cert_envelope_synth.json": (
         "6944e29505f49fc4fd991705f9334c4fb35f2e3e4edd75185dd167fd66f6cd57",
@@ -222,6 +252,83 @@ def contract_record(path: Path) -> dict[str, Any]:
     }
 
 
+def promotion_manifest_record(
+    path: Path = PROMOTION_MANIFEST,
+) -> dict[str, Any]:
+    try:
+        display_path = path.relative_to(ROOT).as_posix()
+    except ValueError:
+        display_path = str(path)
+    if not path.is_file():
+        return {
+            "path": display_path,
+            "exists": False,
+            "status": "INVALID",
+            "mismatches": {"manifest": "missing"},
+        }
+    try:
+        value = load_json(path)
+    except (OSError, TypeError, json.JSONDecodeError) as error:
+        return {
+            "path": display_path,
+            "exists": True,
+            "status": "INVALID",
+            "mismatches": {"manifest": f"unreadable: {error}"},
+        }
+
+    expected_metadata = {
+        "schema": "hlm5-certificate-refresh-promotion-manifest-v1",
+        "verdict": "VALID_REFRESH_CHANGED_CLAIMS",
+        "preflight_sha256": EXPECTED_PREFLIGHT_SHA256,
+        "comparison_sha256": EXPECTED_COMPARISON_SHA256,
+        "artifact_sha256": EXPECTED_PROMOTED_ARTIFACT_SHA256,
+    }
+    mismatches: dict[str, Any] = {
+        key: {"found": value.get(key), "expected": expected}
+        for key, expected in expected_metadata.items()
+        if value.get(key) != expected
+    }
+    receipt_paths = {
+        "preflight_sha256": RESULTS / "certificate_refresh_preflight.json",
+        "comparison_sha256": RESULTS / "certificate_refresh_comparison.json",
+    }
+    expected_receipts = {
+        "preflight_sha256": EXPECTED_PREFLIGHT_SHA256,
+        "comparison_sha256": EXPECTED_COMPARISON_SHA256,
+    }
+    actual_receipts = {
+        name: sha256_file(receipt) if receipt.is_file() else None
+        for name, receipt in receipt_paths.items()
+    }
+    for name, expected in expected_receipts.items():
+        if actual_receipts[name] != expected:
+            mismatches[f"actual_{name}"] = {
+                "found": actual_receipts[name],
+                "expected": expected,
+            }
+
+    actual_artifacts = {
+        relative: sha256_file(ROOT / relative)
+        if (ROOT / relative).is_file()
+        else None
+        for relative in EXPECTED_PROMOTED_ARTIFACT_SHA256
+    }
+    if actual_artifacts != EXPECTED_PROMOTED_ARTIFACT_SHA256:
+        mismatches["actual_artifact_sha256"] = {
+            "found": actual_artifacts,
+            "expected": EXPECTED_PROMOTED_ARTIFACT_SHA256,
+        }
+    return {
+        "path": display_path,
+        "exists": True,
+        "sha256": sha256_file(path),
+        "status": "BOUND" if not mismatches else "INVALID",
+        "mismatches": mismatches,
+        "receipt_sha256": actual_receipts,
+        "artifact_sha256": actual_artifacts,
+    }
+
+
 def lineage_label(payloads: list[dict[str, Any]]) -> str:
     if not payloads or not all(
         item["bytes_match_registered_lineage"] for item in payloads
@@ -314,14 +421,18 @@ def verifier_payload_coverage(path: Path) -> dict[str, Any]:
 
 
 def overall_status(
-    records: list[dict[str, Any]], verifier_coverage: dict[str, Any]
+    records: list[dict[str, Any]],
+    verifier_coverage: dict[str, Any],
+    promotion_manifest: dict[str, Any],
 ) -> str:
     artifacts_bound = all(
         item["status"] == "REFRESHED_AND_BOUND" for item in records
     )
     return (
         "READY_TO_PUBLISH"
-        if artifacts_bound and verifier_coverage["complete"]
+        if artifacts_bound
+        and verifier_coverage["complete"]
+        and promotion_manifest["status"] == "BOUND"
         else "REFRESH_REQUIRED"
     )
 
@@ -331,15 +442,18 @@ def build_report() -> dict[str, Any]:
     verifier_path = ROOT / "scripts" / "verify_artifacts.py"
     records = [evaluate_spec(spec) for spec in SPECS]
     verifier_coverage = verifier_payload_coverage(verifier_path)
+    promotion_manifest = promotion_manifest_record()
     downstream = [
         artifact_record("results/cert_vs_editors_analysis.json"),
         artifact_record("scripts/make_figures.py"),
+        artifact_record("README.md"),
         artifact_record("paper/hlm5-paper.tex"),
+        artifact_record("paper/hlm5-paper-twocol.tex"),
     ]
     return {
         "schema": "hlm5-certificate-artifact-refresh-audit-v1",
         "as_of": "2026-08-10",
-        "status": overall_status(records, verifier_coverage),
+        "status": overall_status(records, verifier_coverage, promotion_manifest),
         "audit_implementation": {
             "path": audit_path.relative_to(ROOT).as_posix(),
             "sha256": sha256_file(audit_path),
@@ -358,9 +472,11 @@ def build_report() -> dict[str, Any]:
             "frozen_hlm5_tokenizer_sha256": EXPECTED_TOKENIZER_SHA256,
             "counterfact_model_data_and_jsonl_hashes": True,
             "verifier_covers_all_primary_payloads": True,
+            "promotion_manifest_binds_registered_receipts_and_payloads": True,
         },
         "artifacts": records,
         "verify_artifacts_certificate_payload_coverage": verifier_coverage,
+        "promotion_manifest": promotion_manifest,
         "downstream_refresh_after_producers": downstream,
         "claim_scope": (
             "Static provenance/completeness audit only; no model forward pass, "

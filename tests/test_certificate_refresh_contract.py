@@ -33,6 +33,15 @@ assert SYNTH_SPEC is not None and SYNTH_SPEC.loader is not None
 synthesis = importlib.util.module_from_spec(SYNTH_SPEC)
 sys.modules[SYNTH_SPEC.name] = synthesis
 SYNTH_SPEC.loader.exec_module(synthesis)
+FIGURE_PATH = ROOT / "scripts" / "make_figures.py"
+FIGURE_SPEC = importlib.util.spec_from_file_location(
+    "certificate_refresh_figures",
+    FIGURE_PATH,
+)
+assert FIGURE_SPEC is not None and FIGURE_SPEC.loader is not None
+figures = importlib.util.module_from_spec(FIGURE_SPEC)
+sys.modules[FIGURE_SPEC.name] = figures
+FIGURE_SPEC.loader.exec_module(figures)
 
 
 def test_registered_sources_cover_runtime_helpers_and_contract_tests() -> None:
@@ -59,6 +68,8 @@ def test_registered_refresh_commands_bootstrap_repo_before_package_import() -> N
         "scripts/run_1b_faithful_certdosed.py",
         "scripts/run_cert_counterfact_gpt2xl.py",
         "scripts/compare_certificate_refresh.py",
+        "scripts/analyze_cert_vs_editors.py",
+        "scripts/make_figures.py",
     )
     for relative in scripts:
         source = (ROOT / relative).read_text(encoding="utf-8")
@@ -265,6 +276,12 @@ def test_synthesis_flip_uses_native_injection_rounding() -> None:
     assert synthesis.native_dosed_argmax(head, hidden, direction, 1.0) == 0
 
 
+def test_certificate_figure_accepts_registered_null_upper_bound() -> None:
+    assert figures._upper_bound({"U": None}) == float("inf")
+    assert figures._upper_bound({"U": "inf"}) == float("inf")
+    assert figures._upper_bound({"U": 3.5}) == 3.5
+
+
 def test_all_registered_producers_have_exact_float64_source_boundaries() -> None:
     producers = [producer for _, _, producer in compare.HLM_SPECS]
     producers.append(compare.COUNTERFACT_PRODUCER)
@@ -343,8 +360,11 @@ def test_row_level_comparison_records_field_changes() -> None:
     ]
 
 
-def test_registered_headline_anchors_match_tracked_release_artifacts() -> None:
-    assert compare.load_release_headlines() == compare.OLD_HEADLINES
+def test_promoted_headlines_preserve_all_but_registered_changed_claim() -> None:
+    promoted = compare.load_release_headlines()
+    expected = copy.deepcopy(compare.OLD_HEADLINES)
+    expected["faithful_synth"] = "15/17"
+    assert promoted == expected
 
 
 def test_open_interval_helper_handles_unbounded_upper_limit() -> None:

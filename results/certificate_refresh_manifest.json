@@ -1,0 +1,26 @@
+{
+  "artifact_sha256": {
+    "results/betastar.json": "273cf07354a9b21550421ce9975540d75612f2bd80aa37f84187517f8711db4d",
+    "results/cert_counterfact_gpt2xl.jsonl": "1bf182bfb30e36729fa457b51d8886c661f4c0f9ac6626a55c7031cc79986ac3",
+    "results/cert_counterfact_gpt2xl_summary.json": "92ee35f7ce7043b0d55ca0e09d1f544339bf6c810c2d96c96fc6e2e654b1a90c",
+    "results/cert_envelope_multikey.json": "9289c42c6a12c29ed76f5b04371fd2211a3becaaa8f1b3895bdfcc0268cc0df0",
+    "results/cert_envelope_synth.json": "4c60f0288dd026a822ceb87cb5836fa1c77726f68270877d5d82251e373e54aa",
+    "results/hlm5_1b_faithful_certdosed.json": "b3dc615514c0daf063963894b41ebe617a6eac6f02e6b4ea549211985c9ee732",
+    "results/synth_verify.json": "01a74443e9b42845dd99db440c848c9af77f4684060d756e76962cb0bcf4ae2a"
+  },
+  "claim_changes": {
+    "hlm5_1b_faithful_cert_synth": {
+      "new": "15/17",
+      "old": "17/17"
+    }
+  },
+  "comparison_path": "results/certificate_refresh_comparison.json",
+  "comparison_sha256": "8c044e7e91d31dee57c3c95c23588bd703f60c35826c93c565f29b7f106862d3",
+  "implementation_commit": "ab4e28ca9c81055289a5eebbdfda8a8cc3eaed64",
+  "preflight_path": "results/certificate_refresh_preflight.json",
+  "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+  "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+  "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+  "schema": "hlm5-certificate-refresh-promotion-manifest-v1",
+  "verdict": "VALID_REFRESH_CHANGED_CLAIMS"
+}

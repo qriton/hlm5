@@ -31,9 +31,16 @@ stochastic element (the multi-key strip-plot jitter).
 
 Run:  python scripts/make_figures.py     (repo root, CPU-only, no network)
 """
+# ruff: noqa: E402 -- direct script execution bootstraps the repository root.
 
 import json
 import math
+import sys
+from pathlib import Path
+
+REPO_ROOT_BOOTSTRAP = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT_BOOTSTRAP) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT_BOOTSTRAP))
 
 import matplotlib
 matplotlib.use("Agg")
@@ -53,6 +60,14 @@ GREY = "#8A8F94"    # de-emphasized marks
 INK = "#222222"     # all annotation text
 
 ANN = 8.0           # annotation font size (pt, at final print width)
+
+
+def _upper_bound(row):
+    """Read legacy string infinity and refreshed JSON-null as unbounded U."""
+    value = row.get("U")
+    return math.inf if value is None or isinstance(value, str) else float(value)
+
+
 SEED = 20260703
 
 
@@ -123,8 +138,16 @@ def _finish(fig, stem):
     FIGURES_DIR/_preview for eyeballing."""
     pdf = FIGURES_DIR / f"{stem}.pdf"
     png = PREVIEW_DIR / f"{stem}.png"
-    fig.savefig(pdf)
-    fig.savefig(png, dpi=200)
+    fig.savefig(
+        pdf,
+        metadata={
+            "Creator": "HLM5 make_figures.py",
+            "Producer": "Matplotlib",
+            "CreationDate": None,
+            "ModDate": None,
+        },
+    )
+    fig.savefig(png, dpi=200, metadata={"Software": "HLM5 make_figures.py"})
     plt.close(fig)
     print(f"wrote {pdf}")
     print(f"wrote {png}")
@@ -235,7 +258,6 @@ def fig_betastar():
     beta_star = bs["median_beta_star"]                  # 72.134
     margin = bs["median_worst_margin_betastar"]         # 18.39
     heur_margin = bs["median_worst_margin_heuristic"]   # 1.084
-    gain = bs["median_margin_gain"]                     # +17.306 logits
     ratio = margin / heur_margin                        # ~17.0x
 
     # feasible-band anchors, consistent with fig-reachability-geometry
@@ -349,13 +371,16 @@ def fig_certdosed():
     boost = cd["arms"]["global_repro"]["boost"]          # 102.8
     facts = cd["per_fact"]
 
-    def fU(r):
-        return math.inf if isinstance(r["U"], str) else float(r["U"])
-
     reachable = [r for r in facts if r["reachable"]]
     unreachable = [r for r in facts if not r["reachable"]]
-    reachable.sort(key=lambda r: (fU(r), r["L"]))
-    unreachable.sort(key=lambda r: r["beta_star_synth"])
+    reachable.sort(key=lambda r: (_upper_bound(r), r["L"]))
+    unreachable.sort(
+        key=lambda r: (
+            not r.get("rescued", False),
+            r.get("beta_star_synth", math.inf),
+            r["L"],
+        )
+    )
     order = reachable + unreachable
     n_reach = len(reachable)
 
@@ -364,7 +389,7 @@ def fig_certdosed():
 
     for xi, r in enumerate(order):
         if r["reachable"]:
-            u = fU(r)
+            u = _upper_bound(r)
             top = min(u, CAP)
             ax.plot([xi, xi], [r["L"], top], color=TEAL, lw=1.8,
                     solid_capstyle="butt", zorder=3)
@@ -383,12 +408,16 @@ def fig_certdosed():
                         zorder=5)
         else:
             # inverted naive window (L > U): certified unreachable under unit(W_y)
-            ax.plot([xi, xi], [fU(r), r["L"]], color=GREY, ls=":", lw=1.3,
-                    zorder=3)
-            ax.plot([xi, xi], [fU(r), r["L"]], marker="o", ms=3.8, ls="none",
-                    mfc="white", mec=GREY, mew=1.0, zorder=4)
-            ax.plot(xi, r["beta_star_synth"], "D", color=TEAL, ms=5.5,
-                    mec="white", mew=0.7, zorder=5)
+            ax.plot([xi, xi], [_upper_bound(r), r["L"]], color=GREY, ls=":", lw=1.3,
+                     zorder=3)
+            ax.plot([xi, xi], [_upper_bound(r), r["L"]], marker="o", ms=3.8, ls="none",
+                     mfc="white", mec=GREY, mew=1.0, zorder=4)
+            if r.get("rescued"):
+                ax.plot(xi, r["beta_star_synth"], "D", color=TEAL, ms=5.5,
+                        mec="white", mew=0.7, zorder=5)
+            else:
+                ax.plot(xi, min(r["beta_star"], CAP - 5), "x", color=BRICK,
+                        ms=6.5, mew=1.8, zorder=5)
 
     ax.axhline(boost, color=BRICK, lw=1.3, ls="--", zorder=2)
     ax.axvline(n_reach - 0.5, color="#aab2b8", lw=0.9, ls=(0, (4, 3)),
@@ -397,17 +426,20 @@ def fig_certdosed():
     # annotations (neutral ink) ------------------------------------------------
     ax.text(14.6, 105.5, f"global boost ({boost:g})", color=INK,
             fontsize=ANN, ha="center", va="bottom")
-    ax.text(14.7, 128.0, "synthesized $r^\\star$\ndose ($\\diamond$)",
+    ax.text(14.7, 128.0, "synthesized $r^\\star$ dose ($\\diamond$)\n"
+            "no certificate ($\\times$)",
             color=INK, fontsize=ANN, ha="center", va="center")
     ax.text(-0.5, 141.5, r"$\uparrow$  $U$ exceeds axis (up to $\infty$)",
             color=INK, fontsize=ANN, ha="left", va="center")
 
     # per-fact callouts centred over their own columns, with thin leader lines
     sat = next(r for r in reachable if r["target"] == " Saturn")
-    rom = next(r for r in reachable if r["target"] == " Rome" and fU(r) > 60)
+    rom = next(
+        r for r in reachable if r["target"] == " Rome" and _upper_bound(r) > 60
+    )
     for r in (sat, rom):
         xi = order.index(r)
-        u = fU(r)
+        u = _upper_bound(r)
         lab_y = u + 20.0
         ax.plot([xi, xi], [u + 2.0, lab_y - 2.5], color=GREY, lw=0.7,
                 zorder=4)

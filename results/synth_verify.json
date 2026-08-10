@@ -1,10 +1,344 @@
 {
+  "certificate_boundary_dtypes": {
+    "direction": "float64",
+    "head": "float64",
+    "hidden": "float64"
+  },
+  "certificate_contract": {
+    "arithmetic_dtype": "float64",
+    "checkpoint": "models/hlm5_lm_baseline_fineweb_g3_final.pt",
+    "checkpoint_sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1",
+    "eps": 0.0,
+    "model_forward_dtype": "float32",
+    "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+    "producer": "scripts/run_1b_synth_verify.py",
+    "producer_sha256": "45b66e3138f3bac6d8caf40cdad05d91cbc59a1e5904766874a8d6e63975f051",
+    "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+    "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+    "python_version": "3.11.7",
+    "sample_contract": {
+      "beta_grid": [
+        1,
+        2,
+        5,
+        10,
+        20,
+        50,
+        100,
+        200,
+        500,
+        1000,
+        2000,
+        5000,
+        10000,
+        50000,
+        100000
+      ],
+      "fact": "The capital of Vorenia is",
+      "synthesis_cases": "first 40 unreachable targets",
+      "synthesis_steps": 300,
+      "target_pool": "sorted first 1200 leading-space ASCII words length >=3"
+    },
+    "schema": "hlm5-certificate-contract-v1",
+    "seed": 0,
+    "tokenizer": "models/tokenizers/fineweb-65536-compat.json",
+    "tokenizer_sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588",
+    "torch_version": "2.5.1+cu121",
+    "upstream_sha256": {}
+  },
+  "flip_with_synth_residual": 40,
+  "flip_with_unit_Wy": 0,
+  "max_beta_needed": 50,
+  "median_beta_needed": 20,
+  "min_beta_needed": 10,
   "model": "HLM5-1B-trunk",
   "n_unreachable_tested": 40,
-  "flip_with_unit_Wy": 0,
-  "flip_with_synth_residual": 40,
+  "per_target": [
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.4986819537431796,
+      "target_id": 261,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.47115172864721,
+      "target_id": 267,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.2721254546993134,
+      "target_id": 284,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.1913115412131211,
+      "target_id": 407,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.317271221304719,
+      "target_id": 409,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.5186507579016,
+      "target_id": 413,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6167160878177048,
+      "target_id": 420,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.18388570724347153,
+      "target_id": 488,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.4547246381985395,
+      "target_id": 601,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6024407110989876,
+      "target_id": 684,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.7531734143651239,
+      "target_id": 729,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.45718205989088195,
+      "target_id": 742,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6548189991983839,
+      "target_id": 751,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.5566716031321409,
+      "target_id": 758,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.5714211246193804,
+      "target_id": 763,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.5837701241475782,
+      "target_id": 772,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 50,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.03608746114685202,
+      "target_id": 806,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 50,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.5183208867675998,
+      "target_id": 843,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.3603046866431552,
+      "target_id": 881,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 50,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.4397155114979875,
+      "target_id": 886,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.5621760278976378,
+      "target_id": 925,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 50,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.36987550891806065,
+      "target_id": 926,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6947049553390855,
+      "target_id": 944,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6931395579467261,
+      "target_id": 945,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6612801076510226,
+      "target_id": 966,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6703734052480659,
+      "target_id": 972,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6198469039393669,
+      "target_id": 977,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 50,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.3650614191731626,
+      "target_id": 989,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.5950086202076776,
+      "target_id": 997,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 50,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.44756442247682404,
+      "target_id": 1001,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 50,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.4407823673627017,
+      "target_id": 1002,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.49878641152341197,
+      "target_id": 1021,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6955589542426798,
+      "target_id": 1034,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 50,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.39328553122694887,
+      "target_id": 1046,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 10,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.45808249994162153,
+      "target_id": 1051,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6979974620281578,
+      "target_id": 1062,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6365405357259755,
+      "target_id": 1081,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.7394815369095966,
+      "target_id": 1092,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6296201004024626,
+      "target_id": 1105,
+      "unit_value_flipped": false
+    },
+    {
+      "first_flip_beta": 20,
+      "synth_value_flipped": true,
+      "synthesis_min_margin": 0.6504465037534306,
+      "target_id": 1126,
+      "unit_value_flipped": false
+    }
+  ],
   "rescue_flip_rate": 1.0,
-  "median_beta_needed": 20,
-  "max_beta_needed": 50,
-  "min_beta_needed": 10
+  "validity": {
+    "all_synthesis_margins_positive": true,
+    "minimum_synthesis_margin": 0.03608746114685202,
+    "synthesis_directions_checked": 40
+  }
 }

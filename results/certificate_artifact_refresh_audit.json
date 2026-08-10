@@ -2,339 +2,449 @@
   "artifacts": [
     {
       "certificate_contract": {
-        "missing_fields": [
-          "eps",
-          "arithmetic_dtype",
-          "producer",
-          "producer_sha256"
-        ],
-        "present": false
+        "missing_fields": [],
+        "present": true,
+        "value": {
+          "arithmetic_dtype": "float64",
+          "checkpoint": "models/hlm5_lm_baseline_fineweb_g3_final.pt",
+          "checkpoint_sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1",
+          "eps": 0.0,
+          "model_forward_dtype": "float32",
+          "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+          "producer": "scripts/run_1b_certificate.py",
+          "producer_sha256": "e9ebc2cd962c720f5ea9e5a234692a0d3ef8c018f45b2ff60336ee1aff702f5f",
+          "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+          "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+          "python_version": "3.11.7",
+          "sample_contract": {
+            "fact": "The capital of Vorenia is",
+            "synthesis_cases": "first 40 unreachable targets",
+            "synthesis_steps": 250,
+            "target_pool": "sorted first 1200 leading-space ASCII words length >=3"
+          },
+          "schema": "hlm5-certificate-contract-v1",
+          "seed": 0,
+          "tokenizer": "models/tokenizers/fineweb-65536-compat.json",
+          "tokenizer_sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588",
+          "torch_version": "2.5.1+cu121",
+          "upstream_sha256": {}
+        }
       },
       "contract_matches": {
-        "arithmetic_float64": false,
-        "checkpoint_sha256": false,
-        "eps_zero": false,
-        "producer_path": false,
-        "producer_sha256": false,
-        "tokenizer_sha256": false
+        "arithmetic_float64": true,
+        "checkpoint_sha256": true,
+        "eps_zero": true,
+        "producer_path": true,
+        "producer_sha256": true,
+        "tokenizer_sha256": true
       },
-      "lineage": "pre_hardening_bytes",
+      "lineage": "unregistered_or_refreshed_bytes",
       "name": "one_key_envelope_and_synthesis",
       "payloads": [
         {
-          "bytes_match_registered_lineage": true,
+          "bytes_match_registered_lineage": false,
           "exists": true,
           "path": "results/cert_envelope_synth.json",
           "registered_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
           "registered_lineage": "pre_hardening_bytes",
           "registered_sha256": "6944e29505f49fc4fd991705f9334c4fb35f2e3e4edd75185dd167fd66f6cd57",
-          "sha256": "6944e29505f49fc4fd991705f9334c4fb35f2e3e4edd75185dd167fd66f6cd57"
+          "sha256": "4c60f0288dd026a822ceb87cb5836fa1c77726f68270877d5d82251e373e54aa"
         }
       ],
       "producer": {
-        "certificate_arithmetic_dtype_marker": null,
+        "certificate_arithmetic_dtype_marker": "float64",
         "eps_assignments": [
           0.0
         ],
         "exact_sign_source": true,
-        "float32_certificate_evidence": [
-          {
-            "line": 35,
-            "text": "W = model.head.weight.detach().float()          # (V, d)"
-          }
-        ],
+        "float32_certificate_evidence": [],
         "path": "scripts/run_1b_certificate.py",
         "resumable_output": false,
         "resume_binds_certificate_contract": false,
-        "sha256": "0301495b49d25943b19755a028321b193fc515f6637cf4546b12eee406caf665"
+        "sha256": "e9ebc2cd962c720f5ea9e5a234692a0d3ef8c018f45b2ff60336ee1aff702f5f"
       },
       "requirement": "frozen_hlm5_1b",
       "resume_fail_closed": true,
-      "status": "REFRESH_REQUIRED"
+      "status": "REFRESHED_AND_BOUND"
     },
     {
       "certificate_contract": {
-        "missing_fields": [
-          "eps",
-          "arithmetic_dtype",
-          "producer",
-          "producer_sha256"
-        ],
-        "present": false
+        "missing_fields": [],
+        "present": true,
+        "value": {
+          "arithmetic_dtype": "float64",
+          "checkpoint": "models/hlm5_lm_baseline_fineweb_g3_final.pt",
+          "checkpoint_sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1",
+          "eps": 0.0,
+          "model_forward_dtype": "float32",
+          "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+          "producer": "scripts/run_1b_envelope_multikey.py",
+          "producer_sha256": "733ccd0ea1241ede9198e3e9c9c274984bff1ea4f74f6985c639ce99c6126f40",
+          "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+          "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+          "python_version": "3.11.7",
+          "sample_contract": {
+            "key_categories": {
+              "generic": 20,
+              "novel": 20,
+              "real": 20
+            },
+            "key_count": 60,
+            "original_key": "The capital of Vorenia is",
+            "target_pool": "sorted first 1200 leading-space ASCII words length >=3"
+          },
+          "schema": "hlm5-certificate-contract-v1",
+          "seed": 0,
+          "tokenizer": "models/tokenizers/fineweb-65536-compat.json",
+          "tokenizer_sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588",
+          "torch_version": "2.5.1+cu121",
+          "upstream_sha256": {
+            "results/certificate_refresh_staging/cert_envelope_synth.json": "4c60f0288dd026a822ceb87cb5836fa1c77726f68270877d5d82251e373e54aa"
+          }
+        }
       },
       "contract_matches": {
-        "arithmetic_float64": false,
-        "checkpoint_sha256": false,
-        "eps_zero": false,
-        "producer_path": false,
-        "producer_sha256": false,
-        "tokenizer_sha256": false
+        "arithmetic_float64": true,
+        "checkpoint_sha256": true,
+        "eps_zero": true,
+        "producer_path": true,
+        "producer_sha256": true,
+        "tokenizer_sha256": true
       },
-      "lineage": "touched_in_hardening_commit_but_unbound",
+      "lineage": "unregistered_or_refreshed_bytes",
       "name": "multi_key_envelope",
       "payloads": [
         {
-          "bytes_match_registered_lineage": true,
+          "bytes_match_registered_lineage": false,
           "exists": true,
           "path": "results/cert_envelope_multikey.json",
           "registered_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
           "registered_lineage": "touched_in_hardening_commit_but_unbound",
           "registered_sha256": "b0a31b3a0fede31a197b23d9441e48df5e0fc29ec2fdba3369fbdb6d356a8f69",
-          "sha256": "b0a31b3a0fede31a197b23d9441e48df5e0fc29ec2fdba3369fbdb6d356a8f69"
+          "sha256": "9289c42c6a12c29ed76f5b04371fd2211a3becaaa8f1b3895bdfcc0268cc0df0"
         }
       ],
       "producer": {
-        "certificate_arithmetic_dtype_marker": null,
+        "certificate_arithmetic_dtype_marker": "float64",
         "eps_assignments": [
           0.0
         ],
         "exact_sign_source": true,
-        "float32_certificate_evidence": [
-          {
-            "line": 45,
-            "text": "W = model.head.weight.detach().float()          # (V, d)"
-          }
-        ],
+        "float32_certificate_evidence": [],
         "path": "scripts/run_1b_envelope_multikey.py",
         "resumable_output": false,
         "resume_binds_certificate_contract": false,
-        "sha256": "32d99cfc60cf8d98244fbbab08c755e886c0e2142ae5207fad0952d40b6d3347"
+        "sha256": "733ccd0ea1241ede9198e3e9c9c274984bff1ea4f74f6985c639ce99c6126f40"
       },
       "requirement": "frozen_hlm5_1b",
       "resume_fail_closed": true,
-      "status": "REFRESH_REQUIRED"
+      "status": "REFRESHED_AND_BOUND"
     },
     {
       "certificate_contract": {
-        "missing_fields": [
-          "eps",
-          "arithmetic_dtype",
-          "producer",
-          "producer_sha256"
-        ],
-        "present": false
+        "missing_fields": [],
+        "present": true,
+        "value": {
+          "arithmetic_dtype": "float64",
+          "checkpoint": "models/hlm5_lm_baseline_fineweb_g3_final.pt",
+          "checkpoint_sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1",
+          "eps": 0.0,
+          "model_forward_dtype": "float32",
+          "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+          "producer": "scripts/run_1b_betastar.py",
+          "producer_sha256": "2c3d6f9ae7c3fa20dffecc241fe606be664a23556aad4ba4ec65844ddc5f9e78",
+          "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+          "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+          "python_version": "3.11.7",
+          "sample_contract": {
+            "dose_cap": "L + max(50, 5*L), additionally capped by U",
+            "dose_grid_points": 120,
+            "fact": "The capital of Vorenia is",
+            "target_pool": "sorted first 1200 leading-space ASCII words length >=3"
+          },
+          "schema": "hlm5-certificate-contract-v1",
+          "seed": 0,
+          "tokenizer": "models/tokenizers/fineweb-65536-compat.json",
+          "tokenizer_sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588",
+          "torch_version": "2.5.1+cu121",
+          "upstream_sha256": {}
+        }
       },
       "contract_matches": {
-        "arithmetic_float64": false,
-        "checkpoint_sha256": false,
-        "eps_zero": false,
-        "producer_path": false,
-        "producer_sha256": false,
-        "tokenizer_sha256": false
+        "arithmetic_float64": true,
+        "checkpoint_sha256": true,
+        "eps_zero": true,
+        "producer_path": true,
+        "producer_sha256": true,
+        "tokenizer_sha256": true
       },
-      "lineage": "touched_in_hardening_commit_but_unbound",
+      "lineage": "unregistered_or_refreshed_bytes",
       "name": "beta_star",
       "payloads": [
         {
-          "bytes_match_registered_lineage": true,
+          "bytes_match_registered_lineage": false,
           "exists": true,
           "path": "results/betastar.json",
           "registered_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
           "registered_lineage": "touched_in_hardening_commit_but_unbound",
           "registered_sha256": "a68d98b1687c99380a0c07a53907e9a462b497e2db70048f223b98654dbefb08",
-          "sha256": "a68d98b1687c99380a0c07a53907e9a462b497e2db70048f223b98654dbefb08"
+          "sha256": "273cf07354a9b21550421ce9975540d75612f2bd80aa37f84187517f8711db4d"
         }
       ],
       "producer": {
-        "certificate_arithmetic_dtype_marker": null,
+        "certificate_arithmetic_dtype_marker": "float64",
         "eps_assignments": [
           0.0
         ],
         "exact_sign_source": true,
-        "float32_certificate_evidence": [
-          {
-            "line": 25,
-            "text": "W = model.head.weight.detach().float(); V, d = W.shape"
-          }
-        ],
+        "float32_certificate_evidence": [],
         "path": "scripts/run_1b_betastar.py",
         "resumable_output": false,
         "resume_binds_certificate_contract": false,
-        "sha256": "be7249669ae1367a9fc60cfabcfd4540c7971e72428b7d2b4183280411aa7a83"
+        "sha256": "2c3d6f9ae7c3fa20dffecc241fe606be664a23556aad4ba4ec65844ddc5f9e78"
       },
       "requirement": "frozen_hlm5_1b",
       "resume_fail_closed": true,
-      "status": "REFRESH_REQUIRED"
+      "status": "REFRESHED_AND_BOUND"
     },
     {
       "certificate_contract": {
-        "missing_fields": [
-          "eps",
-          "arithmetic_dtype",
-          "producer",
-          "producer_sha256"
-        ],
-        "present": false
+        "missing_fields": [],
+        "present": true,
+        "value": {
+          "arithmetic_dtype": "float64",
+          "checkpoint": "models/hlm5_lm_baseline_fineweb_g3_final.pt",
+          "checkpoint_sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1",
+          "eps": 0.0,
+          "model_forward_dtype": "float32",
+          "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+          "producer": "scripts/run_1b_synth_verify.py",
+          "producer_sha256": "45b66e3138f3bac6d8caf40cdad05d91cbc59a1e5904766874a8d6e63975f051",
+          "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+          "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+          "python_version": "3.11.7",
+          "sample_contract": {
+            "beta_grid": [
+              1,
+              2,
+              5,
+              10,
+              20,
+              50,
+              100,
+              200,
+              500,
+              1000,
+              2000,
+              5000,
+              10000,
+              50000,
+              100000
+            ],
+            "fact": "The capital of Vorenia is",
+            "synthesis_cases": "first 40 unreachable targets",
+            "synthesis_steps": 300,
+            "target_pool": "sorted first 1200 leading-space ASCII words length >=3"
+          },
+          "schema": "hlm5-certificate-contract-v1",
+          "seed": 0,
+          "tokenizer": "models/tokenizers/fineweb-65536-compat.json",
+          "tokenizer_sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588",
+          "torch_version": "2.5.1+cu121",
+          "upstream_sha256": {}
+        }
       },
       "contract_matches": {
-        "arithmetic_float64": false,
-        "checkpoint_sha256": false,
-        "eps_zero": false,
-        "producer_path": false,
-        "producer_sha256": false,
-        "tokenizer_sha256": false
+        "arithmetic_float64": true,
+        "checkpoint_sha256": true,
+        "eps_zero": true,
+        "producer_path": true,
+        "producer_sha256": true,
+        "tokenizer_sha256": true
       },
-      "lineage": "pre_hardening_bytes",
+      "lineage": "unregistered_or_refreshed_bytes",
       "name": "synthesis_flip",
       "payloads": [
         {
-          "bytes_match_registered_lineage": true,
+          "bytes_match_registered_lineage": false,
           "exists": true,
           "path": "results/synth_verify.json",
           "registered_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
           "registered_lineage": "pre_hardening_bytes",
           "registered_sha256": "e5c3c9b4f54d857f06c5f6ae8b2cc64038357d4baee7cdc32e4646e63a849454",
-          "sha256": "e5c3c9b4f54d857f06c5f6ae8b2cc64038357d4baee7cdc32e4646e63a849454"
+          "sha256": "01a74443e9b42845dd99db440c848c9af77f4684060d756e76962cb0bcf4ae2a"
         }
       ],
       "producer": {
-        "certificate_arithmetic_dtype_marker": null,
+        "certificate_arithmetic_dtype_marker": "float64",
         "eps_assignments": [
           0.0
         ],
         "exact_sign_source": true,
-        "float32_certificate_evidence": [
-          {
-            "line": 28,
-            "text": "W = model.head.weight.detach().float(); V, d = W.shape"
-          }
-        ],
+        "float32_certificate_evidence": [],
         "path": "scripts/run_1b_synth_verify.py",
         "resumable_output": false,
         "resume_binds_certificate_contract": false,
-        "sha256": "1ead2d7352c602c24fdc008134660f63a1103a80ef94a9b64b5a53b565f93bbc"
+        "sha256": "45b66e3138f3bac6d8caf40cdad05d91cbc59a1e5904766874a8d6e63975f051"
       },
       "requirement": "frozen_hlm5_1b",
       "resume_fail_closed": true,
-      "status": "REFRESH_REQUIRED"
+      "status": "REFRESHED_AND_BOUND"
     },
     {
       "certificate_contract": {
-        "missing_fields": [
-          "eps",
-          "arithmetic_dtype",
-          "producer",
-          "producer_sha256"
-        ],
-        "present": false
+        "missing_fields": [],
+        "present": true,
+        "value": {
+          "arithmetic_dtype": "float64",
+          "checkpoint": "models/hlm5_lm_baseline_fineweb_g3_final.pt",
+          "checkpoint_sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1",
+          "eps": 0.0,
+          "model_forward_dtype": "float32",
+          "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+          "producer": "scripts/run_1b_faithful_certdosed.py",
+          "producer_sha256": "7ba4b2d8386df6e51f508f5af55caa68d1ab5fb3689356139d3d30db585a523b",
+          "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+          "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+          "python_version": "3.11.7",
+          "sample_contract": {
+            "bootstrap_resamples": 2000,
+            "degree": 5,
+            "facts": 17,
+            "gate_thresh": 0.95,
+            "neutral_prompts": 8,
+            "paraphrases_per_fact": 3,
+            "synthesis_steps": 300,
+            "temperature": 0.1
+          },
+          "schema": "hlm5-certificate-contract-v1",
+          "seed": 0,
+          "tokenizer": "models/tokenizers/fineweb-65536-compat.json",
+          "tokenizer_sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588",
+          "torch_version": "2.5.1+cu121",
+          "upstream_sha256": {}
+        }
       },
       "contract_matches": {
-        "arithmetic_float64": false,
-        "checkpoint_sha256": false,
-        "eps_zero": false,
-        "producer_path": false,
-        "producer_sha256": false,
-        "tokenizer_sha256": false
+        "arithmetic_float64": true,
+        "checkpoint_sha256": true,
+        "eps_zero": true,
+        "producer_path": true,
+        "producer_sha256": true,
+        "tokenizer_sha256": true
       },
-      "lineage": "touched_in_hardening_commit_but_unbound",
+      "lineage": "unregistered_or_refreshed_bytes",
       "name": "faithful_certificate_dosing",
       "payloads": [
         {
-          "bytes_match_registered_lineage": true,
+          "bytes_match_registered_lineage": false,
           "exists": true,
           "path": "results/hlm5_1b_faithful_certdosed.json",
           "registered_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
           "registered_lineage": "touched_in_hardening_commit_but_unbound",
           "registered_sha256": "9d04423442a7564346e706b5ae44bb5a56e4cb524615cb21dab6aeecf414caa8",
-          "sha256": "9d04423442a7564346e706b5ae44bb5a56e4cb524615cb21dab6aeecf414caa8"
+          "sha256": "b3dc615514c0daf063963894b41ebe617a6eac6f02e6b4ea549211985c9ee732"
         }
       ],
       "producer": {
-        "certificate_arithmetic_dtype_marker": null,
+        "certificate_arithmetic_dtype_marker": "float64",
         "eps_assignments": [
           0.0
         ],
         "exact_sign_source": true,
-        "float32_certificate_evidence": [
-          {
-            "line": 98,
-            "text": "W = model.head.weight.detach().float()          # (V, d) tied head, no bias => exact"
-          },
-          {
-            "line": 160,
-            "text": "h = h.float()"
-          }
-        ],
+        "float32_certificate_evidence": [],
         "path": "scripts/run_1b_faithful_certdosed.py",
         "resumable_output": false,
         "resume_binds_certificate_contract": false,
-        "sha256": "9ccc8d337cff56c392aaa0350d339b31a2e186afb01b485d0db56c6d92357c02"
+        "sha256": "7ba4b2d8386df6e51f508f5af55caa68d1ab5fb3689356139d3d30db585a523b"
       },
       "requirement": "frozen_hlm5_1b",
       "resume_fail_closed": true,
-      "status": "REFRESH_REQUIRED"
+      "status": "REFRESHED_AND_BOUND"
     },
     {
       "certificate_contract": {
-        "missing_fields": [
-          "eps",
-          "arithmetic_dtype",
-          "producer",
-          "producer_sha256"
-        ],
-        "present": false
+        "missing_fields": [],
+        "present": true,
+        "value": {
+          "arithmetic_dtype": "float64",
+          "data": "scripts/data/counterfact.json",
+          "data_sha256": "d017056125178a13728594e66a801357a8db9ed7973a7425554bb4271de9fc6f",
+          "eps": 0.0,
+          "jsonl_sha256": "1bf182bfb30e36729fa457b51d8886c661f4c0f9ac6626a55c7031cc79986ac3",
+          "model_forward_dtype": "float32",
+          "model_id": "gpt2-xl",
+          "model_revision": "15ea56dee5df4983c59b2538573817e1667135e2",
+          "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+          "producer": "scripts/run_cert_counterfact_gpt2xl.py",
+          "producer_sha256": "49635161c4d81b2f8dc9f93b52dea14420b0db9d5f66afb56b7ad7926e93329c",
+          "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+          "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+          "python_version": "3.11.7",
+          "sample_contract": {
+            "dose_grid_points": 120,
+            "records": 1000,
+            "selection": "first 1000 records with nonempty new/true target encodings",
+            "target_token": "first token of leading-space target string"
+          },
+          "schema": "hlm5-certificate-contract-v1",
+          "seed": 0,
+          "torch_version": "2.5.1+cu121",
+          "upstream_sha256": {}
+        }
       },
       "contract_matches": {
-        "arithmetic_float64": false,
-        "data_sha256_present": false,
-        "eps_zero": false,
-        "jsonl_sha256": false,
-        "model_revision_present": false,
-        "producer_path": false,
-        "producer_sha256": false
+        "arithmetic_float64": true,
+        "data_sha256_present": true,
+        "eps_zero": true,
+        "jsonl_sha256": true,
+        "model_revision_present": true,
+        "producer_path": true,
+        "producer_sha256": true
       },
-      "lineage": "pre_hardening_bytes",
+      "lineage": "unregistered_or_refreshed_bytes",
       "name": "counterfact_certificate_features",
       "payloads": [
         {
-          "bytes_match_registered_lineage": true,
+          "bytes_match_registered_lineage": false,
           "exists": true,
           "path": "results/cert_counterfact_gpt2xl.jsonl",
           "registered_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
           "registered_lineage": "pre_hardening_bytes",
           "registered_sha256": "05acfdb47ffedbca1986f2def735b5d10d0fa95bbd3c487feb73929b3625e4bd",
-          "sha256": "05acfdb47ffedbca1986f2def735b5d10d0fa95bbd3c487feb73929b3625e4bd"
+          "sha256": "1bf182bfb30e36729fa457b51d8886c661f4c0f9ac6626a55c7031cc79986ac3"
         },
         {
-          "bytes_match_registered_lineage": true,
+          "bytes_match_registered_lineage": false,
           "exists": true,
           "path": "results/cert_counterfact_gpt2xl_summary.json",
           "registered_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
           "registered_lineage": "pre_hardening_bytes",
           "registered_sha256": "009007821ead41dbfc2b066f73607408c000247cfa67263ba4bd7eda82a9a22e",
-          "sha256": "009007821ead41dbfc2b066f73607408c000247cfa67263ba4bd7eda82a9a22e"
+          "sha256": "92ee35f7ce7043b0d55ca0e09d1f544339bf6c810c2d96c96fc6e2e654b1a90c"
         }
       ],
       "producer": {
-        "certificate_arithmetic_dtype_marker": null,
+        "certificate_arithmetic_dtype_marker": "float64",
         "eps_assignments": [
           0.0
         ],
         "exact_sign_source": true,
-        "float32_certificate_evidence": [
-          {
-            "line": 77,
-            "text": "W = model.lm_head.weight.detach().float()   # (V, d) tied head, fp32 for cert math"
-          },
-          {
-            "line": 108,
-            "text": "h = out.hidden_states[-1][0, -1].float()       # post-ln_f last hidden"
-          }
-        ],
+        "float32_certificate_evidence": [],
         "path": "scripts/run_cert_counterfact_gpt2xl.py",
         "resumable_output": true,
-        "resume_binds_certificate_contract": false,
-        "sha256": "e4f97c1289318c01f634652d2a92ee9e93f25fbb5b57978c2988179612f2414a"
+        "resume_binds_certificate_contract": true,
+        "sha256": "49635161c4d81b2f8dc9f93b52dea14420b0db9d5f66afb56b7ad7926e93329c"
       },
       "requirement": "gpt2_xl_and_counterfact",
-      "resume_fail_closed": false,
-      "status": "REFRESH_REQUIRED"
+      "resume_fail_closed": true,
+      "status": "REFRESHED_AND_BOUND"
     }
   ],
   "as_of": "2026-08-10",
   "audit_implementation": {
     "path": "scripts/audit_certificate_artifacts.py",
-    "sha256": "2e635eb0158dd249b45415633c1a5fba5ce795bdbf7ce75b7bb764262c122204"
+    "sha256": "497912ddeb323e05726d586b64052e0427c34ab71e03bb35e1bf64a53ffdf3f1"
   },
   "claim_scope": "Static provenance/completeness audit only; no model forward pass, metric refresh, performance claim, training, or external compute.",
   "downstream_refresh_after_producers": [
@@ -345,7 +455,7 @@
       "registered_commit": null,
       "registered_lineage": null,
       "registered_sha256": null,
-      "sha256": "59c7dafe765361fb80784a778eac24b1e9b083e6973daa7b126b9d9de43c41e7"
+      "sha256": "c72b01817042b65fff8f667ed0d181cf2704aecd84a2bb62a6edea75f3d9ec51"
     },
     {
       "bytes_match_registered_lineage": false,
@@ -354,7 +464,16 @@
       "registered_commit": null,
       "registered_lineage": null,
       "registered_sha256": null,
-      "sha256": "61b666babc5ffcb2e233ddd16120160dadc2c00f5ed397f0a7bc9e626b3c64aa"
+      "sha256": "8d986aed663ae0e8c547c1404bbb1f83f1ce4ef6ed1eb5ccf0eae615aa14d50e"
+    },
+    {
+      "bytes_match_registered_lineage": false,
+      "exists": true,
+      "path": "README.md",
+      "registered_commit": null,
+      "registered_lineage": null,
+      "registered_sha256": null,
+      "sha256": "39eb72ca80d02f8dda696dfa3bf59e787415df2463d385422447417aa9e0f595"
     },
     {
       "bytes_match_registered_lineage": false,
@@ -363,15 +482,44 @@
       "registered_commit": null,
       "registered_lineage": null,
       "registered_sha256": null,
-      "sha256": "5cb67c8ec402b27108d79f1594f1aa89410c02bd5e31c4c98552eaaeaec459e4"
+      "sha256": "9a19ef04d75e2ca4ae034bdc194596abb40d36638082d616f3fdbbd61451e234"
+    },
+    {
+      "bytes_match_registered_lineage": false,
+      "exists": true,
+      "path": "paper/hlm5-paper-twocol.tex",
+      "registered_commit": null,
+      "registered_lineage": null,
+      "registered_sha256": null,
+      "sha256": "ca100e6efeccbe3ff7df9be918fd905e97ec77fd1a8ef17571aa2a978c720099"
     }
   ],
   "existing_verifier": {
     "path": "scripts/verify_artifacts.py",
-    "sha256": "7689a8e4128e5f9da240e67e46616b37626d9161647e94143e885c6a370ec7b6"
+    "sha256": "f530739589b2fec22c9c6769db68dfd3d1e519d7525721896a582085b4ad2b5a"
   },
   "hardening_commit": "a485c31fe4fd079363701c0ea21fe8878f01e878",
   "initial_release_commit": "e2451b2213bb00e59903b4e4e89a8e6c59bd8584",
+  "promotion_manifest": {
+    "artifact_sha256": {
+      "results/betastar.json": "273cf07354a9b21550421ce9975540d75612f2bd80aa37f84187517f8711db4d",
+      "results/cert_counterfact_gpt2xl.jsonl": "1bf182bfb30e36729fa457b51d8886c661f4c0f9ac6626a55c7031cc79986ac3",
+      "results/cert_counterfact_gpt2xl_summary.json": "92ee35f7ce7043b0d55ca0e09d1f544339bf6c810c2d96c96fc6e2e654b1a90c",
+      "results/cert_envelope_multikey.json": "9289c42c6a12c29ed76f5b04371fd2211a3becaaa8f1b3895bdfcc0268cc0df0",
+      "results/cert_envelope_synth.json": "4c60f0288dd026a822ceb87cb5836fa1c77726f68270877d5d82251e373e54aa",
+      "results/hlm5_1b_faithful_certdosed.json": "b3dc615514c0daf063963894b41ebe617a6eac6f02e6b4ea549211985c9ee732",
+      "results/synth_verify.json": "01a74443e9b42845dd99db440c848c9af77f4684060d756e76962cb0bcf4ae2a"
+    },
+    "exists": true,
+    "mismatches": {},
+    "path": "results/certificate_refresh_manifest.json",
+    "receipt_sha256": {
+      "comparison_sha256": "8c044e7e91d31dee57c3c95c23588bd703f60c35826c93c565f29b7f106862d3",
+      "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4"
+    },
+    "sha256": "3083dbd4fb7498a1d22e1b4db319b2f7cdcd57fbf2c45aa3b94a06c3ee7c4f91",
+    "status": "BOUND"
+  },
   "required_contract": {
     "arithmetic_dtype": "float64",
     "counterfact_model_data_and_jsonl_hashes": true,
@@ -379,13 +527,22 @@
     "frozen_hlm5_1b_checkpoint_sha256": "3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1",
     "frozen_hlm5_tokenizer_sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588",
     "producer_path_and_sha256": true,
+    "promotion_manifest_binds_registered_receipts_and_payloads": true,
     "verifier_covers_all_primary_payloads": true
   },
   "schema": "hlm5-certificate-artifact-refresh-audit-v1",
-  "status": "REFRESH_REQUIRED",
+  "status": "READY_TO_PUBLISH",
   "verify_artifacts_certificate_payload_coverage": {
-    "complete": false,
-    "covered": [],
+    "complete": true,
+    "covered": [
+      "results/betastar.json",
+      "results/cert_counterfact_gpt2xl.jsonl",
+      "results/cert_counterfact_gpt2xl_summary.json",
+      "results/cert_envelope_multikey.json",
+      "results/cert_envelope_synth.json",
+      "results/hlm5_1b_faithful_certdosed.json",
+      "results/synth_verify.json"
+    ],
     "required": [
       "results/betastar.json",
       "results/cert_counterfact_gpt2xl.jsonl",

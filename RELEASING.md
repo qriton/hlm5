@@ -20,29 +20,29 @@ Before pushing a publication refresh, run:
 
 ```bash
 python -m pytest tests -q
+python scripts/audit_certificate_artifacts.py --write
+python scripts/verify_artifacts.py
 python -m py_compile hlm5/certify.py scripts/run_1b_certificate.py \
   scripts/run_1b_betastar.py scripts/run_1b_synth_verify.py \
   scripts/run_1b_envelope_multikey.py scripts/run_1b_faithful_certdosed.py \
   scripts/run_cert_counterfact_gpt2xl.py scripts/read_and_memorize.py
 ```
 
-If the refresh is meant to update quantitative claims after the 2026-07-13
-exact-sign certificate hardening (`EPS = 0.0`), rerun the affected GPU producers
-and replace their JSONs before rebuilding figures:
+The 2026-08-10 exact-sign refresh (`EPS = 0.0`, float64 certificate boundary) is
+already registered and promoted. Do not overwrite its JSONs with an ad hoc
+rerun. Before rebuilding publication outputs, require both:
 
 ```bash
-python scripts/run_1b_certificate.py
-python scripts/run_1b_envelope_multikey.py
-python scripts/run_1b_betastar.py
-python scripts/run_1b_synth_verify.py
-python scripts/run_1b_faithful_certdosed.py
-python scripts/run_cert_counterfact_gpt2xl.py
-python scripts/make_figures.py
+python scripts/audit_certificate_artifacts.py --write
 python scripts/verify_artifacts.py
+python scripts/make_figures.py
 ```
 
-Do not edit result JSON metadata such as `eps` by hand; regenerate it from the
-script that owns the artifact.
+The audit must report `READY_TO_PUBLISH`. Any future measurement refresh starts
+with a new immutable protocol, preflight receipt, staging directory, and formal
+comparison; use
+`docs/certificate-exact-sign-refresh-protocol-2026-08-10.md` as the template.
+Do not edit result JSON metadata such as `eps` or hashes by hand.
 
 ## 2. Verify the paper's self-citation URLs resolve
 
@@ -67,8 +67,8 @@ where `hlm5.io` looks). `models/README.md` carries both download commands.
 The live card may still lead with the superseded 0.529 number and may show a
 direct `torch.load(..., weights_only=False)` usage snippet. Replace its contents
 with `hf-model-card.md` from this repo (it leads with the certificate-dosed
-0.765/1.000 result, frames 0.529 as the dosing ablation, documents the
-2026-07-13 exact-sign certificate hardening, and points users to
+0.765/0.882 result, frames 0.529 as the dosing ablation, documents the registered
+exact-sign certificate refresh, and points users to
 `hlm5.io.load_trunk`, which uses `weights_only=True`). The YAML frontmatter is
 already in HF's expected form (`license: other`, `license_name: bsl-1.1`,
 `license_link: LICENSE`).
@@ -121,7 +121,7 @@ additive edits to a frozen language model (paper + code + artifacts).
   scripts/verify_artifacts.py re-asserts all load-bearing numbers on CPU
 - paper sources + built PDFs (1col/2col) + build pipeline (paper/build.py)
 - 1B frozen trunk on Hugging Face (qriton/hlm5-1b-trunk); tokenizer in-repo
-- 17 CPU tests, CI (ruff + pytest), BSL-1.1 (Apache-2.0 on 2030-01-01)"
+- 51 CPU tests, CI (ruff + pytest), BSL-1.1 (Apache-2.0 on 2030-01-01)"
 git push origin v1.0.0
 ```
 

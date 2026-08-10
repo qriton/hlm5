@@ -61,12 +61,13 @@ Evaluated as the deployed certificate-governed pipeline (whitened degree-5 gate,
 threshold 0.95) on a 17-fact set; every number traces to a JSON in the GitHub
 repository under `results/`.
 
-- **Certificate-dosed efficacy 0.765** (13/17), rising to **1.000** (17/17) with
-  residual-synthesis rescue through the full memory path, at **locality 1.000** (bit-identical logits on
-  neutral prompts) and paraphrase transfer 0.020 (exact-key by design). The
-  **0.529** figure some earlier material led with is the *global-boost dosing
-  ablation* — a single strength that overshoots the certified interval — not the
-  method.
+- **Certificate-dosed efficacy 0.765** (13/17), rising to **0.882** (15/17) with
+  residual-synthesis rescue through the full memory path, at **locality 1.000**
+  (bit-identical logits on neutral prompts) and paraphrase transfer 0.020
+  (exact-key by design). Synthesis rescues two of four otherwise unreachable
+  facts; the other two are refused rather than misclassified. The **0.529**
+  figure some earlier material led with is the *global-boost dosing ablation* —
+  a single strength that overshoots the certified interval — not the method.
 - **Operating envelope:** 78.4% of 1,200 single-token targets reachable at a
   novel-entity key; 79.4% ± 2.2% across 60 keys.
 - **Gate:** perfectly separable (exact-key 1.0, all paraphrase/typo/other-relation
@@ -76,10 +77,10 @@ repository under `results/`.
 
 Implementation note: the current certificate engine uses float64 arithmetic and
 exact slope signs (`EPS = 0.0`), with a regression test for near-zero negative
-slopes. Some copied JSON artifacts from the initial bundle were generated under
-the older slope-dead-zone convention, whether or not they include an `eps` field;
-rerun the affected certificate/dosing scripts before publishing refreshed
-quantitative artifacts.
+slopes. The 2026-08-10 registered refresh replaced the older unbound artifacts;
+the promoted JSONs bind the immutable preflight, producer, model/data inputs, and
+comparison verdict. Run `python scripts/verify_artifacts.py` before publishing or
+redistributing them.
 
 ## Intended use
 

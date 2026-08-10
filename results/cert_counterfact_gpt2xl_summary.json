@@ -1,25 +1,62 @@
 {
-  "model": "gpt2-xl",
-  "dtype": "fp32",
+  "case_id_first": 0,
+  "case_id_last": 999,
+  "certificate_boundary_dtypes": {
+    "base_logits": "float64",
+    "direction": "float64",
+    "grid": "float64",
+    "head": "float64",
+    "hidden": "float64",
+    "ratios": "float64"
+  },
+  "certificate_contract": {
+    "arithmetic_dtype": "float64",
+    "data": "scripts/data/counterfact.json",
+    "data_sha256": "d017056125178a13728594e66a801357a8db9ed7973a7425554bb4271de9fc6f",
+    "eps": 0.0,
+    "jsonl_sha256": "1bf182bfb30e36729fa457b51d8886c661f4c0f9ac6626a55c7031cc79986ac3",
+    "model_forward_dtype": "float32",
+    "model_id": "gpt2-xl",
+    "model_revision": "15ea56dee5df4983c59b2538573817e1667135e2",
+    "preflight_sha256": "0a14300d9012ea5acf3be41398d654a07de0dd8650bb227ab2b7cbad0427f4f4",
+    "producer": "scripts/run_cert_counterfact_gpt2xl.py",
+    "producer_sha256": "49635161c4d81b2f8dc9f93b52dea14420b0db9d5f66afb56b7ad7926e93329c",
+    "protocol_commit": "c8935f8c6cdb3dff2331758c86fcaea711232824",
+    "protocol_sha256": "7b1f139e2f003b30e595dffea14feb1de9537c8a1808f5518fb1640b676b0200",
+    "python_version": "3.11.7",
+    "sample_contract": {
+      "dose_grid_points": 120,
+      "records": 1000,
+      "selection": "first 1000 records with nonempty new/true target encodings",
+      "target_token": "first token of leading-space target string"
+    },
+    "schema": "hlm5-certificate-contract-v1",
+    "seed": 0,
+    "torch_version": "2.5.1+cu121",
+    "upstream_sha256": {}
+  },
   "device": "cuda",
-  "n_records": 1000,
-  "identity_check_first_record": {
-    "max_abs_diff_lmhead_vs_logits": 1.1444091796875e-05,
-    "argmax_match": true,
-    "case_id": 0,
-    "dtype": "fp32"
-  },
-  "risk_label_counts": {
-    "safe": 1000
-  },
-  "fraction_reachable": 1.0,
+  "dtype": "float32",
+  "fraction_already_correct": 0.004,
   "fraction_hard_blocker": 0.0,
+  "fraction_head_reachable": 1.0,
   "fraction_infinite_slack": 1.0,
+  "fraction_reachable": 1.0,
+  "fraction_single_token_target": 1.0,
+  "identity_check_first_record": {
+    "allclose": true,
+    "argmax_match": true,
+    "atol": 2e-05,
+    "case_id": 0,
+    "dtype": "float32",
+    "max_abs_diff_lmhead_vs_logits": 1.1444091796875e-05,
+    "rtol": 1e-05
+  },
   "median_slack_finite_all": null,
   "median_slack_reachable_finite": null,
-  "fraction_head_reachable": 1.0,
-  "fraction_already_correct": 0.004,
-  "fraction_single_token_target": 1.0,
-  "case_id_first": 0,
-  "case_id_last": 999
+  "model": "gpt2-xl",
+  "n_records": 1000,
+  "risk_label_counts": {
+    "safe": 1000
+  }
 }
