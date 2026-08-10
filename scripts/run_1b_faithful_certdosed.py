@@ -21,22 +21,31 @@ Keys are identical across arms, so the gate (and hence paraphrase fire rate and
 locality) is shared; only the stored values/dose differ.
 
 Run:  python scripts/run_1b_faithful_certdosed.py
-Out:  results/hlm5_1b_faithful_certdosed.json
+Out:  results/certificate_refresh_staging/hlm5_1b_faithful_certdosed.json
 """
-import json
 import math
 import random
 import time
 
 import torch
 
-from hlm5.io import load_trunk, load_tokenizer, RESULTS_DIR
+from hlm5.artifact_contract import (
+    FAITHFUL_SAMPLE_CONTRACT,
+    STAGING_DIR,
+    atomic_write_json,
+    float64_boundary_record,
+    hlm5_contract,
+    require_preflight,
+)
+from hlm5.io import load_trunk, load_tokenizer
 from hlm5.memory import EditableHLM5Memory, unit
 
 GATE_THRESH = 0.95
 TEMPERATURE = 0.10
 DEGREE = 5
 EPS = 0.0                       # exact certificate: no slope dead-zone
+CERTIFICATE_ARITHMETIC_DTYPE = "float64"
+OUTPUT = STAGING_DIR / "hlm5_1b_faithful_certdosed.json"
 
 # ---- IDENTICAL facts / prompts to run_1b_faithful.py (DO NOT EDIT) ---------- #
 FACTS = [
@@ -87,15 +96,24 @@ WHITEN_TEXT = NEUTRAL + ["I think that", "The book was about", "He walked into t
 
 
 def main():
-    random.seed(0); torch.manual_seed(0)
+    random.seed(0)
+    torch.manual_seed(0)
     T0 = time.time()
+    _, preflight_sha256 = require_preflight(__file__, "hlm5")
 
     TOK = load_tokenizer()
     model, ck = load_trunk("baseline")
     DEV = next(model.parameters()).device.type
+    model_dtype = str(next(model.parameters()).dtype).removeprefix("torch.")
+    contract = hlm5_contract(
+        __file__,
+        preflight_sha256,
+        model_dtype,
+        FAITHFUL_SAMPLE_CONTRACT,
+    )
     DIM = ck["cfg"]["dim"]
     HEAD_W = model.head.weight
-    W = model.head.weight.detach().float()          # (V, d) tied head, no bias => exact
+    W = model.head.weight.detach().to(torch.float64)
     V, _ = W.shape
     Wn = W.norm(dim=1)
     INV = {i: s for s, i in TOK.get_vocab().items()}
@@ -157,10 +175,10 @@ def main():
     # Feasible interval (L, U); hard blocker: a_j<=0 & b_j<=0.
     # --------------------------------------------------------------------------- #
     def envelope(h, tid, v=None):
-        h = h.float()
+        h = h.detach().to(torch.float64)
         base = W @ h
         if v is None:
-            v = W[tid] / (Wn[tid] + 1e-8)
+            v = W[tid] / (Wn[tid] + 1e-12)
         a = base[tid] - base
         Wv = W @ v
         b = Wv[tid] - Wv
@@ -173,15 +191,19 @@ def main():
         L = float(torch.clamp(ratio[bpos].max(), min=0.0)) if bool(bpos.any()) else 0.0
         U = float(ratio[bneg].min()) if bool(bneg.any()) else float("inf")
         reach = (not bool(hard.any())) and L < U
-        out = {"L": round(L, 3), "U": (round(U, 3) if math.isfinite(U) else "inf"),
-               "slack": (round(U - L, 3) if math.isfinite(U) else "inf"), "reachable": reach}
+        out = {
+            "L": L,
+            "U": U if math.isfinite(U) else None,
+            "slack": U - L if math.isfinite(U) else None,
+            "reachable": reach,
+        }
         # certificate-governed dose (demo formula): beta* = 1.05 L + 1, clamped into (L,U)
         beta = 1.05 * L + 1.0
         if math.isfinite(U) and beta >= U:
             beta = 0.5 * (L + U)
-        out["beta_star"] = round(beta, 3)
+        out["beta_star"] = beta
         marg = aj + beta * bj
-        out["margin_after"] = round(float(marg.min()), 3)
+        out["margin_after"] = float(marg.min())
         out["blocker"] = tokstr(idx[marg.argmin()])       # binding competitor at beta*
         if reach:
             s = U - L
@@ -192,13 +214,13 @@ def main():
                 hard_idx = idx[hard]
                 jb = hard_idx[base[hard_idx].argmax()]     # worst hard blocker by base logit
                 out["blocker"] = tokstr(jb)
-                out["blocker_a"] = round(float(a[jb]), 4)
-                out["blocker_b"] = round(float(b[jb]), 4)
+                out["blocker_a"] = float(a[jb])
+                out["blocker_b"] = float(b[jb])
         return out, v
 
     def synthesize(tid, steps=300):
         """r* = argmax_{||r||<=1} min_{j!=y} (W_y - W_j).r  (projected gradient on softmin)."""
-        r = (W[tid] / (Wn[tid] + 1e-8)).clone()
+        r = (W[tid] / (Wn[tid] + 1e-12)).clone()
         tau = 8.0
         for _ in range(steps):
             sc = W @ r
@@ -207,7 +229,7 @@ def main():
             w = torch.softmax(tau * (sc_comp - sc_comp.max()), dim=0)
             grad = W[tid] - (w[:, None] * W).sum(0)
             r = r + 0.5 * grad
-            r = r / (r.norm() + 1e-8)
+            r = r / (r.norm() + 1e-12)
             tau = min(40.0, tau * 1.01)
         sc = W @ r
         sc_comp = sc.clone()
@@ -223,7 +245,7 @@ def main():
     for i, (kp, tgt, tid, paras) in enumerate(facts):
         cert, v = envelope(fact_h[i], tid)                  # v = unit(W_y): naive value
         row = {"i": i, "key": kp, "target": tgt, "target_id": tid,
-               "base_argmax": tokstr(int((W @ fact_h[i].float()).argmax())),
+               "base_argmax": tokstr(int((HEAD_W @ fact_h[i]).argmax())),
                "L": cert["L"], "U": cert["U"], "slack": cert["slack"],
                "risk": cert["risk"], "reachable": cert["reachable"],
                "beta_star": cert["beta_star"], "margin_after": cert["margin_after"],
@@ -252,6 +274,28 @@ def main():
         print(f"  [{i:2d}] {kp!r} -> {tgt!r}: L={row['L']} U={row['U']} "
               f"risk={row['risk']} beta*={row['beta_star']} blocker={row['blocker']!r}{extra}")
 
+    def inside_open_interval(lower, upper, beta):
+        return lower < beta and (upper is None or beta < upper)
+
+    checked_doses = []
+    for row in per_fact:
+        if row["reachable"]:
+            checked_doses.append(
+                inside_open_interval(row["L"], row["U"], row["beta_star"])
+                and row["margin_after"] > 0.0
+            )
+        if row.get("rescued"):
+            checked_doses.append(
+                inside_open_interval(
+                    row["L_synth"],
+                    row["U_synth"],
+                    row["beta_star_synth"],
+                )
+                and row["margin_after_synth"] > 0.0
+            )
+    if not all(checked_doses):
+        raise RuntimeError("faithful producer emitted an invalid certified dose")
+
     # --------------------------------------------------------------------------- #
     # One memory, keys injected once (identical across arms); arms re-dose VALUES.
     # --------------------------------------------------------------------------- #
@@ -269,8 +313,10 @@ def main():
             q = wkey(fact_h[i])[None, None, :]
             g = torch.relu(mem.score(q)).max()
             ret, _ = mem(q)
-            delta = model.head(g * ret[0, 0]); base = model.head(fact_h[i])
-            gap = base - base[tid]; slope = delta[tid] - delta
+            delta = model.head(g * ret[0, 0])
+            base = model.head(fact_h[i])
+            gap = base - base[tid]
+            slope = delta[tid] - delta
             flip = slope > 1e-6
             if bool(flip.any()):
                 need = max(need, float((gap[flip] / slope[flip]).clamp_min(0.0).max()))
@@ -286,12 +332,18 @@ def main():
             if arm == "global":
                 mem.values.data[s] = unit(HEAD_W[tid].detach().float(), 0)
             elif arm == "cert_naive":
-                mem.values.data[s] = unit(row["_v_naive"], 0) * row["beta_star"]
+                mem.values.data[s] = (
+                    row["_v_naive"] * row["beta_star"]
+                ).to(mem.values.dtype)
             elif arm == "cert_synth":
                 if row.get("rescued"):
-                    mem.values.data[s] = unit(row["_v_synth"], 0) * row["beta_star_synth"]
+                    mem.values.data[s] = (
+                        row["_v_synth"] * row["beta_star_synth"]
+                    ).to(mem.values.dtype)
                 else:
-                    mem.values.data[s] = unit(row["_v_naive"], 0) * row["beta_star"]
+                    mem.values.data[s] = (
+                        row["_v_naive"] * row["beta_star"]
+                    ).to(mem.values.dtype)
 
     # gate scores are value-independent: compute paraphrase fire rate once
     @torch.no_grad()
@@ -301,17 +353,20 @@ def main():
     para_fire = para_n = 0
     for i, (kp, tgt, tid, paras) in enumerate(facts):
         for pp in paras:
-            para_fire += int(gate_score(pp) >= GATE_THRESH); para_n += 1
+            para_fire += int(gate_score(pp) >= GATE_THRESH)
+            para_n += 1
     para_rate = round(para_fire / max(para_n, 1), 3)
     print(f"paraphrase gate-fire rate @ tau={GATE_THRESH}: {para_fire}/{para_n} = {para_rate}")
 
     # neutral baselines with memory DETACHED (argmax + full logits for bit-identity)
     model.detach_memory()
     BASE_NEUTRAL_LOGITS = {t: deployed_logits(t) for t in NEUTRAL}
-    base_neutral = {t: int(BASE_NEUTRAL_LOGITS[t].argmax()) for t in NEUTRAL}
 
     def boot(v, B=2000):
-        n = len(v); ms = sorted(sum(v[random.randrange(n)] for _ in range(n)) / n for _ in range(B))
+        n = len(v)
+        ms = sorted(
+            sum(v[random.randrange(n)] for _ in range(n)) / n for _ in range(B)
+        )
         return (round(sum(v) / n, 3), round(ms[int(.025 * B)], 3), round(ms[int(.975 * B)], 3))
 
     @torch.no_grad()
@@ -322,7 +377,9 @@ def main():
         eff, gen, flips, preds = [], [], [], []
         for i, (kp, tgt, tid, paras) in enumerate(facts):
             p = int(deployed_logits(kp).argmax())
-            eff.append(int(p == tid)); flips.append(bool(p == tid)); preds.append(tokstr(p))
+            eff.append(int(p == tid))
+            flips.append(bool(p == tid))
+            preds.append(tokstr(p))
             gen.append(sum(int(int(deployed_logits(pp).argmax()) == tid) for pp in paras) / len(paras))
         loc_rows = []
         for t in NEUTRAL:
@@ -342,20 +399,20 @@ def main():
                 "paraphrase_gate_fire_rate": para_rate,
                 "locality_argmax": f"{sum(r['argmax_match'] for r in loc_rows)}/{len(loc_rows)}",
                 "locality_bit_identical": f"{sum(r['logits_bit_identical'] for r in loc_rows)}/{len(loc_rows)}",
-                "locality_rows": loc_rows}, flips, preds
+                "locality_rows": loc_rows}, flips, preds, gen
 
     print("=== arm GLOBAL (repro of the 0.529 row) ===")
-    res_global, flips_g, preds_g = eval_arm("global", boost_global)
+    res_global, flips_g, preds_g, gen_g = eval_arm("global", boost_global)
     print(f"  eff={res_global['summary']['eff']} gen={res_global['summary']['gen']} "
           f"loc={res_global['summary']['loc']} bit={res_global['locality_bit_identical']}")
 
     print("=== arm CERT-NAIVE (variant a: per-fact beta*, unit(W_y), boost=1.0) ===")
-    res_naive, flips_a, preds_a = eval_arm("cert_naive", 1.0)
+    res_naive, flips_a, preds_a, gen_a = eval_arm("cert_naive", 1.0)
     print(f"  eff={res_naive['summary']['eff']} gen={res_naive['summary']['gen']} "
           f"loc={res_naive['summary']['loc']} bit={res_naive['locality_bit_identical']}")
 
     print("=== arm CERT-SYNTH (variant b: + residual synthesis rescue) ===")
-    res_synth, flips_b, preds_b = eval_arm("cert_synth", 1.0)
+    res_synth, flips_b, preds_b, gen_b = eval_arm("cert_synth", 1.0)
     print(f"  eff={res_synth['summary']['eff']} gen={res_synth['summary']['gen']} "
           f"loc={res_synth['summary']['loc']} bit={res_synth['locality_bit_identical']}")
 
@@ -363,16 +420,28 @@ def main():
     table = []
     for i, row in enumerate(per_fact):
         r = {k: v for k, v in row.items() if not k.startswith("_")}
-        r["flip_global"] = flips_g[i]; r["pred_global"] = preds_g[i]
-        r["flip_cert_naive"] = flips_a[i]; r["pred_cert_naive"] = preds_a[i]
-        r["flip_cert_synth"] = flips_b[i]; r["pred_cert_synth"] = preds_b[i]
+        r["flip_global"] = flips_g[i]
+        r["pred_global"] = preds_g[i]
+        r["generalization_global"] = gen_g[i]
+        r["flip_cert_naive"] = flips_a[i]
+        r["pred_cert_naive"] = preds_a[i]
+        r["generalization_cert_naive"] = gen_a[i]
+        r["flip_cert_synth"] = flips_b[i]
+        r["pred_cert_synth"] = preds_b[i]
+        r["generalization_cert_synth"] = gen_b[i]
         if not r["flip_cert_naive"]:
             r["blocker_note"] = ("unreachable under unit(W_y): hard blocker "
                                  f"{r['blocker']!r}" if not r["reachable"]
                                  else f"dose inside (L,U) failed vs {r['blocker']!r}")
         table.append(r)
 
-    out = {"model": "HLM5-1B-trunk-FAITHFUL-CERTDOSED", "device": DEV, "n_facts": K,
+    out = {"certificate_contract": contract,
+           "certificate_boundary_dtypes": float64_boundary_record(
+               head=W,
+               hidden=fact_h[0].detach().to(torch.float64),
+               direction=per_fact[0]["_v_naive"],
+           ),
+           "model": "HLM5-1B-trunk-FAITHFUL-CERTDOSED", "device": DEV, "n_facts": K,
            "gate_thresh": GATE_THRESH, "degree": DEGREE, "temperature": TEMPERATURE,
            "dosing": {"global": f"unit(W_y) values, auto-boost {boost_global:.1f}",
                       "cert_naive": "unit(W_y) values at per-fact beta* in (L,U), boost=1.0",
@@ -384,22 +453,43 @@ def main():
            "arms": {"global_repro": res_global, "cert_naive": res_naive,
                     "cert_synth": res_synth},
            "per_fact": table,
-           "wall_time_s": round(time.time() - T0, 1)}
-    out_path = RESULTS_DIR / "hlm5_1b_faithful_certdosed.json"
-    json.dump(out, open(out_path, "w"), indent=2)
+           "validity": {
+               "candidate_doses_checked": len(checked_doses),
+               "all_candidate_doses_inside_with_positive_margin": all(
+                   checked_doses
+               ),
+               "ordinary_forward_naive_agreement": all(
+                   bool(row["flip_cert_naive"]) == bool(row["reachable"])
+                   for row in table
+               ),
+               "ordinary_forward_synth_agreement": all(
+                   bool(row["flip_cert_synth"])
+                   == bool(row["reachable"] or row.get("rescued"))
+                   for row in table
+               ),
+               "all_arms_locality_bit_identical": all(
+                   arm["locality_bit_identical"] == "8/8"
+                   for arm in (res_global, res_naive, res_synth)
+               ),
+           }}
+    atomic_write_json(OUTPUT, out)
 
     print(f"\n=== CERT-DOSED faithful pipeline, {K} facts; mean (95% CI) ===")
     print(f"paraphrase gate-fire rate @ tau {GATE_THRESH}: {para_rate}")
     print(f"{'Arm':<22} {'Efficacy':>20} {'Generalization':>20} {'Locality':>18} {'bit-id':>8}")
     for name, r in [("GLOBAL(repro 0.529)", res_global), ("CERT-NAIVE (a)", res_naive),
                     ("CERT-SYNTH (b)", res_synth)]:
-        e, g, l = r["summary"]["eff"], r["summary"]["gen"], r["summary"]["loc"]
+        e = r["summary"]["eff"]
+        g = r["summary"]["gen"]
+        loc = r["summary"]["loc"]
         print(f"{name:<22} {e[0]:>6.3f} [{e[1]:.2f},{e[2]:.2f}]   {g[0]:>6.3f} "
-              f"[{g[1]:.2f},{g[2]:.2f}]   {l[0]:>6.3f} [{l[1]:.2f},{l[2]:.2f}]   "
+              f"[{g[1]:.2f},{g[2]:.2f}]   {loc[0]:>6.3f} "
+              f"[{loc[1]:.2f},{loc[2]:.2f}]   "
               f"{r['locality_bit_identical']:>7}")
     print(f"\nflip counts: global {res_global['eff_count']}, "
           f"cert-naive {res_naive['eff_count']}, cert-synth {res_synth['eff_count']}")
-    print(f"saved -> {out_path}")
+    print(f"runtime_s={time.time() - T0:.1f}")
+    print(f"saved -> {OUTPUT}")
 
 
 if __name__ == "__main__":

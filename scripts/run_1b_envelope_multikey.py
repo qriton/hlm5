@@ -10,7 +10,8 @@ Conventions are IDENTICAL to run_1b_certificate.py:
   - value v = unit(W_y); a_j = (W_y - W_j).h ; b_j = (W_y - W_j).v ;
   - exact signs; L = max(0, max_{b>0} -a/b); U = min_{b<0} -a/b;
   - hard blocker: exists j with b_j<=0 and a_j<=0;
-  - unreachable iff hard blocker exists or L >= U; else beta = 1.05*L + 1 and
+  - unreachable iff hard blocker exists or L >= U; else beta = 1.05*L + 1,
+    pulled to the interval midpoint when it would meet/exceed U, and
     risk = safe (slack > 5*beta) / narrow (slack > beta) / brittle;
   - per-key median reachable slack = sorted(finite slacks)[n//2] (upper median),
     matching the original script.
@@ -20,29 +21,66 @@ precomputed once; each key costs one forward pass + one (V x 1200) margin sweep.
 
 The ORIGINAL key ("The capital of Vorenia is") is additionally recomputed with a
 verbatim copy of the original per-target scalar code path, its stored results
-(results/cert_envelope_synth.json) are loaded for comparison, and the
+(results/certificate_refresh_staging/cert_envelope_synth.json) is loaded for
+comparison, and the
 paper's missing number is produced: of its unreachable targets, how many trip
 the hard-blocker clause vs are unreachable only via L>=U.
 
 Run:    python scripts/run_1b_envelope_multikey.py
-Output: results/cert_envelope_multikey.json
+Output: results/certificate_refresh_staging/cert_envelope_multikey.json
 """
 import json
+import math
 import re
 import time
 
 import torch
 
-from hlm5.io import load_trunk, load_tokenizer, RESULTS_DIR
+from hlm5.artifact_contract import (
+    MULTI_KEY_SAMPLE_CONTRACT,
+    ONE_KEY_SAMPLE_CONTRACT,
+    STAGING_DIR,
+    atomic_write_json,
+    float64_boundary_record,
+    hlm5_contract,
+    require_preflight,
+    require_staged_artifact,
+)
+from hlm5.io import load_trunk, load_tokenizer
+
+
+EPS = 0.0
+CERTIFICATE_ARITHMETIC_DTYPE = "float64"
+UPSTREAM = STAGING_DIR / "cert_envelope_synth.json"
+OUTPUT = STAGING_DIR / "cert_envelope_multikey.json"
 
 
 def main():
     torch.manual_seed(0)
+    _, preflight_sha256 = require_preflight(__file__, "hlm5")
+    stored, upstream_sha256 = require_staged_artifact(
+        UPSTREAM,
+        "scripts/run_1b_certificate.py",
+        ONE_KEY_SAMPLE_CONTRACT,
+        {},
+    )
 
     TOK = load_tokenizer()
     model, ck = load_trunk("baseline")
     DEV = next(model.parameters()).device.type
-    W = model.head.weight.detach().float()          # (V, d)
+    model_dtype = str(next(model.parameters()).dtype).removeprefix("torch.")
+    contract = hlm5_contract(
+        __file__,
+        preflight_sha256,
+        model_dtype,
+        MULTI_KEY_SAMPLE_CONTRACT,
+        upstream={
+            "results/certificate_refresh_staging/cert_envelope_synth.json": (
+                upstream_sha256
+            )
+        },
+    )
+    W = model.head.weight.detach().to(torch.float64)
     V, d = W.shape
     inv = {i: s for s, i in TOK.get_vocab().items()}
     print(f"loaded 1B trunk: vocab {V}, dim {d}, device {DEV}")
@@ -56,7 +94,6 @@ def main():
     pool = sorted(pool)[:1200]
     print(f"word-like single-token pool: {len(pool)}")
 
-    EPS = 0.0
     ORIG_FACT = "The capital of Vorenia is"
 
     # ------------------------------------------------------------------ key prompts
@@ -133,19 +170,20 @@ def main():
     T = len(pool)
     tids = torch.tensor(pool, device=DEV)
     aT = torch.arange(T, device=DEV)
-    Vmat = W[tids] / (Wn[tids] + 1e-8).unsqueeze(1)      # (T, d), rows = unit(W_y)
+    Vmat = W[tids] / (Wn[tids] + 1e-12).unsqueeze(1)     # (T, d), rows = unit(W_y)
     WV = W @ Vmat.T                                      # (V, T); col k = W @ v_k
     B = WV[tids, aT].unsqueeze(0) - WV                   # (V, T); b_j per target col
     del WV
     bpos = B > EPS
     bneg = B < 0
     bnonpos = B <= EPS
-    NEG_INF = float("-inf"); POS_INF = float("inf")
+    NEG_INF = float("-inf")
+    POS_INF = float("inf")
 
     @torch.no_grad()
     def hidden_last(text):
         ids = torch.tensor([TOK.encode(text).ids], device=DEV)
-        return model.hidden(ids)[0, -1].float()
+        return model.hidden(ids)[0, -1].detach().to(torch.float64)
 
     @torch.no_grad()
     def envelope_key(base):
@@ -159,6 +197,14 @@ def main():
         reach = (~hard) & (L < U)
         slack = U - L
         beta = L * 1.05 + 1.0
+        beta = torch.where(
+            torch.isfinite(U) & (beta >= U),
+            0.5 * (L + U),
+            beta,
+        )
+        candidate_inside = reach & (L < beta) & ((~torch.isfinite(U)) | (beta < U))
+        candidate_margin = (A + B * beta.unsqueeze(0)).amin(dim=0)
+        candidate_positive = reach & (candidate_margin > 0.0)
         safe = reach & (slack > 5 * beta)
         narrow = reach & ~safe & (slack > beta)
         brittle = reach & ~safe & ~narrow
@@ -174,26 +220,39 @@ def main():
             "median_slack_reachable": round(med, 2) if med is not None else None,
             "unreachable_hard_blocker": int(hard.sum()),
             "unreachable_interval_only": int(((~reach) & (~hard)).sum()),
+            "candidate_doses_checked": n_reach,
+            "all_candidate_doses_inside_open_interval": bool(
+                candidate_inside[reach].all()
+            ),
+            "all_candidate_margins_positive": bool(
+                candidate_positive[reach].all()
+            ),
+            "minimum_candidate_margin": (
+                float(candidate_margin[reach].min()) if n_reach else None
+            ),
         }, reach, hard, slack, beta
 
     # ---- verbatim scalar path from run_1b_certificate.py (for the original key) ----
     def envelope_scalar(tid, base):
         a = base[tid] - base                             # a_j (a[tid]=0)
-        v = W[tid] / (Wn[tid] + 1e-8)
+        v = W[tid] / (Wn[tid] + 1e-12)
         Wv = W @ v                                       # (V,)
         b = Wv[tid] - Wv                                 # b_j (b[tid]=0)
-        mask = torch.ones(V, dtype=torch.bool, device=DEV); mask[tid] = False
+        mask = torch.ones(V, dtype=torch.bool, device=DEV)
+        mask[tid] = False
         aj, bj = a[mask], b[mask]
         bpos_, bneg_ = bj > EPS, bj < 0
         hard = (bj <= EPS) & (aj <= 0)
         ratio = -aj / bj
-        L = torch.clamp(ratio[bpos_].max(), min=0.0) if bpos_.any() else torch.tensor(0.0, device=DEV)
-        U = ratio[bneg_].min() if bneg_.any() else torch.tensor(float("inf"), device=DEV)
+        L = torch.clamp(ratio[bpos_].max(), min=0.0) if bpos_.any() else torch.tensor(0.0, device=DEV, dtype=W.dtype)
+        U = ratio[bneg_].min() if bneg_.any() else torch.tensor(float("inf"), device=DEV, dtype=W.dtype)
         reach = (not bool(hard.any())) and float(L) < float(U)
         out = {"reach": reach, "L": float(L), "U": float(U), "slack": float(U - L),
                "hard": bool(hard.any())}
         if reach:
             beta = float(L) * 1.05 + 1.0
+            if math.isfinite(float(U)) and beta >= float(U):
+                beta = 0.5 * (float(L) + float(U))
             s = out["slack"]
             out["risk"] = "safe" if s > 5 * beta else ("narrow" if s > beta else "brittle")
         else:
@@ -219,11 +278,22 @@ def main():
           f"unreachable {n_un0} = {n_hard0} hard-blocker + {n_int0} interval-only "
           f"[{time.time()-t0:.1f}s]")
 
-    stored = json.load(open(RESULTS_DIR / "cert_envelope_synth.json"))
     stored_env = stored["envelope"]
     stored_unreach = stored_env["risk_label_counts"].get("unreachable")
-    matches_stored = (round(n_reach0 / T, 3) == stored_env["reachable_rate"]
-                      and n_un0 == stored_unreach)
+    matches_stored = (
+        round(n_reach0 / T, 3) == stored_env["reachable_rate"]
+        and n_un0 == stored_unreach
+        and {
+            key: risk0.get(key, 0)
+            for key in ("safe", "narrow", "brittle", "unreachable")
+        }
+        == {
+            key: stored_env["risk_label_counts"].get(key, 0)
+            for key in ("safe", "narrow", "brittle", "unreachable")
+        }
+        and (round(med0, 2) if med0 is not None else None)
+        == stored_env["median_slack_reachable"]
+    )
     print(f"stored (cert_envelope_synth.json): reachable_rate {stored_env['reachable_rate']}, "
           f"unreachable {stored_unreach} -> recompute matches: {matches_stored}")
 
@@ -262,7 +332,18 @@ def main():
         if prompt == ORIG_FACT:
             vec_ok = (row["n_reachable"] == n_reach0
                       and row["unreachable_hard_blocker"] == n_hard0
-                      and row["unreachable_interval_only"] == n_int0)
+                      and row["unreachable_interval_only"] == n_int0
+                      and row["risk_counts"] == {
+                          key: risk0.get(key, 0)
+                          for key in (
+                              "safe",
+                              "narrow",
+                              "brittle",
+                              "unreachable",
+                          )
+                      }
+                      and row["median_slack_reachable"]
+                      == (round(med0, 2) if med0 is not None else None))
             original_key_block["vectorized_matches_scalar"] = vec_ok
             print(f"    vectorized vs scalar (original key): match={vec_ok}")
     print(f"multi-key sweep done in {time.time()-t0:.1f}s")
@@ -305,8 +386,31 @@ def main():
         "z_score": round((orig_rf - mu) / sd, 2) if sd > 0 else None,
         "within_1_std": bool(abs(orig_rf - mu) <= sd),
     }
+    candidate_doses_checked = sum(
+        row["candidate_doses_checked"] for row in key_rows
+    )
+    all_candidate_doses_inside = all(
+        row["all_candidate_doses_inside_open_interval"] for row in key_rows
+    )
+    all_candidate_margins_positive = all(
+        row["all_candidate_margins_positive"] for row in key_rows
+    )
+    minimum_candidate_margin = min(
+        row["minimum_candidate_margin"]
+        for row in key_rows
+        if row["minimum_candidate_margin"] is not None
+    )
+    if not all_candidate_doses_inside or not all_candidate_margins_positive:
+        raise RuntimeError("multi-key producer emitted an invalid candidate dose")
 
     out = {
+        "certificate_contract": contract,
+        "certificate_boundary_dtypes": float64_boundary_record(
+            head=W,
+            hidden=h0,
+            direction_matrix=Vmat,
+            slopes=B,
+        ),
         "model": "HLM5-1B-trunk",
         "checkpoint": "models/hlm5_lm_baseline_fineweb_g3_final.pt",
         "pool": T, "eps": EPS, "n_keys": len(KEYS),
@@ -320,12 +424,33 @@ def main():
         "aggregates": {**agg, "per_category": per_cat, "original_key_typicality": typicality},
         "keys": key_rows,
         "prompt_list": {"novel": NOVEL, "real": REAL, "generic": GENERIC},
+        "validity": {
+            "keys_checked": len(key_rows),
+            "candidate_doses_checked": candidate_doses_checked,
+            "all_candidate_doses_inside_open_interval": (
+                all_candidate_doses_inside
+            ),
+            "all_candidate_margins_positive": all_candidate_margins_positive,
+            "minimum_candidate_margin": minimum_candidate_margin,
+            "all_risk_counts_sum_to_pool": all(
+                sum(row["risk_counts"].values()) == T for row in key_rows
+            ),
+            "original_scalar_matches_staged_one_key": matches_stored,
+            "original_vectorized_matches_scalar": original_key_block.get(
+                "vectorized_matches_scalar",
+                False,
+            ),
+        },
     }
-    out_path = RESULTS_DIR / "cert_envelope_multikey.json"
-    json.dump(out, open(out_path, "w"), indent=2)
+    atomic_write_json(OUTPUT, out)
     print("\n=== aggregates ===")
-    print(json.dumps({"aggregates": out["aggregates"], "original_key": original_key_block}, indent=2))
-    print(f"saved -> {out_path}")
+    print(json.dumps(
+        {"aggregates": out["aggregates"], "original_key": original_key_block},
+        indent=2,
+        sort_keys=True,
+        allow_nan=False,
+    ))
+    print(f"saved -> {OUTPUT}")
 
 
 if __name__ == "__main__":

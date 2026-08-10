@@ -39,16 +39,18 @@ def test_missing_verifier_coverage_cannot_produce_ready_status() -> None:
     )
 
 
-def test_all_producers_have_exact_signs_but_no_float64_contract() -> None:
+def test_producers_are_hardened_but_release_payloads_remain_unbound() -> None:
     report = audit.build_report()
     for item in report["artifacts"]:
         producer = item["producer"]
         assert producer["exact_sign_source"]
-        assert producer["certificate_arithmetic_dtype_marker"] is None
-        assert producer["float32_certificate_evidence"]
+        assert producer["certificate_arithmetic_dtype_marker"] == "float64"
+        assert not producer["float32_certificate_evidence"]
+        assert item["status"] == "REFRESH_REQUIRED"
+        assert not item["certificate_contract"]["present"]
 
 
-def test_counterfact_resume_is_not_contract_bound() -> None:
+def test_counterfact_resume_is_hardened_but_release_rows_are_not_bound() -> None:
     report = audit.build_report()
     counterfact = next(
         item
@@ -56,8 +58,8 @@ def test_counterfact_resume_is_not_contract_bound() -> None:
         if item["name"] == "counterfact_certificate_features"
     )
     assert counterfact["producer"]["resumable_output"]
-    assert not counterfact["producer"]["resume_binds_certificate_contract"]
-    assert not counterfact["resume_fail_closed"]
+    assert counterfact["producer"]["resume_binds_certificate_contract"]
+    assert counterfact["resume_fail_closed"]
     assert not counterfact["contract_matches"]["jsonl_sha256"]
 
 

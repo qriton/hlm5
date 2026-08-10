@@ -54,7 +54,7 @@ The exact released baseline checkpoint exists locally and matches the published
 SHA-256
 `3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1`.
 The tokenizer matches
-`15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbbe588`.
+`15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588`.
 The GPT-2-XL weights are cached locally. CounterFact source data is not present,
 so its refresh additionally needs a pinned data acquisition and hash before any
 row is recomputed.

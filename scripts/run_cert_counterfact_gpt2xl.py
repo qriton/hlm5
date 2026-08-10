@@ -13,12 +13,11 @@ base argmax, already_correct, single_token_target.
 Data: scripts/data/counterfact.json (fetch with scripts/fetch_counterfact.py).
 
 Run: python scripts/run_cert_counterfact_gpt2xl.py
-Out: results/cert_counterfact_gpt2xl.jsonl (incremental, resumable)
-     results/cert_counterfact_gpt2xl_summary.json
+Out: results/certificate_refresh_staging/cert_counterfact_gpt2xl.jsonl
+     results/certificate_refresh_staging/cert_counterfact_gpt2xl_summary.json
 """
 import json
 import time
-from pathlib import Path
 
 try:
     import torchaudio  # noqa: F401
@@ -29,52 +28,93 @@ except Exception:
 import torch
 from transformers import AutoTokenizer, GPT2LMHeadModel
 
-from hlm5.io import RESULTS_DIR
+from hlm5.artifact_contract import (
+    COUNTERFACT_SAMPLE_CONTRACT,
+    COUNTERFACT_PATH,
+    GPT2_XL_MODEL_ID,
+    GPT2_XL_REVISION,
+    STAGING_DIR,
+    atomic_write_json,
+    atomic_write_jsonl,
+    counterfact_contract,
+    float64_boundary_record,
+    load_contract_jsonl,
+    require_preflight,
+    sha256_file,
+    stable_json_sha256,
+)
 
-DATA = Path(__file__).resolve().parent / "data" / "counterfact.json"
-OUT = RESULTS_DIR / "cert_counterfact_gpt2xl.jsonl"
-SUMMARY = RESULTS_DIR / "cert_counterfact_gpt2xl_summary.json"
+DATA = COUNTERFACT_PATH
+OUT = STAGING_DIR / "cert_counterfact_gpt2xl.jsonl"
+SUMMARY = STAGING_DIR / "cert_counterfact_gpt2xl_summary.json"
 N_TARGET = 1000
+CHECKPOINT_EVERY = 10
 EPS = 0.0           # exact certificate: no slope dead-zone
+CERTIFICATE_ARITHMETIC_DTYPE = "float64"
 GRID_N = 120        # same as run_1b_betastar.py
+IDENTITY_RTOL = 1e-5
+IDENTITY_ATOL = 2e-5
 
 
 def load_model(dev):
-    """fp32 first (fits 21GB); on OOM retry once after 60s; then fp16."""
-    def _load(dt):
-        m = GPT2LMHeadModel.from_pretrained("gpt2-xl", dtype=dt).to(dev).eval()
-        for p in m.parameters():
-            p.requires_grad_(False)
-        return m
-    try:
-        return _load(torch.float32), "fp32"
-    except torch.cuda.OutOfMemoryError:
-        print("OOM loading fp32; retrying in 60s ...", flush=True)
-        torch.cuda.empty_cache(); time.sleep(60)
-        try:
-            return _load(torch.float32), "fp32"
-        except torch.cuda.OutOfMemoryError:
-            print("OOM again; falling back to fp16.", flush=True)
-            torch.cuda.empty_cache()
-            return _load(torch.float16), "fp16"
+    """Load the registered local GPT-2 XL revision in float32 only."""
+    model = GPT2LMHeadModel.from_pretrained(
+        GPT2_XL_MODEL_ID,
+        revision=GPT2_XL_REVISION,
+        dtype=torch.float32,
+        local_files_only=True,
+    ).to(dev).eval()
+    for parameter in model.parameters():
+        parameter.requires_grad_(False)
+    return model
 
 
 def main():
     torch.manual_seed(0)
+    _, preflight_sha256 = require_preflight(__file__, "counterfact")
+    contract = counterfact_contract(
+        __file__,
+        preflight_sha256,
+        COUNTERFACT_SAMPLE_CONTRACT,
+    )
+    contract_sha256 = stable_json_sha256(contract)
 
     if not DATA.exists():
         raise FileNotFoundError(
             f"{DATA} not found. Run `python scripts/fetch_counterfact.py` first "
             "to download CounterFact.")
 
+    resume_rows = load_contract_jsonl(
+        OUT,
+        contract_sha256,
+        require_prefix=True,
+    )
+    if any(
+        not isinstance(row.get("certificate_boundary_dtypes"), dict)
+        or not row["certificate_boundary_dtypes"]
+        or any(
+            dtype != "float64"
+            for dtype in row["certificate_boundary_dtypes"].values()
+        )
+        for row in resume_rows
+    ):
+        raise RuntimeError("staged resume row has a non-float64 certificate boundary")
+    print(f"resume prefix: {len(resume_rows)} records", flush=True)
+
     dev = "cuda" if torch.cuda.is_available() else "cpu"
 
     print("loading gpt2-xl ...", flush=True)
-    tok = AutoTokenizer.from_pretrained("gpt2-xl")
-    model, dtype = load_model(dev)
+    tok = AutoTokenizer.from_pretrained(
+        GPT2_XL_MODEL_ID,
+        revision=GPT2_XL_REVISION,
+        local_files_only=True,
+    )
+    model = load_model(dev)
+    dtype = "float32"
     print(f"gpt2-xl loaded on {dev} in {dtype}", flush=True)
 
-    W = model.lm_head.weight.detach().float()   # (V, d) tied head, fp32 for cert math
+    W_native = model.lm_head.weight.detach()
+    W = W_native.to(torch.float64)
     V, d = W.shape
     Wn = W.norm(dim=1)
     print(f"head: vocab {V}, dim {d}", flush=True)
@@ -82,48 +122,30 @@ def main():
     records = json.load(open(DATA, encoding="utf-8"))
     print(f"counterfact records: {len(records)}", flush=True)
 
-    # ---- resume support: keep only valid existing lines, remember case_ids ----
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    done = {}
-    if OUT.exists():
-        valid = []
-        for line in open(OUT, encoding="utf-8"):
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                row = json.loads(line)
-                done[row["case_id"]] = row
-                valid.append(line)
-            except json.JSONDecodeError:
-                print("dropping malformed trailing line in existing output", flush=True)
-        with open(OUT, "w", encoding="utf-8") as f:
-            f.write("\n".join(valid) + ("\n" if valid else ""))
-        print(f"resuming: {len(done)} records already present", flush=True)
-
     @torch.no_grad()
     def forward_last(prompt):
         ids = tok(prompt, return_tensors="pt").input_ids.to(dev)
         out = model(ids, output_hidden_states=True)
-        h = out.hidden_states[-1][0, -1].float()       # post-ln_f last hidden
-        logits_last = out.logits[0, -1].float()
+        h = out.hidden_states[-1][0, -1].detach()       # native post-ln_f hidden
+        logits_last = out.logits[0, -1].detach()
         return h, logits_last
 
     @torch.no_grad()
     def certificate(base, y):
         """base = W @ h (V,), y = target token id. Conventions of run_1b_certificate.py."""
         a = base[y] - base                              # a_j (a[y]=0)
-        v = W[y] / (Wn[y] + 1e-8)
+        v = W[y] / (Wn[y] + 1e-12)
         Wv = W @ v
         b = Wv[y] - Wv                                  # b_j (b[y]=0)
-        mask = torch.ones(V, dtype=torch.bool, device=dev); mask[y] = False
+        mask = torch.ones(V, dtype=torch.bool, device=dev)
+        mask[y] = False
         aj, bj = a[mask], b[mask]
         idx = torch.arange(V, device=dev)[mask]
         bpos, bneg = bj > EPS, bj < 0
         hard = (bj <= EPS) & (aj <= 0)                  # hard blocker: a_j<=0 AND b_j<=0
         ratio = -aj / bj
-        L = torch.clamp(ratio[bpos].max(), min=0.0) if bpos.any() else torch.tensor(0.0, device=dev)
-        U = ratio[bneg].min() if bneg.any() else torch.tensor(float("inf"), device=dev)
+        L = torch.clamp(ratio[bpos].max(), min=0.0) if bpos.any() else torch.tensor(0.0, device=dev, dtype=W.dtype)
+        U = ratio[bneg].min() if bneg.any() else torch.tensor(float("inf"), device=dev, dtype=W.dtype)
         reach = (not bool(hard.any())) and float(L) < float(U)
 
         out = {
@@ -138,6 +160,7 @@ def main():
             "beta_star": None, "margin_at_beta_star": None,
         }
 
+        grid = None
         if reach:
             beta = float(L) * 1.05 + 1.0
             marg = aj + beta * bj
@@ -151,7 +174,13 @@ def main():
             # beta* grid over capped interval (run_1b_betastar.py conventions)
             Lf, Uf = float(L), float(U)
             hi = min(Uf, Lf + max(50.0, 5.0 * Lf)) if Uf != float("inf") else Lf + max(50.0, 5.0 * Lf)
-            grid = Lf + torch.linspace(0, 1, GRID_N + 2, device=dev)[1:-1] * (hi - Lf)
+            grid = Lf + torch.linspace(
+                0,
+                1,
+                GRID_N + 2,
+                device=dev,
+                dtype=W.dtype,
+            )[1:-1] * (hi - Lf)
             margs = aj[:, None] + grid[None, :] * bj[:, None]     # (V-1, GRID_N)
             worst = margs.min(0).values
             k = int(worst.argmax())
@@ -159,8 +188,10 @@ def main():
                 out["beta_star"] = float(grid[k])
                 out["margin_at_beta_star"] = float(worst[k])
             else:
-                out["reachable"] = False
-                out["risk"] = "unreachable"
+                raise RuntimeError(
+                    "dose grid found no positive-margin point inside a "
+                    "reachable certificate interval"
+                )
         else:
             out["risk"] = "unreachable"
             if bool(hard.any()):
@@ -170,7 +201,15 @@ def main():
                 out["blocker_token_str"] = tok.decode([jb])
                 out["blocker_a"] = float(base[y] - base[jb])
                 out["blocker_b"] = float(Wv[y] - Wv[jb])
-        return out
+        boundary_tensors = {
+            "head": W,
+            "base_logits": base,
+            "direction": v,
+            "ratios": ratio,
+        }
+        if grid is not None:
+            boundary_tensors["grid"] = grid
+        return out, float64_boundary_record(**boundary_tensors)
 
     @torch.no_grad()
     def head_reachable(y):
@@ -178,10 +217,9 @@ def main():
 
     n_done_new = 0
     usable_count = 0
-    identity_checked = False
     identity_info = None
     t0 = time.time()
-    fout = open(OUT, "a", encoding="utf-8")
+    rows = list(resume_rows)
 
     for rec in records:
         if usable_count >= N_TARGET:
@@ -194,28 +232,95 @@ def main():
         usable_idx = usable_count
         usable_count += 1
         cid = rec["case_id"]
-        if cid in done:
-            continue                                    # already computed (resume)
-
         y = enc_new[0]
         y_true = enc_true[0]
         prompt = rr["prompt"].format(rr["subject"])
-        h, logits_last = forward_last(prompt)
+        if usable_idx < len(resume_rows):
+            retained = resume_rows[usable_idx]
+            expected_identity = {
+                "case_id": cid,
+                "usable_index": usable_idx,
+                "subject": rr["subject"],
+                "prompt": prompt,
+                "target_new": rr["target_new"]["str"],
+                "target_true": rr["target_true"]["str"],
+                "y_token_id": int(y),
+                "y_token_str": tok.decode([y]),
+                "y_true_token_id": int(y_true),
+                "y_true_token_str": tok.decode([y_true]),
+                "single_token_target": bool(len(enc_new) == 1),
+            }
+            mismatches = {
+                key: {"retained": retained.get(key), "expected": value}
+                for key, value in expected_identity.items()
+                if retained.get(key) != value
+            }
+            if mismatches:
+                raise RuntimeError(
+                    "staged resume prefix does not match the registered data "
+                    f"at usable index {usable_idx}: {mismatches}"
+                )
+            if usable_idx != 0:
+                continue
+
+        h_native, logits_last = forward_last(prompt)
+        if usable_idx == 0:
+            base_native = W_native @ h_native
+            diff = float((base_native - logits_last).abs().max())
+            same_argmax = bool(
+                int(base_native.argmax()) == int(logits_last.argmax())
+            )
+            identity_allclose = bool(
+                torch.allclose(
+                    base_native,
+                    logits_last,
+                    rtol=IDENTITY_RTOL,
+                    atol=IDENTITY_ATOL,
+                )
+            )
+            identity_info = {
+                "max_abs_diff_lmhead_vs_logits": diff,
+                "argmax_match": same_argmax,
+                "allclose": identity_allclose,
+                "rtol": IDENTITY_RTOL,
+                "atol": IDENTITY_ATOL,
+                "case_id": cid,
+                "dtype": dtype,
+            }
+            print(
+                f"[identity check, first record] max|W@h - model logits| = "
+                f"{diff:.3e}, allclose = {identity_allclose}, argmax match = "
+                f"{same_argmax} (h = hidden_states[-1] post-ln_f, {dtype})",
+                flush=True,
+            )
+            if not same_argmax or not identity_allclose:
+                raise RuntimeError(
+                    "logit identity check failed: h is not the pre-head hidden state"
+                )
+            if resume_rows:
+                continue
+
+        h = h_native.to(torch.float64)
         base = W @ h
 
-        if not identity_checked:
-            diff = float((base - logits_last).abs().max())
-            same_argmax = bool(int(base.argmax()) == int(logits_last.argmax()))
-            identity_info = {"max_abs_diff_lmhead_vs_logits": diff, "argmax_match": same_argmax,
-                             "case_id": cid, "dtype": dtype}
-            print(f"[identity check, first record] max|W@h - model logits| = {diff:.3e}, "
-                  f"argmax match = {same_argmax} (h = hidden_states[-1] post-ln_f, {dtype})", flush=True)
-            assert same_argmax, "logit identity check failed: h is not the pre-head hidden state"
-            identity_checked = True
-
-        cert = certificate(base, y)
-        base_arg = int(base.argmax())
+        cert, boundary = certificate(base, y)
+        boundary.update(float64_boundary_record(hidden=h))
+        if cert["reachable"]:
+            beta_star = cert["beta_star"]
+            upper = cert["U"]
+            if (
+                beta_star is None
+                or not cert["L"] < beta_star
+                or (upper is not None and not beta_star < upper)
+                or not cert["margin_at_beta_star"] > 0.0
+            ):
+                raise RuntimeError(
+                    f"invalid CounterFact certified dose at usable index {usable_idx}"
+                )
+        base_arg = int(logits_last.argmax())
         row = {
+            "certificate_contract_sha256": contract_sha256,
+            "certificate_boundary_dtypes": boundary,
             "case_id": cid,
             "usable_index": usable_idx,
             "subject": rr["subject"],
@@ -233,21 +338,53 @@ def main():
             "already_correct": bool(base_arg == y),
             "single_token_target": bool(len(enc_new) == 1),
         }
-        fout.write(json.dumps(row, ensure_ascii=False) + "\n")
-        fout.flush()
+        rows.append(row)
         n_done_new += 1
+        if n_done_new % CHECKPOINT_EVERY == 0:
+            atomic_write_jsonl(OUT, rows)
         if usable_count % 100 == 0:
             print(f"  {usable_count}/{N_TARGET} usable processed "
                   f"({n_done_new} new, {time.time()-t0:.0f}s)", flush=True)
 
-    fout.close()
+    atomic_write_jsonl(OUT, rows)
     print(f"done: {usable_count} usable records, {n_done_new} newly computed, "
           f"{time.time()-t0:.0f}s", flush=True)
 
     # ---- summary over the full output file ----
-    rows = [json.loads(l) for l in open(OUT, encoding="utf-8") if l.strip()]
-    rows.sort(key=lambda r: r["usable_index"])
+    rows = load_contract_jsonl(
+        OUT,
+        contract_sha256,
+        require_prefix=True,
+    )
     n = len(rows)
+    if n != N_TARGET:
+        raise RuntimeError(f"incomplete CounterFact staging output: {n}/{N_TARGET}")
+    if [row["usable_index"] for row in rows] != list(range(N_TARGET)):
+        raise RuntimeError("CounterFact usable indices are not exactly 0..999")
+    if len({row["case_id"] for row in rows}) != N_TARGET:
+        raise RuntimeError("CounterFact case IDs are not unique")
+    if any(
+        row.get("certificate_contract_sha256") != contract_sha256 for row in rows
+    ):
+        raise RuntimeError("CounterFact row contract hash mismatch after completion")
+    if any(
+        not isinstance(row.get("certificate_boundary_dtypes"), dict)
+        or not row["certificate_boundary_dtypes"]
+        or any(
+            dtype != "float64"
+            for dtype in row["certificate_boundary_dtypes"].values()
+        )
+        for row in rows
+    ):
+        raise RuntimeError("CounterFact row certificate boundary is not float64")
+    if (
+        identity_info is None
+        or identity_info.get("argmax_match") is not True
+        or identity_info.get("allclose") is not True
+    ):
+        raise RuntimeError("missing or failed first-record native identity check")
+    atomic_write_jsonl(OUT, rows)
+    jsonl_sha256 = sha256_file(OUT)
     label_counts = {}
     for r in rows:
         label_counts[r["risk"]] = label_counts.get(r["risk"], 0) + 1
@@ -257,10 +394,13 @@ def main():
     def med(x):
         return x[len(x) // 2] if x else None
 
+    summary_contract = {**contract, "jsonl_sha256": jsonl_sha256}
     summary = {
+        "certificate_contract": summary_contract,
+        "certificate_boundary_dtypes": rows[0]["certificate_boundary_dtypes"],
         "model": "gpt2-xl", "dtype": dtype, "device": dev,
         "n_records": n,
-        "identity_check_first_record": identity_info if identity_info is not None else "resumed; checked in earlier run",
+        "identity_check_first_record": identity_info,
         "risk_label_counts": label_counts,
         "fraction_reachable": round(sum(r["reachable"] for r in rows) / n, 4),
         "fraction_hard_blocker": round(sum(r["hard_blocker"] for r in rows) / n, 4),
@@ -273,8 +413,8 @@ def main():
         "case_id_first": rows[0]["case_id"] if rows else None,
         "case_id_last": rows[-1]["case_id"] if rows else None,
     }
-    json.dump(summary, open(SUMMARY, "w", encoding="utf-8"), indent=2)
-    print(json.dumps(summary, indent=2), flush=True)
+    atomic_write_json(SUMMARY, summary)
+    print(json.dumps(summary, indent=2, sort_keys=True, allow_nan=False), flush=True)
     print(f"saved -> {OUT}\nsaved -> {SUMMARY}", flush=True)
 
 

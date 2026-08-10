@@ -114,10 +114,12 @@ def certify(W: torch.Tensor, h: torch.Tensor, target_id: int,
     W: (V, d) head weight (tied, bias-free -> the envelope is exact).
     h: (d,) hidden state at the key's last position.
     v: value direction; defaults to the deployed naive value unit(W_y).
+
+    W, h, v, and the returned certificate tensors remain float64. The caller
+    casts only the final dosed value at the memory-injection boundary.
     """
     if eps < 0:
         raise ValueError("eps must be non-negative")
-    W_in_dtype = W.dtype if W.dtype.is_floating_point else torch.float32
     W = W.detach().to(torch.float64)
     h = h.detach().to(torch.float64).reshape(-1)
     V = W.shape[0]
@@ -168,7 +170,7 @@ def certify(W: torch.Tensor, h: torch.Tensor, target_id: int,
         reachable=reachable, hard_blocker=bool(hard.any()), blocker_id=blocker_id,
         risk=risk, beta_candidate=beta, margin_at_candidate=margin_at_candidate,
         blocker_a=blocker_a, blocker_b=blocker_b,
-        v=v.to(W_in_dtype), aj=aj, bj=bj, competitor_ids=idx)
+        v=v, aj=aj, bj=bj, competitor_ids=idx)
 
 
 @torch.no_grad()
@@ -188,7 +190,13 @@ def dose(cert: Certificate, *, grid: int = 120, cap: float | None = None) -> flo
     if hi <= Lf:
         raise ValueError(f"empty dosing interval: L={Lf}, min(U, cap)={hi}")
     device = cert.aj.device
-    betas = Lf + torch.linspace(0.0, 1.0, grid + 2, device=device)[1:-1] * (hi - Lf)
+    betas = Lf + torch.linspace(
+        0.0,
+        1.0,
+        grid + 2,
+        device=device,
+        dtype=cert.aj.dtype,
+    )[1:-1] * (hi - Lf)
     marg = cert.aj[:, None] + betas[None, :] * cert.bj[:, None]   # (V-1, grid)
     worst = marg.min(0).values                                    # (grid,)
     beta_star = float(betas[int(worst.argmax())])
@@ -207,9 +215,10 @@ def synthesize(W: torch.Tensor, target_id: int, *, steps: int = 300,
     projected gradient ascent on a soft-min of the competitor margins, with the
     softmin sharpness annealed 8.0 -> 40.0 (x1.01/step). m* > 0 certifies that
     every competitor slope is positive along r*, i.e. the target is reachable.
+    The returned direction is float64 and is cast only after dosing/injection.
     """
-    W = W.detach().float()
-    r = (W[target_id] / (W[target_id].norm() + 1e-8)).clone()
+    W = W.detach().to(torch.float64)
+    r = (W[target_id] / (W[target_id].norm() + 1e-12)).clone()
     tau = 8.0
     for _ in range(steps):
         sc = W @ r
@@ -218,7 +227,7 @@ def synthesize(W: torch.Tensor, target_id: int, *, steps: int = 300,
         w = torch.softmax(tau * (sc_comp - sc_comp.max()), dim=0)
         grad = W[target_id] - (w[:, None] * W).sum(0)
         r = r + lr * grad
-        r = r / (r.norm() + 1e-8)
+        r = r / (r.norm() + 1e-12)
         tau = min(40.0, tau * 1.01)
     sc = W @ r
     sc_comp = sc.clone()
@@ -328,7 +337,8 @@ def admission(W: torch.Tensor, h: torch.Tensor, target_id: int, *,
         return AdmissionResult(decision=REFUSE, rescued=False, certificate=cert,
                                certificate_naive=cert_naive, dose=None, value=None,
                                synthesis_min_margin=m_star, receipt=receipt)
-    value = (unit(cert.v, 0) * beta_star).to(W.dtype)  # store at norm beta*, attach boost=1.0
+    value_direction = cert.v / (cert.v.norm() + 1e-12)
+    value = (value_direction * beta_star).to(W.dtype)
     decision = ADMIT_RESCUED if rescued else ADMIT
     receipt.update(decision=decision, beta_star=round(beta_star, 3),
                    margin_at_beta_star=round(cert.margin_at(beta_star), 4),

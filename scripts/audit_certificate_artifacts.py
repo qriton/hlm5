@@ -173,8 +173,10 @@ def source_contract(path: Path) -> dict[str, Any]:
         for number, line in enumerate(source.splitlines(), start=1)
         if ".float()" in line and ("W =" in line or "h =" in line)
     ]
-    resumable = "if OUT.exists()" in source
-    resume_binds_contract = resumable and "certificate_contract" in source
+    resumable = "if OUT.exists()" in source or "load_contract_jsonl(" in source
+    resume_binds_contract = resumable and (
+        "certificate_contract" in source or "load_contract_jsonl(" in source
+    )
     return {
         "path": path.relative_to(ROOT).as_posix(),
         "sha256": sha256_file(path),

@@ -139,6 +139,21 @@ def test_dose_lands_inside_interval_and_flips_argmax():
     assert int(dosed.argmax()) == TARGET_A
 
 
+def test_dose_grid_uses_float64_certificate_dtype(monkeypatch):
+    W, h = build_head(), h_reachable()
+    cert = certify(W, h, TARGET_A)
+    observed = []
+    original = torch.linspace
+
+    def recording_linspace(*args, **kwargs):
+        observed.append(kwargs.get("dtype"))
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(torch, "linspace", recording_linspace)
+    dose(cert)
+    assert observed == [torch.float64]
+
+
 def test_dose_rejects_unreachable_certificate():
     W = build_head()
     cert = certify(W, h_hard_blocked(), TARGET_B)
@@ -174,7 +189,8 @@ def test_synthesis_rescues_hard_blocked_target():
     assert cert_syn.hard_blocker is False
 
     beta_star = dose(cert_syn)
-    dosed = W @ (h + beta_star * unit(r_star, 0))
+    injected = (beta_star * unit(r_star, 0)).to(W.dtype)
+    dosed = W @ (h + injected)
     assert int(dosed.argmax()) == TARGET_B                # synthesized dose flips
 
 
@@ -184,6 +200,34 @@ def test_synthesis_is_deterministic():
     r2, m2 = synthesize(W, TARGET_B)
     assert m1 == m2
     assert torch.equal(r1, r2)
+
+
+def test_synthesis_remains_float64_until_memory_injection(monkeypatch):
+    W = build_head().to(torch.float32)
+    observed = []
+    original = torch.softmax
+
+    def recording_softmax(input_tensor, *args, **kwargs):
+        observed.append(input_tensor.dtype)
+        return original(input_tensor, *args, **kwargs)
+
+    monkeypatch.setattr(torch, "softmax", recording_softmax)
+    direction, _ = synthesize(W, TARGET_B, steps=2)
+    assert observed == [torch.float64, torch.float64]
+    assert direction.dtype == torch.float64
+
+
+def test_certificate_tensors_remain_float64_until_memory_injection():
+    W = build_head().to(torch.float32)
+    h = h_reachable().to(torch.float32)
+    cert = certify(W, h, TARGET_A)
+    result = admission(W, h, TARGET_A)
+
+    assert cert.v.dtype == torch.float64
+    assert cert.aj.dtype == torch.float64
+    assert cert.bj.dtype == torch.float64
+    assert result.value is not None
+    assert result.value.dtype == W.dtype
 
 
 # --------------------------------------------------------------------------- #
