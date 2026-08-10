@@ -12,6 +12,7 @@ results/_scratch/
 results/certificate_refresh_staging/
 results/e7_3b_staging/
 results/e7b_3b_staging/
+results/e7c_3b_staging/
 .superpowers/
 scripts/data/
 paper/*.log
