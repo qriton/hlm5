@@ -1,0 +1,100 @@
+{
+  "basis_and_directions": {
+    "direction_dtype": "float64",
+    "direction_shape": [
+      64,
+      2048
+    ],
+    "eigenvalues_sha256": "7f33aaca070a3539f8c4c65a0e8a56ef82a2813d950ec910335160f971da4971",
+    "eigenvectors_sha256": "d5e1b3f6c5fafa4b9fd46bfbcbf1eddd982a2b19ea9a40542ba236a8ebdb3fad",
+    "mean_sha256": "ae2b4c5d0c3aa902b7ae61dfb320177fea40270c1450f15a9fb5c064bed9e489",
+    "median_positive_eigenvalue": 0.007535659708082676,
+    "operator_dtype": "float64",
+    "operator_sha256": "ac2536bf5a28014c665177fb89ff907ae2456a276c5c096edc767900b4a8d065",
+    "operator_shape": [
+      2048,
+      2048
+    ],
+    "raw_directions_sha256": "6123939ab3f421e695ad5247da5e6466d16a630fc46053cb9f222415999d12e5",
+    "ridge": 7.535659708082676e-05,
+    "ridge_fraction": 0.01,
+    "zca_directions_sha256": "52f2e9fef987bfc96e768831871516f17c86a2a0e6a70924d674fab4c2e1a2be"
+  },
+  "bound_inputs": {
+    "counterfact_sha256": "d017056125178a13728594e66a801357a8db9ed7973a7425554bb4271de9fc6f",
+    "e8_result_sha256": "ec064b4d38c1abb9d88f99bd1c138b01cbfe4f9b15dbdf28edbe415477e678b6",
+    "e9_admission_sha256": "1d67111e3d7d3bba8d59cdd7d04b2197ed380ebce4b3ec00c96982a36a94551e",
+    "e9_result_sha256": "4248a926676b53c7eab005bc87f894d8e7a1277e618135872e1e3ff30ddad0b7",
+    "e9_verdict": "PASS_3B_WIDE_LOCALITY",
+    "e9_verdict_sha256": "a025a56b541423610659ea52e40414fd5cad7454bf4687aabf4991a21e9d90b8"
+  },
+  "dependency_sha256": {
+    "hlm5/__init__.py": "6122cf699b74d696a62fc95ee46b3bcde76ae9fd6e4bccda8a17fc55609d0e57",
+    "hlm5/certify.py": "a13544eb242cb1f827496a46a6d943723ad51f35b827fe47d2da641e26a1c210",
+    "hlm5/e7_contract.py": "5b7717f5da089db8b1d9d1d611251a2d01ef8fcbf5a719836692abde4a0fc74d",
+    "hlm5/e7_runtime.py": "c56bda88db7173d11e81c7705f31ef5439b3d9b3b7946117e56578d9059917cc",
+    "hlm5/e7b_contract.py": "606d95ca4972d1febadf6348c441449574f1c33eb2f3b7b71b3f79df27c31119",
+    "hlm5/e7b_runtime.py": "bf6e7b0abfe83d0da0f146ae72dc69d52b0469fcc311689c535a7628ea2fdbc2",
+    "hlm5/e7c_runtime.py": "55b7daf0d1d65303db5a3331ddc9b3db701e512ea45f2823a2dbfece35a58d23",
+    "hlm5/e8_contract.py": "633106728f658ce469c22e7f3d51fc013b38b90af24f5a506c6deb721166fd80",
+    "hlm5/e8_runtime.py": "dc78a1d7bfea929a66b01d69cc0fdf9b7f7634643d918c6d182c8854fb205be4",
+    "hlm5/e9_contract.py": "bf345b9e09ee60672d94a582f2dcea60343a5889bd6410f60af81023cffc5fc7",
+    "hlm5/e9_runtime.py": "7c805950e3eb0618953c4e24d64629c5b427e774a2395d525384a6425643b3f7",
+    "hlm5/memory.py": "91cb50810a99079e77056291a775a878483ca6c5ddb05f2c671623c8887db973",
+    "hlm5/public_adapter.py": "9a7f77976ef604d318f42821e36491a13a156ae7e00af49a255ca2fec90f650d"
+  },
+  "e10_outcomes_computed_before_receipt": false,
+  "environment": {
+    "cuda_runtime": "12.1",
+    "cudnn": 90100,
+    "device_capability": [
+      8,
+      0
+    ],
+    "device_count": 1,
+    "device_name": "NVIDIA A100-SXM-64GB",
+    "device_type": "cuda",
+    "node": "lrdn1455.leonardo.local",
+    "platform": "Linux-4.18.0-477.27.1.el8_8.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.6",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.12.1"
+  },
+  "implementation_commit": "f6086d655469ebea78e076924786d4978729c036",
+  "native_runtime": {
+    "autocast_enabled": false,
+    "cuda_matmul_allow_bf16_reduced_precision_reduction": true,
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "deterministic_algorithms": false,
+    "float32_matmul_precision": "highest"
+  },
+  "pre_attempt_outputs_absent": true,
+  "preflight_file_sha256_recomputed": "cf4820e4049b94e0abdd009ce361ce5081ebf41ca0ae49bb28e946e5b0247a0f",
+  "preflight_sha256": "cf4820e4049b94e0abdd009ce361ce5081ebf41ca0ae49bb28e946e5b0247a0f",
+  "protocol_commit": "f73b657012f9b28593a92c521670390087c306a3",
+  "protocol_sha256": "3b3f37902599b76073a6722446b7f17b4c48a9b2542235c97e08fada1c4f65be",
+  "registered_commands": [
+    "python scripts/preflight_e10_3b.py",
+    "python scripts/register_e10_3b.py",
+    "python scripts/admit_e10_3b.py",
+    "python scripts/replay_e10_3b.py",
+    "python scripts/verify_e10_3b.py"
+  ],
+  "schema": "hlm5-e10-3b-execution-receipt-v1",
+  "source_sha256": {
+    "hlm5/e10_contract.py": "4d893d9cdc07d3556db7ab25d367b27580ea065ddaba2b2c6e88f365c5447dca",
+    "hlm5/e10_runtime.py": "09dbb2a71426f21b9c935acb22d15e71f4c80767b59e43cc472f4639516015ef",
+    "scripts/admit_e10_3b.py": "f8672ab5b25a9f1b1c21fb572b87376a7c36a6a91590e5625b1cb7e5c4330d4a",
+    "scripts/preflight_e10_3b.py": "dd2dab101f4aa26a3ce3f96a55b8a5d623e29f67f0b830676d103b3d34df6239",
+    "scripts/register_e10_3b.py": "08d58ce2cabeaab85804191249a48d8821a5147541c9bdc1624b03d8b00ae9ab",
+    "scripts/replay_e10_3b.py": "5db1d8e0b15e1dfb8688ad452bbe278be98b631c83903a52d81532fd3d3feb5b",
+    "scripts/verify_e10_3b.py": "b20aba41749ea8830d17783aa0e45c7035c64e7f789f9ccec95ad5259283ae31",
+    "tests/test_e10_3b.py": "20a2d0ed5b3cc764b3886e7dadf311bd8bf6b4d1031a60ba15f160bc93bcc7fe"
+  },
+  "status": "READY",
+  "test_command": "python -m pytest tests/test_e10_3b.py -q",
+  "tests_returncode": 0,
+  "tests_stderr": "",
+  "tests_stdout": "..............                                                           [100%]\n14 passed in 6.81s"
+}
