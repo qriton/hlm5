@@ -49,6 +49,24 @@ def test_registered_sources_cover_runtime_helpers_and_contract_tests() -> None:
     assert required <= set(contract.REGISTERED_SOURCE_PATHS)
 
 
+def test_registered_refresh_commands_bootstrap_repo_before_package_import() -> None:
+    scripts = (
+        "scripts/preflight_certificate_refresh.py",
+        "scripts/run_1b_certificate.py",
+        "scripts/run_1b_betastar.py",
+        "scripts/run_1b_synth_verify.py",
+        "scripts/run_1b_envelope_multikey.py",
+        "scripts/run_1b_faithful_certdosed.py",
+        "scripts/run_cert_counterfact_gpt2xl.py",
+        "scripts/compare_certificate_refresh.py",
+    )
+    for relative in scripts:
+        source = (ROOT / relative).read_text(encoding="utf-8")
+        assert source.index("sys.path.insert") < source.index(
+            "from hlm5"
+        ), relative
+
+
 def test_registered_sha256_values_are_well_formed_and_tokenizer_matches() -> None:
     for digest in (
         contract.PROTOCOL_SHA256,

@@ -1,4 +1,5 @@
 """Freeze exact inputs and implementation before certificate refresh outcomes."""
+# ruff: noqa: E402 -- direct script execution bootstraps the repository root.
 
 from __future__ import annotations
 
@@ -6,9 +7,14 @@ import json
 import os
 import platform
 import subprocess
+import sys
 from importlib import metadata
 from pathlib import Path
 from typing import Any
+
+REPO_ROOT_BOOTSTRAP = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT_BOOTSTRAP) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT_BOOTSTRAP))
 
 import torch
 

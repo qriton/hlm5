@@ -16,13 +16,19 @@ Run: python scripts/run_cert_counterfact_gpt2xl.py
 Out: results/certificate_refresh_staging/cert_counterfact_gpt2xl.jsonl
      results/certificate_refresh_staging/cert_counterfact_gpt2xl_summary.json
 """
+# ruff: noqa: E402 -- direct script execution bootstraps the repository root.
 import json
+import sys
 import time
+from pathlib import Path
+
+REPO_ROOT_BOOTSTRAP = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT_BOOTSTRAP) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT_BOOTSTRAP))
 
 try:
     import torchaudio  # noqa: F401
 except Exception:
-    import sys
     sys.modules["torchaudio"] = None  # keep transformers from importing a broken torchaudio
 
 import torch

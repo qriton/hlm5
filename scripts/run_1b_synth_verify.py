@@ -7,9 +7,16 @@ and the beta magnitude needed.
 Run: python scripts/run_1b_synth_verify.py
 Out: results/certificate_refresh_staging/synth_verify.json
 """
+# ruff: noqa: E402 -- direct script execution bootstraps the repository root.
 import json
 import random
 import re
+import sys
+from pathlib import Path
+
+REPO_ROOT_BOOTSTRAP = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT_BOOTSTRAP) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT_BOOTSTRAP))
 
 import torch
 

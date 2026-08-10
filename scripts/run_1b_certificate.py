@@ -18,9 +18,16 @@
 Run: python scripts/run_1b_certificate.py
 Out: results/certificate_refresh_staging/cert_envelope_synth.json
 """
+# ruff: noqa: E402 -- direct script execution bootstraps the repository root.
 import json
 import math
 import re
+import sys
+from pathlib import Path
+
+REPO_ROOT_BOOTSTRAP = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT_BOOTSTRAP) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT_BOOTSTRAP))
 
 import torch
 

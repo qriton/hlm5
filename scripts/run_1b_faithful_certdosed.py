@@ -23,9 +23,16 @@ locality) is shared; only the stored values/dose differ.
 Run:  python scripts/run_1b_faithful_certdosed.py
 Out:  results/certificate_refresh_staging/hlm5_1b_faithful_certdosed.json
 """
+# ruff: noqa: E402 -- direct script execution bootstraps the repository root.
 import math
 import random
+import sys
 import time
+from pathlib import Path
+
+REPO_ROOT_BOOTSTRAP = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT_BOOTSTRAP) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT_BOOTSTRAP))
 
 import torch
 

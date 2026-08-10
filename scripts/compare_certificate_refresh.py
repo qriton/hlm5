@@ -1,12 +1,18 @@
 """Validate staged certificate artifacts and compare them with release anchors."""
+# ruff: noqa: E402 -- direct script execution bootstraps the repository root.
 
 from __future__ import annotations
 
 import json
 import random
 import re
+import sys
 from pathlib import Path
 from typing import Any
+
+REPO_ROOT_BOOTSTRAP = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT_BOOTSTRAP) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT_BOOTSTRAP))
 
 from hlm5.artifact_contract import (
     BETA_STAR_SAMPLE_CONTRACT,
