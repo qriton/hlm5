@@ -74,3 +74,14 @@ def test_historical_lineage_distinguishes_untouched_and_partial_refreshes() -> N
     assert by_name["beta_star"]["lineage"] == (
         "touched_in_hardening_commit_but_unbound"
     )
+    assert all(
+        payload["bytes_match_registered_lineage"]
+        for item in report["artifacts"]
+        for payload in item["payloads"]
+    )
+
+
+def test_lineage_is_hash_based_and_fails_closed_for_changed_bytes() -> None:
+    assert audit.lineage_label(
+        [{"bytes_match_registered_lineage": False, "registered_lineage": None}]
+    ) == "unregistered_or_refreshed_bytes"

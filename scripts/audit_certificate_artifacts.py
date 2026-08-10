@@ -13,7 +13,6 @@ import ast
 import hashlib
 import json
 import re
-import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -30,6 +29,43 @@ EXPECTED_CHECKPOINT_SHA256 = (
 EXPECTED_TOKENIZER_SHA256 = (
     "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588"
 )
+REGISTERED_ARTIFACT_LINEAGE = {
+    "results/cert_envelope_synth.json": (
+        "6944e29505f49fc4fd991705f9334c4fb35f2e3e4edd75185dd167fd66f6cd57",
+        INITIAL_RELEASE_COMMIT,
+        "pre_hardening_bytes",
+    ),
+    "results/cert_envelope_multikey.json": (
+        "b0a31b3a0fede31a197b23d9441e48df5e0fc29ec2fdba3369fbdb6d356a8f69",
+        HARDENING_COMMIT,
+        "touched_in_hardening_commit_but_unbound",
+    ),
+    "results/betastar.json": (
+        "a68d98b1687c99380a0c07a53907e9a462b497e2db70048f223b98654dbefb08",
+        HARDENING_COMMIT,
+        "touched_in_hardening_commit_but_unbound",
+    ),
+    "results/synth_verify.json": (
+        "e5c3c9b4f54d857f06c5f6ae8b2cc64038357d4baee7cdc32e4646e63a849454",
+        INITIAL_RELEASE_COMMIT,
+        "pre_hardening_bytes",
+    ),
+    "results/hlm5_1b_faithful_certdosed.json": (
+        "9d04423442a7564346e706b5ae44bb5a56e4cb524615cb21dab6aeecf414caa8",
+        HARDENING_COMMIT,
+        "touched_in_hardening_commit_but_unbound",
+    ),
+    "results/cert_counterfact_gpt2xl.jsonl": (
+        "05acfdb47ffedbca1986f2def735b5d10d0fa95bbd3c487feb73929b3625e4bd",
+        INITIAL_RELEASE_COMMIT,
+        "pre_hardening_bytes",
+    ),
+    "results/cert_counterfact_gpt2xl_summary.json": (
+        "009007821ead41dbfc2b066f73607408c000247cfa67263ba4bd7eda82a9a22e",
+        INITIAL_RELEASE_COMMIT,
+        "pre_hardening_bytes",
+    ),
+}
 EPS_PATTERN = re.compile(r"^\s*EPS\s*=\s*([0-9.eE+-]+)", re.MULTILINE)
 REQUIRED_CONTRACT_FIELDS = (
     "eps",
@@ -117,18 +153,6 @@ def stable_json(value: Any) -> str:
     )
 
 
-def git_last_commit(path: Path) -> str | None:
-    completed = subprocess.run(
-        ["git", "log", "-1", "--format=%H", "--", str(path.relative_to(ROOT))],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    value = completed.stdout.strip()
-    return value or None
-
-
 def load_json(path: Path) -> dict[str, Any]:
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
@@ -168,11 +192,17 @@ def source_contract(path: Path) -> dict[str, Any]:
 
 def artifact_record(relative: str) -> dict[str, Any]:
     path = ROOT / relative
+    digest = sha256_file(path) if path.is_file() else None
+    registered = REGISTERED_ARTIFACT_LINEAGE.get(relative)
+    matches_registered = registered is not None and digest == registered[0]
     return {
         "path": relative,
         "exists": path.is_file(),
-        "sha256": sha256_file(path) if path.is_file() else None,
-        "last_commit": git_last_commit(path) if path.is_file() else None,
+        "sha256": digest,
+        "registered_sha256": registered[0] if registered else None,
+        "registered_commit": registered[1] if registered else None,
+        "registered_lineage": registered[2] if registered else None,
+        "bytes_match_registered_lineage": matches_registered,
     }
 
 
@@ -190,12 +220,13 @@ def contract_record(path: Path) -> dict[str, Any]:
     }
 
 
-def lineage_label(commits: set[str | None]) -> str:
-    if commits == {INITIAL_RELEASE_COMMIT}:
-        return "pre_hardening_bytes"
-    if commits <= {HARDENING_COMMIT, INITIAL_RELEASE_COMMIT} and HARDENING_COMMIT in commits:
-        return "touched_in_hardening_commit_but_unbound"
-    return "later_or_mixed_unbound_bytes"
+def lineage_label(payloads: list[dict[str, Any]]) -> str:
+    if not payloads or not all(
+        item["bytes_match_registered_lineage"] for item in payloads
+    ):
+        return "unregistered_or_refreshed_bytes"
+    labels = {item["registered_lineage"] for item in payloads}
+    return labels.pop() if len(labels) == 1 else "mixed_registered_lineage"
 
 
 def evaluate_spec(spec: ArtifactSpec) -> dict[str, Any]:
@@ -250,7 +281,7 @@ def evaluate_spec(spec: ArtifactSpec) -> dict[str, Any]:
         "requirement": spec.requirement,
         "producer": source,
         "payloads": payloads,
-        "lineage": lineage_label({item["last_commit"] for item in payloads}),
+        "lineage": lineage_label(payloads),
         "certificate_contract": contract,
         "contract_matches": contract_matches,
         "resume_fail_closed": resume_ready,
