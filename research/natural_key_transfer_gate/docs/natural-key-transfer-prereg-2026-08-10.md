@@ -175,6 +175,10 @@ slot order and emit its target intent. An all-zero score vector is an
 abstention and counts as incorrect. A matched cosine cache must return the
 same slot whenever the maximum cosine is positive; this is a validity check
 and an explicit acknowledgement that this reader is cache-equivalent.
+The registered float64 reader must also reproduce every top slot from the
+checked-in `EditableHLM5Memory.score()` snapshot after the same keys and
+queries are cast to its deployed float32 arithmetic. Score deltas are
+diagnostic; any prediction delta is invalid.
 
 No HLM5 value write, logit boost, gate threshold, energy step, soft retrieval,
 temperature, recurrence, or decoder score is part of NKT-1. The fixed deployed
@@ -220,9 +224,11 @@ All gates are binding:
    serialized assignment hash matches registration;
 8. the degree-five reader and matched cosine reader agree on every positive
    maximum; all-zero rows are consistently marked abstentions;
-9. an independently structured NumPy scorer reproduces every prediction and
+9. the checked-in float32 `EditableHLM5Memory.score()` implementation
+   reproduces every registered target-query top slot;
+10. an independently structured NumPy scorer reproduces every prediction and
    all arm score matrices within `1e-10` maximum absolute error;
-10. the fixed-threshold diagnostic never changes any primary prediction or
+11. the fixed-threshold diagnostic never changes any primary prediction or
     denominator.
 
 Any failure is `HARNESS_INVALID`. An infrastructure interruption is
