@@ -1,0 +1,799 @@
+{
+  "construction": {
+    "normalization": "Unicode NFKC + casefold + trim + whitespace collapse",
+    "routing_outcomes_computed": false,
+    "shuffle_salt": "nkt1-shuffle-v1",
+    "support_per_intent": 3,
+    "support_salt": "nkt1-support-v1",
+    "target_domain_count": 6,
+    "target_domain_salt": "hlm5-natural-key-transfer-v1",
+    "test_utterances_encoded": false,
+    "utterances_encoded": false
+  },
+  "counts": {
+    "clean_train": 11464,
+    "excluded_development_duplicate_rows": 2,
+    "excluded_development_overlap_rows": 11,
+    "excluded_test_duplicate_rows": 4,
+    "excluded_test_overlap_rows": 26,
+    "excluded_train_conflict_rows": 8,
+    "excluded_train_duplicate_rows": 42,
+    "primary_development": 2020,
+    "primary_test": 2944,
+    "source_development_off_support": 1526,
+    "source_intents": 37,
+    "source_test_off_support": 2239,
+    "source_train": 8698,
+    "support_slots": 69,
+    "target_development": 494,
+    "target_intents": 23,
+    "target_test": 705,
+    "target_train": 2766,
+    "test_observed_target_intents": 22
+  },
+  "domain_partition": {
+    "ranked": [
+      {
+        "scenario": "lists",
+        "sha256": "05b9ffc112c81595af0b96cdc2de141f2cb0e8dac1b8c5e3f64feee29b43e7c3"
+      },
+      {
+        "scenario": "cooking",
+        "sha256": "090adcdef0886575b58b4d2a3fec9bd06143017e1644b74a5b133ea2c3c790e8"
+      },
+      {
+        "scenario": "transport",
+        "sha256": "0b8d2e0a240944fdd8a9fc469e3f7ae062965eebc0e60016ba6d781640e594bc"
+      },
+      {
+        "scenario": "iot",
+        "sha256": "52ac3fdfdab74a59f0c842f99272ef18a81ed538e5706593627f100bfe4370c2"
+      },
+      {
+        "scenario": "takeaway",
+        "sha256": "5bd7f096a777f7a4fde2c422ed7c17dfbff7f01cfb2936877472ed1cbdb4894a"
+      },
+      {
+        "scenario": "recommendation",
+        "sha256": "7450e20036e2e56913dd79473c502202005543c892d6dc7c96f958b308d88309"
+      },
+      {
+        "scenario": "social",
+        "sha256": "801dfdb84b63ef90d02122d4b52e940f10e0fd7016c41ed4f1cc606818b1cae8"
+      },
+      {
+        "scenario": "music",
+        "sha256": "80fb009177827ae21051ccfeca9292068085f497a6e114238ce213997b0755ef"
+      },
+      {
+        "scenario": "general",
+        "sha256": "87b1926c80d53305c74b98e241a7db9e1e802171979bef7e0822f0d1e980d3a8"
+      },
+      {
+        "scenario": "calendar",
+        "sha256": "a42cd0890b6f4f5ade689b31d8c23b4c01e0cfb10309932c0f21acb0878defff"
+      },
+      {
+        "scenario": "email",
+        "sha256": "abe48422f5538fbc2ecad465583465ff636dbc040437763146fc5b6794931cb8"
+      },
+      {
+        "scenario": "audio",
+        "sha256": "af524373f1781bc1e0d53eb12861092a41613e92a3e86bcda67b89c95e227c05"
+      },
+      {
+        "scenario": "alarm",
+        "sha256": "be26459714e1fd2298d118c4d7a628fdacf5375d9cf93dcba24b6b0b20a1715a"
+      },
+      {
+        "scenario": "play",
+        "sha256": "ceef0dbb314fa0511dd4e18ab6c8926c7a4ffcd1534aadbb0bfddda634c05636"
+      },
+      {
+        "scenario": "weather",
+        "sha256": "d735208566c46110da5d7eed9cee31b5d5ee22d06e160aa790046c3795cb57b1"
+      },
+      {
+        "scenario": "datetime",
+        "sha256": "e3f82a5864de94580c846eb1e2a74688a29f1f5837462fa896fa9a3e491bf591"
+      },
+      {
+        "scenario": "news",
+        "sha256": "e50e2b0f308173bed89176ed836d722ad8d2f27b565ee03763906fac6839add0"
+      },
+      {
+        "scenario": "qa",
+        "sha256": "fa01672fa9a9df8e287b81e98b1a42468ccea7d4cc4f9731103e8db7561392c2"
+      }
+    ],
+    "source_domains": [
+      "social",
+      "music",
+      "general",
+      "calendar",
+      "email",
+      "audio",
+      "alarm",
+      "play",
+      "weather",
+      "datetime",
+      "news",
+      "qa"
+    ],
+    "source_intents": [
+      "alarm_query",
+      "alarm_remove",
+      "alarm_set",
+      "audio_volume_down",
+      "audio_volume_mute",
+      "audio_volume_other",
+      "audio_volume_up",
+      "calendar_query",
+      "calendar_remove",
+      "calendar_set",
+      "datetime_convert",
+      "datetime_query",
+      "email_addcontact",
+      "email_query",
+      "email_querycontact",
+      "email_sendemail",
+      "general_greet",
+      "general_joke",
+      "general_quirky",
+      "music_dislikeness",
+      "music_likeness",
+      "music_query",
+      "music_settings",
+      "news_query",
+      "play_audiobook",
+      "play_game",
+      "play_music",
+      "play_podcasts",
+      "play_radio",
+      "qa_currency",
+      "qa_definition",
+      "qa_factoid",
+      "qa_maths",
+      "qa_stock",
+      "social_post",
+      "social_query",
+      "weather_query"
+    ],
+    "target_domains": [
+      "lists",
+      "cooking",
+      "transport",
+      "iot",
+      "takeaway",
+      "recommendation"
+    ],
+    "target_intents": [
+      "cooking_query",
+      "cooking_recipe",
+      "iot_cleaning",
+      "iot_coffee",
+      "iot_hue_lightchange",
+      "iot_hue_lightdim",
+      "iot_hue_lightoff",
+      "iot_hue_lighton",
+      "iot_hue_lightup",
+      "iot_wemo_off",
+      "iot_wemo_on",
+      "lists_createoradd",
+      "lists_query",
+      "lists_remove",
+      "recommendation_events",
+      "recommendation_locations",
+      "recommendation_movies",
+      "takeaway_order",
+      "takeaway_query",
+      "transport_query",
+      "transport_taxi",
+      "transport_ticket",
+      "transport_traffic"
+    ],
+    "test_observed_target_intents": [
+      "cooking_recipe",
+      "iot_cleaning",
+      "iot_coffee",
+      "iot_hue_lightchange",
+      "iot_hue_lightdim",
+      "iot_hue_lightoff",
+      "iot_hue_lighton",
+      "iot_hue_lightup",
+      "iot_wemo_off",
+      "iot_wemo_on",
+      "lists_createoradd",
+      "lists_query",
+      "lists_remove",
+      "recommendation_events",
+      "recommendation_locations",
+      "recommendation_movies",
+      "takeaway_order",
+      "takeaway_query",
+      "transport_query",
+      "transport_taxi",
+      "transport_ticket",
+      "transport_traffic"
+    ]
+  },
+  "population_sha256": {
+    "development": "3307e4c0d8b02cb1159b8fb5053c2affa8d971a238d634803e6363bf14253177",
+    "source_development": "edb760f10280cf0d5849db3e9a796f0d2d2005766c557bd7b3067251b7b0e829",
+    "source_test": "e2c39a33a14fc293acf8534b7647aa5a43ae32db6977b99d3fb07e499745268b",
+    "source_train": "47ee3f6f7ac1b99263a9f55e42b9959da086d1be3bf318ffcdf4545179f80a83",
+    "support_rows": "95a579a221ac225f6c2c92c6a5afd1dc0ffb1e563ab5e4d6cae6f285a0d98751",
+    "target_development": "9319c31c342265c6ac4394822fd7d4e467c77ef885152d9b751b65a8c522d093",
+    "target_test": "accd39c739d08d431cd85a50ae5e037be2865edc950119468a6114f69644fde9",
+    "target_train": "74b9d4633c88afc84253644281e381ae802d1f91fa74b66fc382c8b2ad2294ff",
+    "test": "5ea4aab3e770f6e6204d7454653ad940a9dcca365290af6120299d488c6001a7",
+    "train": "2fb7aabdd6bce7a62f79902fdf405e6db4eddd825dffb370dca9c9600f39832e"
+  },
+  "schema": "hlm5-nkt1-massive-population-v1",
+  "shuffled_source_labels_sha256": "5a4d0b0f950a3d8641f893dd32ce69f3118a66d57cfc0400e85c1e52131e5dce",
+  "source": {
+    "dataset": "MASSIVE 1.1 en-US",
+    "license": "CC-BY-4.0",
+    "partition_counts": {
+      "dev": 2033,
+      "test": 2974,
+      "train": 11514
+    },
+    "row_count": 16521,
+    "sha256": "c70f75c6a543a26e249ec383df67733ad9b1066f6c0406c2e04a3f03356e407e"
+  },
+  "support_rows": [
+    {
+      "id": "6637",
+      "intent": "cooking_query",
+      "normalized_sha256": "237cb0da4d033ad25287d561d5e9a82183e4b47cb87a0a0147dad2cb1590a5d8",
+      "partition": "train",
+      "scenario": "cooking",
+      "source_index": 6409
+    },
+    {
+      "id": "14736",
+      "intent": "cooking_query",
+      "normalized_sha256": "dcedb51e5bef9d02ae33839be563aa7ebef59c7fd0337dcd5be958bc53977547",
+      "partition": "train",
+      "scenario": "cooking",
+      "source_index": 14189
+    },
+    {
+      "id": "13488",
+      "intent": "cooking_query",
+      "normalized_sha256": "49213c1511dfd6a74ef5ea5b00204db0da2705ed1b7656a6152333f2618abb80",
+      "partition": "train",
+      "scenario": "cooking",
+      "source_index": 13005
+    },
+    {
+      "id": "9946",
+      "intent": "cooking_recipe",
+      "normalized_sha256": "a5c0e19593692c06bf076c445ff69396998dae7a111b49cf108e3560aa0dc31d",
+      "partition": "train",
+      "scenario": "cooking",
+      "source_index": 9598
+    },
+    {
+      "id": "9933",
+      "intent": "cooking_recipe",
+      "normalized_sha256": "5e11f1c2a22ef74705166f4cb09ddca60f85f2eae5b9ab5225d85c28568de404",
+      "partition": "train",
+      "scenario": "cooking",
+      "source_index": 9587
+    },
+    {
+      "id": "10178",
+      "intent": "cooking_recipe",
+      "normalized_sha256": "2f434f5b94afee60888509adce08e77971e823c045f70766e0c9ed9dc7e1089a",
+      "partition": "train",
+      "scenario": "cooking",
+      "source_index": 9816
+    },
+    {
+      "id": "1068",
+      "intent": "iot_cleaning",
+      "normalized_sha256": "347d0ae20b639e042605f6ec0ebd1ac571b37bc30056c7e77e4bf828e31e1ab4",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 1031
+    },
+    {
+      "id": "1926",
+      "intent": "iot_cleaning",
+      "normalized_sha256": "d117eab465d39f5a1d2155bdf707fa254772e52dc7142ae361c897dc01d09994",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 1855
+    },
+    {
+      "id": "1598",
+      "intent": "iot_cleaning",
+      "normalized_sha256": "0b5f0735b14435fba9ac24c9e0cfc3845c3b1fc3ce790e4287e71685e494e7ee",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 1538
+    },
+    {
+      "id": "1916",
+      "intent": "iot_coffee",
+      "normalized_sha256": "9c1e0b474537f75558a65d79d8a05006d1cb2f8aa3f7d0dc5e4eb89b75182681",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 1846
+    },
+    {
+      "id": "3425",
+      "intent": "iot_coffee",
+      "normalized_sha256": "466cfa03c99b8cf3439c90b5ba81f81642f23b9fef65fa4ae6cc18121dc1e425",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 3306
+    },
+    {
+      "id": "2305",
+      "intent": "iot_coffee",
+      "normalized_sha256": "f1ff1bdcb230360032839aef040ea14aa1467961f6ad6cd9a2a9d8020ff1d828",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 2222
+    },
+    {
+      "id": "2474",
+      "intent": "iot_hue_lightchange",
+      "normalized_sha256": "3232970ef36a44cafa1ee75f033b0fc0eb3ae264ee2136ba26f8bb3aa1191b21",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 2382
+    },
+    {
+      "id": "563",
+      "intent": "iot_hue_lightchange",
+      "normalized_sha256": "42cc53bb83b43e21cf40e2f962f7f916b71a3b66dd68b4a906da37f127eac7e8",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 541
+    },
+    {
+      "id": "403",
+      "intent": "iot_hue_lightchange",
+      "normalized_sha256": "5698095aa38e5ff3668fe3781eb6eadbddc9536555d0154e45ce9414aad2ab94",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 391
+    },
+    {
+      "id": "5625",
+      "intent": "iot_hue_lightdim",
+      "normalized_sha256": "3fb0e9041747f73ba6b779c1b6fb3d0aa8949d3b24adcd795ad9caa67305b881",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 5432
+    },
+    {
+      "id": "667",
+      "intent": "iot_hue_lightdim",
+      "normalized_sha256": "db1d4d9c49a218a5808e06a8b8c405124fd555584573e3a311889c5f9c6ee26e",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 639
+    },
+    {
+      "id": "3672",
+      "intent": "iot_hue_lightdim",
+      "normalized_sha256": "b055211d9b84ead33b3005fd3621efe5a5ceaddb75d190646304af3234293772",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 3548
+    },
+    {
+      "id": "5560",
+      "intent": "iot_hue_lightoff",
+      "normalized_sha256": "2c843e254f1781092b8ae84fd988fabfad6f0345edcb2812abf4bc80f41da785",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 5367
+    },
+    {
+      "id": "3571",
+      "intent": "iot_hue_lightoff",
+      "normalized_sha256": "f1a044656d7fa6f705481e861d390e8b014db8e7815360daa31022973f0a5247",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 3450
+    },
+    {
+      "id": "4316",
+      "intent": "iot_hue_lightoff",
+      "normalized_sha256": "71cc534ad39e8e07dbd3ef3b6cf4cfdff3a37574858cf64ec35c346c0a8aa8e7",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 4173
+    },
+    {
+      "id": "1501",
+      "intent": "iot_hue_lighton",
+      "normalized_sha256": "4f7f32c359773cd2c8f56081655478d190250af95260c8b36c02d69efe13af8e",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 1444
+    },
+    {
+      "id": "1450",
+      "intent": "iot_hue_lighton",
+      "normalized_sha256": "7933eed0c98daa720f35d1503f42da72ac7fe46c0fbcc653b12ea27cefa0e76e",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 1394
+    },
+    {
+      "id": "5095",
+      "intent": "iot_hue_lighton",
+      "normalized_sha256": "819e4713de9399690580b479f28258b72e0fb1c837ae6e8581b1e31e30be2b3a",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 4927
+    },
+    {
+      "id": "5003",
+      "intent": "iot_hue_lightup",
+      "normalized_sha256": "7279767c462cafeffb4e2f9f16a37c4a4b67b07b373db2a35539fdc97e5b0972",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 4837
+    },
+    {
+      "id": "5001",
+      "intent": "iot_hue_lightup",
+      "normalized_sha256": "bd13885ee420717ec94a151f48b33c4778db31ab970323d23fe8d6e675a0265c",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 4835
+    },
+    {
+      "id": "467",
+      "intent": "iot_hue_lightup",
+      "normalized_sha256": "7860535cf4108364ed3d44b26e5ded0a788de6728489b79d8304f73e1f1f1e0b",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 449
+    },
+    {
+      "id": "1291",
+      "intent": "iot_wemo_off",
+      "normalized_sha256": "5892763c6e9e2710e5a61794ef5d4b8eca2d11d5303904071d789146f3105354",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 1245
+    },
+    {
+      "id": "2691",
+      "intent": "iot_wemo_off",
+      "normalized_sha256": "bead6b75aff5fe571fc49dc030597765ba7f617520a071244c49f9d4d9cc4403",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 2596
+    },
+    {
+      "id": "4964",
+      "intent": "iot_wemo_off",
+      "normalized_sha256": "1acf05b18b47afb819821196e460e8253429e954dc6a43237220e286adb387c2",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 4798
+    },
+    {
+      "id": "191",
+      "intent": "iot_wemo_on",
+      "normalized_sha256": "e93cf9c9064433a1737fb25f7dc4ec1c648ade158cbb7d5c5a92f167c53708ad",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 190
+    },
+    {
+      "id": "5806",
+      "intent": "iot_wemo_on",
+      "normalized_sha256": "5b96bbd643d9c7b185718c292992d5c8bf1270787db338eee5ba96a51d0d886a",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 5607
+    },
+    {
+      "id": "3024",
+      "intent": "iot_wemo_on",
+      "normalized_sha256": "f5b333d26bfed19e621c1d1053f318ff69fafc1226bb45c34b5eb19c14b081d3",
+      "partition": "train",
+      "scenario": "iot",
+      "source_index": 2922
+    },
+    {
+      "id": "10997",
+      "intent": "lists_createoradd",
+      "normalized_sha256": "0bdf61f487ba51fa8c639472ce5b565b25b7667980bb5896be4e5fbb5a740d43",
+      "partition": "train",
+      "scenario": "lists",
+      "source_index": 10606
+    },
+    {
+      "id": "11135",
+      "intent": "lists_createoradd",
+      "normalized_sha256": "de29c1c18d8a3b27e21daa34780f569eb207a3e52bbeb855ac838db885bb104c",
+      "partition": "train",
+      "scenario": "lists",
+      "source_index": 10741
+    },
+    {
+      "id": "10811",
+      "intent": "lists_createoradd",
+      "normalized_sha256": "c302d8fe0a4e11e13186040791c4c4099c521b5bfa51ea99536471719547a6cf",
+      "partition": "train",
+      "scenario": "lists",
+      "source_index": 10424
+    },
+    {
+      "id": "11044",
+      "intent": "lists_query",
+      "normalized_sha256": "a8f62a32c96cea2ab4df48ccc10e137cacbaa326314deab9cb8401ba19ba29d6",
+      "partition": "train",
+      "scenario": "lists",
+      "source_index": 10653
+    },
+    {
+      "id": "10768",
+      "intent": "lists_query",
+      "normalized_sha256": "8ceb14636293a39f11f8846bf38415dcca5be44ea7584848e9acd272554e6436",
+      "partition": "train",
+      "scenario": "lists",
+      "source_index": 10383
+    },
+    {
+      "id": "10822",
+      "intent": "lists_query",
+      "normalized_sha256": "c48bded49e78bcfd9fe37aedfd9e323a774e4630126cdbaabe8e0202546e0a17",
+      "partition": "train",
+      "scenario": "lists",
+      "source_index": 10435
+    },
+    {
+      "id": "11095",
+      "intent": "lists_remove",
+      "normalized_sha256": "0228462c70577c76540a4c1fb53882a03d38c2b4f492954a5d063abd47947e5c",
+      "partition": "train",
+      "scenario": "lists",
+      "source_index": 10704
+    },
+    {
+      "id": "10918",
+      "intent": "lists_remove",
+      "normalized_sha256": "4e9e9d3aab4538c481211f65ba7bcf563595b314382a80a50597960d81f43adb",
+      "partition": "train",
+      "scenario": "lists",
+      "source_index": 10528
+    },
+    {
+      "id": "11224",
+      "intent": "lists_remove",
+      "normalized_sha256": "75657dc610ef4e544e5c9d295f4fb0a67fdda85cf4937a5cb9fa1c7bbf20c5ef",
+      "partition": "train",
+      "scenario": "lists",
+      "source_index": 10829
+    },
+    {
+      "id": "11595",
+      "intent": "recommendation_events",
+      "normalized_sha256": "e367ce1c1fdefff67a0f230f88e3474ddb55e1dab35e79f9b96b92b613d37a2f",
+      "partition": "train",
+      "scenario": "recommendation",
+      "source_index": 11190
+    },
+    {
+      "id": "7816",
+      "intent": "recommendation_events",
+      "normalized_sha256": "b2debe9de6ed2060c80e8da9ee1cb8cc56c77fa1d25148885ad8e8a4f919578e",
+      "partition": "train",
+      "scenario": "recommendation",
+      "source_index": 7561
+    },
+    {
+      "id": "11848",
+      "intent": "recommendation_events",
+      "normalized_sha256": "d9577591c0411db9b487fa55bb112c2d15cb646ca089cdb58f36e8091818c5ae",
+      "partition": "train",
+      "scenario": "recommendation",
+      "source_index": 11436
+    },
+    {
+      "id": "11588",
+      "intent": "recommendation_locations",
+      "normalized_sha256": "125ba6baeffbdb3217d9842b98e51d75fff20f2aadf46ff2e973564dd6165b4e",
+      "partition": "train",
+      "scenario": "recommendation",
+      "source_index": 11183
+    },
+    {
+      "id": "11687",
+      "intent": "recommendation_locations",
+      "normalized_sha256": "73a885a2cc74eba961c10234d1b9b3b9026aa6dd55dff0ddffcc9bc0515cd32c",
+      "partition": "train",
+      "scenario": "recommendation",
+      "source_index": 11279
+    },
+    {
+      "id": "11967",
+      "intent": "recommendation_locations",
+      "normalized_sha256": "6d87705754b602bec5156af7c12305790d5a5b76318ca5cef04a258c5dc790be",
+      "partition": "train",
+      "scenario": "recommendation",
+      "source_index": 11552
+    },
+    {
+      "id": "11810",
+      "intent": "recommendation_movies",
+      "normalized_sha256": "50f8cfd7d223a4a9b1396207492742c436dfdc871284a44ad6f3c5cbeb40886a",
+      "partition": "train",
+      "scenario": "recommendation",
+      "source_index": 11400
+    },
+    {
+      "id": "11765",
+      "intent": "recommendation_movies",
+      "normalized_sha256": "2c4722bc229ff2cbc1fc140af2d68ce3299d875d747152cb40e1a989d2bac091",
+      "partition": "train",
+      "scenario": "recommendation",
+      "source_index": 11356
+    },
+    {
+      "id": "11723",
+      "intent": "recommendation_movies",
+      "normalized_sha256": "ff0fa68f747885559d50296b4357fe692ec86f98f1d27e638f2806b835bfe5a6",
+      "partition": "train",
+      "scenario": "recommendation",
+      "source_index": 11314
+    },
+    {
+      "id": "4574",
+      "intent": "takeaway_order",
+      "normalized_sha256": "6ee199ae833b7cc1aa28d2329a8bb4b7089d0310cbf10ad6860be254abc0d90a",
+      "partition": "train",
+      "scenario": "takeaway",
+      "source_index": 4423
+    },
+    {
+      "id": "5595",
+      "intent": "takeaway_order",
+      "normalized_sha256": "276c341f94da3a9589a993e42dd4278b3d475904ed81a53b8e48a886a196f3f6",
+      "partition": "train",
+      "scenario": "takeaway",
+      "source_index": 5402
+    },
+    {
+      "id": "4575",
+      "intent": "takeaway_order",
+      "normalized_sha256": "9c1e6a66067092531eb5568f1cfb36e800f179091ef46a67aa739c6316256db8",
+      "partition": "train",
+      "scenario": "takeaway",
+      "source_index": 4424
+    },
+    {
+      "id": "1378",
+      "intent": "takeaway_query",
+      "normalized_sha256": "8047548f910f5a1887429c616897e577379c2cbb92b4b4e1746c4ea09b6a2ae7",
+      "partition": "train",
+      "scenario": "takeaway",
+      "source_index": 1327
+    },
+    {
+      "id": "4598",
+      "intent": "takeaway_query",
+      "normalized_sha256": "685eb06aa6788dfe7d2c5519e8adaa0b2c8b8508ca6476da3e62b8071f35bb20",
+      "partition": "train",
+      "scenario": "takeaway",
+      "source_index": 4447
+    },
+    {
+      "id": "3670",
+      "intent": "takeaway_query",
+      "normalized_sha256": "04e2c57deabef33973c4b521bebcb6114de8011c776dbb7d1428895191fe3eeb",
+      "partition": "train",
+      "scenario": "takeaway",
+      "source_index": 3546
+    },
+    {
+      "id": "12348",
+      "intent": "transport_query",
+      "normalized_sha256": "c007eac70cae714e8106d8a9f86f03e8669f7eecc4fe7a9f974c9ab4d610aab4",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 11915
+    },
+    {
+      "id": "12815",
+      "intent": "transport_query",
+      "normalized_sha256": "19a93ee22531cd50148c15be124bb92f8891aece0f0d205234b5ff61cc75cd2f",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 12369
+    },
+    {
+      "id": "12852",
+      "intent": "transport_query",
+      "normalized_sha256": "c487e986e96c40b3c456bc34927c9c134f1785287d2f3a87cc868460d2fb084e",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 12405
+    },
+    {
+      "id": "12462",
+      "intent": "transport_taxi",
+      "normalized_sha256": "a3f6d599f692f3f50d7a58ca36bc340079fbf6e30b5ca03dd87c3c8cde132cd2",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 12027
+    },
+    {
+      "id": "12906",
+      "intent": "transport_taxi",
+      "normalized_sha256": "ec4f952397c99d721dd58a05b7305567d36cd295c2a12d90634c10410631acd8",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 12454
+    },
+    {
+      "id": "12830",
+      "intent": "transport_taxi",
+      "normalized_sha256": "1facfae9468bb5dae970f53929ad6a049166d8d09726cb9c8240ab4408538bf7",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 12383
+    },
+    {
+      "id": "12897",
+      "intent": "transport_ticket",
+      "normalized_sha256": "5f2f23555c02b6ba707f95bf2e9771498522e07874da5f3b868d4a7940a5ff8b",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 12446
+    },
+    {
+      "id": "12163",
+      "intent": "transport_ticket",
+      "normalized_sha256": "12e6e97f846bdb5e397a6c0c8957969138651e4743386f1ed576803e6be308f5",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 11733
+    },
+    {
+      "id": "12510",
+      "intent": "transport_ticket",
+      "normalized_sha256": "3d05b0e1f5a8e348174f143aa4ba49307856e34b9aacfac200eeb5d69417a019",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 12073
+    },
+    {
+      "id": "12695",
+      "intent": "transport_traffic",
+      "normalized_sha256": "fbaaa3e623de8508de12699331fe71bd1b89ed095d6e62dc3b8248ac45fd24bd",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 12252
+    },
+    {
+      "id": "12188",
+      "intent": "transport_traffic",
+      "normalized_sha256": "b1d07c9516773768c625478adf770b5f5080d233d08645b07fa625386df6b647",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 11758
+    },
+    {
+      "id": "12422",
+      "intent": "transport_traffic",
+      "normalized_sha256": "4fad8347741679d0b07cf6f628ed30a3c33ad2325e917d5b95db504c1c742c75",
+      "partition": "train",
+      "scenario": "transport",
+      "source_index": 11987
+    }
+  ]
+}
