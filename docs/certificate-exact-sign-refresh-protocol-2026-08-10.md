@@ -26,7 +26,7 @@ The frozen HLM5 producers use:
   `models/hlm5_lm_baseline_fineweb_g3_final.pt`, SHA-256
   `3e1c94d28125c2f86f3eeca030db3610f2fa679512c29c6b6608b24fc363e0f1`;
 - tokenizer `models/tokenizers/fineweb-65536-compat.json`, SHA-256
-  `15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbbe588`;
+  `15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588`;
 - random seed 0, the existing prompts/facts, the sorted 1,200-token pool, the
   first 40 unreachable synthesis cases, the 60 multi-key prompts, and the 17
   faithful facts exactly as currently encoded.
@@ -170,3 +170,11 @@ families, refresh manifest, verifier assertions, dependent analysis/figures,
 and every cited number. The provenance audit must then emit
 `READY_TO_PUBLISH`. Until that happens, the current `REFRESH_REQUIRED` warning
 stays visible.
+
+## Pre-outcome amendment record
+
+- 2026-08-10: removed one duplicated `b` from the tokenizer digest. The prior
+  text contained 65 hexadecimal characters and therefore could not be a
+  SHA-256 value. The corrected 64-character value above is the digest of the
+  registered tokenizer and matches the independent provenance audit. This was
+  corrected before implementation commit, preflight, or refreshed model output.
