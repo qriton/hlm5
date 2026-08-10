@@ -1,0 +1,27 @@
+{
+  "canonical_result": {
+    "path": "research/two_axis_admission_gate/results/two_axis_admission_development_result.json",
+    "sha256": "2f2336d6c003e459d8adf6d88e7a0c09aa36a30553f2879633ccb155daa06ed2"
+  },
+  "canonical_rows": {
+    "path": "research/two_axis_admission_gate/results/two_axis_admission_development_rows.jsonl",
+    "sha256": "6dc4daead91f59ed529c8779cfe7898c61214bd78b33261245a816615bbe848c"
+  },
+  "checks": {
+    "rows_jsonl_sha256_exact": true,
+    "rows_object_sha256_exact": true,
+    "scientific_sha256_exact": true,
+    "source_cache_hash_exact": true,
+    "target_cache_hash_exact": true,
+    "verdict_exact": true
+  },
+  "command": [
+    "C:\\Users\\md\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "D:\\HLM5-two-axis-admission\\research\\two_axis_admission_gate\\run_two_axis_admission_gate.py",
+    "replay"
+  ],
+  "generated_at_local": "2026-08-10T17:43:51.280912+02:00",
+  "git_head": "0e60bab2a8ea7c410a230a5bd1a7914ed9e61f98",
+  "schema": "hlm5-sca2-development-replay-v1",
+  "status": "EXACT_REPLAY"
+}

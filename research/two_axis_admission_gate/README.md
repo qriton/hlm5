@@ -12,6 +12,11 @@ Read the
 running anything. The official HWU64 fold 2 remains unencoded unless all
 development bars pass and a separate test registration is committed.
 
+Development is concluded:
+[`STOP_BEFORE_TARGET`](docs/two-axis-admission-development-verdict-2026-08-10.md).
+The registered class-gap axis changed no source-audit admission, so target
+development and official fold 2 remain unencoded.
+
 ## Outcome-blind population preparation
 
 Place the official repository at
