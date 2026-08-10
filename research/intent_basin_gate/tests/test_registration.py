@@ -6,16 +6,21 @@ import copy
 import subprocess
 import sys
 import unittest
+from pathlib import Path
 
-from contract import (
+ROOT_PATH = Path(__file__).resolve().parents[1]
+if str(ROOT_PATH) not in sys.path:
+    sys.path.insert(0, str(ROOT_PATH))
+
+from contract import (  # noqa: E402
     DEVELOPMENT_MANIFEST_PATH,
     HASHED_IMPLEMENTATION_PATHS,
     ROOT,
     SCIENTIFIC_CONSTANTS,
     TEST_MANIFEST_PATH,
 )
-from metrics import classify_development_verdict
-from run_intent_basin_gate import (
+from metrics import classify_development_verdict  # noqa: E402
+from run_intent_basin_gate import (  # noqa: E402
     canonical_json_sha256,
     cross_manifest_errors,
     load_json,

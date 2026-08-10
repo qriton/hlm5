@@ -2,11 +2,17 @@
 
 from __future__ import annotations
 
+import sys
 import unittest
+from pathlib import Path
 
 import torch
 
-from dynamics import (
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from dynamics import (  # noqa: E402
     angular_distance,
     class_degree_scores,
     constrained_settle,
@@ -14,7 +20,7 @@ from dynamics import (
     project_to_cap,
     unit,
 )
-from metrics import (
+from metrics import (  # noqa: E402
     average_rank_auc,
     classify_development_verdict,
     maximum_intent_prediction_share,

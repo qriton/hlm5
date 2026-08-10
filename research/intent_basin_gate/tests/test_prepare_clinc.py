@@ -3,17 +3,23 @@
 from __future__ import annotations
 
 import ast
+import sys
 import unittest
 from collections import Counter
+from pathlib import Path
 
-from contract import (
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from contract import (  # noqa: E402
     DEVELOPMENT_MANIFEST_PATH,
     SOURCE_COMMIT,
     SOURCE_DATA_SHA256,
     TEST_MANIFEST_PATH,
 )
-from prepare_clinc import exclude_train_overlaps, load_source
-from run_intent_basin_gate import load_json, manifest_errors
+from prepare_clinc import exclude_train_overlaps, load_source  # noqa: E402
+from run_intent_basin_gate import load_json, manifest_errors  # noqa: E402
 
 
 class ClincManifestTests(unittest.TestCase):
