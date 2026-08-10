@@ -154,6 +154,8 @@ At each of eight steps:
 5. if the proposal leaves `C(q0)`, project it along the `q0`-to-proposal
    geodesic to the cap boundary;
 6. compute the exact sphere log-map displacement `Delta = Log_q(proposal)`;
+   its angle is evaluated stably as `atan2(||tangent||, dot)` rather than
+   `acos(dot)`, which can round a nonzero small displacement to zero;
 7. accept only if `<grad_S E(q), Delta> < 0` and
 
 ```text
@@ -303,9 +305,21 @@ cap-boundary row exceeded the independent-state tolerance because
 roundoff-scale chord.  The complete attempt and its original receipts are
 preserved under `results/invalid-attempt-01/`.
 
-Before any retry, both implementations changed only their no-movement
+Before attempt 02, both implementations changed only their no-movement
 predicate to the chord definition in Section 5, and a deterministic
 384-dimensional regression was added.  Degree, encoder, prototypes, centering,
 trust-radius derivation, step schedule, Armijo rule, controls, scientific bars,
 data, and seeds are unchanged.  A retry requires a new clean preflight and a
 new pre-outcome development registration.
+
+Attempt 02 remained `HARNESS_INVALID` on the same row.  Stepwise diagnostics
+showed that both implementations agreed through step 7 within `5.6e-17` and
+generated the same step-8 projected state within `2e-16`.  One dot product
+rounded to exactly one, however, so `acos(dot)` produced a zero log-map and the
+independent line search took a different branch.  Before attempt 03, both
+separately structured log-map calculations changed to the stable, mathematically
+equivalent `atan2` form above, with a synthetic regression in which `dot == 1`
+but the true chord and angle are nonzero.  The saved spent-row tensors confirm
+that both branches then accept the same proposal within machine precision.
+Attempt 02 is preserved under `results/invalid-attempt-02/`; a third attempt
+again requires a new clean preflight and pre-outcome registration.

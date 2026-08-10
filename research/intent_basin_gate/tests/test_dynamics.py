@@ -19,6 +19,7 @@ from dynamics import (  # noqa: E402
     independent_matched_settle,
     project_to_cap,
     sphere_exp,
+    sphere_log,
     unit,
 )
 from metrics import (  # noqa: E402
@@ -109,6 +110,35 @@ class DynamicsContractTests(unittest.TestCase):
         self.assertTrue(bool(outside.item()))
         self.assertAlmostEqual(
             float(angular_distance(origins, projected).item()), 0.25, places=12
+        )
+
+    def test_sphere_log_recovers_angle_when_dot_rounds_to_one(self) -> None:
+        generator = torch.Generator(device="cpu").manual_seed(0)
+        origin = unit(
+            torch.randn((1, 384), generator=generator, dtype=torch.float64)
+        )
+        tangent = torch.randn(
+            (1, 384), generator=generator, dtype=torch.float64
+        )
+        tangent = unit(
+            tangent - (tangent * origin).sum(dim=-1, keepdim=True) * origin
+        )
+        expected_angle = 2e-8
+        target = sphere_exp(
+            origin,
+            tangent,
+            torch.tensor([expected_angle], dtype=torch.float64),
+        )
+
+        self.assertEqual(float((origin * target).sum()), 1.0)
+        displacement, measured_angle = sphere_log(origin, target)
+
+        self.assertGreater(float(measured_angle), 0.0)
+        self.assertAlmostEqual(float(measured_angle), expected_angle, places=15)
+        self.assertAlmostEqual(
+            float(torch.linalg.vector_norm(displacement)),
+            expected_angle,
+            places=15,
         )
 
     def test_class_degree_scores_average_equal_supports(self) -> None:

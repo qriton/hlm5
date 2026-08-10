@@ -85,9 +85,9 @@ def sphere_log(
     """Return row-wise tangent log-map displacements and angular distances."""
 
     cosine = (origins * targets).sum(dim=-1).clamp(-1.0, 1.0)
-    angles = torch.acos(cosine)
     tangent = targets - cosine.unsqueeze(-1) * origins
     tangent_norm = torch.linalg.vector_norm(tangent, dim=-1)
+    angles = torch.atan2(tangent_norm, cosine)
     safe_norm = tangent_norm.clamp_min(eps)
     displacement = tangent * (angles / safe_norm).unsqueeze(-1)
     displacement = torch.where(
@@ -336,9 +336,9 @@ def independent_matched_settle(
             trial = torch.where(beyond.unsqueeze(1), boundary, trial)
 
             local_dot = torch.sum(current * trial, dim=1).clamp(-1.0, 1.0)
-            local_angle = torch.acos(local_dot)
             local_tangent = trial - local_dot.unsqueeze(1) * current
             local_norm = torch.linalg.vector_norm(local_tangent, dim=1)
+            local_angle = torch.atan2(local_norm, local_dot)
             displacement = local_tangent * (
                 local_angle / local_norm.clamp_min(1e-15)
             ).unsqueeze(1)
