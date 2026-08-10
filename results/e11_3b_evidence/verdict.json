@@ -1,0 +1,378 @@
+{
+  "admission_scientific_sha256": "2f6dc4f7b7156e07c733fc5b5ad3690959a33455af63c5e4cec7bb1777a0992c",
+  "admission_sha256": "bfaa56c885c5a52316bf77d0799fdaea479c1637db14f5a9067dac0f3971b5c4",
+  "attempt_sha256": "c747f1e2cf1d5565c7700059250a1f5cb3ed2ede3b290c3b20928fd7c24f48f0",
+  "result_scientific_sha256": "a9711a77e07cae5dd9019371f0261f75a86792af40e24ba2797b3e2340f4a7f9",
+  "result_sha256": "44edb635ce5b564928dac5d0a48823db5b53c60869112adc27d72d8da42f5879",
+  "schema": "hlm5-e11-3b-verdict-v1",
+  "scientific": {
+    "claim_boundary": "Exact portability of the frozen E10 1024-slot adapter between two registered Leonardo A100 nodes under one pinned software/runtime stack.",
+    "cross_node_exact_match": true,
+    "locality_summary": {
+      "by_kind": {
+        "exact": {
+          "delta_zero_count": 4096,
+          "gate_open_count": 0,
+          "hidden_bit_identical_count": 4096,
+          "maximum": {
+            "case_id": 12957,
+            "gate_open": false,
+            "kind": "exact",
+            "pool_index": 8166,
+            "prompt_sha256": "d95bfd878d0e4177685e56b69f120d0a992cad8d0f56a6026ac6f6b38e72186e",
+            "selected_candidate_index": 256,
+            "selected_case_id": 20342,
+            "selected_label": " Toronto",
+            "selected_score": 0.5418548583984375,
+            "selected_slot": 256
+          },
+          "query_count": 4096,
+          "score_threshold_counts": {
+            "0.10": 20,
+            "0.50": 3,
+            "0.90": 0,
+            "0.95": 0
+          }
+        },
+        "neighborhood": {
+          "delta_zero_count": 4096,
+          "gate_open_count": 0,
+          "hidden_bit_identical_count": 4096,
+          "maximum": {
+            "case_id": 14243,
+            "gate_open": false,
+            "kind": "neighborhood",
+            "pool_index": 11414,
+            "prompt_sha256": "e2ec7472cb83f99c9514ecf12fa6e9420ac8bc03f1338029b175de92ea00b098",
+            "selected_candidate_index": 632,
+            "selected_case_id": 20732,
+            "selected_label": " quarterback",
+            "selected_score": 0.26995691657066345,
+            "selected_slot": 632
+          },
+          "query_count": 4096,
+          "score_threshold_counts": {
+            "0.10": 13,
+            "0.50": 0,
+            "0.90": 0,
+            "0.95": 0
+          }
+        },
+        "paraphrase": {
+          "delta_zero_count": 4096,
+          "gate_open_count": 0,
+          "hidden_bit_identical_count": 4096,
+          "maximum": {
+            "case_id": 12862,
+            "gate_open": false,
+            "kind": "paraphrase",
+            "pool_index": 7927,
+            "prompt_sha256": "96e5f1f068a5ef1cf3a4728980fa3e15fb6ae55f5c2e8bf8498b2f23528f548d",
+            "selected_candidate_index": 955,
+            "selected_case_id": 21064,
+            "selected_label": " Chinese",
+            "selected_score": 0.014410383068025112,
+            "selected_slot": 952
+          },
+          "query_count": 4096,
+          "score_threshold_counts": {
+            "0.10": 0,
+            "0.50": 0,
+            "0.90": 0,
+            "0.95": 0
+          }
+        }
+      },
+      "delta_zero_count": 12288,
+      "gate_open_count": 0,
+      "hidden_bit_identical_count": 12288,
+      "maximum": {
+        "case_id": 12957,
+        "gate_open": false,
+        "kind": "exact",
+        "pool_index": 8166,
+        "prompt_sha256": "d95bfd878d0e4177685e56b69f120d0a992cad8d0f56a6026ac6f6b38e72186e",
+        "selected_candidate_index": 256,
+        "selected_case_id": 20342,
+        "selected_label": " Toronto",
+        "selected_score": 0.5418548583984375,
+        "selected_slot": 256
+      },
+      "query_count": 12288,
+      "score_threshold_counts": {
+        "0.10": 33,
+        "0.50": 3,
+        "0.90": 0,
+        "0.95": 0
+      },
+      "top_20": [
+        {
+          "case_id": 12957,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 8166,
+          "prompt_sha256": "d95bfd878d0e4177685e56b69f120d0a992cad8d0f56a6026ac6f6b38e72186e",
+          "selected_candidate_index": 256,
+          "selected_case_id": 20342,
+          "selected_label": " Toronto",
+          "selected_score": 0.5418548583984375,
+          "selected_slot": 256
+        },
+        {
+          "case_id": 10815,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 2361,
+          "prompt_sha256": "94602a1f74cbf8872e0192891860286e360621c04fec0a171e01710c0f4d3946",
+          "selected_candidate_index": 256,
+          "selected_case_id": 20342,
+          "selected_label": " Toronto",
+          "selected_score": 0.5409238338470459,
+          "selected_slot": 256
+        },
+        {
+          "case_id": 13343,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 9162,
+          "prompt_sha256": "fd048c64b56e0aaf4f23cca95fe2476d796f9110be3c9286e83150c0bd50b54c",
+          "selected_candidate_index": 366,
+          "selected_case_id": 20454,
+          "selected_label": " Nebraska",
+          "selected_score": 0.5191904306411743,
+          "selected_slot": 366
+        },
+        {
+          "case_id": 10711,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 2076,
+          "prompt_sha256": "617f0aafe771e325fc92d24c7e7d13a998a24c2f36bfae7667dc509b6a30682b",
+          "selected_candidate_index": 302,
+          "selected_case_id": 20390,
+          "selected_label": " Michigan",
+          "selected_score": 0.403509259223938,
+          "selected_slot": 302
+        },
+        {
+          "case_id": 11395,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 3996,
+          "prompt_sha256": "6510b669da3e15eb9aa90fba779227ea601e7e7c617c7f6bdaf4386ac70cc449",
+          "selected_candidate_index": 896,
+          "selected_case_id": 21003,
+          "selected_label": " quarterback",
+          "selected_score": 0.2866261899471283,
+          "selected_slot": 894
+        },
+        {
+          "case_id": 14243,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 11414,
+          "prompt_sha256": "e2ec7472cb83f99c9514ecf12fa6e9420ac8bc03f1338029b175de92ea00b098",
+          "selected_candidate_index": 632,
+          "selected_case_id": 20732,
+          "selected_label": " quarterback",
+          "selected_score": 0.26995691657066345,
+          "selected_slot": 632
+        },
+        {
+          "case_id": 10909,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 2625,
+          "prompt_sha256": "21295ca31db83d547fd6d28c673683fb6f70341bbcbe45282f606101a9aeff7a",
+          "selected_candidate_index": 312,
+          "selected_case_id": 20400,
+          "selected_label": " opera",
+          "selected_score": 0.257163941860199,
+          "selected_slot": 312
+        },
+        {
+          "case_id": 10967,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 2790,
+          "prompt_sha256": "57d867dd937338b647bd413372f3f502b68f1c4c57d00e7a39c432a5bf95ef96",
+          "selected_candidate_index": 632,
+          "selected_case_id": 20732,
+          "selected_label": " quarterback",
+          "selected_score": 0.25663110613822937,
+          "selected_slot": 632
+        },
+        {
+          "case_id": 10860,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 2484,
+          "prompt_sha256": "dd41a275968151ea211f831e8e8bb0e4c4b7906698c699073fa7aa9a9e97fef7",
+          "selected_candidate_index": 484,
+          "selected_case_id": 20579,
+          "selected_label": " Canada",
+          "selected_score": 0.2329874038696289,
+          "selected_slot": 484
+        },
+        {
+          "case_id": 10103,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 306,
+          "prompt_sha256": "54ced9e14a9ac4d322d21c2b9036fe0d615422019dbdc86e6f2eb8a3969e3034",
+          "selected_candidate_index": 632,
+          "selected_case_id": 20732,
+          "selected_label": " quarterback",
+          "selected_score": 0.23196928203105927,
+          "selected_slot": 632
+        },
+        {
+          "case_id": 14004,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 10835,
+          "prompt_sha256": "601a22b0f393785ac62b5e98616f8f59acb667b892f1f0f999bb342fe2f2eb6d",
+          "selected_candidate_index": 127,
+          "selected_case_id": 20206,
+          "selected_label": " Christianity",
+          "selected_score": 0.22005684673786163,
+          "selected_slot": 127
+        },
+        {
+          "case_id": 11930,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 5465,
+          "prompt_sha256": "6b519cf9cb6761856e512531910e82ae27b14bce342286c18ab967f553d98937",
+          "selected_candidate_index": 896,
+          "selected_case_id": 21003,
+          "selected_label": " quarterback",
+          "selected_score": 0.1708550900220871,
+          "selected_slot": 894
+        },
+        {
+          "case_id": 10781,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 2262,
+          "prompt_sha256": "fab33ee379fd6ac295c0b349e53dc8ab74cfd0b74dc4f16d15ff3d9a48f20c71",
+          "selected_candidate_index": 312,
+          "selected_case_id": 20400,
+          "selected_label": " opera",
+          "selected_score": 0.16708597540855408,
+          "selected_slot": 312
+        },
+        {
+          "case_id": 12613,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 7274,
+          "prompt_sha256": "d86203659906be3cd6fb10dc4b0080e897e6d87fddbb99f39b9f422231a4f57d",
+          "selected_candidate_index": 836,
+          "selected_case_id": 20939,
+          "selected_label": " French",
+          "selected_score": 0.15933527052402496,
+          "selected_slot": 835
+        },
+        {
+          "case_id": 14386,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 11768,
+          "prompt_sha256": "ccbca83b85bbf2295c83c1a19623b5241ed976b144952906a9ddade21203c343",
+          "selected_candidate_index": 482,
+          "selected_case_id": 20577,
+          "selected_label": " Milan",
+          "selected_score": 0.15848852694034576,
+          "selected_slot": 482
+        },
+        {
+          "case_id": 11373,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 3935,
+          "prompt_sha256": "625786d51c620ca7bf6e25bd11cb2400bba4728743ba96266ad18b6e304d689b",
+          "selected_candidate_index": 312,
+          "selected_case_id": 20400,
+          "selected_label": " opera",
+          "selected_score": 0.15187054872512817,
+          "selected_slot": 312
+        },
+        {
+          "case_id": 11077,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 3110,
+          "prompt_sha256": "2ef8ec2d0b35006b446f6c8145134a4cf8f45ce1b334c1aae38089c4f8da80f7",
+          "selected_candidate_index": 896,
+          "selected_case_id": 21003,
+          "selected_label": " quarterback",
+          "selected_score": 0.1426108479499817,
+          "selected_slot": 894
+        },
+        {
+          "case_id": 12325,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 6522,
+          "prompt_sha256": "b223efc23c366bb89e84448d23e5752845443e1eb38b92d5326bb56b3dafddff",
+          "selected_candidate_index": 896,
+          "selected_case_id": 21003,
+          "selected_label": " quarterback",
+          "selected_score": 0.13898609578609467,
+          "selected_slot": 894
+        },
+        {
+          "case_id": 13146,
+          "gate_open": false,
+          "kind": "exact",
+          "pool_index": 8637,
+          "prompt_sha256": "665471339d49ee88afa26bdb7d1037c7a5cb212873225d772ab9bc79ab4e89a5",
+          "selected_candidate_index": 312,
+          "selected_case_id": 20400,
+          "selected_label": " opera",
+          "selected_score": 0.1343681663274765,
+          "selected_slot": 312
+        },
+        {
+          "case_id": 11866,
+          "gate_open": false,
+          "kind": "neighborhood",
+          "pool_index": 5294,
+          "prompt_sha256": "548205bf5874189b5b7173617a6cdcc4cf70673a8bf81336e097eb2f621569dc",
+          "selected_candidate_index": 896,
+          "selected_case_id": 21003,
+          "selected_label": " quarterback",
+          "selected_score": 0.12817399203777313,
+          "selected_slot": 894
+        }
+      ]
+    },
+    "positive_summary": {
+      "degree_five_max_crosstalk": 0.06155941631494113,
+      "gate_open_count": 1024,
+      "key_coherence": 0.5726099610328674,
+      "maximum_nonown_score": 0.06155947968363762,
+      "median_own_slot_attention": 0.9556171298027039,
+      "minimum_own_slot_attention": 0.9555816650390625,
+      "minimum_target_margin": 1.625,
+      "nonzero_delta_count": 1024,
+      "own_slot_count": 1024,
+      "positive_count": 1024,
+      "strict_target_success_count": 1024
+    },
+    "rollback_summary": {
+      "locality_count": 12288,
+      "locality_delta_zero_count": 12288,
+      "locality_hidden_bit_identical_count": 12288,
+      "positive_count": 1024,
+      "positive_delta_zero_count": 1024,
+      "positive_hidden_bit_identical_count": 1024
+    },
+    "scientific_failures": [],
+    "validity_failures": [],
+    "verdict": "PASS_3B_CROSS_NODE_PORTABLE"
+  },
+  "scientific_sha256": "904cce77e7906f867ea658dcbb2746a20edb7086284fc362d6cb992e6af0ab37",
+  "verdict": "PASS_3B_CROSS_NODE_PORTABLE"
+}

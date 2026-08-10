@@ -1,0 +1,11 @@
+{
+  "bundle_sha256": "d8b437041c5f902691c1f9e801ef57cdc5bedb1ea7d07a22b77d41aa9c07a3c7",
+  "burn_unix_seconds": 1786405991.2110639,
+  "execution_receipt_sha256": "784b39f0b12f04d335e9f1ebb9ecc7d158d9f582cab9272df256ecc17c15b0b5",
+  "implementation_commit": "7a43980ac910f4be9e2997a1eaef67063a8bc711",
+  "pre_admission_outputs_absent": true,
+  "protocol_commit": "8543e5a36c7220836e2ac75ed279b0694b598ae6",
+  "protocol_sha256": "6a5bfd08ac942fd98f0a5bdaabf83bb8c3bdec48d241ffe33a7801e5f4173da1",
+  "schema": "hlm5-e11-3b-attempt-v1",
+  "status": "PORTABILITY_ATTEMPT_SPENT"
+}
