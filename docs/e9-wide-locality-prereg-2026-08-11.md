@@ -2,22 +2,53 @@
 
 Date: 2026-08-11
 
-Status: preregistration; no E9 query hidden, gate score, or adapter output has
-been computed
+Status: amended preregistration; no E9 query hidden, gate score, or adapter
+output has been computed
 
 Scope: HLM5 model research only. HLM-KB, HLM-Flow, Ingesto, semantic routing,
 and legal or commercial claims are out of scope.
 
 ## Decision question
 
-Does the 64-slot HLM5 adapter that passed E8 remain completely closed on a
-much wider, disjoint CounterFact query surface while its registered exact keys
-still open their own slots?
+Does a pre-outcome-frozen, 64-slot reconstruction of the HLM5 adapter recipe
+that passed E8 remain completely closed on a much wider, disjoint CounterFact
+query surface while its registered exact keys still open their own slots?
 
 E8 established full-path efficacy and exact rollback on 64 fresh exact keys
-plus 264 registered off-support controls. E9 changes only the query surface. It
-reconstructs the exact E8 primary memory and scans 12,288 new queries without
-changing keys, values, doses, gate threshold, or trunk.
+plus 264 registered off-support controls. E9 changes the query surface and
+freezes its reconstruction before outcome access. It scans 12,288 new queries
+without changing the registered E9 keys, E8 values or doses, gate threshold,
+or trunk after that freeze.
+
+## Pre-outcome amendment record
+
+Leonardo job `51801037` exited during outcome-blind preflight, before
+`preflight.json`, registration, `attempt.json`, or any E9 prompt forward. The
+E9 query pool therefore remains unspent. A spent-E8-only diagnostic on node
+`lrdn2661` found that the ZCA direction hashes, active values, alphas, mask,
+labels, slot mapping, and all 64 positive-anchor gate/slot decisions reproduced,
+but three key-construction hashes differed from E8 job `51800915`, which ran on
+node `lrdn1549`:
+
+- key mean: `3d971efa2956850c92d07d6b9aebe211b1e61cef5dffff050d842247e0a988a0`
+  to `c354e69088bbe73fe982cfb011351866441b86d81f68d933a43cab5103db00d3`;
+- key transform:
+  `ad7b15bf050b4ee0fbca3c8c366e5b9a9b2966f24fb7f999a7ad418aca865dcd`
+  to `ffa3d7515d53af62977a68d9ae8ede1a90ccd25bf0ce2d17789eec380f87aef3`;
+  and
+- active keys:
+  `209e4ff0f498490cd9e6211ba23512578e85d41901df5869dcdd693770f846bf`
+  to `05321d100d20f1f0745840c4890bc436dd57a6c02fc6a4f50fe83a5a6e920c16`.
+
+This is cross-node numerical portability drift in tensors E8 recorded only by
+hash, not by value. It makes a byte-for-byte historical E8-memory
+reconstruction unavailable on an arbitrary later node. The repair below was
+made before E9 outcome access: freeze the same-recipe reconstruction in E9
+preflight, bind its exact node and tensor hashes before the attempt, retain
+byte-for-byte equality for every non-key E8 memory field, require all 64 spent
+positive anchors to remain live on their own slots, and require exact
+same-node admission/replay of the newly frozen reconstruction. No tolerance or
+scientific threshold is introduced.
 
 ## Bound prior evidence
 
@@ -42,7 +73,7 @@ encoding. File hashes use raw SHA-256 bytes.
 
 ## Frozen trunk, memory, and arithmetic
 
-E9 uses exactly the E8 registered runtime:
+E9 uses the E8 registered software and arithmetic runtime:
 
 - model: `HuggingFaceTB/SmolLM3-3B-Base`;
 - revision: `d78a42f79198603e614095753484a04c10c2b940`;
@@ -56,11 +87,21 @@ E9 uses exactly the E8 registered runtime:
 - no training, quantization, trunk/head mutation, attention replacement, or
   threshold sweep.
 
-Reconstruct the E8 primary memory from its 64 exact-prompt hiddens, 18 key-
+Reconstruct the primary memory from the E8 64 exact-prompt hiddens, 18 key-
 whitening prompts, frozen ZCA value directions, and registered per-case doses.
-The reconstruction must reproduce the complete E8 candidate memory receipt,
-including all key/value/alpha/mask and key-operator hashes, before E9 outcome
-access.
+Before E9 outcome access, preflight must:
+
+- reproduce every E8 candidate-memory receipt field except exactly
+  `active_keys_sha256`, `key_mean_sha256`, and `key_transform_sha256`;
+- reproduce the frozen E8 ZCA basis and value-direction hashes exactly;
+- require all 64 spent E8 exact-key anchors to open and select their own slots;
+- record the reconstructed key mean, key transform, and active-key hashes; and
+- bind the physical Leonardo node as part of the execution environment.
+
+Registration freezes the complete reconstructed E9 memory receipt and key-
+whitening receipt before `attempt.json`. Admission and replay must reproduce
+those newly frozen bytes exactly on that same node. The three historical E8
+key hashes remain provenance diagnostics, not E9 validity targets.
 
 The deployed operator remains:
 
@@ -158,19 +199,19 @@ Named outputs live under `results/e9_3b_staging/`:
 6. `verdict.json`.
 
 All writes are atomic create-new. All outputs must be absent at preflight.
-Registration binds committed sources, this protocol, tests, runtime, model
-files, E8 evidence, CounterFact data, E8 memory reconstruction, E9 population,
-commands, and absent outcomes.
+Registration binds committed sources, this protocol, tests, runtime, physical
+node, model files, E8 evidence, CounterFact data, the complete pre-outcome E9
+memory reconstruction, E9 population, commands, and absent outcomes.
 
 Admission creates `attempt.json` with status `POOL_SPENT` before the first E9
 model forward. A known post-attempt failure is durably
 `IMPLEMENTATION_INVALID`. External interruption without known invalidity is
 `INCOMPLETE`; this query pool cannot be rerun under amended code or bars.
 
-Replay is a new Python process on the identical node/runtime. It reconstructs
-the E8 memory and full E9 query population, repeats both registered batch
-schedules, and must reproduce every row, tensor hash, score, decision, summary,
-and diagnostic exactly.
+Replay is a new Python process on the identical physical node/runtime. It
+reconstructs the registered E9 memory and full E9 query population, repeats
+both registered batch schedules, and must reproduce every memory tensor hash,
+row, query tensor hash, score, decision, summary, and diagnostic exactly.
 
 Registered commands, to be implemented and hash-bound before outcomes:
 
@@ -188,10 +229,14 @@ Any failure below is `IMPLEMENTATION_INVALID`:
 
 - every protocol, source, dependency, model, E8 evidence, data, population,
   prompt, tensor, receipt, and result hash matches its registered value;
-- runtime and native arithmetic exactly match E8;
+- software runtime and native arithmetic exactly match E8, and the physical
+  node exactly matches the E9 preflight;
 - model invariants, head-only ZCA basis, and source cleanliness pass;
-- the reconstructed E8 memory receipt is byte-for-byte scientifically equal to
-  the frozen E8 candidate memory receipt before E9 outcome access;
+- every reconstructed memory-receipt field except the three explicitly listed
+  key hashes is byte-for-byte scientifically equal to frozen E8 before E9
+  outcome access;
+- the complete reconstructed E9 memory and key-whitening receipts are frozen
+  at registration and reproduced exactly by admission and replay;
 - all 64 E8 exact-key anchors open and select their own slots;
 - exactly 12,288 exhaustive E9 rows are evaluated under the frozen batch
   schedules;
@@ -215,11 +260,12 @@ partial pass and no post-outcome threshold adjustment.
 
 A PASS licenses only:
 
-> On the pinned frozen SmolLM3-3B-Base revision, registered A100/BF16 runtime,
-> fixed 64-slot E8 HLM5 adapter, and deterministic 12,288-query CounterFact
-> pool, no disjoint exact-style, paraphrase, or neighborhood query opened the
-> exact-key gate; every gate-closed adapter output was bit-identical to its
-> native hidden, and exact new-process replay succeeded.
+> On the pinned frozen SmolLM3-3B-Base revision, registered A100/BF16 node and
+> runtime, pre-outcome-frozen 64-slot E8-recipe HLM5 adapter, and deterministic
+> 12,288-query CounterFact pool, no disjoint exact-style, paraphrase, or
+> neighborhood query opened the exact-key gate; every gate-closed adapter
+> output was bit-identical to its native hidden, and exact new-process replay
+> succeeded.
 
 It does not establish a population-wide false-positive probability, semantic
 routing, paraphrase generalization, multi-token editing, generation quality,
