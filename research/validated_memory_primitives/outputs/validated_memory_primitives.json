@@ -1,0 +1,56 @@
+{
+  "do_not_claim": [
+    "HLM-specific retrieval advantage",
+    "semantic or paraphrase routing",
+    "language-model quality gain",
+    "robustness across the full mixture range",
+    "training or scaling authorization"
+  ],
+  "provenance": {
+    "exact_scientific_sha256": "a69593454521f693c21ba7195d33e2e59dc0aafc8242cce0e886aba2554de907",
+    "multi_support_scientific_sha256": "07a410e232745067feaee9862804e6c173c3a50b0d00de9aa079a2044a1829c6",
+    "registered_runtime": {
+      "device": "cpu",
+      "python": "3.11.7",
+      "torch": "2.5.1+cu121"
+    },
+    "snapshot_date": "2026-08-10",
+    "snapshot_manifest_sha256": "a47653ed3aac7c8b8760bedbcf00d9a32339c37e6be4e4d5998fcb0545b46110",
+    "source_repository": "D:/HLM5"
+  },
+  "schema": "hlm5-validated-memory-primitives-workbench-v1",
+  "scientific_sha256": "51d4ab31de979870bcc2f562a4673257cfb774b96027e65720c7df723d161861",
+  "scope": "Two deterministic CPU references; no checkpoint or LM forward.",
+  "status": "VALIDATED_CACHE_EQUIVALENT_PRIMITIVES",
+  "use_now": [
+    "Governed exact-address create/edit/deactivate/reactivate/delete lifecycle.",
+    "Explicit support-gated nonlinear multi-support composition where the task fits the measured boundary.",
+    "Matched-cache implementation as the simpler production reference unless another HLM-specific property is measured."
+  ],
+  "working": {
+    "bounded_multi_support": {
+      "cosine_soft_cache_accuracy": 0.6,
+      "hard_top1_accuracy": 0.0,
+      "hlm5_degree5_accuracy": 0.4,
+      "matched_degree5_cache_accuracy": 0.4,
+      "matched_degree5_cache_bit_exact": true,
+      "off_support_outputs_bit_zero": true,
+      "one_share_deactivated_accuracy": 0.0,
+      "shuffled_value_null_accuracy": 0.0,
+      "status": "NARROW_MULTI_SUPPORT_CACHE_EQUIVALENT"
+    },
+    "exact_address_lifecycle": {
+      "matched_degree5_cache_bit_exact": true,
+      "operations": {
+        "create": true,
+        "deactivate": true,
+        "edit": true,
+        "hard_delete": true,
+        "off_support_gate": true,
+        "reactivate": true,
+        "serialized_bundle_round_trip": true
+      },
+      "status": "CACHE_EQUIVALENT_REFERENCE"
+    }
+  }
+}

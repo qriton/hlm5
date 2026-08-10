@@ -54,6 +54,25 @@ python scripts/read_and_memorize.py
 See [`models/README.md`](models/README.md) for checkpoint hashes and loading, and
 the loader in [`hlm5/io.py`](hlm5/io.py) (`load_trunk`, `load_tokenizer`).
 
+## Validated memory primitives (CPU)
+
+The self-contained
+[`research/validated_memory_primitives`](research/validated_memory_primitives/README.md)
+workbench replays the two bounded HLM5 memory results that survived matched
+controls on 2026-08-10. Exact-address create/edit/deactivate/restore/reactivate/
+delete works and is bit-identical to a matched cache. The registered synthetic
+multi-support task is real but narrow: degree-5 reaches 40%, cosine-soft reaches
+60%, and hard top-1 reaches 0%; the HLM5 degree-5 reader is bit-identical to an
+independently coded degree-5 cache.
+
+```bash
+cd research/validated_memory_primitives
+python -B run_workbench.py
+```
+
+This is mechanism evidence, not an HLM-specific retrieval advantage, semantic
+routing result, language-model gain, or authorization to train or scale.
+
 ## Certificate implementation note
 
 The packaged certificate engine in [`hlm5/certify.py`](hlm5/certify.py) uses

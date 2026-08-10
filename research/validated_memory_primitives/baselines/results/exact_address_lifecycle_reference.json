@@ -1,0 +1,267 @@
+{
+  "all_phases_degree5_cache_bit_exact": true,
+  "bundle": {
+    "address_domain": "hlm5-e5v3-address-v1",
+    "address_mode": "canonical",
+    "cache_bytes": 6860,
+    "degree5_bytes": 6860,
+    "restored_state_exact": true
+  },
+  "claim_boundary": "Exact deterministic-address lifecycle only. No semantic routing, paraphrase generalization, language-model gain, HLM-specific retrieval advantage, or scaling authorization.",
+  "config": {
+    "canonical_address_sha256": "455dc68fac23473c17a2c5e7c099d94b9d98b363102ae865a10a393e97952b65",
+    "canonical_domain": "hlm5-e5v3-address-v1",
+    "canonical_ids": [
+      "capital_of|alpha republic",
+      "capital_of|beta republic",
+      "capital_of|gamma republic"
+    ],
+    "capacity": 8,
+    "degree": 5,
+    "device": "cpu",
+    "dim": 64,
+    "entities": [
+      "Alpha Republic",
+      "Beta Republic",
+      "Gamma Republic"
+    ],
+    "max_cross_cosine": 0.15625,
+    "off_support_domain": "hlm5-e5v3-off-v1",
+    "tau_cos": 0.95,
+    "temperature": 0.1
+  },
+  "lifecycle": {
+    "create": true,
+    "deactivate": true,
+    "edit": true,
+    "hard_delete": true,
+    "off_support_gate": true,
+    "reactivate": true,
+    "serialized_bundle_round_trip": true
+  },
+  "phases": [
+    {
+      "degree5_cache_bit_exact": true,
+      "field_equal": {
+        "output": true,
+        "prediction": true,
+        "routed": true,
+        "selected_gain": true,
+        "selected_slot": true,
+        "support_size": true
+      },
+      "output_sha256": "7db51f5dd01b09d017f2c57d92f706b239c9d7e8aff9647cbc20a79ffb3a9b96",
+      "phase": "create",
+      "query_count": 3,
+      "routed": [
+        true,
+        true,
+        true
+      ],
+      "selected_slots": [
+        0,
+        1,
+        2
+      ],
+      "signature": "5cc918c3e484c521f10b3d04518c6a2871eaf1022bcb442e4178db1e3310a77f",
+      "support_sizes": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "degree5_cache_bit_exact": true,
+      "field_equal": {
+        "output": true,
+        "prediction": true,
+        "routed": true,
+        "selected_gain": true,
+        "selected_slot": true,
+        "support_size": true
+      },
+      "output_sha256": "cb9c74e819778b8ec213f79386ac11f174248aa3ece883346c85eb1f74f9dceb",
+      "phase": "edit",
+      "query_count": 3,
+      "routed": [
+        true,
+        true,
+        true
+      ],
+      "selected_slots": [
+        0,
+        1,
+        2
+      ],
+      "signature": "bc544c9e9bcce3787e0c4482e141210d87476be4120c18e70d2718662e3b32da",
+      "support_sizes": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "degree5_cache_bit_exact": true,
+      "field_equal": {
+        "output": true,
+        "prediction": true,
+        "routed": true,
+        "selected_gain": true,
+        "selected_slot": true,
+        "support_size": true
+      },
+      "output_sha256": "13969baa4c9e28e50385ab46f65eeb1fb8ecde85f54241064c11b0923f8b7011",
+      "phase": "deactivate",
+      "query_count": 3,
+      "routed": [
+        false,
+        true,
+        true
+      ],
+      "selected_slots": [
+        -1,
+        1,
+        2
+      ],
+      "signature": "32b3a13c9d86ab27e724df5b83a5cd31872fccbc06e4181e2afec10261efc544",
+      "support_sizes": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "degree5_cache_bit_exact": true,
+      "field_equal": {
+        "output": true,
+        "prediction": true,
+        "routed": true,
+        "selected_gain": true,
+        "selected_slot": true,
+        "support_size": true
+      },
+      "output_sha256": "13969baa4c9e28e50385ab46f65eeb1fb8ecde85f54241064c11b0923f8b7011",
+      "phase": "serialized_bundle_round_trip",
+      "query_count": 3,
+      "routed": [
+        false,
+        true,
+        true
+      ],
+      "selected_slots": [
+        -1,
+        1,
+        2
+      ],
+      "signature": "32b3a13c9d86ab27e724df5b83a5cd31872fccbc06e4181e2afec10261efc544",
+      "support_sizes": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "degree5_cache_bit_exact": true,
+      "field_equal": {
+        "output": true,
+        "prediction": true,
+        "routed": true,
+        "selected_gain": true,
+        "selected_slot": true,
+        "support_size": true
+      },
+      "output_sha256": "cb9c74e819778b8ec213f79386ac11f174248aa3ece883346c85eb1f74f9dceb",
+      "phase": "reactivate",
+      "query_count": 3,
+      "routed": [
+        true,
+        true,
+        true
+      ],
+      "selected_slots": [
+        0,
+        1,
+        2
+      ],
+      "signature": "bc544c9e9bcce3787e0c4482e141210d87476be4120c18e70d2718662e3b32da",
+      "support_sizes": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "degree5_cache_bit_exact": true,
+      "field_equal": {
+        "output": true,
+        "prediction": true,
+        "routed": true,
+        "selected_gain": true,
+        "selected_slot": true,
+        "support_size": true
+      },
+      "output_sha256": "7de648dcf045518c964f7e88b00e892df82edae368042779e5a709a46f930f8a",
+      "phase": "hard_delete",
+      "query_count": 3,
+      "routed": [
+        true,
+        true,
+        false
+      ],
+      "selected_slots": [
+        0,
+        1,
+        -1
+      ],
+      "signature": "6b14c3412a25bb12a47babd738ec19d2ad685c2e5666824a7757d923d50458b2",
+      "support_sizes": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "degree5_cache_bit_exact": true,
+      "field_equal": {
+        "output": true,
+        "prediction": true,
+        "routed": true,
+        "selected_gain": true,
+        "selected_slot": true,
+        "support_size": true
+      },
+      "output_sha256": "2f8ef5f6456f1a2b5910311f62bd885aae54650527dea0801677d7037a95f172",
+      "phase": "off_support",
+      "query_count": 3,
+      "routed": [
+        false,
+        false,
+        false
+      ],
+      "selected_slots": [
+        -1,
+        -1,
+        -1
+      ],
+      "signature": "6cf8b2aa6fd778cf0899f961034f9621288d2e0c3970cbf10caa15394e164c72",
+      "support_sizes": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "pinned_e5v3": {
+    "formal_verdict": "CANONICAL_CACHE_EQUIVALENT",
+    "implementation_hashes": {
+      "baselines/run_address_conditioning_v1.py": "558722271edae4f9f8b8ac09122d7c39d63c5fd40c70d876e66f3cc41f8ec9fe",
+      "hlm5_memory.py": "0210733ab1160ac073d44e5a9d7967bb3b985fc323a07efde925694ae56c346a",
+      "tests/test_address_conditioning_v1.py": "92d18cb9d9e3b7188343de9f0410df9e178013dd423d1d015efb061d411934ae"
+    },
+    "raw_sha256": "a7c9b23e462f36755bda47bf11d0445a21a56ce03f471376929e41124e268eae",
+    "scientific_sha256": "b67b17ccca502f2f0b07f5561a533560eef9cf361b45a755a2eef9f845b4a3f0"
+  },
+  "schema": "hlm5-exact-address-lifecycle-reference-v1",
+  "scientific_sha256": "a69593454521f693c21ba7195d33e2e59dc0aafc8242cce0e886aba2554de907",
+  "status": "CACHE_EQUIVALENT_REFERENCE"
+}
