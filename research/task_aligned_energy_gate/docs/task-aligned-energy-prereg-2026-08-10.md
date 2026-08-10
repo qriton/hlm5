@@ -216,3 +216,22 @@ universal explainability, EU AI Act compliance, production readiness, safety,
 robustness outside Banking77, or an HLM-specific advantage. A dynamics pass
 would be reproducible as conventional gradient descent on the displayed
 Gaussian-mixture scalar.
+
+## 11. Implementation-only amendment after invalid attempt 01
+
+The first registered execution was `HARNESS_INVALID`. Every validity gate
+except independent state equality passed. The two optimizers produced identical
+predictions and final cap norms agreeing at approximately `1e-15`, but their
+cap-surface coordinates differed by `5.102135665069341e-07`. The independent
+path had manually rewritten several stable numerical primitives, including
+softmax, row norms, displayed energy, and ball projection. Repeated gradient
+evaluation and cap projection accumulated their rounding differences.
+
+The repair gives both paths the same canonical CPU float64 primitives for
+softmax, row norm, evaluation of the displayed scalar, and projection to the
+registered ball; optimizer control flow and Armijo orchestration remain
+separately structured. Dataset, split, encoder, covariance grid and selection
+rule, energy, temperature, radius, steps, bars, controls, and seeds are
+unchanged. The exact original receipts, rows, result, and verdict are preserved
+under `results/invalid-attempt-01/`. A retry requires a new clean preflight and
+pre-outcome registration.

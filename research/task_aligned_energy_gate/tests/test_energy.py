@@ -111,6 +111,19 @@ class EnergyTests(unittest.TestCase):
         self.assertTrue(torch.equal(identity, initial))
         self.assertEqual(tuple(trace.step_lengths.shape), (4, 0))
 
+    def test_high_dimensional_cap_path_is_bit_exact_between_optimizers(self) -> None:
+        generator = torch.Generator(device="cpu").manual_seed(20_260_810)
+        states = torch.randn((32, 76), generator=generator, dtype=torch.float64) * 2.0
+        centroids = (
+            torch.randn((77, 76), generator=generator, dtype=torch.float64) * 1.5
+        )
+        radius = 4.720266704071971
+        candidate, _ = constrained_settle(states, centroids, radius, **self.kwargs(8))
+        matched = independent_matched_settle(
+            states, centroids, radius, **self.kwargs(8)
+        )
+        self.assertTrue(torch.equal(candidate, matched))
+
 
 if __name__ == "__main__":
     unittest.main()

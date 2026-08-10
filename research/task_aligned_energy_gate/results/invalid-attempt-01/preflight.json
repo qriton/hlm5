@@ -1,0 +1,95 @@
+{
+  "created_at_utc": "2026-08-10T13:37:21.101202+00:00",
+  "development_manifest_sha256": "5f41825997afff66c162d9dd7ec58be6f45dca7aee4079e666e33b89f0c01194",
+  "environment": {
+    "deterministic_algorithms": true,
+    "implementation": "CPython",
+    "numpy": "2.4.6",
+    "platform": "Windows-10-10.0.20348-SP0",
+    "python": "3.11.7",
+    "sentence_transformers": "5.5.1",
+    "torch": "2.5.1+cu121",
+    "torch_num_threads": 1,
+    "transformers": "5.12.1"
+  },
+  "experiment_id": "hlm5-b77-task-aligned-energy-v1",
+  "git": {
+    "branch": "feat/task-aligned-energy-gate",
+    "head": "dcf5dd8c0d8898b3760563e2aff57b1ef3ccc058",
+    "unexpected_status": []
+  },
+  "implementation_sha256": {
+    "DATA_NOTICE.md": "24ba2a9cc354d58b952d1cef30ed8605cbe7284ada9e2ee3060f638c62daeb38",
+    "README.md": "8bc586de35268c0b2721cf848ceb0c8e7a82927bad67b6f8cf9403f7a35bd739",
+    "contract.py": "98e6b5d63cb3840d746c21a612ce769c93b5d7a0ce6ffb44d4bd8709abd12206",
+    "data/banking77_development_manifest.json": "5f41825997afff66c162d9dd7ec58be6f45dca7aee4079e666e33b89f0c01194",
+    "data/banking77_test_manifest.json": "3a44f76e4550fd83ae4f78e1ed71c91757b61d9fc9bd9fef535b027171ebba77",
+    "docs/task-aligned-energy-prereg-2026-08-10.md": "8dca2057b85765355666d24eaa2aeaea5f6ff90bcfe7ee32a4510cbb24445482",
+    "energy.py": "e9b487b4ac484c5427523639b37d2ffe0db79ad00b00f0849fd97b4d69a80a39",
+    "metrics.py": "d0c3b12f619154df5e400a7e7cfdfa78e49659e7e435ebb30a05be7ad4e906c0",
+    "prepare_banking77.py": "51855d74ae362e018adf3c2e708b8b5cabf33541dade80cd7dfc7eeb4b72031a",
+    "run_task_aligned_energy_gate.py": "109a55d4c98f004a57bb0d087145ef3f6fc10b41db2e5b3d8166fecc5efedf2b",
+    "tests/test_energy.py": "19559c9a5ae73c816bef2fa1b621174c212fe97430154820b922986850190251",
+    "tests/test_prepare_banking77.py": "6907c623b8b7191e40e5abfaa950fdb31f10146aec84aeaca03b20d73030cdfb",
+    "tests/test_registration.py": "82527f1b1d0d8cb1e48fbceded165c82006d575f3df7086e6cecadd15143ddb0"
+  },
+  "model": {
+    "id": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "snapshot_digest": "cdf609f5ee2eeb7204517d51b88b8079fb53624531a28ee74c524b58acf36caa",
+    "snapshot_file_sha256": {
+      "1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+      "README.md": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0",
+      "config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+      "config_sentence_transformers.json": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+      "model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+      "modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+      "sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+      "special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+      "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+      "tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+      "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    },
+    "synthetic_embedding_digest": "8a67097fda8af064ae2b6580d213b2495952d345f383fd0eba60e15b69f68c59"
+  },
+  "real_banking77_embeddings_computed": false,
+  "schema_version": 1,
+  "status": "SYNTHETIC_PREFLIGHT_ONLY",
+  "synthetic_math": {
+    "fit_shape": [
+      48,
+      7
+    ],
+    "matched_max_abs_error": 1.3322676295501878e-15,
+    "maximum_armijo_residual": -3.107649002823986e-11,
+    "maximum_cap_error": -14.241209047355879,
+    "maximum_energy_increase": -3.1093350116861984e-11,
+    "projection_shape": [
+      3,
+      7
+    ],
+    "trust_radius": 17.393713446783607
+  },
+  "test_embeddings_computed": false,
+  "test_manifest_sha256": "3a44f76e4550fd83ae4f78e1ed71c91757b61d9fc9bd9fef535b027171ebba77",
+  "tests": [
+    {
+      "path": "tests/test_prepare_banking77.py",
+      "returncode": 0,
+      "stderr_sha256": "256e590ba9183f73cc663d8cfa132c3c8611787f5bb806ea54e951f3d8a7d3ca",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/test_energy.py",
+      "returncode": 0,
+      "stderr_sha256": "1c33b988a8b3d102ea731b198deb5d78db3c5a556f573fc1367d85ba03897b12",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/test_registration.py",
+      "returncode": 0,
+      "stderr_sha256": "84ff24306afcf5e19892adf32493aa9bc9dbc8db16870c6155e8e03c23864a33",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

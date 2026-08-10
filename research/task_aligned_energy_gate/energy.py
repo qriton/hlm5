@@ -387,22 +387,19 @@ def independent_matched_settle(
     centroid_offsets = 0.5 * torch.sum(centroids**2, dim=1)
     for _ in range(steps):
         logits = current @ centroids.T - centroid_offsets
-        scaled_logits = logits / temperature
-        shifted_logits = (
-            scaled_logits - torch.max(scaled_logits, dim=1, keepdim=True).values
-        )
-        weights = torch.exp(shifted_logits)
-        weights = weights / torch.sum(weights, dim=1, keepdim=True)
+        # Keep the control flow independent while sharing the stable numerical
+        # primitive. A manual max/exp/sum rewrite accumulated last-bit drift
+        # over repeated cap projections and violated a state-equality gate.
+        weights = torch.softmax(logits / temperature, dim=1)
         downhill = weights @ centroids - current
-        norms = torch.sqrt(torch.sum(downhill**2, dim=1))
+        norms = torch.linalg.vector_norm(downhill, dim=1)
         moving = norms > stationary_tolerance
         directions = downhill / norms.clamp_min(stationary_tolerance).unsqueeze(1)
-        old_energy = 0.5 * torch.sum(current**2, dim=1)
-        old_energy -= temperature * torch.logsumexp(logits / temperature, dim=1)
+        old_energy = mixture_energy(current, centroids, temperature)
         gradient = -downhill
         anchor_delta = current - anchors
         at_boundary = (
-            torch.sqrt(torch.sum(anchor_delta**2, dim=1)) >= radius - cap_tolerance
+            torch.linalg.vector_norm(anchor_delta, dim=1) >= radius - cap_tolerance
         )
         points_out = torch.sum(anchor_delta * directions, dim=1) > 0.0
         done = ~moving
@@ -412,22 +409,12 @@ def independent_matched_settle(
             if not bool(waiting.any()):
                 break
             trial = current + (base_step / float(2**halving)) * directions
-            delta = trial - anchors
-            delta_norm = torch.sqrt(torch.sum(delta**2, dim=1))
-            outside = delta_norm > radius
-            boundary = anchors + radius * delta / delta_norm.clamp_min(1e-15).unsqueeze(
-                1
-            )
-            trial = torch.where(outside.unsqueeze(1), boundary, trial)
+            trial, _ = project_to_ball(anchors, trial, radius)
             move = trial - current
-            move_norm = torch.sqrt(torch.sum(move**2, dim=1))
+            move_norm = torch.linalg.vector_norm(move, dim=1)
             no_move = move_norm <= stationary_tolerance
             directional = torch.sum(gradient * move, dim=1)
-            trial_logits = trial @ centroids.T - centroid_offsets
-            trial_energy = 0.5 * torch.sum(trial**2, dim=1)
-            trial_energy -= temperature * torch.logsumexp(
-                trial_logits / temperature, dim=1
-            )
+            trial_energy = mixture_energy(trial, centroids, temperature)
             armijo = (
                 trial_energy <= old_energy + armijo_c * directional + energy_tolerance
             )
