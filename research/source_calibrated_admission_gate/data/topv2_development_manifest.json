@@ -1,0 +1,697 @@
+{
+  "constants": {
+    "group_intent_count": 9,
+    "intent_order_salt": "sca1-source-intent-order-v1",
+    "row_order_salt": "sca1-row-order-v1",
+    "rows_per_intent": 20,
+    "source_domains": [
+      "alarm",
+      "event",
+      "messaging",
+      "music",
+      "navigation",
+      "timer"
+    ],
+    "source_fit_per_domain": 2000,
+    "source_fit_salt": "sca1-source-fit-v1",
+    "support_per_intent": 3,
+    "target_domains": [
+      "reminder",
+      "weather"
+    ]
+  },
+  "development_hidden_population_names": [
+    "source_fit",
+    "target_support",
+    "target_development",
+    "calibration_support",
+    "calibration_positive",
+    "calibration_negative",
+    "off_support_audit"
+  ],
+  "metadata": {
+    "cleanup": {
+      "eval": {
+        "clean_rows": 13578,
+        "conflict_rows_dropped": 2,
+        "duplicate_rows_dropped": 360,
+        "overlap_rows_dropped": 3220,
+        "raw_rows": 17160
+      },
+      "test": {
+        "clean_rows": 30176,
+        "conflict_rows_dropped": 15,
+        "duplicate_rows_dropped": 1028,
+        "overlap_rows_dropped": 7566,
+        "raw_rows": 38785
+      },
+      "train": {
+        "clean_rows": 106234,
+        "conflict_rows_dropped": 327,
+        "duplicate_rows_dropped": 18036,
+        "overlap_rows_dropped": 0,
+        "raw_rows": 124597
+      }
+    },
+    "raw_counts": {
+      "eval": {
+        "alarm": 2935,
+        "event": 1336,
+        "messaging": 1536,
+        "music": 1573,
+        "navigation": 2971,
+        "reminder": 2526,
+        "timer": 1616,
+        "weather": 2667
+      },
+      "test": {
+        "alarm": 7123,
+        "event": 2654,
+        "messaging": 3048,
+        "music": 4184,
+        "navigation": 6075,
+        "reminder": 5767,
+        "timer": 4252,
+        "weather": 5682
+      },
+      "train": {
+        "alarm": 20430,
+        "event": 9170,
+        "messaging": 10018,
+        "music": 11563,
+        "navigation": 20998,
+        "reminder": 17840,
+        "timer": 11524,
+        "weather": 23054
+      }
+    },
+    "source_eligible_intents": [
+      "alarm::CREATE_ALARM",
+      "alarm::DELETE_ALARM",
+      "alarm::GET_ALARM",
+      "alarm::SILENCE_ALARM",
+      "alarm::SNOOZE_ALARM",
+      "alarm::UNSUPPORTED_ALARM",
+      "alarm::UPDATE_ALARM",
+      "event::GET_EVENT",
+      "event::UNSUPPORTED_EVENT",
+      "messaging::GET_MESSAGE",
+      "messaging::REACT_MESSAGE",
+      "messaging::SEND_MESSAGE",
+      "music::PLAY_MUSIC",
+      "music::REMOVE_FROM_PLAYLIST_MUSIC",
+      "music::REPLAY_MUSIC",
+      "music::SKIP_TRACK_MUSIC",
+      "music::STOP_MUSIC",
+      "music::UNSUPPORTED_MUSIC",
+      "navigation::GET_DIRECTIONS",
+      "navigation::GET_DISTANCE",
+      "navigation::GET_ESTIMATED_ARRIVAL",
+      "navigation::GET_ESTIMATED_DEPARTURE",
+      "navigation::GET_ESTIMATED_DURATION",
+      "navigation::GET_INFO_ROAD_CONDITION",
+      "navigation::GET_INFO_TRAFFIC",
+      "navigation::UNSUPPORTED_NAVIGATION",
+      "navigation::UPDATE_DIRECTIONS",
+      "timer::ADD_TIME_TIMER",
+      "timer::CREATE_TIMER",
+      "timer::DELETE_TIMER",
+      "timer::GET_TIMER",
+      "timer::PAUSE_TIMER",
+      "timer::RESTART_TIMER",
+      "timer::RESUME_TIMER",
+      "timer::SUBTRACT_TIME_TIMER",
+      "timer::UNSUPPORTED_TIMER",
+      "timer::UPDATE_TIMER"
+    ],
+    "source_groups": {
+      "calibration_negative": [
+        "alarm::SNOOZE_ALARM",
+        "navigation::GET_ESTIMATED_DEPARTURE",
+        "event::UNSUPPORTED_EVENT",
+        "navigation::UNSUPPORTED_NAVIGATION",
+        "timer::PAUSE_TIMER",
+        "navigation::GET_DIRECTIONS",
+        "alarm::SILENCE_ALARM",
+        "alarm::CREATE_ALARM",
+        "navigation::GET_ESTIMATED_DURATION"
+      ],
+      "calibration_supported": [
+        "alarm::GET_ALARM",
+        "timer::UNSUPPORTED_TIMER",
+        "timer::ADD_TIME_TIMER",
+        "timer::RESTART_TIMER",
+        "music::STOP_MUSIC",
+        "navigation::GET_DISTANCE",
+        "music::REPLAY_MUSIC",
+        "navigation::GET_INFO_ROAD_CONDITION",
+        "event::GET_EVENT"
+      ],
+      "off_support_audit": [
+        "music::SKIP_TRACK_MUSIC",
+        "navigation::GET_INFO_TRAFFIC",
+        "timer::GET_TIMER",
+        "timer::DELETE_TIMER",
+        "messaging::REACT_MESSAGE",
+        "timer::CREATE_TIMER",
+        "timer::RESUME_TIMER",
+        "music::PLAY_MUSIC",
+        "navigation::UPDATE_DIRECTIONS"
+      ],
+      "unused": [
+        "messaging::SEND_MESSAGE",
+        "alarm::DELETE_ALARM",
+        "music::UNSUPPORTED_MUSIC",
+        "music::REMOVE_FROM_PLAYLIST_MUSIC",
+        "timer::UPDATE_TIMER",
+        "alarm::UPDATE_ALARM",
+        "timer::SUBTRACT_TIME_TIMER",
+        "navigation::GET_ESTIMATED_ARRIVAL",
+        "messaging::GET_MESSAGE",
+        "alarm::UNSUPPORTED_ALARM"
+      ]
+    },
+    "target_intents": [
+      "reminder::CREATE_REMINDER",
+      "reminder::DELETE_REMINDER",
+      "reminder::GET_REMINDER",
+      "reminder::GET_REMINDER_DATE_TIME",
+      "reminder::UPDATE_REMINDER",
+      "reminder::UPDATE_REMINDER_DATE_TIME",
+      "reminder::UPDATE_REMINDER_TODO",
+      "weather::GET_WEATHER",
+      "weather::UNSUPPORTED_WEATHER"
+    ],
+    "test_utterances_tokenized_or_encoded": false
+  },
+  "populations": {
+    "calibration_negative": {
+      "count": 180,
+      "sha256": "ff1ad0cc2adab71e954078ec0a8add29dbef4854471aa46a6722188eba67a6ad"
+    },
+    "calibration_positive": {
+      "count": 180,
+      "sha256": "ae7bcc011202ac1c409da25017332cad5f4d76bcca4c2475421c83aeb641bcc7"
+    },
+    "calibration_support": {
+      "count": 27,
+      "sha256": "200e73f7cbf803374336098d72716c1a7a75e39eeea7d23a39329a0ac088e404"
+    },
+    "off_support_audit": {
+      "count": 180,
+      "sha256": "d169fa388a21b136e98f8bae6dd596089c36f33df7419ab45097e4b3e41558e9"
+    },
+    "source_fit": {
+      "count": 12000,
+      "sha256": "d262a923d68625aed6320b4d9bfdf71118373eacb9fee02852ba7180f1c42b1c"
+    },
+    "target_development": {
+      "count": 180,
+      "sha256": "bccdba6567b55aa05bdb6d903431a9298efedd960874049a1123866b33ee8326"
+    },
+    "target_support": {
+      "count": 27,
+      "sha256": "33a31cdb953289bc6400835c294a3124a303db06fdb32824cbfc60477de32f93"
+    },
+    "test_target": {
+      "count": 180,
+      "sha256": "92fd9be6486ca92033279b2f2c65d2530a386e2b6efdf69a0c8bf3d1f0d2e891"
+    }
+  },
+  "schema": "hlm5-sca1-topv2-development-manifest-v1",
+  "scientific_sha256": "90293546a57991bf046df32a87e20798b8da089bbe5c0fe88d07b98fcea8682c",
+  "source": {
+    "archive_sha256": "e73a13eb32f67f69c630abde549fa153f288564e2703b71492f04cb59b2cae13",
+    "files": {
+      "LICENSE": "3b2890eacd851373001c4a14623458e3adaf1b1967939aa9c38a318e28d61c00",
+      "README": "5f050132aee99d4901793f9a9a47bc37aa7d68266b44f5c41f0eedbb94da62ff",
+      "alarm_eval.tsv": "9b80c3b3430c6378fa566f76f6ef5aa31156599f362a8896922839ebeedaa4a3",
+      "alarm_test.tsv": "96ce58ce1944f2f94b37477a18aa31b70b54aad0505eb7688d613fbd6415818c",
+      "alarm_train.tsv": "920483ba7ae051f95f69692deb77c80e66a105005ed5e49a3a043e9ffd155db5",
+      "event_eval.tsv": "1fb48c8aeb5bf3c6bb35ed206979adb2c8ef55fe7b0caf49424ebd75041e05d8",
+      "event_test.tsv": "9b67d4ed5cfe63c7899be66f523ec33de04352e6a16c35b9c2a5c322ec4548fc",
+      "event_train.tsv": "8c81d6680e7b72ca43be52702654839400678025ac1e6df9f352cb348180bdd8",
+      "messaging_eval.tsv": "a9f8761b0add1e8e1b46a8a53915b5101e48135983f199948cef9fed346e6b63",
+      "messaging_test.tsv": "e3d25346286bb9a514b325e18ec0045cef2eb58f45273d1deff088aa677cefec",
+      "messaging_train.tsv": "1f23f321ce36884d05931ca78eeb0823aaae13047d8099ba68e32e8656c2cf02",
+      "music_eval.tsv": "27d3ce7a63b13a91a1dd86292a269ff26e20c7895cd9789da2cc6f0a03de67cc",
+      "music_test.tsv": "c080a8f350cf5df6642d0f0e6e0a19c5ac682a8d9c912a0b57a5f0d1f01b44a0",
+      "music_train.tsv": "0abb87d11edc98d4be9b20879ec892d3fdcb0cd8d2bf4da06eef5e997c578d3c",
+      "navigation_eval.tsv": "308c95b88b9bad1d5cd5d3904f702dc03160829ada32f7eaff131d60f85588b7",
+      "navigation_test.tsv": "bf1bd7915932fac8452149f8b69f290e253b3eb1574e1557a7f7a9a156174fd2",
+      "navigation_train.tsv": "b486903314e4d2f011eeeef95f31f1eccdd8bf7aa538a2b003a23f9dd44b0b5a",
+      "reminder_eval.tsv": "dea5c9deb676676eeeede7036aa07f664f9d2e5a6b37b7fd8f3d2c6b171ecebf",
+      "reminder_test.tsv": "e6bc68ac371e7755753f455dcef5e42d4bf960c08f72beb094e4bc0940b7f925",
+      "reminder_train.tsv": "689f0934456b9b85d8d0d256425b86362f2bd349756d531a71958edd1b6e6ac1",
+      "timer_eval.tsv": "463bfeef6621b90a1c471916653fc420c219f8f65b38359a442485caa9e794a9",
+      "timer_test.tsv": "aa04c18cce9d02456f2a21f5fe8b8088a3470529b88db5ee35640110bddd74c9",
+      "timer_train.tsv": "d630abdde12cade9230434714f3f2f0ca8f75c8c00a6b6a5f5dfeb3100cf996f",
+      "weather_eval.tsv": "f6672529ab85c1415cd5a5d3045551176799605fba9e132fdd9d11adb93b908e",
+      "weather_test.tsv": "e4aa02ae0d3bad627c499d58365f34f37939153c832d30ee90725b745d74e9df",
+      "weather_train.tsv": "fd683b775602ec88d3fc7ca442c060ff33aacb710eaed3e517c8691835ae1018"
+    },
+    "license": "CC BY-SA 4.0",
+    "name": "TOPv2 1.1",
+    "official_url": "https://dl.fbaipublicfiles.com/topv2/TOPv2_Dataset.zip",
+    "root": "D:\\HLM2\\runtime\\datasets\\topv2-1.1\\official"
+  },
+  "support_rows": {
+    "calibration_support": [
+      {
+        "domain": "alarm",
+        "intent": "alarm::GET_ALARM",
+        "partition": "train",
+        "row_id": "136b01bb83703f66d1133ba57c7d4b83b4c7e7f0fd990232a86bce176b272eb6",
+        "source_line": 13832,
+        "utterance_sha256": "c79372e6127ee649a756c1b46616052a55cd4927468ff99e69ed031603e1fb19"
+      },
+      {
+        "domain": "alarm",
+        "intent": "alarm::GET_ALARM",
+        "partition": "train",
+        "row_id": "07ca706e8430c011df95b314c3924f3c1dbbe8efe848d653591631ab5b1c79e2",
+        "source_line": 16958,
+        "utterance_sha256": "2f44af14f6b0bb40aba136a8885151363cdd7e24ae03f9503500f1fd3e8a0a89"
+      },
+      {
+        "domain": "alarm",
+        "intent": "alarm::GET_ALARM",
+        "partition": "train",
+        "row_id": "c7ca1edc831c753e8e01b9943bbc896a4c8ea719385da9ac844e23deedf4c385",
+        "source_line": 3495,
+        "utterance_sha256": "72d89dc8f0ad593d7e3f7b6c76fb2891e94f4d213a4204d10a950b0b291208f8"
+      },
+      {
+        "domain": "event",
+        "intent": "event::GET_EVENT",
+        "partition": "train",
+        "row_id": "0dd6c2598a052af29033f209abe65f07bf2d847c11ef7cb94b12284bbf635288",
+        "source_line": 4035,
+        "utterance_sha256": "2958bf51cfc7edf6680aeb5904327f9dd9eb0ae56d3b1082d7407b2e6b45af37"
+      },
+      {
+        "domain": "event",
+        "intent": "event::GET_EVENT",
+        "partition": "train",
+        "row_id": "792807b2e8c25acbcb0f0c229ce5b1979cc8078eb3d61b2a1dee7b28f05888ee",
+        "source_line": 9109,
+        "utterance_sha256": "0744104c83b47123f57f325f7aa04b3e8c125fd6e3bfd91ad8ce494d580beb3e"
+      },
+      {
+        "domain": "event",
+        "intent": "event::GET_EVENT",
+        "partition": "train",
+        "row_id": "eaf72377989b163bc83e117cb00e1be8eb358ffe1191857ac97af94ae14405dd",
+        "source_line": 4790,
+        "utterance_sha256": "d854b8092658f60f7a63ceafd24c97629dd1b41a1bf1bd4c60a6fd516abc83b6"
+      },
+      {
+        "domain": "music",
+        "intent": "music::REPLAY_MUSIC",
+        "partition": "train",
+        "row_id": "94744fab1ae3fd95bbe3fd6bf160f3e19c0e32583eeb3732d6dbf8e602111660",
+        "source_line": 4030,
+        "utterance_sha256": "c77128947e5260a341220faf9caab75f8db0f2fd605fb74d1caa5aded89f9fab"
+      },
+      {
+        "domain": "music",
+        "intent": "music::REPLAY_MUSIC",
+        "partition": "train",
+        "row_id": "4b2d7ed132b533c751270d85d752ebf911c4c66b8c238c2da3f72c846ff7ddb5",
+        "source_line": 1283,
+        "utterance_sha256": "97a7244c476e900275967ca717d0bbed6cb48744028ff21d1d172b5fe2f039fa"
+      },
+      {
+        "domain": "music",
+        "intent": "music::REPLAY_MUSIC",
+        "partition": "train",
+        "row_id": "00113e78f4065ae07cd91b7242d3dc84d71dc70868b848efd938ca55b1aa81b0",
+        "source_line": 5487,
+        "utterance_sha256": "0d47b1f9adb678096454a7dd069239db5dee94836c702ed8a875ab19240fdd68"
+      },
+      {
+        "domain": "music",
+        "intent": "music::STOP_MUSIC",
+        "partition": "train",
+        "row_id": "ea7a2e92f9cbca7a91a6cdca62a786effb71fee69b2909e26c1e13aad7bec5fd",
+        "source_line": 10707,
+        "utterance_sha256": "e9941f8ca396f538bb6981c29798eefab3c79a42dcd99383745997bfce337b03"
+      },
+      {
+        "domain": "music",
+        "intent": "music::STOP_MUSIC",
+        "partition": "train",
+        "row_id": "d48238b2811d2b3f405ab46ec678766e85bda24a4e6105c88b3b774072d4ef56",
+        "source_line": 7162,
+        "utterance_sha256": "4c4a83286c6464918b27aa24943d0d6fc695f80e7ac96c6db0b0a0480a9fe0cc"
+      },
+      {
+        "domain": "music",
+        "intent": "music::STOP_MUSIC",
+        "partition": "train",
+        "row_id": "f4967c4e99dc7f03be28401265b3ecae80cc990aad072a8a551952283de75e49",
+        "source_line": 10217,
+        "utterance_sha256": "db3fdc53aae1b089c1139a612b7a19923b7ba220957b7e092755062da150927a"
+      },
+      {
+        "domain": "navigation",
+        "intent": "navigation::GET_DISTANCE",
+        "partition": "train",
+        "row_id": "a8cdd933b8af5d88cd7d3b34b4073c2280b6a5d36c9566ffc3df000d01b6f1e2",
+        "source_line": 16471,
+        "utterance_sha256": "02d6867c2029d4ee9bf5dfbb204ae474491ef44aa9e7309d74fb996a4b4ebdf0"
+      },
+      {
+        "domain": "navigation",
+        "intent": "navigation::GET_DISTANCE",
+        "partition": "train",
+        "row_id": "85414690119d5e6980ef8d924e14131306c66b8c09878cf45414a65030b0baf0",
+        "source_line": 11380,
+        "utterance_sha256": "507ed7bcce93dffffa8c8d22f0d57ae177a52b6e0492ca451301fdefc18a8bc7"
+      },
+      {
+        "domain": "navigation",
+        "intent": "navigation::GET_DISTANCE",
+        "partition": "train",
+        "row_id": "5f1bddc5a630c12b2db601769c29af0b2966527efc3fcde7ee95fb2adface99b",
+        "source_line": 15012,
+        "utterance_sha256": "dc6814d01dca3addbbe94f103af5ed34ae4cf828b5063be419b2269e300e7130"
+      },
+      {
+        "domain": "navigation",
+        "intent": "navigation::GET_INFO_ROAD_CONDITION",
+        "partition": "train",
+        "row_id": "c93d7340a6cddfe9e837d7b551e62f938d6f257efea275a026ab1ed055e3b5bb",
+        "source_line": 3447,
+        "utterance_sha256": "51816b96729f66b31346545ecf84dd45c28de5dc175c1376911b97ad622129dd"
+      },
+      {
+        "domain": "navigation",
+        "intent": "navigation::GET_INFO_ROAD_CONDITION",
+        "partition": "train",
+        "row_id": "a0cadfd9ccce2273aba2e85c8c3e30a8382cc9d53424842112d2f0d1d58c10e9",
+        "source_line": 16814,
+        "utterance_sha256": "1065b46180989663d120d494415061f4f3ee8278edfe64bc1b315bee15230729"
+      },
+      {
+        "domain": "navigation",
+        "intent": "navigation::GET_INFO_ROAD_CONDITION",
+        "partition": "train",
+        "row_id": "582d8c0f548a1a473e282d2cafe7951d4b89a4665d2ee73770183cf0412b5bfa",
+        "source_line": 1407,
+        "utterance_sha256": "1fa1d82fd70b0bfd476ed57ff3c54bc9a41427133ed12f5b84b957e243fe66c9"
+      },
+      {
+        "domain": "timer",
+        "intent": "timer::ADD_TIME_TIMER",
+        "partition": "train",
+        "row_id": "48a88f6998385648ba6562347cb38d602b91a94cf3672c79ce03b051f0f3f0bd",
+        "source_line": 11377,
+        "utterance_sha256": "e3a207183b609206a84a046c6617867c77d4711cac168b949ef31dadb4a227c9"
+      },
+      {
+        "domain": "timer",
+        "intent": "timer::ADD_TIME_TIMER",
+        "partition": "train",
+        "row_id": "0a7ab6376fa5659a953cab8a34813a437ce363f2a0aa4fb3e48a630216a57479",
+        "source_line": 7407,
+        "utterance_sha256": "75cbf5006bad1741813210d513ea00a360726fb09e84d9976f16493ff17f7ae3"
+      },
+      {
+        "domain": "timer",
+        "intent": "timer::ADD_TIME_TIMER",
+        "partition": "train",
+        "row_id": "a48e96c162d553ce269aa2c561306cb52392a34370872a1c73e22e1e6e17ddac",
+        "source_line": 3210,
+        "utterance_sha256": "93c8bb33b1dca643c08369031d431f860f4fc5e849efbe2127c290a361f9a4b3"
+      },
+      {
+        "domain": "timer",
+        "intent": "timer::RESTART_TIMER",
+        "partition": "train",
+        "row_id": "ea16c9715ab4e7ec68015fdafa49d0a6013ca2e26dfcca9331abd02eac371a4e",
+        "source_line": 4579,
+        "utterance_sha256": "ecd9f658a303907e215f38617d232fdf7d631f708b59fea84dabd56f36f87fcd"
+      },
+      {
+        "domain": "timer",
+        "intent": "timer::RESTART_TIMER",
+        "partition": "train",
+        "row_id": "6c5443f2350ca55be674949e25cff4aacd458e4454e884fe5216835e8de64b2e",
+        "source_line": 5687,
+        "utterance_sha256": "b1d3a188888692cfdf6d8808b82c05a89aa11163d6260a66a37d844bfb27c463"
+      },
+      {
+        "domain": "timer",
+        "intent": "timer::RESTART_TIMER",
+        "partition": "train",
+        "row_id": "e54f34014eb58bacbe98813eacadefd8f4a1b8ff30e7b84bd2e0650875b34097",
+        "source_line": 6779,
+        "utterance_sha256": "eb1e6a09d7e2f23f7d7c0147f9c1b5ffa246ccbfd126744cfdd2d6fe51b76ba5"
+      },
+      {
+        "domain": "timer",
+        "intent": "timer::UNSUPPORTED_TIMER",
+        "partition": "train",
+        "row_id": "9f41bf44b3c26a8c4dd946bed187fd1aa0554a89a678d471ce538fae3f59d447",
+        "source_line": 8491,
+        "utterance_sha256": "1cac7add87f0ebbce8fbd5287fe924171d8e01fbf8216dfde4303d20569dd1a0"
+      },
+      {
+        "domain": "timer",
+        "intent": "timer::UNSUPPORTED_TIMER",
+        "partition": "train",
+        "row_id": "df50328114fc5d33ca9f6977dd68fbb610bfe27485c2e276aac940e89a3df5ce",
+        "source_line": 7875,
+        "utterance_sha256": "5fd842cb9075684712fb97be4fe36d6af360e17b60760838544da689e83dbfb1"
+      },
+      {
+        "domain": "timer",
+        "intent": "timer::UNSUPPORTED_TIMER",
+        "partition": "train",
+        "row_id": "36dded6b7c25846b7d41ebf014bd726dd6ca05f2aa399dc43e4e6a35aa10fa93",
+        "source_line": 10458,
+        "utterance_sha256": "be0089bba5486e0679c9f9e5997a1994e4ce568ce40b5166ed0da75313aa5cc0"
+      }
+    ],
+    "target_support": [
+      {
+        "domain": "reminder",
+        "intent": "reminder::CREATE_REMINDER",
+        "partition": "train",
+        "row_id": "4ffec89dfec664f6c0c3c0a3bef3ffe2f03d7161fc92e578ea29918f99e8ea26",
+        "source_line": 5984,
+        "utterance_sha256": "b5fa524593f921829768bd174f4d6e4185ed37fae5c102ff922ba5f7a1bea299"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::CREATE_REMINDER",
+        "partition": "train",
+        "row_id": "f9001793c6d3b32d7acf0ee2933a102d1e5919d3ea75f4a480875e0ab5b28950",
+        "source_line": 1817,
+        "utterance_sha256": "f18219bb68b8f8c55e529436d04218ba30c704c5697866fcc3f86c3bdda1d16a"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::CREATE_REMINDER",
+        "partition": "train",
+        "row_id": "1e809d75decd9379e3bb0b0996553456984d6257edfa8f65ff0d22592f87c7ec",
+        "source_line": 1515,
+        "utterance_sha256": "a6a26873079df0b7e28f111b9af2ec999e7ca74c27a8241fa925a8257be9d7d6"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::DELETE_REMINDER",
+        "partition": "train",
+        "row_id": "10d52281423ef67d0d41271e01fdd623ad0dbe5aada21d5cc0774f46baea655b",
+        "source_line": 3395,
+        "utterance_sha256": "8cfa702851e8cb8e010ed74e220900030f4663839bf1b4104ad2f5045dac29a1"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::DELETE_REMINDER",
+        "partition": "train",
+        "row_id": "c5299a437198b6550b6f0ed4eacd0916174f0f136326b0c4e23f2387cf882fca",
+        "source_line": 8179,
+        "utterance_sha256": "2aebcf9337c9fe7064aec9af07df45e77416c211af7e74cb873921690efce53f"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::DELETE_REMINDER",
+        "partition": "train",
+        "row_id": "1ad39f7a55241aea782728fb19a294cb77ddc87a5edb0f7aae7e245cecc5aff3",
+        "source_line": 11490,
+        "utterance_sha256": "671ec9cab079b8190dab599998b28f2eec18959842d03759032707556f37a9d7"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::GET_REMINDER",
+        "partition": "train",
+        "row_id": "650356e544abd37f43b6e749dab2fa8b7224c4e9efe59799cefe74ca8a044431",
+        "source_line": 15406,
+        "utterance_sha256": "daf1ff1a831b15fe95c89f70f3a822b9d6181863e6613847b73d869bfc1efea2"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::GET_REMINDER",
+        "partition": "train",
+        "row_id": "1f916a044e3a7489de1510bbd12afb8e4470cafafb2ecab6d00185595dfeb8f2",
+        "source_line": 8011,
+        "utterance_sha256": "8126b14f796ed2725914535f6eb979599d2867bbf44eded82af34155a5c529aa"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::GET_REMINDER",
+        "partition": "train",
+        "row_id": "e6aca9d76a8d05df522904ece028b1d07093abcf88d172dc70ef931e3f985fcc",
+        "source_line": 7761,
+        "utterance_sha256": "f54a46c3cb783df29994b8b7a1923e7bd24bc35758e026710ac352882826da59"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::GET_REMINDER_DATE_TIME",
+        "partition": "train",
+        "row_id": "795f8ceb6d9ea54e1495287e0f26aa274c98745fb36363605279bf295ca36d98",
+        "source_line": 11579,
+        "utterance_sha256": "262de1fdc41bfe9cee2ee0cc632bf96f2846db55d3d8250536479b820abe8c2a"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::GET_REMINDER_DATE_TIME",
+        "partition": "train",
+        "row_id": "5217c6a176eff4b14de95b7c628b4acca5f078fcf6f297b0f2d2be2d8e7a9a74",
+        "source_line": 12392,
+        "utterance_sha256": "e4a977413fdcda849a9d60e076861e8dcc733019ae2253a09b7bb10a252b983d"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::GET_REMINDER_DATE_TIME",
+        "partition": "train",
+        "row_id": "5f0315e35215a139960bc4c95df57482102b84e9894bb12569cccd69f105841f",
+        "source_line": 7881,
+        "utterance_sha256": "b246935168ca190c253f08bb809c4babad9f26acd005ffe6eaa1ba97d2e1e19a"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::UPDATE_REMINDER",
+        "partition": "train",
+        "row_id": "18628e09672a99f5d297184d3f4cb310eb5ba847ffc1f59344af75e63486a45f",
+        "source_line": 11569,
+        "utterance_sha256": "8893a8b2a734415b1d814bae3d1d36871c8ba280b8f6e95e419f202ceb9aa010"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::UPDATE_REMINDER",
+        "partition": "train",
+        "row_id": "ae122e188a6b3b935342175e84c1efa0214186c226537fc1e1f6090bf1087ca2",
+        "source_line": 8393,
+        "utterance_sha256": "43acce405acc5c73e1cbaf71b8d281f1180eccaa365b61889e6b7d9edcdc2291"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::UPDATE_REMINDER",
+        "partition": "train",
+        "row_id": "4f3de34323c504b356641dccfd56c87939cb1884255bacfe36de44183b6ada32",
+        "source_line": 10085,
+        "utterance_sha256": "375cf3b9d611df9ff16518e135c04cbccc165ca8230f5c1bf1e573f1112d5626"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::UPDATE_REMINDER_DATE_TIME",
+        "partition": "train",
+        "row_id": "168cf41f15e931f7e2cf9c2b490e83b11b924d846f5fad23caad839a429b71ac",
+        "source_line": 6914,
+        "utterance_sha256": "a0a253485caa87bf95ee37c8bc2077817fb3f794e3532bd88dced77b93e2d54d"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::UPDATE_REMINDER_DATE_TIME",
+        "partition": "train",
+        "row_id": "4e01fc6a62063c7bcc8012a5c97ddb1772e43a4e7db82b3c7fec5a9b6a3f173c",
+        "source_line": 6741,
+        "utterance_sha256": "c624e1510d15ead8d6411c1236d7ce2755dba796598293c7a9c8a6b866a18ff3"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::UPDATE_REMINDER_DATE_TIME",
+        "partition": "train",
+        "row_id": "a83ef638c0531269568a259b43db2634e16a96115a11caa624b2fa290dd215b7",
+        "source_line": 7210,
+        "utterance_sha256": "e336e1b2b046d83c56589c02365dbb4d304e7107540e91c7b61003f8afd5d062"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::UPDATE_REMINDER_TODO",
+        "partition": "train",
+        "row_id": "10f8a0fbca5d277a04b6b394d9d0a9b1c2b100c860ab32eb43e2305d8999d42a",
+        "source_line": 10483,
+        "utterance_sha256": "455f8526d1761d415de7f19cbe7eb8ae2f696627fa40a014e703f488aacfd625"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::UPDATE_REMINDER_TODO",
+        "partition": "train",
+        "row_id": "9581707e61ceb21dab8cc61b41f5b9625da40d29ca3d54e9850a4e8b8a783f18",
+        "source_line": 10060,
+        "utterance_sha256": "b8e3a562d63ff59b78960a601f2a03da959059e8bc784687c29be76611fd82d7"
+      },
+      {
+        "domain": "reminder",
+        "intent": "reminder::UPDATE_REMINDER_TODO",
+        "partition": "train",
+        "row_id": "0180e6a47c75aa21a2f89a4b4d387ae53223e219c8da66669986e6e685f18e04",
+        "source_line": 7176,
+        "utterance_sha256": "90beaf1c35421da184797fc0f19ad777928e66c5a23be959b0875f8b4dd4fa9a"
+      },
+      {
+        "domain": "weather",
+        "intent": "weather::GET_WEATHER",
+        "partition": "train",
+        "row_id": "9f66a841a9dd3c2c4d58b9ffe2620cfaeecfc674f96a836fb2f2d1f21feeac42",
+        "source_line": 20853,
+        "utterance_sha256": "14d510cdefc5df0486f3b094ba4465c0771c9eaa8a4cea1c6a1c75f8b98b7714"
+      },
+      {
+        "domain": "weather",
+        "intent": "weather::GET_WEATHER",
+        "partition": "train",
+        "row_id": "e53fb68b2a9975552c01596362971a4bd296661d6399ce46ba0790dbb02ff69a",
+        "source_line": 14077,
+        "utterance_sha256": "521268be7e667ec5116f0a775f9980cffdb0fcefad6eee9a26080c1dc8e29b30"
+      },
+      {
+        "domain": "weather",
+        "intent": "weather::GET_WEATHER",
+        "partition": "train",
+        "row_id": "8db2a807f74c8de433596a151f287a3bf6de9d43425057eb1f0202a6d1ffa150",
+        "source_line": 20473,
+        "utterance_sha256": "8c80ff724ce852de22f65b22f74a72aa26660150d0377fd02ef02461536b2d0b"
+      },
+      {
+        "domain": "weather",
+        "intent": "weather::UNSUPPORTED_WEATHER",
+        "partition": "train",
+        "row_id": "8c7cecf77a0725e9467d4ce2f50831ad6a2781c8d8f06f90ba593af14232c9f8",
+        "source_line": 13742,
+        "utterance_sha256": "f7a30dddefb6ed30dfad07c67a95f75877b82d01f1df32865a1f45a5bb113172"
+      },
+      {
+        "domain": "weather",
+        "intent": "weather::UNSUPPORTED_WEATHER",
+        "partition": "train",
+        "row_id": "dc74f8ef8ee472df4e5c06e776d61853f0d851abfa50ed87388b3b9e1eba27e1",
+        "source_line": 11943,
+        "utterance_sha256": "8263b20be89e2967207acffa662d2d0648841f2451ee971ac7496407580b1563"
+      },
+      {
+        "domain": "weather",
+        "intent": "weather::UNSUPPORTED_WEATHER",
+        "partition": "train",
+        "row_id": "1500af652329ef8139b0ebcf9b2c43a47b8840c232eaa6816dcf73c824b0a49e",
+        "source_line": 12863,
+        "utterance_sha256": "4875b89dac5ee7f1697f75170b24b45f59219cdd43c1589ee8010f980bc89d07"
+      }
+    ]
+  },
+  "test_utterances_tokenized_or_encoded": false
+}
