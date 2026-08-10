@@ -115,6 +115,7 @@ promoted payload bytes.
 | Certificate predicts editors (CounterFact, exploratory) | ROME paraphrase ρ = −0.16, p = 0.005; FT ρ = −0.13, p = 0.023; neighborhood damage ROME/GRACE p < 0.01 | `cert_vs_editors_analysis.json` |
 | Frozen public 3B portability (strict registered verdict) | **Valid FAIL:** 1,027/1,028 direct certificates survive ordinary BF16; 11/11 admitted faithful edits succeed; 0/69 off-support gates; 8/8 neutral outputs bit-identical | `e7_3b_result.json`, `e7_3b_verdict.json` |
 | Frozen public 3B readout geometry (fresh registered E7c) | **PASS:** raw target rows reach 705/1,200; fixed ZCA-half directions reach and strictly win 1,200/1,200; +495 reachability, 0 raw wins lost; exact new-process replay | `results/e7c_3b_evidence/result.json`, `results/e7c_3b_evidence/verdict.json` |
+| Frozen public 3B full HLM5 path (fresh registered E8) | **PASS:** raw values admit 29/64; fixed ZCA values admit and succeed 64/64 through multi-slot memory; 0/264 off-support gates; 337/337 exact rollback; exact new-process replay | `results/e8_3b_evidence/result.json`, `results/e8_3b_evidence/verdict.json` |
 
 The reachability frontier is the honest core: a *global* edit strength overshoots
 the certified interval and silently fails reachable edits (0.529); the certified
@@ -146,6 +147,16 @@ pool. The fixed raw-row ZCA half-whitening direction reached and strictly won
 and exact new-process replay. This is strong readout-conditioning evidence, not
 a trained 3B HLM or a semantic editor. The 3B co-training/no-tax experiment
 remains unmeasured.
+
+E8 then moved the same fixed ZCA value operator into the released HLM5
+multi-slot adapter on 64 fresh CounterFact prompts. Raw target-row values were
+deployment-admitted for 29/64 cases; ZCA values were admitted for 64/64, and all
+64 opened their exact gate, selected their own slot, and strictly predicted the
+target through the untouched ordinary BF16 head. The primary memory opened no
+gate on 264 registered off-support queries, and removing all slots restored
+bit-identical baseline logits on all 337 prompts. This is a bounded exact-key
+3B adapter result—not paraphrase generalization, a trained HLM 3B trunk, or
+attention replacement.
 
 ## Repository layout
 

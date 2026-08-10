@@ -1,3 +1,24 @@
+# E8 frozen-public-3B full path — formal PASS
+
+Date: 2026-08-11 · Trunk: pinned
+`HuggingFaceTB/SmolLM3-3B-Base` revision
+`d78a42f79198603e614095753484a04c10c2b940` · Protocol:
+`docs/e8-fresh-full-path-zca-protocol-2026-08-10.md` · Evidence:
+`results/e8_3b_evidence/` · Verdict: `PASS_3B_FULL_PATH_ZCA`.
+
+On 64 preregistered fresh CounterFact exact keys, raw target-row values were
+deployment-admitted for 29 cases. The fixed head-only ZCA values were admitted
+for all 64 and all 64 succeeded through shared key whitening, released
+multi-slot HLM5 memory, the degree-5 hard gate, and the untouched ordinary BF16
+head. The ZCA arm opened zero false gates across 264 registered off-support
+queries. Removing all active slots restored bit-identical baseline logits on
+all 337 prompts. A new Python process reproduced every scientific object and
+full-logit hash exactly.
+
+This is a bounded exact-key adapter result. It is not evidence for paraphrase
+generalization, a trained HLM 3B model, attention replacement, multi-token
+editing, PPL neutrality, or legal/commercial claims.
+
 # E7 frozen-public-3B portability — valid scientific FAIL
 
 Date: 2026-08-10 · Trunk: pinned
