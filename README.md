@@ -116,6 +116,7 @@ promoted payload bytes.
 | Frozen public 3B portability (strict registered verdict) | **Valid FAIL:** 1,027/1,028 direct certificates survive ordinary BF16; 11/11 admitted faithful edits succeed; 0/69 off-support gates; 8/8 neutral outputs bit-identical | `e7_3b_result.json`, `e7_3b_verdict.json` |
 | Frozen public 3B readout geometry (fresh registered E7c) | **PASS:** raw target rows reach 705/1,200; fixed ZCA-half directions reach and strictly win 1,200/1,200; +495 reachability, 0 raw wins lost; exact new-process replay | `results/e7c_3b_evidence/result.json`, `results/e7c_3b_evidence/verdict.json` |
 | Frozen public 3B full HLM5 path (fresh registered E8) | **PASS:** raw values admit 29/64; fixed ZCA values admit and succeed 64/64 through multi-slot memory; 0/264 off-support gates; 337/337 exact rollback; exact new-process replay | `results/e8_3b_evidence/result.json`, `results/e8_3b_evidence/verdict.json` |
+| Frozen public 3B wide exact-key locality (registered E9) | **PASS:** 0/12,288 disjoint gates across 4,096 exact-style, 4,096 paraphrase, and 4,096 neighborhood prompts; all closed outputs bit-identical; 64/64 positive anchors live; exact replay | `results/e9_3b_evidence/result.json`, `results/e9_3b_evidence/verdict.json` |
 
 The reachability frontier is the honest core: a *global* edit strength overshoots
 the certified interval and silently fails reachable edits (0.529); the certified
@@ -157,6 +158,15 @@ gate on 264 registered off-support queries, and removing all slots restored
 bit-identical baseline logits on all 337 prompts. This is a bounded exact-key
 3B adapter result—not paraphrase generalization, a trained HLM 3B trunk, or
 attention replacement.
+
+E9 stress-tested the same exact-key design on a deterministic query surface
+about 46.5 times larger than E8's off-support set. Across 12,288 unique prompts
+disjoint from every E8 prompt, zero gates opened, every delta was exactly zero,
+and every adapted hidden was bit-identical to native. The maximum selected
+score was 0.000118619 against the fixed 0.95 threshold, while all 64 positive
+exact keys still opened and selected their own slots. Exact new-process replay
+passed. This is strong bounded selectivity evidence, not a population
+false-positive estimate or semantic routing result.
 
 ## Repository layout
 
@@ -294,11 +304,16 @@ Adapted from [`results/RESULTS.md`](results/RESULTS.md); no inflation.
   zero raw-reachable losses and exact replay. This licenses the bounded
   readout-geometry claim only; multi-token editing, factual correctness,
   cross-model transfer, PPL neutrality, and 3B HLM training remain unmeasured.
+- **Verified wide exact-key locality:** the registered E9 adapter opened 0 of
+  12,288 disjoint CounterFact gates across three equal query classes, returned
+  bit-identical native hiddens for every row, kept all 64 positive anchors live,
+  and replayed exactly. This remains a finite-pool exact-key result, not semantic
+  generalization or a population false-positive bound.
 - **Planned, not measured:** the robust certificate's drift and
   finite-precision calibration (ε_h, ε_r), and the full public-benchmark sweep
   (CounterFact/zsRE/MQuAKE × MEMIT/MEND/SERAC). The paper's Limitations section
   states each as a named
-  falsification experiment (E1–E8). Full head-to-head evaluation against MEMIT,
+  falsification experiment (E1–E9). Full head-to-head evaluation against MEMIT,
   MEND, and SERAC on standard benchmarks remains open.
 
 ## Reproduce the paper
