@@ -204,8 +204,8 @@ def main():
         preds = {
             "HLM5": lambda p: pred_hlm5(p, key, tid, beta),
             "LogitBias": lambda p: pred_bias(p, key, tid, c),
-            "FT-full": lambda p: argmax_with(mfull, p),
-            "FT-L": lambda p: argmax_with(mlast, p),
+            "FT-full": lambda p, edited_model=mfull: argmax_with(edited_model, p),
+            "FT-L": lambda p, edited_model=mlast: argmax_with(edited_model, p),
             "RAG": lambda p: pred_rag(p, kp, tgt),
         }
         rec = {"fact": kp, "target": tgt, "eff": {}, "gen": {}, "loc": {}}
