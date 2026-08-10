@@ -114,6 +114,7 @@ promoted payload bytes.
 | GPT-2 controlled study (incl. ROME) | HLM5 vs. logit-bias McNemar p = 6e-5; ROME re-impl 0.815/0.854, EasyEdit ref 0.972/0.771 | `gpt2_table1_v2.json`, `rome_gpt2.json`, `rome_easyedit_gpt2.json` |
 | Certificate predicts editors (CounterFact, exploratory) | ROME paraphrase ρ = −0.16, p = 0.005; FT ρ = −0.13, p = 0.023; neighborhood damage ROME/GRACE p < 0.01 | `cert_vs_editors_analysis.json` |
 | Frozen public 3B portability (strict registered verdict) | **Valid FAIL:** 1,027/1,028 direct certificates survive ordinary BF16; 11/11 admitted faithful edits succeed; 0/69 off-support gates; 8/8 neutral outputs bit-identical | `e7_3b_result.json`, `e7_3b_verdict.json` |
+| Frozen public 3B readout geometry (fresh registered E7c) | **PASS:** raw target rows reach 705/1,200; fixed ZCA-half directions reach and strictly win 1,200/1,200; +495 reachability, 0 raw wins lost; exact new-process replay | `results/e7c_3b_evidence/result.json`, `results/e7c_3b_evidence/verdict.json` |
 
 The reachability frontier is the honest core: a *global* edit strength overshoots
 the certified interval and silently fails reachable edits (0.529); the certified
@@ -133,9 +134,18 @@ rounded the decision to a zero-margin tie. The full exact-key memory path still
 passed 11/11 admitted facts, refused 7/18, opened no off-support gate across 7
 refused keys, 54 paraphrases, and 8 neutral prompts, and preserved all 8 neutral
 logit tensors bit-for-bit. This is evidence that the adapter and gate transfer,
-but also that a float64 point certificate is not yet a deployment certificate at
-BF16. A finite-precision-aware admission bound is the next bounded target. The
-3B co-training/no-tax experiment remains unmeasured.
+but also that a float64 point certificate is not automatically a deployment
+certificate at BF16.
+
+E7b then tested a disjoint 1,200-token pool and found that ordinary BF16 was not
+the binding loss once affine geometry was reachable: 893/893 reachable targets
+were strict native wins, but total geometry reached only 893/1,200. E7c selected
+one head-only operator on that spent evidence and preregistered a third disjoint
+pool. The fixed raw-row ZCA half-whitening direction reached and strictly won
+1,200/1,200, versus 705/1,200 raw geometry, with zero raw-reachable targets lost
+and exact new-process replay. This is strong readout-conditioning evidence, not
+a trained 3B HLM or a semantic editor. The 3B co-training/no-tax experiment
+remains unmeasured.
 
 ## Repository layout
 
@@ -267,6 +277,12 @@ Adapted from [`results/RESULTS.md`](results/RESULTS.md); no inflation.
   (1,027/1,028); its full faithful path is 11/11 with zero off-support gates and
   exact neutral locality. This closes the adapter subtest, not 3B co-training or
   no-tax.
+- **Verified but narrow 3B repair:** on a preregistered third disjoint pool, the
+  frozen raw-row ZCA half-whitening direction raises exact reachability from
+  705/1,200 to 1,200/1,200 and produces 1,200 strict ordinary-BF16 wins, with
+  zero raw-reachable losses and exact replay. This licenses the bounded
+  readout-geometry claim only; multi-token editing, factual correctness,
+  cross-model transfer, PPL neutrality, and 3B HLM training remain unmeasured.
 - **Planned, not measured:** the robust certificate's drift and
   finite-precision calibration (ε_h, ε_r), and the full public-benchmark sweep
   (CounterFact/zsRE/MQuAKE × MEMIT/MEND/SERAC). The paper's Limitations section

@@ -4,6 +4,9 @@ This directory preserves the complete byte-identical receipt chain from
 Leonardo job `51800064` (A100-SXM-64GB, exit 0, 3m55s, 2026-08-10).
 The registered implementation commit is
 `58cedff87f270f1e7047e491a80565b7da05390f`.
+Run the registered contract loaders from that exact implementation commit;
+later evidence-only descendants intentionally do not masquerade as the runtime
+that produced the receipts.
 
 The formal verdict is `PASS_3B_ZCA_GEOMETRY`. On the untouched third
 1,200-token pool, raw target-row directions were geometrically reachable for
