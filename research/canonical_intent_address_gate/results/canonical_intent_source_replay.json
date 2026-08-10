@@ -1,0 +1,24 @@
+{
+  "canonical_result": {
+    "path": "research/canonical_intent_address_gate/results/canonical_intent_source_result.json",
+    "sha256": "92e8af5a0d6f208006aad740e7ca5832d065a868dd31674fbb8b3e42aea4542a"
+  },
+  "canonical_rows": {
+    "path": "research/canonical_intent_address_gate/results/canonical_intent_source_rows.jsonl",
+    "sha256": "559fc66c6c26c3e6707d344c15473bc8bc84cdddc6e75f4d71987190cb27e4e9"
+  },
+  "checks": {
+    "hlm_cache_exact": true,
+    "minilm_cache_exact": true,
+    "rows_jsonl_sha256_exact": true,
+    "rows_object_sha256_exact": true,
+    "scientific_sha256_exact": true,
+    "source_cache_exact": true,
+    "target_cache_absent": true,
+    "verdict_exact": true
+  },
+  "generated_at_local": "2026-08-10T18:08:13.633080+02:00",
+  "git_head": "726a2abc0b5c7488ba99af10071b0717584c4745",
+  "schema": "hlm5-ca1-source-replay-v1",
+  "status": "EXACT_REPLAY"
+}
