@@ -21,7 +21,7 @@ from hlm5.e7_runtime import (
     load_pinned_model,
     load_pinned_tokenizer,
 )
-from hlm5.e7b_runtime import configure_native_runtime, environment_record
+from hlm5.e7b_runtime import configure_native_runtime
 from hlm5.e8_contract import selected_population as selected_e8_population
 from hlm5.e9_contract import (
     MODEL_FORWARD_BATCH,
@@ -47,7 +47,12 @@ from hlm5.e9_contract import (
     scientific_sha256,
     selected_population,
 )
-from hlm5.e9_runtime import GATE_BATCH, prepare_e8_adapter, scan_queries
+from hlm5.e9_runtime import (
+    GATE_BATCH,
+    e9_environment_record,
+    prepare_e8_adapter,
+    scan_queries,
+)
 
 
 def _tensor_hash_projection(measurement: dict[str, Any]) -> dict[str, Any]:
@@ -102,6 +107,8 @@ def run_replay(
         raise RuntimeError("E9 replay basis differs from registration")
     if reconstruction["memory_receipt"] != receipt["e8_memory_receipt"]:
         raise RuntimeError("E9 replay memory differs from registration")
+    if reconstruction["key_whitening"] != receipt["key_whitening"]:
+        raise RuntimeError("E9 replay key whitening differs from registration")
     if reconstruction["anchor_scan"] != receipt["e8_anchor_scan"]:
         raise RuntimeError("E9 replay anchor scan differs from registration")
     query_hiddens = final_hidden_batch(
@@ -186,7 +193,7 @@ def main() -> None:
         native_runtime = configure_native_runtime()
         if native_runtime != receipt.get("native_runtime"):
             raise RuntimeError("E9 replay arithmetic differs from registration")
-        if environment_record(device) != receipt.get("environment"):
+        if e9_environment_record(device) != receipt.get("environment"):
             raise RuntimeError("E9 replay environment differs from registration")
         run_replay(
             started=started,

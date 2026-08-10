@@ -28,11 +28,10 @@ from hlm5.e7_runtime import (
     load_pinned_model,
     load_pinned_tokenizer,
 )
-from hlm5.e7b_runtime import configure_native_runtime, environment_record
+from hlm5.e7b_runtime import configure_native_runtime
 from hlm5.e8_contract import selected_population as selected_e8_population
 from hlm5.e9_contract import (
     DEPENDENCY_SHA256,
-    EXPECTED_ENVIRONMENT,
     GATE_BATCH,
     MODEL_FORWARD_BATCH,
     NAMED_OUTPUTS,
@@ -52,15 +51,18 @@ from hlm5.e9_contract import (
     SEED,
     assert_outputs_absent,
     atomic_create_json,
+    e8_memory_compatibility_failures,
+    environment_validity_failures,
     frozen_e8_measurement,
     git_output,
     registered_source_sha256,
     selected_population,
+    key_whitening_validity_failures,
     verify_bound_inputs,
     verify_dependencies,
     verify_protocol,
 )
-from hlm5.e9_runtime import prepare_e8_adapter
+from hlm5.e9_runtime import e9_environment_record, prepare_e8_adapter
 
 
 TEST_COMMAND = [sys.executable, "-m", "pytest", "tests/test_e9_3b.py", "-q"]
@@ -127,13 +129,19 @@ def main() -> None:
     frozen_basis = frozen_result["scientific"]["basis_and_directions"]
     if reconstruction["basis_and_directions"] != frozen_basis:
         raise RuntimeError("E9 preflight basis differs from E8")
-    if (
-        reconstruction["memory_receipt"]
-        != frozen["arms"]["candidate"]["memory_receipt"]
-    ):
-        raise RuntimeError("E9 preflight memory reconstruction differs from E8")
-    if reconstruction["key_whitening"] != frozen["key_whitening"]:
-        raise RuntimeError("E9 preflight key whitening differs from E8")
+    memory_failures = e8_memory_compatibility_failures(
+        reconstruction["memory_receipt"],
+        frozen["arms"]["candidate"]["memory_receipt"],
+    )
+    memory_failures.extend(
+        key_whitening_validity_failures(
+            reconstruction["key_whitening"], reconstruction["memory_receipt"]
+        )
+    )
+    if memory_failures:
+        raise RuntimeError(
+            "E9 preflight memory compatibility failed: " + "; ".join(memory_failures)
+        )
     if reconstruction["anchor_scan"]["summary"] != {
         "anchor_count": 64,
         "gate_open_count": 64,
@@ -141,9 +149,12 @@ def main() -> None:
         "nonzero_delta_count": 64,
     }:
         raise RuntimeError("E9 preflight exact-key non-vacuity control failed")
-    environment = environment_record(device)
-    if environment != EXPECTED_ENVIRONMENT:
-        raise RuntimeError(f"registered E9 environment mismatch: {environment}")
+    environment = e9_environment_record(device)
+    environment_failures = environment_validity_failures(environment)
+    if environment_failures:
+        raise RuntimeError(
+            "registered E9 environment mismatch: " + "; ".join(environment_failures)
+        )
 
     payload = {
         "schema": PREFLIGHT_SCHEMA,
@@ -174,6 +185,7 @@ def main() -> None:
         "gate_batch": GATE_BATCH,
         "basis_and_directions": reconstruction["basis_and_directions"],
         "e8_memory_receipt": reconstruction["memory_receipt"],
+        "key_whitening": reconstruction["key_whitening"],
         "e8_anchor_scan": reconstruction["anchor_scan"],
         "model_invariants": invariants,
         "environment": environment,

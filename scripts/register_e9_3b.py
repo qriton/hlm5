@@ -14,7 +14,7 @@ if str(REPO_ROOT_BOOTSTRAP) not in sys.path:
 import torch
 
 from hlm5.e7_contract import MODEL_FILE_SHA256, sha256_file
-from hlm5.e7b_runtime import configure_native_runtime, environment_record
+from hlm5.e7b_runtime import configure_native_runtime
 from hlm5.e9_contract import (
     ADMISSION_PATH,
     ATTEMPT_PATH,
@@ -33,6 +33,7 @@ from hlm5.e9_contract import (
     atomic_create_json,
     load_preflight,
 )
+from hlm5.e9_runtime import e9_environment_record
 
 
 TEST_COMMAND = [sys.executable, "-m", "pytest", "tests/test_e9_3b.py", "-q"]
@@ -53,7 +54,7 @@ def main() -> None:
     device = torch.device("cuda", 0)
     native_runtime = configure_native_runtime()
     preflight, preflight_sha = load_preflight()
-    environment = environment_record(device)
+    environment = e9_environment_record(device)
     if environment != preflight.get("environment"):
         raise RuntimeError("E9 registration environment differs from preflight")
     if native_runtime != preflight.get("native_runtime"):
@@ -86,6 +87,7 @@ def main() -> None:
         "query_prompt_sha256": QUERY_PROMPT_SHA256,
         "basis_and_directions": preflight["basis_and_directions"],
         "e8_memory_receipt": preflight["e8_memory_receipt"],
+        "key_whitening": preflight["key_whitening"],
         "e8_anchor_scan": preflight["e8_anchor_scan"],
         "environment": environment,
         "native_runtime": native_runtime,

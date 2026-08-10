@@ -21,7 +21,7 @@ from hlm5.e7_runtime import (
     load_pinned_model,
     load_pinned_tokenizer,
 )
-from hlm5.e7b_runtime import configure_native_runtime, environment_record
+from hlm5.e7b_runtime import configure_native_runtime
 from hlm5.e8_contract import selected_population as selected_e8_population
 from hlm5.e9_contract import (
     ADMISSION_PATH,
@@ -50,7 +50,12 @@ from hlm5.e9_contract import (
     scientific_sha256,
     selected_population,
 )
-from hlm5.e9_runtime import GATE_BATCH, prepare_e8_adapter, scan_queries
+from hlm5.e9_runtime import (
+    GATE_BATCH,
+    e9_environment_record,
+    prepare_e8_adapter,
+    scan_queries,
+)
 
 
 def prepare_before_attempt(device: torch.device) -> dict[str, Any]:
@@ -173,7 +178,7 @@ def main() -> None:
     receipt, execution_sha = load_execution_receipt()
     if native_runtime != receipt.get("native_runtime"):
         raise RuntimeError("E9 admission arithmetic differs from registration")
-    if environment_record(device) != receipt.get("environment"):
+    if e9_environment_record(device) != receipt.get("environment"):
         raise RuntimeError("E9 admission environment differs from registration")
     prepared = prepare_before_attempt(device)
     reconstruction = prepared["reconstruction"]
@@ -181,6 +186,8 @@ def main() -> None:
         raise RuntimeError("E9 pre-attempt basis differs from registration")
     if reconstruction["memory_receipt"] != receipt["e8_memory_receipt"]:
         raise RuntimeError("E9 pre-attempt memory differs from registration")
+    if reconstruction["key_whitening"] != receipt["key_whitening"]:
+        raise RuntimeError("E9 pre-attempt key whitening differs from registration")
     if reconstruction["anchor_scan"] != receipt["e8_anchor_scan"]:
         raise RuntimeError("E9 pre-attempt anchor scan differs from registration")
     attempt = {

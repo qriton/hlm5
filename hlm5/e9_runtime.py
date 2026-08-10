@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+import platform
 from pathlib import Path
 from typing import Any
 
@@ -11,6 +12,7 @@ import torch
 
 from .certify import calibrate_whitening
 from .e7_contract import stable_json_sha256, tensor_sha256
+from .e7b_runtime import environment_record as base_environment_record
 from .e7c_runtime import raw_and_zca_directions
 from .e8_runtime import GATE_THRESHOLD, build_memory
 from .public_adapter import HLM5PreHeadAdapter
@@ -25,6 +27,13 @@ GATE_BATCH = 256
 TOP_K = 20
 SCORE_THRESHOLDS = (0.10, 0.50, 0.90, 0.95)
 KINDS = ("exact", "paraphrase", "neighborhood")
+
+
+def e9_environment_record(device: torch.device) -> dict[str, Any]:
+    """Extend the registered arithmetic environment with the physical node."""
+    record = base_environment_record(device)
+    record["node"] = platform.node()
+    return record
 
 
 def select_query_rows(
@@ -391,6 +400,7 @@ __all__ = [
     "QUERY_CASE_START",
     "QUERY_CASE_STOP",
     "QUERY_COUNT",
+    "e9_environment_record",
     "SCORE_THRESHOLDS",
     "TOP_K",
     "load_query_rows",

@@ -48,9 +48,9 @@ from .e9_runtime import (
 )
 
 
-PROTOCOL_COMMIT = "580261859c90fd0d7bb743fe413981423c083888"
+PROTOCOL_COMMIT = "b16c93199fac5d47c4f29cc64cac147517ee62d1"
 PROTOCOL_PATH = "docs/e9-wide-locality-prereg-2026-08-11.md"
-PROTOCOL_SHA256 = "e8665bbf89e219ed877285bfbb3c0336add953fa2f16cdb726e2df763af76f26"
+PROTOCOL_SHA256 = "acb1ebe21c8eda33d4c2fa6b3b2b80e4643af69048e638afe9de98b0a8a185b3"
 
 E8_ADMISSION_PATH = "results/e8_3b_evidence/admission.json"
 E8_ADMISSION_SHA256 = "96d6dd8f8528d38de52d559df86f4228b508de4487cf9ea3efd50b63adccc7b0"
@@ -61,6 +61,9 @@ E8_VERDICT_SHA256 = "5e376c4c065ecf7e7602d3e81984e6425175876bc763ffd2a427684a6b9
 E8_IMPLEMENTATION_COMMIT = "3ee23ba8a1451f3231254fe7f7f63b4e3422468d"
 E8_DIRECT_SHA256 = "417eb04f694821d23da067209f9f29f1e0443d0ec96fcf3d5fd4572151c272c3"
 E8_MEMORY_SHA256 = "cddc691e44f87a2fceec5153763211b4b112adda0ee8ac1f347c748206b612c1"
+E8_KEY_DRIFT_FIELDS = frozenset(
+    {"active_keys_sha256", "key_mean_sha256", "key_transform_sha256"}
+)
 
 QUERY_ROW_SHA256 = "1902f1aa83e7214121e9d12db75c499b659d0077706b8373020748111643c7fa"
 QUERY_CASE_ID_SHA256 = (
@@ -342,8 +345,11 @@ def load_preflight() -> tuple[dict[str, Any], str]:
         raise RuntimeError("E9 preflight model invariants mismatch")
     if payload.get("native_runtime") != EXPECTED_NATIVE_RUNTIME:
         raise RuntimeError("E9 preflight native arithmetic mismatch")
-    if payload.get("environment") != EXPECTED_ENVIRONMENT:
-        raise RuntimeError("E9 preflight environment mismatch")
+    environment_failures = environment_validity_failures(payload.get("environment"))
+    if environment_failures:
+        raise RuntimeError(
+            "invalid E9 preflight environment: " + "; ".join(environment_failures)
+        )
     frozen = frozen_e8_measurement()
     if (
         payload.get("basis_and_directions")
@@ -352,11 +358,17 @@ def load_preflight() -> tuple[dict[str, Any], str]:
         ]
     ):
         raise RuntimeError("E9 preflight basis differs from E8")
-    if (
-        payload.get("e8_memory_receipt")
-        != frozen["arms"]["candidate"]["memory_receipt"]
-    ):
-        raise RuntimeError("E9 preflight memory receipt differs from E8")
+    memory_failures = e8_memory_compatibility_failures(
+        payload.get("e8_memory_receipt"),
+        frozen["arms"]["candidate"]["memory_receipt"],
+    )
+    memory_failures.extend(
+        key_whitening_validity_failures(
+            payload.get("key_whitening"), payload.get("e8_memory_receipt", {})
+        )
+    )
+    if memory_failures:
+        raise RuntimeError("invalid E9 preflight memory: " + "; ".join(memory_failures))
     anchor_failures = _anchor_failures(payload.get("e8_anchor_scan"), frozen["cases"])
     if anchor_failures:
         raise RuntimeError(
@@ -388,6 +400,7 @@ def load_execution_receipt() -> tuple[dict[str, Any], str]:
         "query_prompt_sha256": QUERY_PROMPT_SHA256,
         "basis_and_directions": preflight["basis_and_directions"],
         "e8_memory_receipt": preflight["e8_memory_receipt"],
+        "key_whitening": preflight["key_whitening"],
         "e8_anchor_scan": preflight["e8_anchor_scan"],
         "bound_inputs": preflight["bound_inputs"],
         "registered_commands": list(REGISTERED_COMMANDS),
@@ -431,6 +444,73 @@ def load_attempt() -> tuple[dict[str, Any], str]:
 
 def _valid_hash(value: Any) -> bool:
     return isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value) is not None
+
+
+def environment_validity_failures(
+    value: Any, *, expected_node: str | None = None
+) -> list[str]:
+    """Validate the E8 runtime fields plus E9's physical-node binding."""
+    if not isinstance(value, dict):
+        return ["E9 environment record missing"]
+    failures = [
+        f"E9 environment field mismatch: {name}"
+        for name, expected in EXPECTED_ENVIRONMENT.items()
+        if value.get(name) != expected
+    ]
+    node = value.get("node")
+    if not isinstance(node, str) or not node:
+        failures.append("E9 physical node is missing")
+    elif expected_node is not None and node != expected_node:
+        failures.append("E9 physical node differs from preflight")
+    if set(value) != set(EXPECTED_ENVIRONMENT) | {"node"}:
+        failures.append("E9 environment fields are not exhaustive")
+    return failures
+
+
+def e8_memory_compatibility_failures(
+    actual: Any, expected: dict[str, Any] | None = None
+) -> list[str]:
+    """Require exact E8 memory provenance outside the three key hashes."""
+    if not isinstance(actual, dict):
+        return ["E9 reconstructed memory receipt missing"]
+    if expected is None:
+        expected = frozen_e8_measurement()["arms"]["candidate"]["memory_receipt"]
+    failures: list[str] = []
+    if set(actual) != set(expected):
+        failures.append("E9 reconstructed memory receipt fields differ from E8")
+    for name, expected_value in expected.items():
+        actual_value = actual.get(name)
+        if name in E8_KEY_DRIFT_FIELDS:
+            if not _valid_hash(actual_value):
+                failures.append(f"E9 reconstructed memory has invalid {name}")
+        elif actual_value != expected_value:
+            failures.append(f"E9 reconstructed memory differs from E8: {name}")
+    return failures
+
+
+def key_whitening_validity_failures(
+    record: Any, memory_receipt: dict[str, Any]
+) -> list[str]:
+    """Validate the pre-outcome-frozen E9 key operator and its receipt links."""
+    if not isinstance(record, dict):
+        return ["E9 key-whitening receipt missing"]
+    expected = frozen_e8_measurement()["key_whitening"]
+    drift_fields = {"mean_sha256", "transform_sha256"}
+    failures: list[str] = []
+    if set(record) != set(expected):
+        failures.append("E9 key-whitening receipt fields differ from E8")
+    for name, expected_value in expected.items():
+        actual_value = record.get(name)
+        if name in drift_fields:
+            if not _valid_hash(actual_value):
+                failures.append(f"E9 key-whitening receipt has invalid {name}")
+        elif actual_value != expected_value:
+            failures.append(f"E9 key-whitening receipt differs from E8: {name}")
+    if record.get("mean_sha256") != memory_receipt.get("key_mean_sha256"):
+        failures.append("E9 key-mean hashes disagree across receipts")
+    if record.get("transform_sha256") != memory_receipt.get("key_transform_sha256"):
+        failures.append("E9 key-transform hashes disagree across receipts")
+    return failures
 
 
 def _anchor_failures(anchor: Any, e8_cases: list[dict[str, Any]]) -> list[str]:
@@ -593,13 +673,18 @@ def measurement_validity_failures(measurement: Any) -> list[str]:
     if measurement.get("population") != expected_metadata:
         failures.append("E9 population metadata mismatch")
     frozen = frozen_e8_measurement()
-    if (
-        measurement.get("e8_memory_receipt")
-        != frozen["arms"]["candidate"]["memory_receipt"]
-    ):
-        failures.append("E9 reconstructed memory receipt differs from E8")
-    if measurement.get("key_whitening") != frozen["key_whitening"]:
-        failures.append("E9 key whitening differs from E8")
+    memory_receipt = measurement.get("e8_memory_receipt")
+    failures.extend(
+        e8_memory_compatibility_failures(
+            memory_receipt, frozen["arms"]["candidate"]["memory_receipt"]
+        )
+    )
+    failures.extend(
+        key_whitening_validity_failures(
+            measurement.get("key_whitening"),
+            memory_receipt if isinstance(memory_receipt, dict) else {},
+        )
+    )
     failures.extend(
         _anchor_failures(measurement.get("e8_anchor_scan"), frozen["cases"])
     )
@@ -649,6 +734,11 @@ def verify_admission_provenance(
         "basis_and_directions"
     ):
         raise RuntimeError("E9 admission basis differs from registration")
+    measurement = payload.get("scientific", {}).get("measurement", {})
+    if measurement.get("e8_memory_receipt") != receipt.get("e8_memory_receipt"):
+        raise RuntimeError("E9 admission memory differs from registration")
+    if measurement.get("key_whitening") != receipt.get("key_whitening"):
+        raise RuntimeError("E9 admission key whitening differs from registration")
 
 
 def load_admission() -> tuple[dict[str, Any], str]:
@@ -773,9 +863,9 @@ def verdict_scientific_payload(
         "validity_failures": validity_failures,
         "scientific_failures": scientific_failures_value,
         "claim_boundary": (
-            "Pinned frozen SmolLM3-3B-Base, registered A100/BF16 runtime, "
-            "fixed 64-slot E8 exact-key adapter, and deterministic 12,288-query "
-            "CounterFact locality pool."
+            "Pinned frozen SmolLM3-3B-Base, registered A100/BF16 physical node "
+            "and runtime, pre-outcome-frozen 64-slot E8-recipe exact-key adapter, "
+            "and deterministic 12,288-query CounterFact locality pool."
         ),
     }
 

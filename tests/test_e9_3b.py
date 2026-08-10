@@ -48,6 +48,7 @@ def _fake_receipt() -> dict[str, object]:
         "environment": {"registered": "environment"},
         "basis_and_directions": {"basis": 1},
         "e8_memory_receipt": {"memory": 1},
+        "key_whitening": {"key": 1},
         "e8_anchor_scan": {"anchor": 1},
     }
 
@@ -64,6 +65,36 @@ def test_protocol_dependencies_and_e8_evidence_are_frozen() -> None:
         "python scripts/admit_e9_3b.py",
         "python scripts/replay_e9_3b.py",
         "python scripts/verify_e9_3b.py",
+    )
+
+
+def test_pre_outcome_memory_freeze_allows_only_registered_key_hash_drift() -> None:
+    frozen = contract.frozen_e8_measurement()
+    expected_memory = frozen["arms"]["candidate"]["memory_receipt"]
+    memory = json.loads(json.dumps(expected_memory))
+    memory["active_keys_sha256"] = "a" * 64
+    memory["key_mean_sha256"] = "b" * 64
+    memory["key_transform_sha256"] = "c" * 64
+    key_whitening = json.loads(json.dumps(frozen["key_whitening"]))
+    key_whitening["mean_sha256"] = memory["key_mean_sha256"]
+    key_whitening["transform_sha256"] = memory["key_transform_sha256"]
+
+    assert contract.e8_memory_compatibility_failures(memory, expected_memory) == []
+    assert contract.key_whitening_validity_failures(key_whitening, memory) == []
+
+    memory["active_values_sha256"] = "d" * 64
+    assert contract.e8_memory_compatibility_failures(memory, expected_memory)
+
+
+def test_e9_environment_binds_the_physical_node() -> None:
+    environment = {**contract.EXPECTED_ENVIRONMENT, "node": "lrdn-test"}
+    assert contract.environment_validity_failures(environment) == []
+    assert (
+        contract.environment_validity_failures(environment, expected_node="lrdn-test")
+        == []
+    )
+    assert contract.environment_validity_failures(
+        environment, expected_node="lrdn-other"
     )
 
 
@@ -292,6 +323,7 @@ def test_admission_post_attempt_exception_is_durable_invalid(
         "reconstruction": {
             "basis_and_directions": receipt["basis_and_directions"],
             "memory_receipt": receipt["e8_memory_receipt"],
+            "key_whitening": receipt["key_whitening"],
             "anchor_scan": receipt["e8_anchor_scan"],
         }
     }
@@ -304,7 +336,7 @@ def test_admission_post_attempt_exception_is_durable_invalid(
     )
     monkeypatch.setitem(
         globals_dict,
-        "environment_record",
+        "e9_environment_record",
         lambda _device: dict(receipt["environment"]),
     )
     monkeypatch.setitem(
@@ -340,7 +372,7 @@ def test_admission_environment_mismatch_is_pre_attempt(
         lambda: dict(contract.EXPECTED_NATIVE_RUNTIME),
     )
     monkeypatch.setitem(
-        globals_dict, "environment_record", lambda _device: {"drift": 1}
+        globals_dict, "e9_environment_record", lambda _device: {"drift": 1}
     )
     monkeypatch.setitem(
         globals_dict, "load_execution_receipt", lambda: (receipt, "execution")
@@ -373,7 +405,7 @@ def test_replay_environment_mismatch_is_durable_invalid(
         lambda: dict(contract.EXPECTED_NATIVE_RUNTIME),
     )
     monkeypatch.setitem(
-        globals_dict, "environment_record", lambda _device: {"drift": 1}
+        globals_dict, "e9_environment_record", lambda _device: {"drift": 1}
     )
     with pytest.raises(RuntimeError, match="environment differs"):
         namespace["main"]()
