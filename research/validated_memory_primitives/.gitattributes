@@ -1,0 +1,7 @@
+# These two registered results are CRLF byte snapshots. The repository default
+# normalizes JSON to LF, which would invalidate their SHA-256 provenance.
+baselines/results/address_conditioning_v1.json -text -diff
+baselines/results/exact_address_lifecycle_reference.json -text -diff
+
+# Registered Markdown uses two trailing spaces as explicit hard breaks.
+docs/*.md whitespace=-trailing-space

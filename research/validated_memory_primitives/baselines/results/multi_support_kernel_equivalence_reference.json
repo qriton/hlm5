@@ -1,0 +1,5511 @@
+{
+  "aggregate": {
+    "all_hlm_matched_degree5_fields_bit_exact": true,
+    "max_hlm_cosine_soft_output_difference": 0.014242205768823624,
+    "phases": {
+      "create": {
+        "cosine_soft_cache": {
+          "accuracy": 0.6,
+          "correct_count": 240,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "hard_top1_cache": {
+          "accuracy": 0.0,
+          "correct_count": 0,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "hlm5_degree5": {
+          "accuracy": 0.4,
+          "correct_count": 160,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "matched_degree5_cache": {
+          "accuracy": 0.4,
+          "correct_count": 160,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        }
+      },
+      "deactivate_one_share": {
+        "cosine_soft_cache": {
+          "accuracy": 0.0,
+          "correct_count": 0,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "hard_top1_cache": {
+          "accuracy": 0.0,
+          "correct_count": 0,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "hlm5_degree5": {
+          "accuracy": 0.0,
+          "correct_count": 0,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "matched_degree5_cache": {
+          "accuracy": 0.0,
+          "correct_count": 0,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        }
+      },
+      "off_support": {
+        "all_reader_outputs_bit_zero": true,
+        "query_count": 80
+      },
+      "pair_edit": {
+        "cosine_soft_cache": {
+          "accuracy": 0.6,
+          "correct_count": 240,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "hard_top1_cache": {
+          "accuracy": 0.0,
+          "correct_count": 0,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "hlm5_degree5": {
+          "accuracy": 0.4,
+          "correct_count": 160,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "matched_degree5_cache": {
+          "accuracy": 0.4,
+          "correct_count": 160,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        }
+      },
+      "reactivate": {
+        "cosine_soft_cache": {
+          "accuracy": 0.6,
+          "correct_count": 240,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "hard_top1_cache": {
+          "accuracy": 0.0,
+          "correct_count": 0,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "hlm5_degree5": {
+          "accuracy": 0.4,
+          "correct_count": 160,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        },
+        "matched_degree5_cache": {
+          "accuracy": 0.4,
+          "correct_count": 160,
+          "per_ratio": {
+            "0.70": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.80": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.90": {
+              "accuracy": 0.0,
+              "correct_count": 0,
+              "query_count": 80
+            },
+            "0.95": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            },
+            "1.00": {
+              "accuracy": 1.0,
+              "correct_count": 80,
+              "query_count": 80
+            }
+          },
+          "query_count": 400
+        }
+      },
+      "shuffled_value_null": {
+        "accuracy": 0.0,
+        "correct_count": 0,
+        "query_count": 400
+      }
+    }
+  },
+  "binding_bars": {
+    "all_validity_gates": true,
+    "balanced_create_reactivate_edit": true,
+    "degree5_beats_cosine_soft_by_0p10": false,
+    "load_bearing_controls": true,
+    "robust_skew_and_lifecycle": false
+  },
+  "claim_boundary": {
+    "hlm_specific_retrieval_advantage": false,
+    "language_model_gain": false,
+    "multi_support_function": true,
+    "semantic_routing": false,
+    "training_or_scaling_authorized": false
+  },
+  "config": {
+    "active_slots": 32,
+    "capacity": 40,
+    "degree": 5,
+    "device": "cpu",
+    "dim": 64,
+    "dtype": "torch.float32",
+    "mix_ratios": [
+      1.0,
+      0.95,
+      0.9,
+      0.8,
+      0.7
+    ],
+    "pairs": 16,
+    "seeds": [
+      20260820,
+      20260821,
+      20260822,
+      20260823,
+      20260824
+    ],
+    "support_threshold": 0.05032843750000002,
+    "tau_cos": 0.55,
+    "temperature": 0.1
+  },
+  "measurement": "hlm5-multi-support-kernel-equivalence",
+  "pinned_hashes": {
+    "baselines/results/exact_address_lifecycle_reference.json": "f61ceee8f9ec7233d0cf1ec0e256c034c7a5ab075059846abe01048e54ba5711",
+    "demos/exact_address_lifecycle_reference.py": "4bad382d97e74b88401d5b478191926f3027007a4a8ec99cf3337f51c9669e8a",
+    "execution_registration": "07d438d54714c1e3ecb8237f1d2e6b98654f830f441e708631786622f812b054",
+    "hlm5_memory.py": "0210733ab1160ac073d44e5a9d7967bb3b985fc323a07efde925694ae56c346a",
+    "initial_registration": "acebfbd8d457eedb7892b6540a5352fba7d17863a80a53ece1231ca4eadeb9e7",
+    "protocol": "8079c107124d9b58dee501b8d6a6175a94eb94908aa0023224fe7c50d94d7b10",
+    "test": "c0636998ce9ae9f0cc634bf50c3d3fe7e3d1b7065914e2dea5f72ae944056214",
+    "tests/test_exact_address_lifecycle_reference.py": "a46472c7be72ed315d3f5c6b0c1924c04378ec8fe0c5553c2fffebb3567184fa",
+    "tool": "f39d7952695a0e40557811a7730bf35017c607094843abe9686a3ac77f7b9b71"
+  },
+  "runtime": {
+    "deterministic_algorithms": false,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "python": "3.11.7",
+    "torch": "2.5.1+cu121"
+  },
+  "schema_version": 1,
+  "scientific_sha256": "07a410e232745067feaee9862804e6c173c3a50b0d00de9aa079a2044a1829c6",
+  "scope": "Deterministic CPU operator assay only; no checkpoint, LM forward, training, remote compute, or scaling.",
+  "seeds": [
+    {
+      "key_permutation": [
+        47,
+        59,
+        29,
+        54,
+        9,
+        19,
+        46,
+        30,
+        33,
+        5,
+        39,
+        37,
+        44,
+        13,
+        43,
+        21,
+        12,
+        45,
+        22,
+        34,
+        60,
+        3,
+        32,
+        0,
+        7,
+        53,
+        62,
+        57,
+        38,
+        10,
+        63,
+        17,
+        2,
+        6,
+        26,
+        25,
+        23,
+        36,
+        24,
+        41,
+        20,
+        8,
+        18,
+        27,
+        50,
+        11,
+        51,
+        61,
+        4,
+        56,
+        16,
+        1,
+        35,
+        48,
+        31,
+        14,
+        28,
+        40,
+        49,
+        15,
+        42,
+        52,
+        55,
+        58
+      ],
+      "key_permutation_sha256": "3983c18bbb4ab9e96676dabf03207e95717884c12b82ac29a1f0afd11995f265",
+      "phases": {
+        "create": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "752734efcf53aee47a7d235dbf678c8a125de796065b21a2791e3adc712e3859",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "29246237eaf1d8c951e3b2e4645606aeb4e58e8c37cc9234e6ea341fa7eb1f10",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "ec702f06426362b98248aec2a05b407d62af830a2c9d6559f78ae08929bf0990",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "ec702f06426362b98248aec2a05b407d62af830a2c9d6559f78ae08929bf0990",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "deactivate_one_share": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "29246237eaf1d8c951e3b2e4645606aeb4e58e8c37cc9234e6ea341fa7eb1f10",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "29246237eaf1d8c951e3b2e4645606aeb4e58e8c37cc9234e6ea341fa7eb1f10",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "29246237eaf1d8c951e3b2e4645606aeb4e58e8c37cc9234e6ea341fa7eb1f10",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "29246237eaf1d8c951e3b2e4645606aeb4e58e8c37cc9234e6ea341fa7eb1f10",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            }
+          }
+        },
+        "off_support": {
+          "all_reader_outputs_bit_zero": true,
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hard_top1_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hlm5_degree5": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "matched_degree5_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            }
+          }
+        },
+        "pair_edit": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "e98e53dd82795c24d9490b496fd222f06d5a4736e8b9359f78cbb57ff7df3a9a",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "3ab46735061fb1e44799e5368a4125bc33b1dd6c121433171b6e5834e0025bfd",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "21f94053b6a9b643946082850edde2019db5b7ed767b32560d6f01532909af71",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f80a74517fef20052e9d3b0642a4d53a35ddc8eb7b28354a2f39a223973d875c",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "6207505e24d86a3034414a4e400390e474134c58a7850acba617290ab000cb69",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "6207505e24d86a3034414a4e400390e474134c58a7850acba617290ab000cb69",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "reactivate": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "752734efcf53aee47a7d235dbf678c8a125de796065b21a2791e3adc712e3859",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "29246237eaf1d8c951e3b2e4645606aeb4e58e8c37cc9234e6ea341fa7eb1f10",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "ec702f06426362b98248aec2a05b407d62af830a2c9d6559f78ae08929bf0990",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "ec702f06426362b98248aec2a05b407d62af830a2c9d6559f78ae08929bf0990",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        }
+      },
+      "seed": 20260820,
+      "shuffled_value_null": {
+        "accuracy": 0.0,
+        "all_gain_finite": true,
+        "all_output_finite": true,
+        "all_weight_finite": true,
+        "correct_count": 0,
+        "output_sha256": "6207505e24d86a3034414a4e400390e474134c58a7850acba617290ab000cb69",
+        "per_ratio": {
+          "0.70": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.80": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.90": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.95": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "1.00": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          }
+        },
+        "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+        "query_count": 80,
+        "routed_count": 80,
+        "support_size_histogram": {
+          "2": 80
+        }
+      },
+      "value_permutation": [
+        18,
+        46,
+        20,
+        3,
+        35,
+        29,
+        8,
+        44,
+        60,
+        50,
+        37,
+        7,
+        45,
+        26,
+        48,
+        41,
+        23,
+        43,
+        28,
+        24,
+        61,
+        57,
+        11,
+        17,
+        56,
+        49,
+        59,
+        27,
+        2,
+        62,
+        39,
+        25,
+        58,
+        52,
+        34,
+        38,
+        63,
+        12,
+        40,
+        0,
+        19,
+        6,
+        54,
+        53,
+        13,
+        30,
+        10,
+        4,
+        36,
+        22,
+        31,
+        47,
+        1,
+        42,
+        15,
+        55,
+        5,
+        32,
+        9,
+        14,
+        16,
+        51,
+        33,
+        21
+      ],
+      "value_permutation_sha256": "6e9cb164f87a1ffbc8a8f022d195550e3b30663fb3e0d9663751d1e4f4b163de"
+    },
+    {
+      "key_permutation": [
+        34,
+        46,
+        15,
+        31,
+        14,
+        51,
+        2,
+        22,
+        18,
+        55,
+        40,
+        47,
+        45,
+        20,
+        56,
+        9,
+        27,
+        36,
+        62,
+        44,
+        61,
+        13,
+        43,
+        53,
+        33,
+        16,
+        30,
+        52,
+        50,
+        32,
+        26,
+        1,
+        11,
+        25,
+        10,
+        24,
+        7,
+        58,
+        4,
+        3,
+        63,
+        42,
+        41,
+        6,
+        35,
+        38,
+        8,
+        37,
+        19,
+        59,
+        48,
+        39,
+        57,
+        21,
+        60,
+        5,
+        0,
+        49,
+        54,
+        12,
+        23,
+        17,
+        29,
+        28
+      ],
+      "key_permutation_sha256": "9df3e3cd9bce749ce18b52450c3ca50b4af852f37aca209d86655e7b32d371b3",
+      "phases": {
+        "create": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "39fcb264349b8be3ff07475b7848c2ae7e8224eaf62ecbc31e39f88861570237",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b1ba633e6c8f2233ef25a1d0fa5d4b599071818f0784b4f8effc4eb5a554e68a",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "7507cbc52b2804fb67d672c5dcd4f183b82e427fd03844894034a60cc4067a5f",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "7507cbc52b2804fb67d672c5dcd4f183b82e427fd03844894034a60cc4067a5f",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "deactivate_one_share": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b1ba633e6c8f2233ef25a1d0fa5d4b599071818f0784b4f8effc4eb5a554e68a",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b1ba633e6c8f2233ef25a1d0fa5d4b599071818f0784b4f8effc4eb5a554e68a",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b1ba633e6c8f2233ef25a1d0fa5d4b599071818f0784b4f8effc4eb5a554e68a",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b1ba633e6c8f2233ef25a1d0fa5d4b599071818f0784b4f8effc4eb5a554e68a",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            }
+          }
+        },
+        "off_support": {
+          "all_reader_outputs_bit_zero": true,
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hard_top1_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hlm5_degree5": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "matched_degree5_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            }
+          }
+        },
+        "pair_edit": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "0e75bcbc8a75ffb5f8a1a8accbf8761970e513f4d47e201f4788fcbcffcbd310",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "3ab46735061fb1e44799e5368a4125bc33b1dd6c121433171b6e5834e0025bfd",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "bb2aaf4a577555c620e6dfd4bd2219161a52cb01bda122b2d2d382d54e61bddb",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f80a74517fef20052e9d3b0642a4d53a35ddc8eb7b28354a2f39a223973d875c",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "13b791a635d17f0cc206869edad744a62a55792f96f4cac49ef4643d1e642478",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "13b791a635d17f0cc206869edad744a62a55792f96f4cac49ef4643d1e642478",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "reactivate": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "39fcb264349b8be3ff07475b7848c2ae7e8224eaf62ecbc31e39f88861570237",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b1ba633e6c8f2233ef25a1d0fa5d4b599071818f0784b4f8effc4eb5a554e68a",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "7507cbc52b2804fb67d672c5dcd4f183b82e427fd03844894034a60cc4067a5f",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "7507cbc52b2804fb67d672c5dcd4f183b82e427fd03844894034a60cc4067a5f",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        }
+      },
+      "seed": 20260821,
+      "shuffled_value_null": {
+        "accuracy": 0.0,
+        "all_gain_finite": true,
+        "all_output_finite": true,
+        "all_weight_finite": true,
+        "correct_count": 0,
+        "output_sha256": "13b791a635d17f0cc206869edad744a62a55792f96f4cac49ef4643d1e642478",
+        "per_ratio": {
+          "0.70": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.80": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.90": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.95": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "1.00": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          }
+        },
+        "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+        "query_count": 80,
+        "routed_count": 80,
+        "support_size_histogram": {
+          "2": 80
+        }
+      },
+      "value_permutation": [
+        29,
+        2,
+        34,
+        25,
+        5,
+        54,
+        11,
+        10,
+        30,
+        41,
+        26,
+        22,
+        59,
+        60,
+        56,
+        44,
+        52,
+        33,
+        45,
+        62,
+        3,
+        50,
+        15,
+        24,
+        21,
+        18,
+        12,
+        47,
+        57,
+        9,
+        61,
+        0,
+        31,
+        13,
+        36,
+        40,
+        46,
+        6,
+        16,
+        42,
+        43,
+        27,
+        7,
+        19,
+        28,
+        58,
+        38,
+        63,
+        32,
+        8,
+        49,
+        14,
+        51,
+        39,
+        4,
+        20,
+        37,
+        55,
+        35,
+        23,
+        1,
+        17,
+        53,
+        48
+      ],
+      "value_permutation_sha256": "41f781462330722a9282c3ffacfadd2781346ad2d57101010f5ea74dc31dc6ba"
+    },
+    {
+      "key_permutation": [
+        58,
+        1,
+        24,
+        25,
+        13,
+        11,
+        2,
+        5,
+        61,
+        4,
+        37,
+        35,
+        42,
+        47,
+        57,
+        10,
+        40,
+        43,
+        32,
+        49,
+        17,
+        38,
+        18,
+        31,
+        44,
+        29,
+        55,
+        16,
+        19,
+        54,
+        45,
+        51,
+        6,
+        22,
+        33,
+        36,
+        21,
+        27,
+        30,
+        41,
+        50,
+        53,
+        56,
+        52,
+        7,
+        3,
+        8,
+        59,
+        14,
+        23,
+        9,
+        39,
+        26,
+        34,
+        48,
+        15,
+        28,
+        20,
+        62,
+        0,
+        63,
+        46,
+        60,
+        12
+      ],
+      "key_permutation_sha256": "f9255b6975830a712cfb94c1b0a24bb8088db97cb1e0480dff523c63c0af5b9a",
+      "phases": {
+        "create": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "a94f436de38fa036c694346fca2b89e89e1c44fe0d7c53a21feb6f7b673c3dde",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "771169a205f00f4bcc929a4feed039cd88b00d2f3b724ede738d0f68e9df7f95",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "d741a0878a820980b85a0ceadb21a4c4ca508ba1ea14eae09f89f26b97951656",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "d741a0878a820980b85a0ceadb21a4c4ca508ba1ea14eae09f89f26b97951656",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "deactivate_one_share": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "771169a205f00f4bcc929a4feed039cd88b00d2f3b724ede738d0f68e9df7f95",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "771169a205f00f4bcc929a4feed039cd88b00d2f3b724ede738d0f68e9df7f95",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "771169a205f00f4bcc929a4feed039cd88b00d2f3b724ede738d0f68e9df7f95",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "771169a205f00f4bcc929a4feed039cd88b00d2f3b724ede738d0f68e9df7f95",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            }
+          }
+        },
+        "off_support": {
+          "all_reader_outputs_bit_zero": true,
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hard_top1_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hlm5_degree5": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "matched_degree5_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            }
+          }
+        },
+        "pair_edit": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "1e08aac9ad35c0a3590c98eb97804c9c0999a486b33624f49d6631f20b45664c",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "3ab46735061fb1e44799e5368a4125bc33b1dd6c121433171b6e5834e0025bfd",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "05706995123282eaab617a120b2f355c001d0b01dab0ff828e42df361a09695a",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f80a74517fef20052e9d3b0642a4d53a35ddc8eb7b28354a2f39a223973d875c",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "9e560e1901c6ec3de78b4d917689a510285f55a881dfea4113920459623f79d4",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "9e560e1901c6ec3de78b4d917689a510285f55a881dfea4113920459623f79d4",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "reactivate": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "a94f436de38fa036c694346fca2b89e89e1c44fe0d7c53a21feb6f7b673c3dde",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "771169a205f00f4bcc929a4feed039cd88b00d2f3b724ede738d0f68e9df7f95",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "d741a0878a820980b85a0ceadb21a4c4ca508ba1ea14eae09f89f26b97951656",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "d741a0878a820980b85a0ceadb21a4c4ca508ba1ea14eae09f89f26b97951656",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        }
+      },
+      "seed": 20260822,
+      "shuffled_value_null": {
+        "accuracy": 0.0,
+        "all_gain_finite": true,
+        "all_output_finite": true,
+        "all_weight_finite": true,
+        "correct_count": 0,
+        "output_sha256": "9e560e1901c6ec3de78b4d917689a510285f55a881dfea4113920459623f79d4",
+        "per_ratio": {
+          "0.70": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.80": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.90": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.95": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "1.00": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          }
+        },
+        "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+        "query_count": 80,
+        "routed_count": 80,
+        "support_size_histogram": {
+          "2": 80
+        }
+      },
+      "value_permutation": [
+        16,
+        43,
+        37,
+        13,
+        54,
+        44,
+        57,
+        28,
+        59,
+        30,
+        62,
+        32,
+        31,
+        60,
+        41,
+        55,
+        23,
+        63,
+        21,
+        50,
+        14,
+        29,
+        38,
+        56,
+        12,
+        9,
+        48,
+        5,
+        6,
+        22,
+        18,
+        0,
+        7,
+        4,
+        11,
+        49,
+        58,
+        20,
+        40,
+        61,
+        1,
+        42,
+        45,
+        46,
+        15,
+        17,
+        2,
+        34,
+        25,
+        24,
+        39,
+        51,
+        52,
+        8,
+        47,
+        3,
+        35,
+        26,
+        53,
+        10,
+        36,
+        27,
+        33,
+        19
+      ],
+      "value_permutation_sha256": "d4c2670727b678d390f9ade652fa7f94e2473de4b5c01d252bbb7a44a7c00b4d"
+    },
+    {
+      "key_permutation": [
+        23,
+        5,
+        37,
+        11,
+        28,
+        41,
+        14,
+        49,
+        57,
+        30,
+        2,
+        40,
+        60,
+        24,
+        35,
+        8,
+        9,
+        47,
+        27,
+        63,
+        55,
+        13,
+        22,
+        45,
+        33,
+        36,
+        43,
+        12,
+        34,
+        53,
+        48,
+        4,
+        18,
+        42,
+        31,
+        51,
+        58,
+        15,
+        17,
+        50,
+        46,
+        32,
+        52,
+        56,
+        62,
+        19,
+        7,
+        0,
+        59,
+        10,
+        26,
+        61,
+        29,
+        6,
+        3,
+        38,
+        54,
+        1,
+        20,
+        16,
+        25,
+        21,
+        39,
+        44
+      ],
+      "key_permutation_sha256": "e279a62f70cfcb4537f66b2ff31ea40f9c2efbeb1d3b54ecb065b7b5c94b2ce6",
+      "phases": {
+        "create": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "dd064505ca40b81c84abe4673b715c6b721ec82b78b15f5e5fff98af80bb5a2b",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "1605522fe3a1e9a29b099af60c5eba41d8ebfbfcba156714b862c72bc2379dd3",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "22a77d4037116ac46bff90b2367bb5e0f0ac492af60b3f61b5530678518adaa8",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "22a77d4037116ac46bff90b2367bb5e0f0ac492af60b3f61b5530678518adaa8",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "deactivate_one_share": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "1605522fe3a1e9a29b099af60c5eba41d8ebfbfcba156714b862c72bc2379dd3",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "1605522fe3a1e9a29b099af60c5eba41d8ebfbfcba156714b862c72bc2379dd3",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "1605522fe3a1e9a29b099af60c5eba41d8ebfbfcba156714b862c72bc2379dd3",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "1605522fe3a1e9a29b099af60c5eba41d8ebfbfcba156714b862c72bc2379dd3",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            }
+          }
+        },
+        "off_support": {
+          "all_reader_outputs_bit_zero": true,
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hard_top1_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hlm5_degree5": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "matched_degree5_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            }
+          }
+        },
+        "pair_edit": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "fa6d23b0229a269569f7b1f5a33ff6528fbdc9cf7d874aeb47ce447be6f7537e",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "3ab46735061fb1e44799e5368a4125bc33b1dd6c121433171b6e5834e0025bfd",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "308e51af6cb21b46607d60af610b872cbced518c39b9fa112a539ac3a488972f",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f80a74517fef20052e9d3b0642a4d53a35ddc8eb7b28354a2f39a223973d875c",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "2562eb2c725a20a066cecb8a8b6c30da87fc039f03f58ba5b9034fa1388011fc",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "2562eb2c725a20a066cecb8a8b6c30da87fc039f03f58ba5b9034fa1388011fc",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "reactivate": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "dd064505ca40b81c84abe4673b715c6b721ec82b78b15f5e5fff98af80bb5a2b",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "1605522fe3a1e9a29b099af60c5eba41d8ebfbfcba156714b862c72bc2379dd3",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "22a77d4037116ac46bff90b2367bb5e0f0ac492af60b3f61b5530678518adaa8",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "22a77d4037116ac46bff90b2367bb5e0f0ac492af60b3f61b5530678518adaa8",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        }
+      },
+      "seed": 20260823,
+      "shuffled_value_null": {
+        "accuracy": 0.0,
+        "all_gain_finite": true,
+        "all_output_finite": true,
+        "all_weight_finite": true,
+        "correct_count": 0,
+        "output_sha256": "2562eb2c725a20a066cecb8a8b6c30da87fc039f03f58ba5b9034fa1388011fc",
+        "per_ratio": {
+          "0.70": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.80": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.90": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.95": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "1.00": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          }
+        },
+        "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+        "query_count": 80,
+        "routed_count": 80,
+        "support_size_histogram": {
+          "2": 80
+        }
+      },
+      "value_permutation": [
+        20,
+        14,
+        41,
+        35,
+        18,
+        33,
+        17,
+        29,
+        50,
+        28,
+        47,
+        58,
+        38,
+        43,
+        2,
+        44,
+        57,
+        7,
+        60,
+        12,
+        9,
+        51,
+        4,
+        16,
+        19,
+        42,
+        15,
+        31,
+        8,
+        46,
+        10,
+        59,
+        53,
+        22,
+        49,
+        3,
+        63,
+        34,
+        40,
+        21,
+        13,
+        6,
+        30,
+        32,
+        25,
+        5,
+        54,
+        56,
+        62,
+        48,
+        1,
+        36,
+        39,
+        55,
+        27,
+        23,
+        52,
+        11,
+        45,
+        61,
+        26,
+        24,
+        0,
+        37
+      ],
+      "value_permutation_sha256": "bf86083e89537e5c93d5ad316839382c658d7757a8fa4486ab9fbd013b686fcc"
+    },
+    {
+      "key_permutation": [
+        25,
+        6,
+        61,
+        15,
+        38,
+        9,
+        41,
+        33,
+        40,
+        28,
+        35,
+        57,
+        4,
+        3,
+        11,
+        18,
+        29,
+        62,
+        46,
+        60,
+        30,
+        36,
+        42,
+        56,
+        10,
+        20,
+        12,
+        23,
+        47,
+        13,
+        58,
+        51,
+        59,
+        27,
+        1,
+        45,
+        37,
+        44,
+        17,
+        50,
+        5,
+        54,
+        48,
+        22,
+        32,
+        16,
+        63,
+        14,
+        2,
+        31,
+        24,
+        49,
+        52,
+        34,
+        26,
+        19,
+        53,
+        55,
+        0,
+        43,
+        7,
+        8,
+        39,
+        21
+      ],
+      "key_permutation_sha256": "2142f1355260f7593b0de4efe2f47065107a40f1794812d8fdf224a4d0718e12",
+      "phases": {
+        "create": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "cb4a3473a514e332925efa6f4ec6b7f0dfed7be5b32a09a1936f916e22a5c60f",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b5d96aedfe83dc646ad35e2da2ff5a1ee5c6b401e40259ea196729a8983142a0",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "62f0fce79b19dac6184223f02fe4ad12e88c4234c9ba2b14f750d96564507bb4",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "62f0fce79b19dac6184223f02fe4ad12e88c4234c9ba2b14f750d96564507bb4",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "deactivate_one_share": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b5d96aedfe83dc646ad35e2da2ff5a1ee5c6b401e40259ea196729a8983142a0",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b5d96aedfe83dc646ad35e2da2ff5a1ee5c6b401e40259ea196729a8983142a0",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b5d96aedfe83dc646ad35e2da2ff5a1ee5c6b401e40259ea196729a8983142a0",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b5d96aedfe83dc646ad35e2da2ff5a1ee5c6b401e40259ea196729a8983142a0",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "1": 80
+              }
+            }
+          }
+        },
+        "off_support": {
+          "all_reader_outputs_bit_zero": true,
+          "hlm_cosine_soft_max_abs_output_difference": 0.0,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hard_top1_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "hlm5_degree5": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            },
+            "matched_degree5_cache": {
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "output_sha256": "cb03d5fe5a386adade6f29b6eeb6f59206d19f87c9ab20175935d07d7ffdbdd0",
+              "prediction_sha256": "6151eaf7b8c181c970af8f1e1d15071ac97ebe7509cab284a02fb8f39b75a28e",
+              "query_count": 16,
+              "routed_count": 0,
+              "support_size_histogram": {
+                "0": 16
+              }
+            }
+          }
+        },
+        "pair_edit": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "43ff60e9f128b84130f66b803000fb162b646b141b54c0c67eac38ac395bb82e",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "3ab46735061fb1e44799e5368a4125bc33b1dd6c121433171b6e5834e0025bfd",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "fb108a8beb2b89b6c8253cc75b0ac95d84281897bfa6abf5f4fd5c346752b576",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f80a74517fef20052e9d3b0642a4d53a35ddc8eb7b28354a2f39a223973d875c",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "4e7d78f993fcdb1b35999003f77f1d61950142656259a6b30af753f7749348fa",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "4e7d78f993fcdb1b35999003f77f1d61950142656259a6b30af753f7749348fa",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        },
+        "reactivate": {
+          "hlm_cosine_soft_max_abs_output_difference": 0.014242205768823624,
+          "hlm_matched_degree5_equivalence": {
+            "all_exact": true,
+            "fields": {
+              "gain": true,
+              "output": true,
+              "prediction": true,
+              "retrieved": true,
+              "routed": true,
+              "scores": true,
+              "support_mask": true,
+              "support_size": true,
+              "weights": true
+            }
+          },
+          "readers": {
+            "cosine_soft_cache": {
+              "accuracy": 0.6000000238418579,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 48,
+              "output_sha256": "cb4a3473a514e332925efa6f4ec6b7f0dfed7be5b32a09a1936f916e22a5c60f",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "4ebb61676814f052592bda8b9b54f5075072213fc5452b008f128a93da514bfa",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hard_top1_cache": {
+              "accuracy": 0.0,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 0,
+              "output_sha256": "b5d96aedfe83dc646ad35e2da2ff5a1ee5c6b401e40259ea196729a8983142a0",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "ccfad69a733642a141b60c4f8f15df11089f03f677b364bce045fd82c107f399",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "hlm5_degree5": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "62f0fce79b19dac6184223f02fe4ad12e88c4234c9ba2b14f750d96564507bb4",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            },
+            "matched_degree5_cache": {
+              "accuracy": 0.4000000059604645,
+              "all_gain_finite": true,
+              "all_output_finite": true,
+              "all_weight_finite": true,
+              "correct_count": 32,
+              "output_sha256": "62f0fce79b19dac6184223f02fe4ad12e88c4234c9ba2b14f750d96564507bb4",
+              "per_ratio": {
+                "0.70": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.80": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.90": {
+                  "accuracy": 0.0,
+                  "correct_count": 0,
+                  "query_count": 16
+                },
+                "0.95": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                },
+                "1.00": {
+                  "accuracy": 1.0,
+                  "correct_count": 16,
+                  "query_count": 16
+                }
+              },
+              "prediction_sha256": "f8fac6880287babed78ba39e65ef90fba69fd31e958415b520e40eb673af8473",
+              "query_count": 80,
+              "routed_count": 80,
+              "support_size_histogram": {
+                "2": 80
+              }
+            }
+          }
+        }
+      },
+      "seed": 20260824,
+      "shuffled_value_null": {
+        "accuracy": 0.0,
+        "all_gain_finite": true,
+        "all_output_finite": true,
+        "all_weight_finite": true,
+        "correct_count": 0,
+        "output_sha256": "4e7d78f993fcdb1b35999003f77f1d61950142656259a6b30af753f7749348fa",
+        "per_ratio": {
+          "0.70": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.80": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.90": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "0.95": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          },
+          "1.00": {
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "query_count": 16
+          }
+        },
+        "prediction_sha256": "c4da6e66616a3088fff95fc630226c858708ac751af4ae3c3347bd61760d360a",
+        "query_count": 80,
+        "routed_count": 80,
+        "support_size_histogram": {
+          "2": 80
+        }
+      },
+      "value_permutation": [
+        35,
+        54,
+        8,
+        29,
+        58,
+        19,
+        5,
+        28,
+        21,
+        55,
+        51,
+        48,
+        3,
+        42,
+        16,
+        20,
+        37,
+        50,
+        10,
+        27,
+        1,
+        17,
+        2,
+        41,
+        9,
+        38,
+        53,
+        33,
+        18,
+        25,
+        11,
+        49,
+        59,
+        6,
+        60,
+        57,
+        44,
+        56,
+        34,
+        39,
+        30,
+        45,
+        52,
+        43,
+        15,
+        63,
+        61,
+        22,
+        0,
+        14,
+        46,
+        12,
+        62,
+        13,
+        4,
+        32,
+        26,
+        40,
+        36,
+        24,
+        23,
+        31,
+        47,
+        7
+      ],
+      "value_permutation_sha256": "6c78eadf54f0caba95982d7b4deee0c4e67884e9887ad3aae11a7d013496b64a"
+    }
+  ],
+  "status": "NARROW_MULTI_SUPPORT_CACHE_EQUIVALENT",
+  "theorem_scope": "The support-masked HLM5 reader is exactly reproducible by an explicit cache with the same degree-5 kernel, support, temperature, gain, and values.",
+  "validity": {
+    "all_reported_numeric_tensors_finite": true,
+    "hlm_matched_degree5_bit_exact": true,
+    "off_support_all_readers_bit_zero": true,
+    "permutations_bijective": true,
+    "query_seed_phase_reader_counts_complete": true,
+    "support_cardinality_contract": true
+  }
+}

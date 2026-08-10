@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "measurement": "hlm5-multi-support-kernel-equivalence",
+  "status": "REGISTERED_BEFORE_IMPLEMENTATION",
+  "scope": "Deterministic CPU operator assay only; no checkpoint, LM forward, training, remote compute, or scaling.",
+  "protocol": {
+    "path": "docs/multi-support-kernel-equivalence-prereg-2026-08-10.md",
+    "sha256": "8079c107124d9b58dee501b8d6a6175a94eb94908aa0023224fe7c50d94d7b10"
+  },
+  "pinned_lineage": {
+    "hlm5_memory.py": "0210733ab1160ac073d44e5a9d7967bb3b985fc323a07efde925694ae56c346a",
+    "demos/exact_address_lifecycle_reference.py": "4bad382d97e74b88401d5b478191926f3027007a4a8ec99cf3337f51c9669e8a",
+    "tests/test_exact_address_lifecycle_reference.py": "a46472c7be72ed315d3f5c6b0c1924c04378ec8fe0c5553c2fffebb3567184fa",
+    "baselines/results/exact_address_lifecycle_reference.json": "f61ceee8f9ec7233d0cf1ec0e256c034c7a5ab075059846abe01048e54ba5711"
+  },
+  "pinned_lineage_status": "CACHE_EQUIVALENT_REFERENCE",
+  "pinned_lineage_scientific_sha256": "a69593454521f693c21ba7195d33e2e59dc0aafc8242cce0e886aba2554de907",
+  "locked_constants": {
+    "seeds": [
+      20260820,
+      20260821,
+      20260822,
+      20260823,
+      20260824
+    ],
+    "dim": 64,
+    "pairs": 16,
+    "active_slots": 32,
+    "capacity": 40,
+    "degree": 5,
+    "temperature": 0.1,
+    "tau_cos": 0.55,
+    "mix_ratios": [
+      1.0,
+      0.95,
+      0.9,
+      0.8,
+      0.7
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "key_permutation_seed_offset": 0,
+    "value_permutation_seed_offset": 100000,
+    "pair_edit_rotation": 1,
+    "shuffled_value_rotation": 1,
+    "robust_overall_accuracy_min": 0.8,
+    "robust_per_ratio_accuracy_min": 0.75,
+    "balanced_accuracy_min": 0.95,
+    "ablation_accuracy_max": 0.1,
+    "degree5_advantage_over_cosine_soft_min": 0.1
+  },
+  "implementation_state_at_registration": {
+    "demos/multi_support_kernel_equivalence_reference.py": "ABSENT",
+    "tests/test_multi_support_kernel_equivalence_reference.py": "ABSENT",
+    "baselines/results/multi_support_kernel_equivalence_execution_registration.json": "ABSENT",
+    "baselines/results/multi_support_kernel_equivalence_reference.json": "ABSENT",
+    "docs/multi-support-kernel-equivalence-verdict-2026-08-10.md": "ABSENT"
+  },
+  "decision_scope": {
+    "local_assay_after_execution_registration": true,
+    "training": false,
+    "remote_compute": false,
+    "scale": false,
+    "semantic_routing_claim": false,
+    "hlm_specific_advantage_claim": false
+  }
+}

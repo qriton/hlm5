@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "measurement": "hlm5-multi-support-kernel-equivalence",
+  "status": "LOCKED_BEFORE_REGISTERED_ASSAY",
+  "exact_command": "python -B demos\\multi_support_kernel_equivalence_reference.py",
+  "hashes": {
+    "protocol": "8079c107124d9b58dee501b8d6a6175a94eb94908aa0023224fe7c50d94d7b10",
+    "initial_registration": "acebfbd8d457eedb7892b6540a5352fba7d17863a80a53ece1231ca4eadeb9e7",
+    "tool": "f39d7952695a0e40557811a7730bf35017c607094843abe9686a3ac77f7b9b71",
+    "test": "c0636998ce9ae9f0cc634bf50c3d3fe7e3d1b7065914e2dea5f72ae944056214"
+  },
+  "runtime": {
+    "python": "3.11.7",
+    "torch": "2.5.1+cu121",
+    "byteorder": "little",
+    "platform": "Windows-10-10.0.20348-SP0",
+    "device": "cpu",
+    "dtype": "torch.float32"
+  },
+  "locked_constants": {
+    "seeds": [
+      20260820,
+      20260821,
+      20260822,
+      20260823,
+      20260824
+    ],
+    "dim": 64,
+    "pairs": 16,
+    "active_slots": 32,
+    "capacity": 40,
+    "degree": 5,
+    "temperature": 0.1,
+    "tau_cos": 0.55,
+    "support_threshold": 0.05032843750000002,
+    "mix_ratios": [
+      1.0,
+      0.95,
+      0.9,
+      0.8,
+      0.7
+    ],
+    "value_seed_offset": 100000,
+    "pair_rotation": 1
+  },
+  "pre_outcome_verification": {
+    "py_compile": "PASS",
+    "ruff": "PASS",
+    "synthetic_nonregistered_seed_tests": "5/5 PASS",
+    "registered_seed_or_result_access": false
+  },
+  "scope": {
+    "checkpoint_access": false,
+    "language_model_forward": false,
+    "training": false,
+    "remote_compute": false,
+    "scale": false,
+    "registered_assay_runs_authorized": 1
+  }
+}
