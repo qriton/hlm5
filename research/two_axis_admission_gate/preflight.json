@@ -1,0 +1,250 @@
+{
+  "artifacts": {
+    "checkpoint": {
+      "path": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\model.pt",
+      "sha256": "2addfa88808be6847e29f70c9182093c15ff420c168f9dd8b41b72c4757a8eda"
+    },
+    "data": {
+      "files": {
+        "LICENSE": "d07988f4be47912f75a73b44da8a9c0b602bf6c8ced69de858b848f379ecd973",
+        "README.md": "cb424dede0ac86135c6a5198523df8b8be7efe3fdd0053a12f4946d3199f3370",
+        "fold_01": "0b0396e8029376b4860a094eb381a93aa41800f0331152ee91f9e8c71ea2c5c0",
+        "fold_02": "e246f1b430f21e6c0ff17d606271fac2f472585d5794592ac701e1fcba3ed7da",
+        "fold_03": "361ab24fae47386b9d264f834d7458ce64a83235cf1ee30cf71e29583f4329ed",
+        "fold_04": "f75087940ff9ffcaac79c95dad709b99ac0118416cfaaf53d889186acf1e55ab",
+        "fold_05": "e31c8abbff904d568c5c257d8e66bd5b326c75df92b4e4286191f66afa1f7cc8",
+        "fold_06": "18626d98b9372e65b84024e89031efb5e3ee37a1cd151609c6ade232c02deb72",
+        "fold_07": "1bff32c7c74d9e06b92209ac5afa9456cae7a1e2dfe4231c8aaa76b3bc7f3be9",
+        "fold_08": "16b3052352642d6988dd625e0d0a6f6adc0075b47525689fbe91acbdac24136b",
+        "fold_09": "2d9a5ed6c88cf759b3574d40105ee3e0e37b65328990bb1cc52217f5bb6cac6b",
+        "fold_10": "2620910fc909d85e5072c49f0a2cfd8afcd2b9eea628020357b69409073f8177"
+      },
+      "git_commit": "f6071b496b17d71e6eb43f543af0707f4ff30557",
+      "root": "D:\\HLM2\\runtime\\datasets\\hwu64-official"
+    },
+    "dependencies": {
+      "research/natural_key_transfer_gate/contract.py": "7974b32beec0da179116d254f282d891ef6017495f85f0f2874a9fdefcaacdf1",
+      "research/natural_key_transfer_gate/geometry.py": "6da468706a051e19ebd613dcdf1e754aa75e3bac2ee522411a2f70bd9e74c65b",
+      "research/natural_key_transfer_gate/run_natural_key_transfer_gate.py": "5793d95e152eabedb741e27d7be50dd06a9fe70a7b9f49646e919097ba2849ac",
+      "research/source_calibrated_admission_gate/geometry.py": "0447b3afca37daf1c1982ed51887bbd1c1d8d0c7f5555f2aecb9d07772bf0c17",
+      "research/validated_memory_primitives/hlm5_lm.py": "57b98001ee37994aff267b6888644a98239aa5918db8c63377886e716534beb5",
+      "research/validated_memory_primitives/hlm5_memory.py": "0210733ab1160ac073d44e5a9d7967bb3b985fc323a07efde925694ae56c346a"
+    },
+    "implementation": {
+      "research/two_axis_admission_gate/__init__.py": "56090d1f14506cd80902e73fa24ae1e4f914e7c7090f9a728fef4b788d1abecc",
+      "research/two_axis_admission_gate/contract.py": "070dfbe60bbebde057ac8d3eb4682ce5484d2698f9e4f668293801f1b916039a",
+      "research/two_axis_admission_gate/geometry.py": "9af5a805c20988c9b6db43d5feb7a6ae63efaaff0c71adb36d44eb3ec3e5bf09",
+      "research/two_axis_admission_gate/prepare_hwu64.py": "a6f4011760b457becf282182caef93c70d6dd6103a1b6af1d4dc3b2b37aaa7ab",
+      "research/two_axis_admission_gate/run_two_axis_admission_gate.py": "b26c6e27f79789a29671a1f343cd53c50cd9e61a32ca5c5a9f66cd3c6e19c974",
+      "research/two_axis_admission_gate/tests/test_geometry.py": "2f09ee09367466795631d6709c172e26af4aae26bea0b952cd97e72d30548b96",
+      "research/two_axis_admission_gate/tests/test_prepare_hwu64.py": "83e66354ecdf444eb7d6574e4be556918c557f6013d77bff681245808aaa01b5",
+      "research/two_axis_admission_gate/tests/test_registration.py": "d6531e5428ff0f498acdaef87c5d92fc5bec923b811e977d0d8fe747615c01f7"
+    },
+    "manifest": {
+      "path": "research/two_axis_admission_gate/data/hwu64_development_manifest.json",
+      "scientific_sha256": "43ca391013300dd88a76c7e4a17b33503cb6682e295d5eac4071a50387590fd0",
+      "sha256": "ae3af9eadb6511501a1c8695376b04c6176e3be8e465a68e07b0fd18477ae576"
+    },
+    "preregistration": {
+      "commit_is_ancestor": true,
+      "committed_before_hwu64_encoding": "56a3cb1818f814d0a8cae589512027228b8a2723",
+      "path": "research/two_axis_admission_gate/docs/two-axis-admission-prereg-2026-08-10.md",
+      "sha256": "83f3cefbfbf3a5f172940095d30a2da94e73669c16c49d040fdcda9a88fd84d2"
+    },
+    "tokenizer": {
+      "path": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\tokenizer.json",
+      "sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588"
+    }
+  },
+  "attestation": {
+    "hwu64_utterances_encoded": false,
+    "only_trunk_input": "fixed synthetic anchor",
+    "routing_outcomes_computed": false,
+    "source_cache_existed": false,
+    "target_cache_existed": false,
+    "target_utterances_encoded": false,
+    "test_utterances_encoded": false
+  },
+  "command": [
+    "C:\\Users\\md\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "D:\\HLM5-two-axis-admission\\research\\two_axis_admission_gate\\run_two_axis_admission_gate.py",
+    "preflight"
+  ],
+  "environment": {
+    "cublas_workspace_config": ":4096:8",
+    "cuda": "12.1",
+    "cuda_matmul_tf32": false,
+    "cudnn": 90100,
+    "cudnn_tf32": false,
+    "deterministic_algorithms": true,
+    "device": "cuda",
+    "gpu": "NVIDIA RTX 4000 SFF Ada Generation",
+    "numpy": "2.4.6",
+    "platform": "Windows-10-10.0.20348-SP0",
+    "python": "3.11.7",
+    "tokenizers": "0.22.2",
+    "torch": "2.5.1+cu121"
+  },
+  "execution_contract": {
+    "checkpoint": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\model.pt",
+    "data_root": "D:\\HLM2\\runtime\\datasets\\hwu64-official",
+    "device": "cuda",
+    "mode": "development",
+    "source_cache": "D:\\HLM2\\runtime\\sca2\\hwu64-source-audit-hiddens.pt",
+    "target_cache": "D:\\HLM2\\runtime\\sca2\\hwu64-target-development-hiddens.pt",
+    "tokenizer": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\tokenizer.json"
+  },
+  "execution_contract_sha256": "a3adaba67a458b54d9696a65a75bf5afd7d24ec983ae392435c91035ce3b0421",
+  "generated_at_local": "2026-08-10T17:43:09.832530+02:00",
+  "git_head": "0e60bab2a8ea7c410a230a5bd1a7914ed9e61f98",
+  "manifest_scientific_sha256": "43ca391013300dd88a76c7e4a17b33503cb6682e295d5eac4071a50387590fd0",
+  "model": {
+    "architecture": "HLM5LM",
+    "cfg": {
+      "dim": 768,
+      "max_len": 1024,
+      "memory_layer": false,
+      "memory_size": 256,
+      "n_heads": 12,
+      "n_layers": 12
+    },
+    "step": 29999,
+    "val_ppl": 40.15816414595203,
+    "vocab": 65536
+  },
+  "random_basis": {
+    "basis_sha256": "3d24eb4803ae658587e314df46dc48a22850c76df1559598849a06f054945683",
+    "construction": "standard_normal_complete_qr_diag_r_nonnegative",
+    "dimension": 768,
+    "dtype": "torch.float64",
+    "generator_device": "cpu",
+    "orthogonality_max_abs_error": 1.2212453270876722e-15,
+    "seed": 20260811
+  },
+  "schema": "hlm5-sca2-preflight-v1",
+  "scientific_constants": {
+    "absolute_negative_quantile": 0.95,
+    "admission_comparison": "strict_greater_than",
+    "arms": [
+      "raw",
+      "centered",
+      "diagonal_std",
+      "random_basis_zca",
+      "blind_zca"
+    ],
+    "audit_bars": {
+      "candidate_correct_admission_retention_vs_absolute_only": 0.6,
+      "candidate_macro_correct_admission": 0.15,
+      "candidate_macro_coverage": 0.2,
+      "candidate_off_support_false_admission_rate": 0.05,
+      "candidate_selective_accuracy": 0.65,
+      "candidate_selective_gain_vs_absolute_only": 0.05
+    },
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260812,
+    "candidate": "blind_zca",
+    "class_score_reducer": "maximum_over_three_support_slots",
+    "degree": 5,
+    "development_fold": 1,
+    "group_intent_count": 12,
+    "group_names": [
+      "calibration_supported",
+      "calibration_negative",
+      "audit_supported",
+      "audit_negative",
+      "target_supported"
+    ],
+    "hidden_batch_size": 128,
+    "hidden_dtype": "torch.float32",
+    "margin_error_quantile": 0.9,
+    "matched_proximity_tie_break": "row_id_ascending",
+    "minimum_margin_calibration_errors": 8,
+    "model_determinism_seed": 20260810,
+    "no_recurrence": true,
+    "no_target_metric_fit": true,
+    "no_test_encoding": true,
+    "pass_bars": {
+      "candidate_correct_admission_retention_vs_absolute_only": 0.6,
+      "candidate_macro_correct_admission": 0.15,
+      "candidate_macro_coverage": 0.2,
+      "candidate_max_predicted_intent_share": 0.25,
+      "candidate_off_support_false_admission_rate": 0.05,
+      "candidate_selective_accuracy": 0.65,
+      "candidate_selective_gain_vs_absolute_only": 0.075,
+      "candidate_selective_gain_vs_matched_proximity": 0.05,
+      "candidate_top1_accuracy_drop_vs_raw": 0.01
+    },
+    "quantile_method": "higher",
+    "random_basis_seed": 20260811,
+    "random_basis_sha256": "3d24eb4803ae658587e314df46dc48a22850c76df1559598849a06f054945683",
+    "rows_per_intent": 8,
+    "schema": "hlm5-sca2-scientific-constants-v1",
+    "scientific_device": "cpu",
+    "scientific_dtype": "torch.float64",
+    "shrinkage": 0.05,
+    "source_audit_precedes_target_encoding": true,
+    "source_hidden_population_names": [
+      "source_fit",
+      "calibration_support",
+      "calibration_positive",
+      "calibration_negative",
+      "audit_support",
+      "audit_positive",
+      "audit_negative"
+    ],
+    "support_per_intent": 3,
+    "target_hidden_population_names": [
+      "target_support",
+      "target_development"
+    ],
+    "test_fold": 2,
+    "train_folds": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "status": "READY_TO_REGISTER",
+  "synthetic_anchor": {
+    "first": {
+      "dimension": 768,
+      "hidden_sha256": "c823713193e752d2ddd2a6fecb754bf9ae9b90f93ee5ed5bc6deea39919406a7",
+      "length_groups": 1,
+      "maximum_tokens": 10,
+      "minimum_tokens": 10,
+      "row_count": 1
+    },
+    "hidden_sha256": "c823713193e752d2ddd2a6fecb754bf9ae9b90f93ee5ed5bc6deea39919406a7",
+    "repeat_bit_exact": true,
+    "second": {
+      "dimension": 768,
+      "hidden_sha256": "c823713193e752d2ddd2a6fecb754bf9ae9b90f93ee5ed5bc6deea39919406a7",
+      "length_groups": 1,
+      "maximum_tokens": 10,
+      "minimum_tokens": 10,
+      "row_count": 1
+    },
+    "text_sha256": "bcacc2a470e084a3c6877b9e54bdbe2b4d33043419ab00ef620a1acefed68333"
+  },
+  "tests": {
+    "command": [
+      "C:\\Users\\md\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "D:\\HLM5-two-axis-admission\\research\\two_axis_admission_gate\\tests",
+      "-p",
+      "test_*.py"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "1183e2ba5f2238e416feb56d7b5e8cd37b67f880581d3d720a8ba9b072cea1b7",
+    "stdout_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+    "summary": "OK"
+  }
+}

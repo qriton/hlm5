@@ -1,0 +1,1322 @@
+{
+  "constants": {
+    "development_fold": 1,
+    "group_intent_count": 12,
+    "group_names": [
+      "calibration_supported",
+      "calibration_negative",
+      "audit_supported",
+      "audit_negative",
+      "target_supported"
+    ],
+    "intent_order_salt": "sca2-hwu64-intent-groups-v1",
+    "row_order_salt": "sca2-hwu64-row-order-v1",
+    "rows_per_intent": 8,
+    "support_per_intent": 3,
+    "test_fold": 2,
+    "train_folds": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "development_hidden_population_names": [
+    "source_fit",
+    "calibration_support",
+    "calibration_positive",
+    "calibration_negative",
+    "audit_support",
+    "audit_positive",
+    "audit_negative",
+    "target_support",
+    "target_development"
+  ],
+  "metadata": {
+    "all_intents": [
+      "alarm_query",
+      "alarm_remove",
+      "alarm_set",
+      "audio_volume_down",
+      "audio_volume_mute",
+      "audio_volume_up",
+      "calendar_query",
+      "calendar_remove",
+      "calendar_set",
+      "cooking_recipe",
+      "datetime_convert",
+      "datetime_query",
+      "email_addcontact",
+      "email_query",
+      "email_querycontact",
+      "email_sendemail",
+      "general_affirm",
+      "general_commandstop",
+      "general_confirm",
+      "general_dontcare",
+      "general_explain",
+      "general_joke",
+      "general_negate",
+      "general_praise",
+      "general_quirky",
+      "general_repeat",
+      "iot_cleaning",
+      "iot_coffee",
+      "iot_hue_lightchange",
+      "iot_hue_lightdim",
+      "iot_hue_lightoff",
+      "iot_hue_lighton",
+      "iot_hue_lightup",
+      "iot_wemo_off",
+      "iot_wemo_on",
+      "lists_createoradd",
+      "lists_query",
+      "lists_remove",
+      "music_likeness",
+      "music_query",
+      "music_settings",
+      "news_query",
+      "play_audiobook",
+      "play_game",
+      "play_music",
+      "play_podcasts",
+      "play_radio",
+      "qa_currency",
+      "qa_definition",
+      "qa_factoid",
+      "qa_maths",
+      "qa_stock",
+      "recommendation_events",
+      "recommendation_locations",
+      "recommendation_movies",
+      "social_post",
+      "social_query",
+      "takeaway_order",
+      "takeaway_query",
+      "transport_query",
+      "transport_taxi",
+      "transport_ticket",
+      "transport_traffic",
+      "weather_query"
+    ],
+    "clean_intent_counts": {
+      "development": {
+        "alarm_query": 19,
+        "alarm_remove": 11,
+        "alarm_set": 19,
+        "audio_volume_down": 8,
+        "audio_volume_mute": 15,
+        "audio_volume_up": 13,
+        "calendar_query": 19,
+        "calendar_remove": 19,
+        "calendar_set": 19,
+        "cooking_recipe": 19,
+        "datetime_convert": 8,
+        "datetime_query": 19,
+        "email_addcontact": 8,
+        "email_query": 19,
+        "email_querycontact": 19,
+        "email_sendemail": 19,
+        "general_affirm": 19,
+        "general_commandstop": 19,
+        "general_confirm": 19,
+        "general_dontcare": 19,
+        "general_explain": 19,
+        "general_joke": 12,
+        "general_negate": 19,
+        "general_praise": 19,
+        "general_quirky": 19,
+        "general_repeat": 19,
+        "iot_cleaning": 16,
+        "iot_coffee": 19,
+        "iot_hue_lightchange": 19,
+        "iot_hue_lightdim": 12,
+        "iot_hue_lightoff": 19,
+        "iot_hue_lighton": 3,
+        "iot_hue_lightup": 14,
+        "iot_wemo_off": 9,
+        "iot_wemo_on": 7,
+        "lists_createoradd": 19,
+        "lists_query": 19,
+        "lists_remove": 19,
+        "music_likeness": 18,
+        "music_query": 19,
+        "music_settings": 7,
+        "news_query": 19,
+        "play_audiobook": 19,
+        "play_game": 19,
+        "play_music": 19,
+        "play_podcasts": 19,
+        "play_radio": 19,
+        "qa_currency": 19,
+        "qa_definition": 19,
+        "qa_factoid": 19,
+        "qa_maths": 14,
+        "qa_stock": 19,
+        "recommendation_events": 19,
+        "recommendation_locations": 19,
+        "recommendation_movies": 10,
+        "social_post": 19,
+        "social_query": 18,
+        "takeaway_order": 19,
+        "takeaway_query": 19,
+        "transport_query": 19,
+        "transport_taxi": 18,
+        "transport_ticket": 19,
+        "transport_traffic": 19,
+        "weather_query": 19
+      },
+      "test": {
+        "alarm_query": 19,
+        "alarm_remove": 11,
+        "alarm_set": 19,
+        "audio_volume_down": 8,
+        "audio_volume_mute": 15,
+        "audio_volume_up": 13,
+        "calendar_query": 19,
+        "calendar_remove": 19,
+        "calendar_set": 19,
+        "cooking_recipe": 19,
+        "datetime_convert": 8,
+        "datetime_query": 19,
+        "email_addcontact": 8,
+        "email_query": 19,
+        "email_querycontact": 19,
+        "email_sendemail": 19,
+        "general_affirm": 19,
+        "general_commandstop": 19,
+        "general_confirm": 19,
+        "general_dontcare": 19,
+        "general_explain": 19,
+        "general_joke": 12,
+        "general_negate": 19,
+        "general_praise": 19,
+        "general_quirky": 19,
+        "general_repeat": 19,
+        "iot_cleaning": 16,
+        "iot_coffee": 19,
+        "iot_hue_lightchange": 19,
+        "iot_hue_lightdim": 12,
+        "iot_hue_lightoff": 19,
+        "iot_hue_lighton": 3,
+        "iot_hue_lightup": 14,
+        "iot_wemo_off": 9,
+        "iot_wemo_on": 7,
+        "lists_createoradd": 19,
+        "lists_query": 19,
+        "lists_remove": 19,
+        "music_likeness": 18,
+        "music_query": 19,
+        "music_settings": 7,
+        "news_query": 19,
+        "play_audiobook": 19,
+        "play_game": 19,
+        "play_music": 19,
+        "play_podcasts": 19,
+        "play_radio": 19,
+        "qa_currency": 19,
+        "qa_definition": 19,
+        "qa_factoid": 19,
+        "qa_maths": 14,
+        "qa_stock": 19,
+        "recommendation_events": 19,
+        "recommendation_locations": 19,
+        "recommendation_movies": 10,
+        "social_post": 19,
+        "social_query": 18,
+        "takeaway_order": 19,
+        "takeaway_query": 19,
+        "transport_query": 19,
+        "transport_taxi": 18,
+        "transport_ticket": 19,
+        "transport_traffic": 19,
+        "weather_query": 19
+      },
+      "train": {
+        "alarm_query": 156,
+        "alarm_remove": 95,
+        "alarm_set": 156,
+        "audio_volume_down": 64,
+        "audio_volume_mute": 127,
+        "audio_volume_up": 112,
+        "calendar_query": 156,
+        "calendar_remove": 156,
+        "calendar_set": 156,
+        "cooking_recipe": 156,
+        "datetime_convert": 71,
+        "datetime_query": 156,
+        "email_addcontact": 70,
+        "email_query": 156,
+        "email_querycontact": 156,
+        "email_sendemail": 156,
+        "general_affirm": 156,
+        "general_commandstop": 156,
+        "general_confirm": 156,
+        "general_dontcare": 156,
+        "general_explain": 156,
+        "general_joke": 98,
+        "general_negate": 156,
+        "general_praise": 156,
+        "general_quirky": 156,
+        "general_repeat": 156,
+        "iot_cleaning": 135,
+        "iot_coffee": 156,
+        "iot_hue_lightchange": 156,
+        "iot_hue_lightdim": 102,
+        "iot_hue_lightoff": 156,
+        "iot_hue_lighton": 32,
+        "iot_hue_lightup": 112,
+        "iot_wemo_off": 80,
+        "iot_wemo_on": 62,
+        "lists_createoradd": 156,
+        "lists_query": 156,
+        "lists_remove": 156,
+        "music_likeness": 144,
+        "music_query": 156,
+        "music_settings": 63,
+        "news_query": 156,
+        "play_audiobook": 156,
+        "play_game": 155,
+        "play_music": 156,
+        "play_podcasts": 156,
+        "play_radio": 156,
+        "qa_currency": 156,
+        "qa_definition": 156,
+        "qa_factoid": 156,
+        "qa_maths": 120,
+        "qa_stock": 156,
+        "recommendation_events": 156,
+        "recommendation_locations": 156,
+        "recommendation_movies": 87,
+        "social_post": 156,
+        "social_query": 147,
+        "takeaway_order": 156,
+        "takeaway_query": 156,
+        "transport_query": 156,
+        "transport_taxi": 145,
+        "transport_ticket": 156,
+        "transport_traffic": 152,
+        "weather_query": 156
+      }
+    },
+    "cleanup": {
+      "development": {
+        "clean_rows": 1076,
+        "conflict_rows_dropped": 0,
+        "duplicate_rows_dropped": 0,
+        "overlap_rows_dropped": 0,
+        "raw_rows": 1076
+      },
+      "test": {
+        "clean_rows": 1076,
+        "conflict_rows_dropped": 0,
+        "duplicate_rows_dropped": 0,
+        "overlap_rows_dropped": 0,
+        "raw_rows": 1076
+      },
+      "train": {
+        "clean_rows": 8881,
+        "conflict_rows_dropped": 0,
+        "duplicate_rows_dropped": 2,
+        "overlap_rows_dropped": 1,
+        "raw_rows": 8884
+      }
+    },
+    "eligible_intents": [
+      "alarm_query",
+      "alarm_remove",
+      "alarm_set",
+      "audio_volume_down",
+      "audio_volume_mute",
+      "audio_volume_up",
+      "calendar_query",
+      "calendar_remove",
+      "calendar_set",
+      "cooking_recipe",
+      "datetime_convert",
+      "datetime_query",
+      "email_addcontact",
+      "email_query",
+      "email_querycontact",
+      "email_sendemail",
+      "general_affirm",
+      "general_commandstop",
+      "general_confirm",
+      "general_dontcare",
+      "general_explain",
+      "general_joke",
+      "general_negate",
+      "general_praise",
+      "general_quirky",
+      "general_repeat",
+      "iot_cleaning",
+      "iot_coffee",
+      "iot_hue_lightchange",
+      "iot_hue_lightdim",
+      "iot_hue_lightoff",
+      "iot_hue_lightup",
+      "iot_wemo_off",
+      "lists_createoradd",
+      "lists_query",
+      "lists_remove",
+      "music_likeness",
+      "music_query",
+      "news_query",
+      "play_audiobook",
+      "play_game",
+      "play_music",
+      "play_podcasts",
+      "play_radio",
+      "qa_currency",
+      "qa_definition",
+      "qa_factoid",
+      "qa_maths",
+      "qa_stock",
+      "recommendation_events",
+      "recommendation_locations",
+      "recommendation_movies",
+      "social_post",
+      "social_query",
+      "takeaway_order",
+      "takeaway_query",
+      "transport_query",
+      "transport_taxi",
+      "transport_ticket",
+      "transport_traffic",
+      "weather_query"
+    ],
+    "groups": {
+      "audit_negative": [
+        "qa_currency",
+        "alarm_query",
+        "calendar_remove",
+        "iot_coffee",
+        "qa_maths",
+        "play_podcasts",
+        "general_negate",
+        "transport_ticket",
+        "play_game",
+        "audio_volume_down",
+        "email_sendemail",
+        "play_radio"
+      ],
+      "audit_supported": [
+        "general_quirky",
+        "calendar_set",
+        "iot_hue_lightchange",
+        "calendar_query",
+        "alarm_set",
+        "social_post",
+        "email_querycontact",
+        "play_audiobook",
+        "iot_hue_lightdim",
+        "general_explain",
+        "lists_createoradd",
+        "music_query"
+      ],
+      "calibration_negative": [
+        "recommendation_movies",
+        "qa_stock",
+        "qa_factoid",
+        "recommendation_events",
+        "general_dontcare",
+        "transport_traffic",
+        "iot_hue_lightup",
+        "transport_query",
+        "play_music",
+        "alarm_remove",
+        "audio_volume_up",
+        "weather_query"
+      ],
+      "calibration_supported": [
+        "general_affirm",
+        "datetime_convert",
+        "general_joke",
+        "qa_definition",
+        "iot_wemo_off",
+        "general_commandstop",
+        "takeaway_order",
+        "music_likeness",
+        "transport_taxi",
+        "recommendation_locations",
+        "general_repeat",
+        "email_addcontact"
+      ],
+      "target_supported": [
+        "audio_volume_mute",
+        "iot_hue_lightoff",
+        "lists_remove",
+        "datetime_query",
+        "general_praise",
+        "social_query",
+        "lists_query",
+        "cooking_recipe",
+        "email_query",
+        "takeaway_query",
+        "news_query",
+        "general_confirm"
+      ],
+      "unused_eligible": [
+        "iot_cleaning"
+      ]
+    },
+    "ineligible_intents": [
+      "iot_hue_lighton",
+      "iot_wemo_on",
+      "music_settings"
+    ],
+    "raw_fold_counts": {
+      "1": 1076,
+      "10": 1352,
+      "2": 1076,
+      "3": 1076,
+      "4": 1076,
+      "5": 1076,
+      "6": 1076,
+      "7": 1076,
+      "8": 1076,
+      "9": 1076
+    },
+    "test_utterances_tokenized_or_encoded": false
+  },
+  "populations": {
+    "audit_negative": {
+      "count": 96,
+      "sha256": "3ffdbdf47e1d985907279be9d1e340517f537144c444dbeb6d5a1fea3ae907d4"
+    },
+    "audit_positive": {
+      "count": 96,
+      "sha256": "b80c98165f7ae6d630a38a9c6d6385d64f64b4bfa2ce9c6e9695e3a6bbe83618"
+    },
+    "audit_support": {
+      "count": 36,
+      "sha256": "c4bcc580f6f2ace2d6413ffa036d75f5b6eaaf9d28262b226e0ed8701c43bc2a"
+    },
+    "calibration_negative": {
+      "count": 96,
+      "sha256": "f81d6485faba4247d5f6646711483b19398246bfc6328beede61a994c809cd1c"
+    },
+    "calibration_positive": {
+      "count": 96,
+      "sha256": "b985b78d6bd39b0b43aa33470850741906f208a3f0195e913ca940301e4b195c"
+    },
+    "calibration_support": {
+      "count": 36,
+      "sha256": "2a137e072883caf1611a4b8eede120d2bbf74f7d1acc6f38e2944451813d2d0a"
+    },
+    "off_support_test": {
+      "count": 96,
+      "sha256": "338e0fc4fc03f564a803eb4c6a546533195d1e972d98da3a8f2b58ed38e81a36"
+    },
+    "source_fit": {
+      "count": 7047,
+      "sha256": "f8d6eff3702901f8a74a2b6e8792c2dacd82d60dc15d002b92ae89eb1fec78c3"
+    },
+    "target_development": {
+      "count": 96,
+      "sha256": "7c11ebcf2e5f8f59d28f4077b58568649c11e391ff1bdd108a840e75502e9669"
+    },
+    "target_support": {
+      "count": 36,
+      "sha256": "96efc6bb24791c8ceb721ca4ee70a81cdef4b07eed5bd6734e78632d4551c7c5"
+    },
+    "target_test": {
+      "count": 96,
+      "sha256": "5effb0cf2bdcbe6257fc8115c3e1b92578d1d10d0610b492c3e573f2d7de4ea7"
+    }
+  },
+  "schema": "hlm5-sca2-hwu64-development-manifest-v1",
+  "scientific_sha256": "43ca391013300dd88a76c7e4a17b33503cb6682e295d5eac4071a50387590fd0",
+  "source": {
+    "dataset_git_commit": "f6071b496b17d71e6eb43f543af0707f4ff30557",
+    "dataset_scripts_git_commit": "356711b59f347532d0290f070ff9aad5af7ed02e",
+    "files": {
+      "LICENSE": "d07988f4be47912f75a73b44da8a9c0b602bf6c8ced69de858b848f379ecd973",
+      "README.md": "cb424dede0ac86135c6a5198523df8b8be7efe3fdd0053a12f4946d3199f3370",
+      "fold_01": "0b0396e8029376b4860a094eb381a93aa41800f0331152ee91f9e8c71ea2c5c0",
+      "fold_02": "e246f1b430f21e6c0ff17d606271fac2f472585d5794592ac701e1fcba3ed7da",
+      "fold_03": "361ab24fae47386b9d264f834d7458ce64a83235cf1ee30cf71e29583f4329ed",
+      "fold_04": "f75087940ff9ffcaac79c95dad709b99ac0118416cfaaf53d889186acf1e55ab",
+      "fold_05": "e31c8abbff904d568c5c257d8e66bd5b326c75df92b4e4286191f66afa1f7cc8",
+      "fold_06": "18626d98b9372e65b84024e89031efb5e3ee37a1cd151609c6ade232c02deb72",
+      "fold_07": "1bff32c7c74d9e06b92209ac5afa9456cae7a1e2dfe4231c8aaa76b3bc7f3be9",
+      "fold_08": "16b3052352642d6988dd625e0d0a6f6adc0075b47525689fbe91acbdac24136b",
+      "fold_09": "2d9a5ed6c88cf759b3574d40105ee3e0e37b65328990bb1cc52217f5bb6cac6b",
+      "fold_10": "2620910fc909d85e5072c49f0a2cfd8afcd2b9eea628020357b69409073f8177"
+    },
+    "license": "CC BY 4.0",
+    "name": "HWU64 / NLU-Evaluation-Data",
+    "official_repository": "https://github.com/xliuhw/NLU-Evaluation-Data",
+    "official_scripts_repository": "https://github.com/xliuhw/NLU-Evaluation-Scripts",
+    "root": "D:\\HLM2\\runtime\\datasets\\hwu64-official"
+  },
+  "support_rows": {
+    "audit_support": [
+      {
+        "fold": 6,
+        "intent": "alarm_set",
+        "row_id": "2c458e66c6d45a236eecc3eb4732aa1c1af9bf9c6f8d38141351b1682e541cca",
+        "source_index": 761,
+        "utterance_sha256": "1271c11877d4ae9d069bba9a45249979c33cf1be21289f89b7018922dcd75c2a"
+      },
+      {
+        "fold": 4,
+        "intent": "alarm_set",
+        "row_id": "37d2de1ee23630be44455bc86a9af2a50e57f0b69f20c94cfe54c582fd9d59b2",
+        "source_index": 762,
+        "utterance_sha256": "ad3d7b66d6363e6b10c4b461704b5a282d635bfc2414ccf48f0bfd6f45a5e00b"
+      },
+      {
+        "fold": 6,
+        "intent": "alarm_set",
+        "row_id": "31038fe2b171ff6a27c1b378eddfddc5629f4196dc4180355d5822221423817b",
+        "source_index": 759,
+        "utterance_sha256": "29f4340621f944d1e3ae3a8654c845956fc30b4e4b238468a3efb27856fa24b0"
+      },
+      {
+        "fold": 5,
+        "intent": "calendar_query",
+        "row_id": "36464fa2164c708eb4c666617a39ef14192043dd2ad5baebdf3b1263d9895d84",
+        "source_index": 157,
+        "utterance_sha256": "fb509d0339f464a74e5511a03a66d4cc4b7bf3f34f3758acbe99a52108e0f1fd"
+      },
+      {
+        "fold": 5,
+        "intent": "calendar_query",
+        "row_id": "e6061d42bd5d3132e41824cc242a60de2345563eec4424dd5964dd9212bfb244",
+        "source_index": 163,
+        "utterance_sha256": "db8a4455721ae64d0b90c7a03e2fba0ad7dc1227b89eaa2716b6bc32a4ff01cb"
+      },
+      {
+        "fold": 4,
+        "intent": "calendar_query",
+        "row_id": "db19e2c7c9d15b7e4f332267bfafc9306a27e2c7b345e4241b092daa770ffe67",
+        "source_index": 168,
+        "utterance_sha256": "7fd67e751b8b5d1424ea488bc5f4a56a81aa003f35166b8b9950c51a019c3886"
+      },
+      {
+        "fold": 4,
+        "intent": "calendar_set",
+        "row_id": "020d688e1808985c872c7d773bf38bb487dbd9c7c5711e8a16aa9ca580a89cce",
+        "source_index": 979,
+        "utterance_sha256": "9b9355705fa31545054c751c08e6218e5b6742866b5bf16276006074b08ffb54"
+      },
+      {
+        "fold": 6,
+        "intent": "calendar_set",
+        "row_id": "7d164e41c27a1f9159c404164064f65a1484cf15cf006d9424e2df87d6c7918c",
+        "source_index": 984,
+        "utterance_sha256": "32290878b8329ffdfe957cd1e56858de8e1e0656d3041ac0c502b388b0b35858"
+      },
+      {
+        "fold": 7,
+        "intent": "calendar_set",
+        "row_id": "704fce5402499d3e50dc9c3a396ddbe1af31e59c21c0d8d987ded20ab978aa65",
+        "source_index": 988,
+        "utterance_sha256": "159e9cb1e5820659d4100f9abd9d838014beb22f4fc0246c1ad01bf46aa092b5"
+      },
+      {
+        "fold": 6,
+        "intent": "email_querycontact",
+        "row_id": "4672abe3b040605f621a91315087090f5b50d8e21b39f150c1b45534161c2d99",
+        "source_index": 385,
+        "utterance_sha256": "a0d508e484051cef393b0fb1339b157e7900b0e4530a181000825c0226a4fee1"
+      },
+      {
+        "fold": 9,
+        "intent": "email_querycontact",
+        "row_id": "0958bc49275785da14a7c30feb3f6ed4f741d3a5d393e7d5bd078a75c5eb6da2",
+        "source_index": 381,
+        "utterance_sha256": "3a4196d840cec5b39d1301c29053c571239452532d8a334f8d7a2680ad345356"
+      },
+      {
+        "fold": 5,
+        "intent": "email_querycontact",
+        "row_id": "f6fa484a793278b29cc8e8067b1598bbf5c0b37bce191dd653c20cf08b8343d8",
+        "source_index": 386,
+        "utterance_sha256": "26906dd3c6e1d59fb3c2de3595deab3011172dc27a9d39a8394de0345ad84ae8"
+      },
+      {
+        "fold": 6,
+        "intent": "general_explain",
+        "row_id": "9ea2082929547875d436791342789ef9fcf35456c7f6483b4cc09d653082c4bb",
+        "source_index": 536,
+        "utterance_sha256": "9aa503149175e05a79f12e09cd0d335812ff0c9a2c03991121871c59e08464bf"
+      },
+      {
+        "fold": 7,
+        "intent": "general_explain",
+        "row_id": "23f726dc274b6531654671bb05eed2a6f970b576bc1cdeb1e24af2bd18424301",
+        "source_index": 543,
+        "utterance_sha256": "fc17ec8a9457e5d94d8abfa6bb87abe60c09aef60ee1136ca5264106b49b26d9"
+      },
+      {
+        "fold": 7,
+        "intent": "general_explain",
+        "row_id": "71c79c37ba1af23accf3cdff52c7e8365e5c4b86f0d5d9e46e4c33cf5c2f70f4",
+        "source_index": 542,
+        "utterance_sha256": "2f47f6f9f3e587caf4cb461d19839a5edacf822311763be0f2fc1adb0be67228"
+      },
+      {
+        "fold": 3,
+        "intent": "general_quirky",
+        "row_id": "d92dd6be94c883d31a13b5c73c28aacbbb7036860846712d0c0d58d310f46ae6",
+        "source_index": 790,
+        "utterance_sha256": "6979b895d4915b3b64a12d3b24c3b4cc804613ae15885312ecd537b32f9fdbb1"
+      },
+      {
+        "fold": 10,
+        "intent": "general_quirky",
+        "row_id": "86b0aaefd5b54b57dfb6539dc2858767cb933ce93e9d44e6c238080689d4a3e6",
+        "source_index": 973,
+        "utterance_sha256": "3f9a3c1adb1b7e255246401e9294519f646a90f7f43180c62e7320749274df99"
+      },
+      {
+        "fold": 9,
+        "intent": "general_quirky",
+        "row_id": "d2683ddc0f402b3b610744f1b609caace8d00f39b70dbd3e532380fc917af1d4",
+        "source_index": 794,
+        "utterance_sha256": "213c227ae6f44f34e4cfe636056bf73d0edf8d7380bcd410519f9746eae7d9fd"
+      },
+      {
+        "fold": 9,
+        "intent": "iot_hue_lightchange",
+        "row_id": "66d3627c0d1ff766c624c0d6aa31a2cdfff30ae71e5c02b3568c804779465e30",
+        "source_index": 725,
+        "utterance_sha256": "3f028e852952ebd6ee303bf650116e917441d25ddda7528dd3a2ffdc4d3e9778"
+      },
+      {
+        "fold": 4,
+        "intent": "iot_hue_lightchange",
+        "row_id": "50122b4462e5788aa954c8e6dfe24e99f220cba8d89e08fcb8ee80e89a762ac0",
+        "source_index": 735,
+        "utterance_sha256": "c21ca32653013edf1bd813fb92da72fad014e66db545ca2ce89ae8495bb3d18c"
+      },
+      {
+        "fold": 5,
+        "intent": "iot_hue_lightchange",
+        "row_id": "6c41dbc9f0ad9b9680bdeb6c40648ff408c96aa2c2b22006725904095127de64",
+        "source_index": 725,
+        "utterance_sha256": "1503a53902f31bcc541298e210e32a6d5b019c3ed9b06b7fd486a6f2bee38d78"
+      },
+      {
+        "fold": 7,
+        "intent": "iot_hue_lightdim",
+        "row_id": "e5b93cde6819430e9a5ed3890af2db0efa6895857e8ec323bd15d2f2ca8662cc",
+        "source_index": 558,
+        "utterance_sha256": "e31f5dca3aae1a6424700e641e759a1ec528d6846887adeea0cf618ca4eae46f"
+      },
+      {
+        "fold": 10,
+        "intent": "iot_hue_lightdim",
+        "row_id": "59a87869febf367dc013b1f8ae606319bc74b84744d975f13e2c5e91f0e4e32c",
+        "source_index": 702,
+        "utterance_sha256": "cbb07e8b690d4536da4a018659b04f3135cbffda9c42b7f3e3a033e7731ca38c"
+      },
+      {
+        "fold": 9,
+        "intent": "iot_hue_lightdim",
+        "row_id": "82923eaae7174832879b3d1102a4456d7834f76cec83387174b6d31174fea075",
+        "source_index": 565,
+        "utterance_sha256": "512ed2c263ae429777c25b5578b56c84b04fb3e4eaf090144b371b345f87f0e9"
+      },
+      {
+        "fold": 7,
+        "intent": "lists_createoradd",
+        "row_id": "11f8e30c73442da87d789e9686c56ede8337e190a99e325b72d1d6fc118a453f",
+        "source_index": 745,
+        "utterance_sha256": "dcc3909cb8e8d51732a8a7e7ef5b4e02b8bb4930d0c6b79e5b19a795e772d41e"
+      },
+      {
+        "fold": 10,
+        "intent": "lists_createoradd",
+        "row_id": "48861e7a2b8270b2335576591db750d546edb4e8bba3244c4d3f66177b075bec",
+        "source_index": 915,
+        "utterance_sha256": "6be5246e15fa50743a52cfb5ff235a44bc8dd01367b39273c03cd8f9f16a1fda"
+      },
+      {
+        "fold": 6,
+        "intent": "lists_createoradd",
+        "row_id": "e312c64ac1e6a064ce206b4b4ed479c6790bac98c28f5f1b2919177eaa3ea7db",
+        "source_index": 754,
+        "utterance_sha256": "2faf258b488cdf77d12537eab65ad86252a5d9c0947a75e6157beef5312a154d"
+      },
+      {
+        "fold": 3,
+        "intent": "music_query",
+        "row_id": "99ae221b3ced5370ca22e30af169ccd542ca0e3e9d287c8d814762ebcc200c12",
+        "source_index": 611,
+        "utterance_sha256": "494250997a369fdedf589e49b068efc0088a30efc1ab9005fbc161e2b7a9c127"
+      },
+      {
+        "fold": 4,
+        "intent": "music_query",
+        "row_id": "ebf17b65c5ae0d1eca8d0b8d40ac21dcdca601cc64722cb7312dd80ec9b5b3ee",
+        "source_index": 604,
+        "utterance_sha256": "2185c595592b178c38b0d37d8bef8a043052b4ac829edaf027d2fa30a38628fd"
+      },
+      {
+        "fold": 5,
+        "intent": "music_query",
+        "row_id": "7347ee10c32f074acf6eaf57b62aa6c00b660c9e053a4249ac2b6e6ddccb4b4f",
+        "source_index": 604,
+        "utterance_sha256": "7fc36f3fcf13388a6eba85a246f092d19a0e90b023855a90ad964b225af5bf9d"
+      },
+      {
+        "fold": 4,
+        "intent": "play_audiobook",
+        "row_id": "283109f7fa2d982265bfa06b0a78948b89e2ba155156000eece704580fadc003",
+        "source_index": 47,
+        "utterance_sha256": "29092d142cbd2ad545857329b5610e977e7086907bde64aac27aadae5f3290c7"
+      },
+      {
+        "fold": 5,
+        "intent": "play_audiobook",
+        "row_id": "eab18701e267e0cacddbe82198449f6c7e5ba3190006758e364a3459ff218487",
+        "source_index": 42,
+        "utterance_sha256": "1c6bacd13f715d5b7adc35620f42fe2322bd3da07109b257a597a04dd8917b03"
+      },
+      {
+        "fold": 10,
+        "intent": "play_audiobook",
+        "row_id": "7b5d7a4a21108046d995d3c7bd0901314d9d93e0c194dbb5f46a9033f5e90aaa",
+        "source_index": 61,
+        "utterance_sha256": "64db1b4611bdfb2c10fdc8105e8fbfc3bad67679b74a0bf3b350e01615b636e0"
+      },
+      {
+        "fold": 8,
+        "intent": "social_post",
+        "row_id": "bb35ea9bf80d76408a1e3271fea4487562c0d6de3b7fb1cbc06cd6a9c3a31524",
+        "source_index": 698,
+        "utterance_sha256": "80aaa30bf5647185c8fcbbd641a5a24d8664040abaeb10acc2fdae01936ba0df"
+      },
+      {
+        "fold": 10,
+        "intent": "social_post",
+        "row_id": "a460cc9bab9ecbf6bf47638d67aa9136da5021166ded2835080d8d196f19a2f6",
+        "source_index": 858,
+        "utterance_sha256": "f173b19f7240f77486ffc82d08e6608d73c586741b0e044945a659852d685d2c"
+      },
+      {
+        "fold": 7,
+        "intent": "social_post",
+        "row_id": "4671c420de265a332806cdbf3bd41bbbfcaf0ed3d0c2f30de802cc6a272a537a",
+        "source_index": 690,
+        "utterance_sha256": "34811cb4a118babf156e42ee924a475984ca6f66b792eef52a42483940528c7c"
+      }
+    ],
+    "calibration_support": [
+      {
+        "fold": 5,
+        "intent": "datetime_convert",
+        "row_id": "29b587772b565cfee0e3a17e0664d299546f0d46c6eb7be9b34a696cbe129d5d",
+        "source_index": 957,
+        "utterance_sha256": "62ce2c68ef11fad9deef637f2350024beb5d94bae06f5c4010d4cd8492b63032"
+      },
+      {
+        "fold": 4,
+        "intent": "datetime_convert",
+        "row_id": "55605df1cb70c37ed91a19df8ff4894837c97159aac338ce8e346a8b58def777",
+        "source_index": 955,
+        "utterance_sha256": "9e5c3e9a21d6ffeff645364cb9eac0a56d4924bf392c12802cabb094b116973f"
+      },
+      {
+        "fold": 5,
+        "intent": "datetime_convert",
+        "row_id": "a7244352124fd021d42e274c9072ddc1a2b2f9a29561cb6a1a8ec456014c04c9",
+        "source_index": 954,
+        "utterance_sha256": "4243874c1c2a9dd1b58865afbd04d199b7756947bfb2acad31bcf224bb118c54"
+      },
+      {
+        "fold": 4,
+        "intent": "email_addcontact",
+        "row_id": "faee7b5ca219bfaec965560dc49c8e106d21d2e0bfcfae5fba4610d78e61267b",
+        "source_index": 678,
+        "utterance_sha256": "fdc670f4058ef464644703b485ae6533babd204372f6ca20b45f64c9dedae5f8"
+      },
+      {
+        "fold": 8,
+        "intent": "email_addcontact",
+        "row_id": "11122718540bd8dd98c7b3af914ded93e689bb16644e694bc5b68cdd402d39c8",
+        "source_index": 674,
+        "utterance_sha256": "736cafcfd195d938db960ac5b884371ec60d25afe6e856cd26e80ae34d249a4b"
+      },
+      {
+        "fold": 3,
+        "intent": "email_addcontact",
+        "row_id": "39af76080af9f92b6d503438805777a5e0e6fab3cf7b1cfda6beb8ace4153614",
+        "source_index": 676,
+        "utterance_sha256": "75a0ce9345315bcf2ffb3d5e76865d6c8eb91b01da27a2ad399c82717d2b2a9b"
+      },
+      {
+        "fold": 10,
+        "intent": "general_affirm",
+        "row_id": "4d909d0790ee9683787142d05edb0d9446b67bf3118c2fd2bd4be9297d774fd5",
+        "source_index": 114,
+        "utterance_sha256": "1bdcb16da73a0a501f829856db60c2ea9c64e93a6e5ee741b37203ba3c376163"
+      },
+      {
+        "fold": 6,
+        "intent": "general_affirm",
+        "row_id": "5d43d15d88f87c88bb65bb2404d19c5b23544af6fc34b36cd32890142c307224",
+        "source_index": 77,
+        "utterance_sha256": "8ceda9e5df18f9ce11c06f24e88018f02579645a14d5d0b76428e4ea658ff4dd"
+      },
+      {
+        "fold": 10,
+        "intent": "general_affirm",
+        "row_id": "ce28435e438bfba888638222e0fc05c2864c1e76abfb74774b2f433128a5c1f1",
+        "source_index": 109,
+        "utterance_sha256": "a4db28ae87642a006a8371a6e53befe6003db6b409349834c919fb09158c2d4c"
+      },
+      {
+        "fold": 4,
+        "intent": "general_commandstop",
+        "row_id": "b23f2ca24097663bf007817de15c3ad583e7c626a11afa0bff3bcf644b8c334d",
+        "source_index": 964,
+        "utterance_sha256": "82912573159f73c707dcbb3495e9a5692d52782f94f5c68f653573a876f0db33"
+      },
+      {
+        "fold": 9,
+        "intent": "general_commandstop",
+        "row_id": "71bcbf102ba4002d8b0dae7922616a675f635aeb991fa90bede6c2688fecaa1d",
+        "source_index": 968,
+        "utterance_sha256": "0b6f9460284cbf1bea63a7a5c900920e34c7f6fd0d36db15ae47e7701ca4fd78"
+      },
+      {
+        "fold": 8,
+        "intent": "general_commandstop",
+        "row_id": "d70817c91b08e66d8c33339655cd58b27808b3c6354cb24cb1f970342d8f43a8",
+        "source_index": 961,
+        "utterance_sha256": "f891e06be79acd8a190e09a26d00a8474dae7bf239aaee3c1c7870b349335010"
+      },
+      {
+        "fold": 8,
+        "intent": "general_joke",
+        "row_id": "3824a083ca0597deb45707a7e00d336045e749a494196976c7eb919c54155587",
+        "source_index": 127,
+        "utterance_sha256": "829d915ab24f08f1a73145df01725d792a3c1b1fd2a47bbbbbc873fa2693ce36"
+      },
+      {
+        "fold": 6,
+        "intent": "general_joke",
+        "row_id": "4957d655b6132502dace636a3d65da87284fa0e2df3deb74c666568a91e44ae7",
+        "source_index": 127,
+        "utterance_sha256": "50159d75fa5dda2a25523572551f6dc0988ab8d9d05b9e182f163d2a653628bc"
+      },
+      {
+        "fold": 8,
+        "intent": "general_joke",
+        "row_id": "0c15ead030b59bc08a6591b29a947de99d82e3cda5e8fc82f5f78bd41f1995cf",
+        "source_index": 135,
+        "utterance_sha256": "58ce6267194a98ff175d86ea022c4da3f9ae221ab480cb33f690f8231564adf3"
+      },
+      {
+        "fold": 8,
+        "intent": "general_repeat",
+        "row_id": "5d30d008b58b96a37bdf00060acfaa9554e013f236791a13b7a2cfdd3fa70e0f",
+        "source_index": 431,
+        "utterance_sha256": "51de74dc105c52b1b9eeed71883ff7824546394af908d51e62c8952464ac9c93"
+      },
+      {
+        "fold": 4,
+        "intent": "general_repeat",
+        "row_id": "37dd491cbad8986e6ac745a610f565b642351f5ebd1d08f31e7f22a9d8856278",
+        "source_index": 437,
+        "utterance_sha256": "90f085e70baca2060a253633a406661465456e11a918e343ee47c1a6bbbad6ea"
+      },
+      {
+        "fold": 9,
+        "intent": "general_repeat",
+        "row_id": "f4cdc4b090cd893dba54f27dbcf75f96e109d18a4d54d920791407fed2777b14",
+        "source_index": 428,
+        "utterance_sha256": "8ab36e5008018308eeef11b87dfbbc8d4571c42f7ef3540b04a966d53c97bb1e"
+      },
+      {
+        "fold": 10,
+        "intent": "iot_wemo_off",
+        "row_id": "c0107a2df5ef4f28a7ed12ed72a3bc3d226216499464cbd39e161769043c5af9",
+        "source_index": 526,
+        "utterance_sha256": "a53126dac744e08d5ab89fd9b17a7fa4441b99fe523255b564cc837b8673dd24"
+      },
+      {
+        "fold": 10,
+        "intent": "iot_wemo_off",
+        "row_id": "fd742ce96ba17b90eb8037192e610aaed39cee5edbb0c68e3ae461694192ca77",
+        "source_index": 524,
+        "utterance_sha256": "7aaadb0c3e3017f2a665802a0fdd34b7e00f310c99bbe3a8ae07b816c00ae3d0"
+      },
+      {
+        "fold": 5,
+        "intent": "iot_wemo_off",
+        "row_id": "2e695317863eb6c8a1718b440cc6933a69cadfa5dfbced10064085824cf1fd4f",
+        "source_index": 419,
+        "utterance_sha256": "abd31154d97f1678cca71cb237bb39ac2498355562fa555359e7a4bc54e2ab92"
+      },
+      {
+        "fold": 4,
+        "intent": "music_likeness",
+        "row_id": "d940aa1fac1abd67cd5b574706ab55897d1b7d416b053c6c9befa6d8dbf8ffb5",
+        "source_index": 715,
+        "utterance_sha256": "e71770c57da6847f71c4bd09f85af2f345a28ed3d9c1f87bad7c6687d46f3b6a"
+      },
+      {
+        "fold": 4,
+        "intent": "music_likeness",
+        "row_id": "cafc4fc74b7847b82fa7ec2bd7615c2c2ee863227c94ca9f6b449b946e8dc1b4",
+        "source_index": 717,
+        "utterance_sha256": "70cdcd661d038e3d94fc270040e16813288f5318a2fc27cb16cddb169c451ac9"
+      },
+      {
+        "fold": 7,
+        "intent": "music_likeness",
+        "row_id": "22e766abb80fce17d48b351c7b7aacc337b2516590f19c1f88b6be5b6bf84a79",
+        "source_index": 701,
+        "utterance_sha256": "4d7186af8e646ee70de7a1780ec6888e8acae894681ea4042c0fc164e5cc19cb"
+      },
+      {
+        "fold": 9,
+        "intent": "qa_definition",
+        "row_id": "c2cfdfae12b5f031863842d05db95a0ce398fd5aaa1ce24e43ac9b51f4c98bae",
+        "source_index": 486,
+        "utterance_sha256": "6fcc22d4f512c84429cacc425aa35744c3913712b62a629d3074aff236dd5fbb"
+      },
+      {
+        "fold": 8,
+        "intent": "qa_definition",
+        "row_id": "059e74619d45c2604a039abc2c7052387094fd3eb46a77c8b68cad40bef50da6",
+        "source_index": 485,
+        "utterance_sha256": "d1696810e83529c63bc3b559762e68744f97f854ae3961ec488b4f2aa989a9f3"
+      },
+      {
+        "fold": 5,
+        "intent": "qa_definition",
+        "row_id": "c15f89f77a78358567dfba580dd9d8235cd9717353b5a680282023a7b7b5bfee",
+        "source_index": 493,
+        "utterance_sha256": "22f6fd8c70da22ae45b22b34b40e1164911b04a43c185a171a61dfb24bcb475a"
+      },
+      {
+        "fold": 9,
+        "intent": "recommendation_locations",
+        "row_id": "8ad8a54e1836452fad9fc2d45785d0b94bd78b84699dc4d57678e6fe7d095f0e",
+        "source_index": 335,
+        "utterance_sha256": "2518eb70c1a12a1aeb5f3844128a425ec2e4cf12150276fe78256703e107adc6"
+      },
+      {
+        "fold": 8,
+        "intent": "recommendation_locations",
+        "row_id": "e3463e1f8b3138bccdee7cb4cb607974a28b5aef5ced576312408990774839b0",
+        "source_index": 339,
+        "utterance_sha256": "f8867643dcfd8fd68cc22008a4dbcb1f1c8fdeb68e862f86ceb82cb9e2ba8f80"
+      },
+      {
+        "fold": 8,
+        "intent": "recommendation_locations",
+        "row_id": "02bc61d93d62c40cdddb596f5618f4c05fb40aafb8ea1a11902b1c822a60e04f",
+        "source_index": 328,
+        "utterance_sha256": "41600697337b1dfcdf600d31b8c3113f4ead566832dac6881894aa6424626903"
+      },
+      {
+        "fold": 8,
+        "intent": "takeaway_order",
+        "row_id": "0d6cec1655241fb896038fb6487d2837adaaf609b61cfc1cec7e4f965945c2f3",
+        "source_index": 932,
+        "utterance_sha256": "a30bb9f738ed65856849c5ce1e355ef2c0be24a51c3b96558f8b6f7aa04b81d1"
+      },
+      {
+        "fold": 5,
+        "intent": "takeaway_order",
+        "row_id": "156a6693d6ce96e25339d14ed33c8f4c98f2acc2b5ade6f2d6ffdeb9bcb627d8",
+        "source_index": 937,
+        "utterance_sha256": "8f45bd86acf50a1785df47f72c6582519c24b0b3796c90359a04442981637f7e"
+      },
+      {
+        "fold": 6,
+        "intent": "takeaway_order",
+        "row_id": "fc9da90c1c1fa4865e528aab3d9cea295065959733f0981e128899ea13f8a7fe",
+        "source_index": 933,
+        "utterance_sha256": "beebdde30663fcadaae7a48106ee5cdef0c2b6fc9bdc50677ffb86837f52ecd9"
+      },
+      {
+        "fold": 9,
+        "intent": "transport_taxi",
+        "row_id": "4b284245b3fdd529dddd92f85b06e1f8962f7977deec9d998485d769ae521cb7",
+        "source_index": 354,
+        "utterance_sha256": "ae2132f58fa1380dcc57a1823cb18fad262afafcd29205ccedd08c28212b9806"
+      },
+      {
+        "fold": 10,
+        "intent": "transport_taxi",
+        "row_id": "38ceed03143667291cf9819d43e9392e5060ca89d1b394df973dca56e0ffeded",
+        "source_index": 441,
+        "utterance_sha256": "430001f487ac2cfefc4e313f7dadfe564f046c2ce128e76a4a87b6a94a5f7e6d"
+      },
+      {
+        "fold": 3,
+        "intent": "transport_taxi",
+        "row_id": "97a62406ca178c6c1f9406ad202f32524280fe9f5e092481cc84c48566026c64",
+        "source_index": 347,
+        "utterance_sha256": "ee52c1946098f10f9752ce5691e4326978541c4f690bf3249f65d92294b1ed64"
+      }
+    ],
+    "target_support": [
+      {
+        "fold": 5,
+        "intent": "audio_volume_mute",
+        "row_id": "e74fae24292ffbd739eba9597dcaeda94126d0e61f30f22f63acbe3e73fd11af",
+        "source_index": 878,
+        "utterance_sha256": "f0b4352e880b7ff1136981045051e5f990a18495373a9d8ce4c7255f0b27522c"
+      },
+      {
+        "fold": 7,
+        "intent": "audio_volume_mute",
+        "row_id": "3ec8213920fccb98804d341e4c33791c5c5abc646e0f0ca5ad48b8779f618a08",
+        "source_index": 880,
+        "utterance_sha256": "52aac19db70e8d7518f980c6e0902aa09ca5c67100b14c5d16ac867b51c287db"
+      },
+      {
+        "fold": 9,
+        "intent": "audio_volume_mute",
+        "row_id": "030714c89fb5bc32621ddace0addca1a2952e2fc66663f060a35aac63894874b",
+        "source_index": 874,
+        "utterance_sha256": "ab4ed2a3fc0da48d1c664644b98dba5a583cd178c7d161b0306df90d7d057dec"
+      },
+      {
+        "fold": 10,
+        "intent": "cooking_recipe",
+        "row_id": "c93fa89bd2032b790a81b37eb6bd2d910226f279d680777e340eef751a02a18b",
+        "source_index": 654,
+        "utterance_sha256": "c30f8bb743b36f17e7a5760b9c17600d79ccd519d507b815bb5b5a6ba5d3d5d1"
+      },
+      {
+        "fold": 4,
+        "intent": "cooking_recipe",
+        "row_id": "0e5a352bf15fbe816bec2a813442cb19341ea673769c4c5d1accfb6a41e85b15",
+        "source_index": 525,
+        "utterance_sha256": "ef85b62674ab0ff0ad4f6c276fc65bd77f9fc029f47d75fe500827ed4ae14965"
+      },
+      {
+        "fold": 10,
+        "intent": "cooking_recipe",
+        "row_id": "038e661c1de1a9697d11f4c2aac55305c25cf81d9df1727aba76294f74977fbe",
+        "source_index": 647,
+        "utterance_sha256": "bbe67f2b2bcfc2e33ba06a7bc62485f9c7d6f4049d525310545f6f632ef4bc1b"
+      },
+      {
+        "fold": 7,
+        "intent": "datetime_query",
+        "row_id": "a5a6542f702bc5d246c3a7097312067434b117c8895b16e43ce28e522a4c2aa5",
+        "source_index": 841,
+        "utterance_sha256": "24a90c129fe2ade6b925791dfff29e40daf5a07bff8b60bd9a3bfbbf43d3c936"
+      },
+      {
+        "fold": 3,
+        "intent": "datetime_query",
+        "row_id": "731bf6338f04b3089030a9a0f775ec06f33eb93ce34ab802a37d3ba83eb6fcc6",
+        "source_index": 840,
+        "utterance_sha256": "3dcfe499feb355aa1feda7d3030f1d37c1cc5d9b83d4a1e13802e129e5f0f8a2"
+      },
+      {
+        "fold": 4,
+        "intent": "datetime_query",
+        "row_id": "d43b6fd091c48eaa95ee237f8d6b0d3cfa8eee0335d8a354194c78ce2e8fbbfd",
+        "source_index": 848,
+        "utterance_sha256": "afefa10b657be0f035667564ffc52bc00bdd4a5abac3d6e42497536a662d2a35"
+      },
+      {
+        "fold": 7,
+        "intent": "email_query",
+        "row_id": "08b883e1c2b51f9716553e6eddc68452ef8521754c090209715f9782644d658b",
+        "source_index": 1041,
+        "utterance_sha256": "7bda7d126a67d405d5dd1e44367d88581c88d11a68fd26cd289cb66d1f175ad5"
+      },
+      {
+        "fold": 5,
+        "intent": "email_query",
+        "row_id": "d5b18440e3b5de3ea8a23faa4a2c41df274ada4ff6b33da81879a9b2e1041681",
+        "source_index": 1046,
+        "utterance_sha256": "6528f38b8b961cf9fc1ac18077ef307611f35f8d04491fd64eb4ecf4a6d79c8a"
+      },
+      {
+        "fold": 9,
+        "intent": "email_query",
+        "row_id": "cbca9f31bec35651870af4a8c982ed87132331969f9c48d599680bbb55d279c5",
+        "source_index": 1054,
+        "utterance_sha256": "f6ddf6c8522a2845314adf2f2383dedcb8bdd8113c80b3b1439bb909730395b1"
+      },
+      {
+        "fold": 3,
+        "intent": "general_confirm",
+        "row_id": "68fedd0e3d8521def688b348881abe39d5694016d4964b9bae028d462155da8a",
+        "source_index": 18,
+        "utterance_sha256": "bc128921fddf57de791cc44985f233948ee439e45c09cb5e9b49242f6daafe89"
+      },
+      {
+        "fold": 3,
+        "intent": "general_confirm",
+        "row_id": "ad5594677c2a6ad30b42e32e24f07921acf34cc2774c595045b79f5eb5b2dffd",
+        "source_index": 12,
+        "utterance_sha256": "89fe8873b3a5ed64dd30d4b5155c737cf322f22630f00e41633efd2a6e257017"
+      },
+      {
+        "fold": 4,
+        "intent": "general_confirm",
+        "row_id": "46b8b5517627f39b64a9ceb68ecd3ac85708ccc158fb0836c7e3d7f625d344b2",
+        "source_index": 0,
+        "utterance_sha256": "d23bcc87901248932d9917bf45029a9b2362567b28f87cdf986a76892ade6109"
+      },
+      {
+        "fold": 8,
+        "intent": "general_praise",
+        "row_id": "aef9e316d4c2f7dbee14958e6c13da7068edb20168beabaa7572b54ef1e124b6",
+        "source_index": 190,
+        "utterance_sha256": "9438206b7e7545ee20c88d32c75de0282175403d460c4f359456c3eb88160324"
+      },
+      {
+        "fold": 9,
+        "intent": "general_praise",
+        "row_id": "cfe2fe278bd5ddf2ce98a1e503c0af9262789eeebeae1579919af5e504efb659",
+        "source_index": 184,
+        "utterance_sha256": "2a9e10b7c7e017a20937596c8349a94abc1d0f808106b7b0f0688404ff26c68d"
+      },
+      {
+        "fold": 3,
+        "intent": "general_praise",
+        "row_id": "fa58d3be0f5dfe00288acca9a74c07cb300888008db85eab9c1d1910489436a2",
+        "source_index": 185,
+        "utterance_sha256": "064be8164f2292b094c138e7115f78a39089a8891dfedfa23314f336bc60a304"
+      },
+      {
+        "fold": 8,
+        "intent": "iot_hue_lightoff",
+        "row_id": "b29c8f43e9814732a3b65f912a8b67b9580cdef2965f08e302ccbc29b4d07774",
+        "source_index": 155,
+        "utterance_sha256": "8483313cfa67eb8670e4f7ff5de5846e24d70a61a11cfcc41a68d0c515576d35"
+      },
+      {
+        "fold": 6,
+        "intent": "iot_hue_lightoff",
+        "row_id": "66b2c82958ad7d8e2f75db2c8550c4a00ad4026e35256891d97ea7bb7c999cd4",
+        "source_index": 147,
+        "utterance_sha256": "fb8e42beb15d2a6978de62cfa512316c5d138a5c3fb7f2f5d79ae531fba59a5b"
+      },
+      {
+        "fold": 7,
+        "intent": "iot_hue_lightoff",
+        "row_id": "ca94007a9a3adcb2d8124bf25bf1dc70d924708651c0cd3bacd28720d3731efd",
+        "source_index": 151,
+        "utterance_sha256": "9e587fd0b442944064c2d1f39fba2b79ef811f47ea44358db8d06facb024fad2"
+      },
+      {
+        "fold": 4,
+        "intent": "lists_query",
+        "row_id": "0e7f24bd3ea6ffa56946076fedc7fe14b780da6f225352e3e5fc7bbd3bb22e02",
+        "source_index": 568,
+        "utterance_sha256": "86445617572c8290224fe518c434aa941f1de1dc0cf52d99aea13f17a5cbc53e"
+      },
+      {
+        "fold": 8,
+        "intent": "lists_query",
+        "row_id": "b17b58eeee1651a2aec1a251900fc5014fa5fe989f273d340e66ae67d1413acc",
+        "source_index": 576,
+        "utterance_sha256": "cf44ebc1d1f06b3c78d0bfefa95ed0608d4a1725df92c57f7ba294043dd1e1c5"
+      },
+      {
+        "fold": 5,
+        "intent": "lists_query",
+        "row_id": "12afa5c8db0de36aa2d26f815c0e7aa158d24c6110ac716d63c6b3671f0daeb6",
+        "source_index": 566,
+        "utterance_sha256": "6b9003f1efec48f10839a52bd5c50b41415451063ee9c3e1a761867792ae666c"
+      },
+      {
+        "fold": 10,
+        "intent": "lists_remove",
+        "row_id": "e785eefe88614fda58b4a84110e2693a03b86ecb39c9a28ab72af08103730f1a",
+        "source_index": 999,
+        "utterance_sha256": "75657dc610ef4e544e5c9d295f4fb0a67fdda85cf4937a5cb9fa1c7bbf20c5ef"
+      },
+      {
+        "fold": 9,
+        "intent": "lists_remove",
+        "row_id": "806397b2d31a85084af7be0c83d1a0c0453ac9ffde7db3aa5d4385657d898695",
+        "source_index": 806,
+        "utterance_sha256": "d6107205809fa9911aa03e914fc8043a4951c245682027190a91ae21aad4967c"
+      },
+      {
+        "fold": 7,
+        "intent": "lists_remove",
+        "row_id": "af3d83b73dcd51b46d9383637d550d2af53c7dfff68b7264ef8b7361e7329a1c",
+        "source_index": 803,
+        "utterance_sha256": "4842e9e3b3ab9d6a1dce7daadd08d3c0336082ed251d2ce3367b93f22b2dff41"
+      },
+      {
+        "fold": 4,
+        "intent": "news_query",
+        "row_id": "b160a467c7141e545aa8f3ec92549c6d8b144b0d04e5670ef7f4ef8fe5cac7f4",
+        "source_index": 203,
+        "utterance_sha256": "67257293627e703356da2fac2c7af004c49db0042d0540e1dbe1bbd51c97dc04"
+      },
+      {
+        "fold": 5,
+        "intent": "news_query",
+        "row_id": "d20a2942aad135296624d2981d7b6dc18aab91be8edb19ae98f2a31301fbb3fc",
+        "source_index": 208,
+        "utterance_sha256": "c553b10cdaa9815aeb2aed37c1d428f0b3245e0513e9b3e00a559899baa7e754"
+      },
+      {
+        "fold": 10,
+        "intent": "news_query",
+        "row_id": "6b338a0f60ac027438a559bb387af84d3d0ae1d4ed94b76a595f54483d0187e1",
+        "source_index": 250,
+        "utterance_sha256": "4141fce030a2970a7c0abaf6532a010cc509db63fdcd81abc8514f2eb55a60c8"
+      },
+      {
+        "fold": 5,
+        "intent": "social_query",
+        "row_id": "b917f272b4506b4cd6ab8bf87ecf494b5cb8c6b1180f66a2c37b0db344819753",
+        "source_index": 591,
+        "utterance_sha256": "35bf735576cd064ff5190799ae73627f713d4713f79525c5debea1acb6297db3"
+      },
+      {
+        "fold": 7,
+        "intent": "social_query",
+        "row_id": "3a37450a8f7154ba16f492dd99ab29824a6b26afb7b766b7faa2a9fe1f9ed500",
+        "source_index": 596,
+        "utterance_sha256": "400878283d8e91e86504963d448790d8c26fc7e0b842349091df6c3fd7c3ffcc"
+      },
+      {
+        "fold": 4,
+        "intent": "social_query",
+        "row_id": "fbcdadf972c1fa4842d5f30bde9a143edcf52a1d2f93da29818d28d7e25fea2d",
+        "source_index": 589,
+        "utterance_sha256": "77d8aa8bd74465d70668da6614ab2a3821f0c6f2f343ac9da5abac6aa9d21eed"
+      },
+      {
+        "fold": 3,
+        "intent": "takeaway_query",
+        "row_id": "4d2cda3052a30dd16e6f16dfc885300397b037042c910ed71eab24979255c4f6",
+        "source_index": 220,
+        "utterance_sha256": "9a4344187f2617430dd6c53fc13aa92d3c1ea3ae25e0b5c0c5cdd595e3b5e912"
+      },
+      {
+        "fold": 6,
+        "intent": "takeaway_query",
+        "row_id": "4bcb948145f88f3b29dbafb08f287b29ad6913b6e1ce3ed7185a4e30bd89ff85",
+        "source_index": 229,
+        "utterance_sha256": "a03e54513948e803f445e263a289d6672c0a642e4bc45626988c11d692f1bf3b"
+      },
+      {
+        "fold": 7,
+        "intent": "takeaway_query",
+        "row_id": "e49ff1f9fdb6849533ab2e5a942046295598853dfa9952ae4c23a1f347c54242",
+        "source_index": 220,
+        "utterance_sha256": "02c64e1ce28419f4d1ac2e3ac3d3d678b306e5718b6c200334c3c1e613257238"
+      }
+    ]
+  },
+  "test_utterances_tokenized_or_encoded": false
+}
