@@ -11,6 +11,10 @@ Read the
 before running anything. The TOPv2 test population stays unencoded unless all
 development bars pass and a separate test registration is committed.
 
+Development is concluded: [`STOP_BEFORE_TEST`](docs/source-calibrated-admission-development-verdict-2026-08-10.md).
+Blind ZCA passed 11/12 bars but missed selective accuracy (0.5714 versus the
+registered 0.65 minimum), so the test population remains sealed.
+
 ## Outcome-blind population preparation
 
 Place the official TOPv2 1.1 files under
