@@ -5,7 +5,9 @@ from . import io
 from . import certify
 from . import edit_audit
 from .key_value import HLM5KeyValueModel
+from .public_adapter import HLM5PreHeadAdapter, PreHeadAdapterAudit
 
 __all__ = ["EditableHLM5Memory", "FactorizedHopfieldMemoryLayer", "unit",
-           "HLM5LM", "lm_config", "io", "certify", "edit_audit", "HLM5KeyValueModel"]
+           "HLM5LM", "lm_config", "io", "certify", "edit_audit",
+           "HLM5KeyValueModel", "HLM5PreHeadAdapter", "PreHeadAdapterAudit"]
 __version__ = "1.0.0"
