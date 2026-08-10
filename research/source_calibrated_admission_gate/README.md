@@ -25,6 +25,23 @@ Preparation normalizes and hashes utterances, removes overlaps and duplicate
 conflicts, and fixes source/target populations. It does not tokenize an
 utterance with HLM5 or compute a route.
 
+## Registered development run
+
+Run these commands in order from the repository root:
+
+```powershell
+python -m research.source_calibrated_admission_gate.run_source_calibrated_admission_gate preflight
+python -m research.source_calibrated_admission_gate.run_source_calibrated_admission_gate register
+python -m research.source_calibrated_admission_gate.run_source_calibrated_admission_gate development
+```
+
+Preflight encodes only the fixed synthetic anchor. Registration binds the Git
+revision, implementation and dependency hashes, environment, random-control
+basis, paths, constants, and the absence of a development hidden cache. Only
+the registered development command may then encode the seven non-test TOPv2
+populations. A pre-existing unpinned cache, altered path, stale receipt, or
+failed validity gate stops the run as harness-invalid.
+
 ## Claim boundary
 
 Even a pass is a conventional static key-conditioning result in frozen HLM5
