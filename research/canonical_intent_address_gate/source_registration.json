@@ -1,0 +1,288 @@
+{
+  "artifacts": {
+    "checkpoint": {
+      "path": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\model.pt",
+      "sha256": "2addfa88808be6847e29f70c9182093c15ff420c168f9dd8b41b72c4757a8eda"
+    },
+    "dependencies": {
+      "research/natural_key_transfer_gate/geometry.py": "6da468706a051e19ebd613dcdf1e754aa75e3bac2ee522411a2f70bd9e74c65b",
+      "research/natural_key_transfer_gate/run_natural_key_transfer_gate.py": "5793d95e152eabedb741e27d7be50dd06a9fe70a7b9f49646e919097ba2849ac",
+      "research/source_calibrated_admission_gate/geometry.py": "0447b3afca37daf1c1982ed51887bbd1c1d8d0c7f5555f2aecb9d07772bf0c17",
+      "research/two_axis_admission_gate/contract.py": "070dfbe60bbebde057ac8d3eb4682ce5484d2698f9e4f668293801f1b916039a",
+      "research/two_axis_admission_gate/geometry.py": "9af5a805c20988c9b6db43d5feb7a6ae63efaaff0c71adb36d44eb3ec3e5bf09",
+      "research/two_axis_admission_gate/prepare_hwu64.py": "a6f4011760b457becf282182caef93c70d6dd6103a1b6af1d4dc3b2b37aaa7ab",
+      "research/two_axis_admission_gate/run_two_axis_admission_gate.py": "b26c6e27f79789a29671a1f343cd53c50cd9e61a32ca5c5a9f66cd3c6e19c974",
+      "research/validated_memory_primitives/hlm5_lm.py": "57b98001ee37994aff267b6888644a98239aa5918db8c63377886e716534beb5"
+    },
+    "implementation": {
+      "research/canonical_intent_address_gate/__init__.py": "da12ca94c2c753195b9c331354f5cbb6786904fbf4bed1c8655105fb0e078e50",
+      "research/canonical_intent_address_gate/contract.py": "7f16c330ba10e5eda542ed477b912d0637a46ff3683e3080ef2f878ed515463b",
+      "research/canonical_intent_address_gate/geometry.py": "0c14042c19062b9618a69d33aad2fa5afc29d2618ad07b051c5ea5af5be87b05",
+      "research/canonical_intent_address_gate/run_source_screen.py": "66f8e1cf30b3033753c30a9f8794d3cea2b00b3ff8371cc2ec157d3594449943",
+      "research/canonical_intent_address_gate/tests/test_geometry.py": "61b8e116ac25ca6006fa31ca217db8c0d85d617b85b3e33503f9845d53db6c2f",
+      "research/canonical_intent_address_gate/tests/test_registration.py": "230a02599343296729a6aa2922e51d707954006ae354aad1382f6fdbf007e4f6"
+    },
+    "manifest": {
+      "file_sha256": "ae3af9eadb6511501a1c8695376b04c6176e3be8e465a68e07b0fd18477ae576",
+      "path": "research/two_axis_admission_gate/data/hwu64_development_manifest.json",
+      "scientific_sha256": "43ca391013300dd88a76c7e4a17b33503cb6682e295d5eac4071a50387590fd0"
+    },
+    "minilm": {
+      "files": [
+        {
+          "path": "1_Pooling/config.json",
+          "sha256": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+          "size": 190
+        },
+        {
+          "path": "config.json",
+          "sha256": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+          "size": 612
+        },
+        {
+          "path": "config_sentence_transformers.json",
+          "sha256": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+          "size": 116
+        },
+        {
+          "path": "model.safetensors",
+          "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+          "size": 90868376
+        },
+        {
+          "path": "modules.json",
+          "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+          "size": 349
+        },
+        {
+          "path": "README.md",
+          "sha256": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0",
+          "size": 10502
+        },
+        {
+          "path": "sentence_bert_config.json",
+          "sha256": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+          "size": 53
+        },
+        {
+          "path": "special_tokens_map.json",
+          "sha256": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+          "size": 112
+        },
+        {
+          "path": "tokenizer.json",
+          "sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+          "size": 466247
+        },
+        {
+          "path": "tokenizer_config.json",
+          "sha256": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+          "size": 350
+        },
+        {
+          "path": "vocab.txt",
+          "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+          "size": 231508
+        }
+      ],
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "root": "C:\\Users\\md\\.cache\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "tree_sha256": "200f0f4334d089279904ae34725fab198753c92ee2c0aaf930923cac9ebeee73"
+    },
+    "protocol": {
+      "commit": "b3bd4297fc76e8282b506736a3f5f3564513ffb9",
+      "path": "research/canonical_intent_address_gate/docs/canonical-intent-address-source-protocol-2026-08-10.md",
+      "sha256": "312c37dd3488c1bf7f296d13636c20586192f6b4a75f5bbd3df635eac5c67082"
+    },
+    "source_cache": {
+      "hidden_sha256": "9c77843334cdc54450f6c861e2aaf29cec91662f88f847bec6f1337e49e20667",
+      "path": "D:\\HLM2\\runtime\\sca2\\hwu64-source-audit-hiddens.pt",
+      "sha256": "dbf9bc07133c2029095ddad20a990586b73bf354d331dad4e035f9400d1be6f7"
+    },
+    "tokenizer": {
+      "path": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\tokenizer.json",
+      "sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588"
+    }
+  },
+  "attestation": {
+    "canonical_hlm5_labels_encoded": false,
+    "canonical_minilm_labels_encoded": false,
+    "source_queries_encoded_by_minilm": false,
+    "target_names_encoded": false,
+    "target_utterances_encoded": false,
+    "test_utterances_encoded": false
+  },
+  "canonical_text_sha256": {
+    "alarm_set": "efb76ac4d8f7ea83d6fe963b1b3f5880519a125a87c8dd2694e2e5b0c2301b25",
+    "calendar_query": "b181baffa9176920a14c565a6c8efb413e34fffbe6d3224095b41774c213df34",
+    "calendar_set": "67cddc3f1e0b66bb61e77f5897ac8a41c3c9847ddcc2069d10f6209c9f0c3c63",
+    "datetime_convert": "ce9f9c019fb201ca06a7af6fbfb12b25ac2ef9cd4552292c69f2141a4a1f1e0d",
+    "email_addcontact": "b8376afed35d28cc6ae6add7c255b0e6d0244888d741982bcb88edc8c7137585",
+    "email_querycontact": "11e648de0e7a36bf987667b053c7d4258dcf43ff22a3eb116765b09a774e79d4",
+    "general_affirm": "5abced59535bd4bd97b595c79f35c575701d1bdf7181f19f67a13037b59bf7ec",
+    "general_commandstop": "7a0df15cceba9106d6a89219bd82a6ede424361e7e3d765063a01dd4969ede64",
+    "general_explain": "cd9e0e121f166f73bfbc707c372c058f11ef727cc72807a4ec47ee71005710dc",
+    "general_joke": "459687f3fa13a03dd59cbbe2fe0ce9403a8196ea43d92816d8338a27ccc1a909",
+    "general_quirky": "c05ac48d47193994bffecb44b7920bfe194baf8d329eb8d9423d76a8e21e3a9a",
+    "general_repeat": "c1a89229ab923c675fd685a988e9fa9654197c6ed5a5544daa1d660b3c34dcef",
+    "iot_hue_lightchange": "9fcc916e8e364468ba9bb3ab8b1e9c044c2463ba25773f4cdcbe1aca13fb9167",
+    "iot_hue_lightdim": "03dc1b50ded9012379e4f2eca8378ca0ca6fc212eb1c6797a3bad4dd5b761597",
+    "iot_wemo_off": "2da9bbbdbc775756c077366f531e58af53b320773c30f8fd1c159cd095024651",
+    "lists_createoradd": "1872f6c1917fbd0d3a1d8978866eb761c8c1346a7003b37fed763e5569f10551",
+    "music_likeness": "308f91768f2b53769b6616ae8b11001ae65543c86becb3b920ccea2d9b3feb02",
+    "music_query": "1077f5e271cea442aec1c0c8ed17bc72bf18bae9785ce4093b5eb420f36a82d0",
+    "play_audiobook": "c58fdcf27c281c4fb9e6088e5a4198a2a43314664ffe91305d099bed1204a1a5",
+    "qa_definition": "4dfa7bcb74710e717338dce2ad82b0b6988071e7be64398ffd8845037f369c4b",
+    "recommendation_locations": "c45347496d739a5259315a7c210d71e5c71d54da756baf11a4824716a14f3b5e",
+    "social_post": "cff1d307a98b118ac31ed78cba2805c705f6374f10dd52c9a6b9c2cf6dcac280",
+    "takeaway_order": "b618da191c427e678ad98e481f094b603bf27808462e1b50aacb79f61c3732d9",
+    "transport_taxi": "12a891fca77351c8612e512a194421c08e2d3f92d5fb0df06a7154317e5a92f8"
+  },
+  "environment": {
+    "cuda": "12.1",
+    "gpu": "NVIDIA RTX 4000 SFF Ada Generation",
+    "numpy": "2.4.6",
+    "platform": "Windows-10-10.0.20348-SP0",
+    "python": "3.11.7",
+    "sentence_transformers": "5.5.1",
+    "tokenizers": "0.22.2",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.12.1"
+  },
+  "generated_at_local": "2026-08-10T18:07:46.031975+02:00",
+  "git_head": "726a2abc0b5c7488ba99af10071b0717584c4745",
+  "manifest_scientific_sha256": "43ca391013300dd88a76c7e4a17b33503cb6682e295d5eac4071a50387590fd0",
+  "permutation": {
+    "sha256": "503112e320778589b2770c809476161f9c24fed621c69766c4e4b5f1674c6a9b",
+    "values": [
+      7,
+      6,
+      8,
+      9,
+      2,
+      4,
+      0,
+      10,
+      1,
+      3,
+      11,
+      5
+    ]
+  },
+  "schema": "hlm5-ca1-source-registration-v1",
+  "scientific_constants": {
+    "allowed_groups": [
+      "calibration_supported",
+      "audit_supported"
+    ],
+    "canonical_template": "intent: {label.replace(\"_\", \" \")}",
+    "comparison": "strict_greater_than",
+    "hlm_address_batch_size": 24,
+    "hlm_arms": [
+      "hlm5_raw_canonical",
+      "hlm5_centered_canonical",
+      "hlm5_diagonal_std_canonical",
+      "hlm5_random_basis_zca_canonical",
+      "hlm5_blind_zca_canonical"
+    ],
+    "minilm_arm": "minilm_canonical",
+    "minilm_batch_size": 64,
+    "minilm_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "negative_quantile": 0.95,
+    "permutation": [
+      7,
+      6,
+      8,
+      9,
+      2,
+      4,
+      0,
+      10,
+      1,
+      3,
+      11,
+      5
+    ],
+    "permutation_seed": 20260813,
+    "permutation_sha256": "503112e320778589b2770c809476161f9c24fed621c69766c4e4b5f1674c6a9b",
+    "primary_arm": "hlm5_raw_canonical",
+    "quantile_method": "higher",
+    "report_arms": [
+      "hlm5_raw_canonical",
+      "hlm5_centered_canonical",
+      "hlm5_diagonal_std_canonical",
+      "hlm5_random_basis_zca_canonical",
+      "hlm5_blind_zca_canonical",
+      "hlm5_raw_shuffled_labels",
+      "minilm_canonical"
+    ],
+    "schema": "hlm5-ca1-source-constants-v1",
+    "shuffled_arm": "hlm5_raw_shuffled_labels",
+    "source_bars": {
+      "correct_admission_gain_over_shuffled": 0.1,
+      "macro_correct_admission_rate": 0.15,
+      "macro_coverage": 0.2,
+      "macro_top1_accuracy": 0.4,
+      "maximum_predicted_intent_share": 0.25,
+      "off_support_false_admission_rate": 0.05,
+      "selective_accuracy": 0.65,
+      "top1_drop_vs_minilm": 0.1,
+      "top1_gain_over_shuffled": 0.2
+    },
+    "source_query_populations": [
+      "calibration_positive",
+      "calibration_negative",
+      "audit_positive",
+      "audit_negative"
+    ],
+    "target_names_encoded": false,
+    "target_utterances_encoded": false
+  },
+  "scientific_constants_sha256": "6e63303cab7562071e5eb532a7253b9601f664047ac17a192b66d4e469f72c66",
+  "source_labels": {
+    "audit": [
+      "alarm_set",
+      "calendar_query",
+      "calendar_set",
+      "email_querycontact",
+      "general_explain",
+      "general_quirky",
+      "iot_hue_lightchange",
+      "iot_hue_lightdim",
+      "lists_createoradd",
+      "music_query",
+      "play_audiobook",
+      "social_post"
+    ],
+    "calibration": [
+      "datetime_convert",
+      "email_addcontact",
+      "general_affirm",
+      "general_commandstop",
+      "general_joke",
+      "general_repeat",
+      "iot_wemo_off",
+      "music_likeness",
+      "qa_definition",
+      "recommendation_locations",
+      "takeaway_order",
+      "transport_taxi"
+    ]
+  },
+  "status": "REGISTERED_BEFORE_CANONICAL_ENCODING",
+  "tests": {
+    "command": [
+      "C:\\Users\\md\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "D:\\HLM5-canonical-intent-address\\research\\canonical_intent_address_gate\\tests",
+      "-p",
+      "test_*.py"
+    ],
+    "stderr_sha256": "c2a4367952e66c133deb8c1348e75c8e6da992da708980190229eadea2bd8c02",
+    "stdout_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+    "summary": "OK"
+  }
+}
