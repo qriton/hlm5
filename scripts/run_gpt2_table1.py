@@ -170,7 +170,7 @@ def main():
         for name, predict in [
             ("HLM5", lambda p: predict_hlm5(p, key, tid, beta)),
             ("LogitBias", lambda p: predict_bias(p, key, tid, c)),
-            ("SFT", lambda p: argmax_with(msft, p)),
+            ("SFT", lambda p, edited_model=msft: argmax_with(edited_model, p)),
             ("RAG", lambda p: predict_rag(p, subj, tgt)),
         ]:
             # efficacy
