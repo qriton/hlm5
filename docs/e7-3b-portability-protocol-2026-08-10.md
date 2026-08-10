@@ -26,8 +26,9 @@ The sole trunk is the base (not instruction-tuned) model:
 - revision: `d78a42f79198603e614095753484a04c10c2b940`;
 - public, non-gated Hugging Face repository;
 - model-card license tag: `apache-2.0`;
-- expected architecture: `SmolLM3ForCausalLM`, 36 layers, hidden size 2,048,
-  vocabulary 128,256, tied word embeddings, bias-free output head;
+- expected architecture: `SmolLM3ForCausalLM`, exactly 3,075,098,624
+  parameters, 36 layers, hidden size 2,048, vocabulary 128,256, tied word
+  embeddings, bias-free output head;
 - native model-forward dtype: `torch.bfloat16` on one CUDA device; and
 - `trust_remote_code=False`, no quantization, no fine-tuning, no weight mutation,
   and no alternate checkpoint if loading fails.
@@ -132,9 +133,11 @@ promotion.
 2. Implement the adapter, contract, preflight, runner, verifier, tests, and a
    Leonardo launch file. Commit them before model outcomes.
 3. Download only the pinned snapshot. The preflight hashes every registered
-   source and model file, records the environment/device, reconstructs and hashes
-   the target pool, counts parameters, and runs one baseline-only head-identity
-   anchor. It computes no certificate, gate, or edited output.
+  source and model file, records the environment/device, reconstructs and hashes
+  the target pool, counts parameters, and runs one baseline-only head-identity
+  anchor. The independent native head application must preserve argmax and have
+  maximum absolute logit difference no greater than 0.125. It computes no
+  certificate, gate, or edited output.
 4. Bind a second execution receipt after the preflight and tests pass. The runner
    must refuse changed source, protocol, snapshot, command, dtype, or sample
    hashes.
@@ -203,3 +206,9 @@ training to this pinned SmolLM3 3B base under the registered single-token,
 exact-key evaluation.” It does not license a general 3B editor, a trained HLM
 3B model, multi-token editing, paraphrase generalization, benchmark superiority,
 or EU AI Act compliance.
+
+## Pre-outcome amendment record
+
+- 2026-08-10: pinned the exact parameter count reported by the registered
+  safetensors index and the BF16 baseline head-identity tolerance. Both were
+  fixed before implementation, weight-shard download, or any model forward.
