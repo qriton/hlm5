@@ -1,0 +1,234 @@
+{
+  "artifacts": {
+    "checkpoint": {
+      "path": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\model.pt",
+      "sha256": "2addfa88808be6847e29f70c9182093c15ff420c168f9dd8b41b72c4757a8eda"
+    },
+    "data": {
+      "files": {
+        "LICENSE": "3b2890eacd851373001c4a14623458e3adaf1b1967939aa9c38a318e28d61c00",
+        "README": "5f050132aee99d4901793f9a9a47bc37aa7d68266b44f5c41f0eedbb94da62ff",
+        "alarm_eval.tsv": "9b80c3b3430c6378fa566f76f6ef5aa31156599f362a8896922839ebeedaa4a3",
+        "alarm_test.tsv": "96ce58ce1944f2f94b37477a18aa31b70b54aad0505eb7688d613fbd6415818c",
+        "alarm_train.tsv": "920483ba7ae051f95f69692deb77c80e66a105005ed5e49a3a043e9ffd155db5",
+        "event_eval.tsv": "1fb48c8aeb5bf3c6bb35ed206979adb2c8ef55fe7b0caf49424ebd75041e05d8",
+        "event_test.tsv": "9b67d4ed5cfe63c7899be66f523ec33de04352e6a16c35b9c2a5c322ec4548fc",
+        "event_train.tsv": "8c81d6680e7b72ca43be52702654839400678025ac1e6df9f352cb348180bdd8",
+        "messaging_eval.tsv": "a9f8761b0add1e8e1b46a8a53915b5101e48135983f199948cef9fed346e6b63",
+        "messaging_test.tsv": "e3d25346286bb9a514b325e18ec0045cef2eb58f45273d1deff088aa677cefec",
+        "messaging_train.tsv": "1f23f321ce36884d05931ca78eeb0823aaae13047d8099ba68e32e8656c2cf02",
+        "music_eval.tsv": "27d3ce7a63b13a91a1dd86292a269ff26e20c7895cd9789da2cc6f0a03de67cc",
+        "music_test.tsv": "c080a8f350cf5df6642d0f0e6e0a19c5ac682a8d9c912a0b57a5f0d1f01b44a0",
+        "music_train.tsv": "0abb87d11edc98d4be9b20879ec892d3fdcb0cd8d2bf4da06eef5e997c578d3c",
+        "navigation_eval.tsv": "308c95b88b9bad1d5cd5d3904f702dc03160829ada32f7eaff131d60f85588b7",
+        "navigation_test.tsv": "bf1bd7915932fac8452149f8b69f290e253b3eb1574e1557a7f7a9a156174fd2",
+        "navigation_train.tsv": "b486903314e4d2f011eeeef95f31f1eccdd8bf7aa538a2b003a23f9dd44b0b5a",
+        "reminder_eval.tsv": "dea5c9deb676676eeeede7036aa07f664f9d2e5a6b37b7fd8f3d2c6b171ecebf",
+        "reminder_test.tsv": "e6bc68ac371e7755753f455dcef5e42d4bf960c08f72beb094e4bc0940b7f925",
+        "reminder_train.tsv": "689f0934456b9b85d8d0d256425b86362f2bd349756d531a71958edd1b6e6ac1",
+        "timer_eval.tsv": "463bfeef6621b90a1c471916653fc420c219f8f65b38359a442485caa9e794a9",
+        "timer_test.tsv": "aa04c18cce9d02456f2a21f5fe8b8088a3470529b88db5ee35640110bddd74c9",
+        "timer_train.tsv": "d630abdde12cade9230434714f3f2f0ca8f75c8c00a6b6a5f5dfeb3100cf996f",
+        "weather_eval.tsv": "f6672529ab85c1415cd5a5d3045551176799605fba9e132fdd9d11adb93b908e",
+        "weather_test.tsv": "e4aa02ae0d3bad627c499d58365f34f37939153c832d30ee90725b745d74e9df",
+        "weather_train.tsv": "fd683b775602ec88d3fc7ca442c060ff33aacb710eaed3e517c8691835ae1018"
+      },
+      "root": "D:\\HLM2\\runtime\\datasets\\topv2-1.1\\official"
+    },
+    "dependencies": {
+      "research/natural_key_transfer_gate/contract.py": "7974b32beec0da179116d254f282d891ef6017495f85f0f2874a9fdefcaacdf1",
+      "research/natural_key_transfer_gate/geometry.py": "6da468706a051e19ebd613dcdf1e754aa75e3bac2ee522411a2f70bd9e74c65b",
+      "research/natural_key_transfer_gate/prepare_massive.py": "e94d46e110047d5cc084a4e48b1998d36bbec36f05142d33f4a39a4eb70ab757",
+      "research/natural_key_transfer_gate/run_natural_key_transfer_gate.py": "5793d95e152eabedb741e27d7be50dd06a9fe70a7b9f49646e919097ba2849ac",
+      "research/validated_memory_primitives/hlm5_lm.py": "57b98001ee37994aff267b6888644a98239aa5918db8c63377886e716534beb5",
+      "research/validated_memory_primitives/hlm5_memory.py": "0210733ab1160ac073d44e5a9d7967bb3b985fc323a07efde925694ae56c346a"
+    },
+    "implementation": {
+      "research/source_calibrated_admission_gate/__init__.py": "f311743525f02bc0ad23aca085407b260785151cb49822642073329293d5c5c8",
+      "research/source_calibrated_admission_gate/contract.py": "efe3d5f156c34c59dad90bc4c4dbf383787b12f961779ba666ca93d67e6585e8",
+      "research/source_calibrated_admission_gate/geometry.py": "0447b3afca37daf1c1982ed51887bbd1c1d8d0c7f5555f2aecb9d07772bf0c17",
+      "research/source_calibrated_admission_gate/prepare_topv2.py": "0f00915afaf690e095b5bf85a06c3e456507c89af8c1f2052c425141fedddd1b",
+      "research/source_calibrated_admission_gate/run_source_calibrated_admission_gate.py": "073b71f3f6e0f13e8957beb96b12bfff56b3be61208ec25410ad425da84f6d8b",
+      "research/source_calibrated_admission_gate/tests/test_geometry.py": "f6d2970f7ceb8d009cb39b2befe07bbd0c838ba8771eb4d3d0ae20d45c701dc3",
+      "research/source_calibrated_admission_gate/tests/test_prepare_topv2.py": "7f6213475c67b26e3bed44345261472b6391de33a284114232de9328a1aeaf97",
+      "research/source_calibrated_admission_gate/tests/test_registration.py": "12084628f16bdf47edd983046224ee4c0c233e8e1c43bbc1df3a6621dd1ee613"
+    },
+    "manifest": {
+      "path": "research/source_calibrated_admission_gate/data/topv2_development_manifest.json",
+      "scientific_sha256": "90293546a57991bf046df32a87e20798b8da089bbe5c0fe88d07b98fcea8682c",
+      "sha256": "e2575806939206cca4c2ffe506d00f9894d3c9b2c70463082a1a5a7dae243159"
+    },
+    "preregistration": {
+      "path": "research/source_calibrated_admission_gate/docs/source-calibrated-admission-prereg-2026-08-10.md",
+      "sha256": "5740b38a529c6e807060701852ed9e670c5fe3a8d8398d7820fd4d3192dc3ef8"
+    },
+    "tokenizer": {
+      "path": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\tokenizer.json",
+      "sha256": "15993635191a1c5f1a5dc7aeaacbdf9a44a45d90abef954fc77b686f4fbbe588"
+    }
+  },
+  "attestation": {
+    "development_cache_existed": false,
+    "only_trunk_input": "fixed synthetic anchor",
+    "routing_outcomes_computed": false,
+    "test_utterances_encoded": false,
+    "topv2_utterances_encoded": false
+  },
+  "command": [
+    "C:\\Users\\md\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "D:\\HLM5-source-calibrated-admission\\research\\source_calibrated_admission_gate\\run_source_calibrated_admission_gate.py",
+    "preflight"
+  ],
+  "environment": {
+    "cublas_workspace_config": ":4096:8",
+    "cuda": "12.1",
+    "cuda_matmul_tf32": false,
+    "cudnn_tf32": false,
+    "deterministic_algorithms": true,
+    "device": "cuda",
+    "gpu": "NVIDIA RTX 4000 SFF Ada Generation",
+    "numpy": "2.4.6",
+    "platform": "Windows-10-10.0.20348-SP0",
+    "python": "3.11.7",
+    "torch": "2.5.1+cu121"
+  },
+  "execution_contract": {
+    "cache": "D:\\HLM2\\runtime\\sca1\\topv2-development-hiddens.pt",
+    "checkpoint": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\model.pt",
+    "data_root": "D:\\HLM2\\runtime\\datasets\\topv2-1.1\\official",
+    "device": "cuda",
+    "mode": "development",
+    "tokenizer": "D:\\HLM2\\artifacts\\models\\demo\\hlm5-136m-fineweb-g2-2026-06-10\\tokenizer.json"
+  },
+  "execution_contract_sha256": "fba5eeb78e25a3f48c4231a95e859c3b9e481eae6cba717d822e1d88ef3588b9",
+  "generated_at_local": "2026-08-10T16:59:46.622429+02:00",
+  "git_head": "28f3be3531a68eb02a0ae41ebeb6ee7cbf5fc031",
+  "manifest_scientific_sha256": "90293546a57991bf046df32a87e20798b8da089bbe5c0fe88d07b98fcea8682c",
+  "model": {
+    "architecture": "HLM5LM",
+    "cfg": {
+      "dim": 768,
+      "max_len": 1024,
+      "memory_layer": false,
+      "memory_size": 256,
+      "n_heads": 12,
+      "n_layers": 12
+    },
+    "step": 29999,
+    "val_ppl": 40.15816414595203,
+    "vocab": 65536
+  },
+  "random_basis": {
+    "basis_sha256": "3d24eb4803ae658587e314df46dc48a22850c76df1559598849a06f054945683",
+    "construction": "standard_normal_complete_qr_diag_r_nonnegative",
+    "dimension": 768,
+    "dtype": "torch.float64",
+    "generator_device": "cpu",
+    "orthogonality_max_abs_error": 1.2212453270876722e-15,
+    "seed": 20260811
+  },
+  "schema": "hlm5-sca1-preflight-v1",
+  "scientific_constants": {
+    "admission_comparison": "strict_greater_than",
+    "arms": [
+      "raw",
+      "centered",
+      "diagonal_std",
+      "random_basis_zca",
+      "blind_zca"
+    ],
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260811,
+    "calibration_negative_quantile": 0.95,
+    "calibration_quantile_method": "higher",
+    "candidate": "blind_zca",
+    "degree": 5,
+    "group_intent_count": 9,
+    "hidden_batch_size": 128,
+    "hidden_dtype": "torch.float32",
+    "hidden_population_names": [
+      "source_fit",
+      "target_support",
+      "target_development",
+      "calibration_support",
+      "calibration_positive",
+      "calibration_negative",
+      "off_support_audit"
+    ],
+    "model_determinism_seed": 20260810,
+    "no_recurrence": true,
+    "no_target_metric_fit": true,
+    "no_test_encoding": true,
+    "pass_bars": {
+      "candidate_correct_admission_macro": 0.2,
+      "candidate_max_predicted_intent_share": 0.25,
+      "candidate_minus_diagonal_correct_admission_macro": 0.015,
+      "candidate_minus_random_basis_correct_admission_macro": 0.015,
+      "candidate_minus_raw_correct_admission_macro": 0.03,
+      "candidate_off_support_false_admission_rate": 0.05,
+      "candidate_selective_accuracy": 0.65,
+      "candidate_target_coverage_macro": 0.3,
+      "candidate_top1_accuracy_drop_vs_raw": 0.01,
+      "paired_interval_lower_strictly_greater_than": 0.0
+    },
+    "random_basis_seed": 20260811,
+    "random_basis_sha256": "3d24eb4803ae658587e314df46dc48a22850c76df1559598849a06f054945683",
+    "rows_per_intent": 20,
+    "schema": "hlm5-sca1-scientific-constants-v1",
+    "scientific_device": "cpu",
+    "scientific_dtype": "torch.float64",
+    "shrinkage": 0.05,
+    "source_domains": [
+      "alarm",
+      "event",
+      "messaging",
+      "music",
+      "navigation",
+      "timer"
+    ],
+    "source_fit_per_domain": 2000,
+    "support_per_intent": 3,
+    "target_domains": [
+      "reminder",
+      "weather"
+    ]
+  },
+  "status": "READY_TO_REGISTER",
+  "synthetic_anchor": {
+    "first": {
+      "dimension": 768,
+      "hidden_sha256": "f6f193d39e40af23aa4b1222a170c3dc7564e29a01e002c8b4f4b30e0bad06d9",
+      "length_groups": 1,
+      "maximum_tokens": 10,
+      "minimum_tokens": 10,
+      "row_count": 1
+    },
+    "hidden_sha256": "f6f193d39e40af23aa4b1222a170c3dc7564e29a01e002c8b4f4b30e0bad06d9",
+    "repeat_bit_exact": true,
+    "second": {
+      "dimension": 768,
+      "hidden_sha256": "f6f193d39e40af23aa4b1222a170c3dc7564e29a01e002c8b4f4b30e0bad06d9",
+      "length_groups": 1,
+      "maximum_tokens": 10,
+      "minimum_tokens": 10,
+      "row_count": 1
+    },
+    "text_sha256": "99a9e14ff8f343d3a6bb45e169bb700d0706d93265adc57b6bfb4e877d619890"
+  },
+  "tests": {
+    "command": [
+      "C:\\Users\\md\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "D:\\HLM5-source-calibrated-admission\\research\\source_calibrated_admission_gate\\tests",
+      "-p",
+      "test_*.py"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "91b2506b93f9963c51dae1d98ffdb90091011dbbd3c3e015c4b57719ba3781ce",
+    "stdout_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+    "summary": "OK"
+  }
+}
