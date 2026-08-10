@@ -1,0 +1,45 @@
+{
+  "admission_scientific_sha256": "349221bb00112322d0cece5ee617209e2346c0374c7a4c3fa89e07c2c7a61174",
+  "admission_sha256": "96d6dd8f8528d38de52d559df86f4228b508de4487cf9ea3efd50b63adccc7b0",
+  "attempt_sha256": "4d2fc5381faef1c3b99316994eec90b7984c413c216403a02c06ee9581c10533",
+  "result_scientific_sha256": "0e2610d622dcf24dad3ce80525fc6ce0385d98a9bb26994bf64e02fe4d04a560",
+  "result_sha256": "ec064b4d38c1abb9d88f99bd1c138b01cbfe4f9b15dbdf28edbe415477e678b6",
+  "schema": "hlm5-e8-3b-verdict-v1",
+  "scientific": {
+    "claim_boundary": "Pinned frozen SmolLM3-3B-Base, registered A100/BF16 runtime, 64 preregistered exact-key CounterFact cases, fixed head-only ZCA values, released HLM5 multi-slot gate, and exact complete rollback.",
+    "scientific_failures": [],
+    "summary": {
+      "candidate_admitted": 64,
+      "candidate_gain": 35,
+      "candidate_gate": {
+        "admitted_exact_checked": 64,
+        "admitted_exact_gate_open": 64,
+        "admitted_exact_own_slot": 64,
+        "admitted_exact_target_success": 64,
+        "false_gate_applications": 0,
+        "gate_closed_bit_identical": 264,
+        "gate_closed_checked": 264,
+        "gate_row_count": 328,
+        "neighborhoods_checked": 128,
+        "neutrals_checked": 8,
+        "off_support_checked": 264,
+        "paraphrases_checked": 128
+      },
+      "candidate_lost_raw_case_ids": [],
+      "candidate_lost_raw_count": 0,
+      "case_count": 64,
+      "eligible_count": 64,
+      "raw_admitted": 29,
+      "rollback": {
+        "bit_identical_count": 337,
+        "delta_zero_count": 337,
+        "gate_open_count": 0,
+        "prompt_count": 337
+      }
+    },
+    "validity_failures": [],
+    "verdict": "PASS_3B_FULL_PATH_ZCA"
+  },
+  "scientific_sha256": "5ee1d5c9b6ad5dc343ae01e3cc5e89d2502ce4ee552642cc6ba0ed1048180c41",
+  "verdict": "PASS_3B_FULL_PATH_ZCA"
+}

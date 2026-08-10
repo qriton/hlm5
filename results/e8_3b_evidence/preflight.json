@@ -1,0 +1,243 @@
+{
+  "baseline_only_head_identity": {
+    "argmax_equal": true,
+    "hidden_dtype": "bfloat16",
+    "hidden_sha256": "fbb184467e884fe6f0452ca624afb986552893fc6daba0482a9618da8d32f6fa",
+    "independent_argmax": 31843,
+    "independent_logits_sha256": "d7f921289857914bc0472a9da0d1feda16e1856c45840952c67d1ca278817bac",
+    "logits_dtype": "bfloat16",
+    "max_abs_logit_difference": 0.0,
+    "maximum_allowed": 0.125,
+    "native_argmax": 31843,
+    "native_logits_sha256": "d7f921289857914bc0472a9da0d1feda16e1856c45840952c67d1ca278817bac",
+    "prompt_sha256": "32b3c71b5eea9980b3b927757d3c5c7854416b3f703170d886dd779630784d33"
+  },
+  "basis_and_directions": {
+    "direction_dtype": "float64",
+    "direction_shape": [
+      64,
+      2048
+    ],
+    "eigenvalues_sha256": "7f33aaca070a3539f8c4c65a0e8a56ef82a2813d950ec910335160f971da4971",
+    "eigenvectors_sha256": "d5e1b3f6c5fafa4b9fd46bfbcbf1eddd982a2b19ea9a40542ba236a8ebdb3fad",
+    "mean_sha256": "ae2b4c5d0c3aa902b7ae61dfb320177fea40270c1450f15a9fb5c064bed9e489",
+    "median_positive_eigenvalue": 0.007535659708082676,
+    "operator_dtype": "float64",
+    "operator_sha256": "ac2536bf5a28014c665177fb89ff907ae2456a276c5c096edc767900b4a8d065",
+    "operator_shape": [
+      2048,
+      2048
+    ],
+    "raw_directions_sha256": "6123939ab3f421e695ad5247da5e6466d16a630fc46053cb9f222415999d12e5",
+    "ridge": 7.535659708082676e-05,
+    "ridge_fraction": 0.01,
+    "zca_directions_sha256": "52f2e9fef987bfc96e768831871516f17c86a2a0e6a70924d674fab4c2e1a2be"
+  },
+  "bound_inputs": {
+    "counterfact_sha256": "d017056125178a13728594e66a801357a8db9ed7973a7425554bb4271de9fc6f",
+    "e7c_implementation_commit": "58cedff87f270f1e7047e491a80565b7da05390f",
+    "e7c_result_sha256": "88c9819648ce7a30ba3e6d75aa5da2c317d072db8eae0160631dada212f9cf44",
+    "e7c_verdict": "PASS_3B_ZCA_GEOMETRY",
+    "e7c_verdict_sha256": "32cc956a9a56e0be56e0976c4c17e7862544a2ede07735ac45ea6faffba0f1f6"
+  },
+  "branch": "e8-run",
+  "case_count": 64,
+  "case_ids": [
+    20000,
+    20001,
+    20002,
+    20003,
+    20004,
+    20005,
+    20006,
+    20007,
+    20008,
+    20009,
+    20010,
+    20011,
+    20012,
+    20013,
+    20014,
+    20015,
+    20016,
+    20017,
+    20018,
+    20019,
+    20020,
+    20021,
+    20022,
+    20023,
+    20024,
+    20025,
+    20026,
+    20027,
+    20028,
+    20029,
+    20030,
+    20031,
+    20032,
+    20033,
+    20034,
+    20035,
+    20036,
+    20037,
+    20038,
+    20039,
+    20040,
+    20041,
+    20042,
+    20043,
+    20044,
+    20045,
+    20046,
+    20047,
+    20048,
+    20050,
+    20052,
+    20053,
+    20054,
+    20055,
+    20056,
+    20057,
+    20058,
+    20059,
+    20060,
+    20061,
+    20062,
+    20063,
+    20064,
+    20065
+  ],
+  "case_sha256": "6d81f2ccf551b76402213593aea5b12ad37b8eb556fe3ae2a5731bd6cf5cb758",
+  "case_start": 20000,
+  "commands": [
+    "python scripts/preflight_e8_3b.py",
+    "python scripts/register_e8_3b.py",
+    "python scripts/admit_e8_3b.py",
+    "python scripts/replay_e8_3b.py",
+    "python scripts/verify_e8_3b.py"
+  ],
+  "dependency_sha256": {
+    "hlm5/__init__.py": "6122cf699b74d696a62fc95ee46b3bcde76ae9fd6e4bccda8a17fc55609d0e57",
+    "hlm5/certify.py": "a13544eb242cb1f827496a46a6d943723ad51f35b827fe47d2da641e26a1c210",
+    "hlm5/e7_contract.py": "5b7717f5da089db8b1d9d1d611251a2d01ef8fcbf5a719836692abde4a0fc74d",
+    "hlm5/e7_runtime.py": "c56bda88db7173d11e81c7705f31ef5439b3d9b3b7946117e56578d9059917cc",
+    "hlm5/e7b_contract.py": "606d95ca4972d1febadf6348c441449574f1c33eb2f3b7b71b3f79df27c31119",
+    "hlm5/e7b_runtime.py": "bf6e7b0abfe83d0da0f146ae72dc69d52b0469fcc311689c535a7628ea2fdbc2",
+    "hlm5/e7c_runtime.py": "55b7daf0d1d65303db5a3331ddc9b3db701e512ea45f2823a2dbfece35a58d23",
+    "hlm5/edit_audit.py": "930d51619bb240e13a15412f6db92b0cf58a87e17a405dc7110bbaaa2e8e8930",
+    "hlm5/io.py": "5886ce8331ba42ca0ee75dd67746665be58d174e5f3416ad661f81c7d7685439",
+    "hlm5/key_value.py": "a0bacdfcba80397bfacefa7c7762bcb202fb91363da0e6fa902f9c707c70140a",
+    "hlm5/memory.py": "91cb50810a99079e77056291a775a878483ca6c5ddb05f2c671623c8887db973",
+    "hlm5/model.py": "2f810bde52bbf3e0da9f52640bf36ca924cd665bd6a7036155f0581494b8857c",
+    "hlm5/public_adapter.py": "9a7f77976ef604d318f42821e36491a13a156ae7e00af49a255ca2fec90f650d"
+  },
+  "environment": {
+    "cuda_runtime": "12.1",
+    "cudnn": 90100,
+    "device_capability": [
+      8,
+      0
+    ],
+    "device_count": 1,
+    "device_name": "NVIDIA A100-SXM-64GB",
+    "device_type": "cuda",
+    "platform": "Linux-4.18.0-477.27.1.el8_8.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.6",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.12.1"
+  },
+  "fresh_prompt_outcomes_computed": false,
+  "implementation_commit": "3ee23ba8a1451f3231254fe7f7f63b4e3422468d",
+  "model_file_sha256": {
+    "config.json": "e8336e843aecb733691a043ad4209168e1730158b5e03c2672591cc946036a47",
+    "generation_config.json": "7d830c1a274c4484a50eb34ed68cdbd3611a4981fd4d539c7ec1fed67e01cec4",
+    "model-00001-of-00002.safetensors": "7e270ac568ee1880ddbadad66ccdcd9906d52415e8904e2f300c75250b9c7d49",
+    "model-00002-of-00002.safetensors": "c6a6e7690a66dcc386a6a9b456686e7c308d45cba884d116c928dafa7fa987ae",
+    "model.safetensors.index.json": "e3a7254c086c4a78f95ad5864f435d165ffed1ed8998326ce5107b4423c15b76",
+    "special_tokens_map.json": "9faaa15579bbf433176493a621142ff580ae2d13d81bf4702cb72f4d6902dc62",
+    "tokenizer.json": "ab4da6b2aa68247e9c0fa9b97fc7fcc796505038d01f7e144522a65ce0dbd2e5",
+    "tokenizer_config.json": "f398d9edb0184aac1c9fd1b1bdcd3a5a1527ae560fd847719635a66e2b54e9cd"
+  },
+  "model_files": {
+    "config.json": {
+      "bytes": 943,
+      "sha256": "e8336e843aecb733691a043ad4209168e1730158b5e03c2672591cc946036a47"
+    },
+    "generation_config.json": {
+      "bytes": 126,
+      "sha256": "7d830c1a274c4484a50eb34ed68cdbd3611a4981fd4d539c7ec1fed67e01cec4"
+    },
+    "model-00001-of-00002.safetensors": {
+      "bytes": 4966315264,
+      "sha256": "7e270ac568ee1880ddbadad66ccdcd9906d52415e8904e2f300c75250b9c7d49"
+    },
+    "model-00002-of-00002.safetensors": {
+      "bytes": 1183919744,
+      "sha256": "c6a6e7690a66dcc386a6a9b456686e7c308d45cba884d116c928dafa7fa987ae"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 26899,
+      "sha256": "e3a7254c086c4a78f95ad5864f435d165ffed1ed8998326ce5107b4423c15b76"
+    },
+    "special_tokens_map.json": {
+      "bytes": 151,
+      "sha256": "9faaa15579bbf433176493a621142ff580ae2d13d81bf4702cb72f4d6902dc62"
+    },
+    "tokenizer.json": {
+      "bytes": 17208861,
+      "sha256": "ab4da6b2aa68247e9c0fa9b97fc7fcc796505038d01f7e144522a65ce0dbd2e5"
+    },
+    "tokenizer_config.json": {
+      "bytes": 50405,
+      "sha256": "f398d9edb0184aac1c9fd1b1bdcd3a5a1527ae560fd847719635a66e2b54e9cd"
+    }
+  },
+  "model_id": "HuggingFaceTB/SmolLM3-3B-Base",
+  "model_invariants": {
+    "all_parameters_frozen": true,
+    "class_name": "SmolLM3ForCausalLM",
+    "floating_parameter_dtypes": [
+      "bfloat16"
+    ],
+    "head_bias_is_none": true,
+    "hidden_size": 2048,
+    "layers": 36,
+    "parameter_count": 3075098624,
+    "tied_embeddings": true,
+    "vocab_size": 128256
+  },
+  "model_revision": "d78a42f79198603e614095753484a04c10c2b940",
+  "native_runtime": {
+    "autocast_enabled": false,
+    "cuda_matmul_allow_bf16_reduced_precision_reduction": true,
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "deterministic_algorithms": false,
+    "float32_matmul_precision": "highest"
+  },
+  "neutral_sha256": "c535b5a8eeeae85b0918bee646c82fad78976797f6df6a9bfb939512583e1d69",
+  "preflight_test_command": "python -m pytest tests/test_e8_3b.py -q",
+  "preflight_tests_returncode": 0,
+  "preflight_tests_stderr": "",
+  "preflight_tests_stdout": "...............                                                          [100%]\n15 passed in 8.82s",
+  "prompt_count": 337,
+  "prompt_sha256": "7652c5c71736fc3c0b33845664638aead1c09b2ff84d128618c36bcd20d0db00",
+  "protocol_commit": "02f5186fefa88e9488f0635a5276ce0a9be5999d",
+  "protocol_sha256": "10138337944a3fe709f3dc6f8d1949435fe425129ed9efbe8f820eb14e28e930",
+  "raw_candidate_equal": false,
+  "schema": "hlm5-e8-3b-preflight-v1",
+  "snapshot_selector": "HLM5_E7_SNAPSHOT",
+  "source_sha256": {
+    "hlm5/e8_contract.py": "633106728f658ce469c22e7f3d51fc013b38b90af24f5a506c6deb721166fd80",
+    "hlm5/e8_runtime.py": "dc78a1d7bfea929a66b01d69cc0fdf9b7f7634643d918c6d182c8854fb205be4",
+    "scripts/admit_e8_3b.py": "f2601ceab56c8fc078f00791d1cc6f9a783462a2e8a68c0c392838bae9aab93c",
+    "scripts/preflight_e8_3b.py": "5470153da0a5701fb49565d5ec5555c8db262dcfed996ad8eb17640a1a5862b4",
+    "scripts/register_e8_3b.py": "62b3b76aa90175b688830b0076cf4a0c906a08e6c2ae2771351892eede6de6a8",
+    "scripts/replay_e8_3b.py": "db645fb98b26e358678df73577cc80c8d0aae49a031a60767722912588ce0eea",
+    "scripts/verify_e8_3b.py": "3f439e87ab57315b6048dde1b5e8aa6ba26ebf8eaec82742eb6520aa4f93cf76",
+    "tests/test_e8_3b.py": "8b8acde160242a427d9beb7e9605aaf63375d26895e75906583836c5e067f7c4"
+  },
+  "status": "READY",
+  "whitening_sha256": "be7bf125fee1dcf350af6710a6949d77f937c2272de90e8cfd907b08d966fa42"
+}

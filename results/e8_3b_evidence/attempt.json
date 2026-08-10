@@ -1,0 +1,11 @@
+{
+  "case_sha256": "6d81f2ccf551b76402213593aea5b12ad37b8eb556fe3ae2a5731bd6cf5cb758",
+  "execution_receipt_sha256": "13e63826c9c83d5a7a9abb36e87880993f70f1450ca45b2695c34a2433704777",
+  "implementation_commit": "3ee23ba8a1451f3231254fe7f7f63b4e3422468d",
+  "pre_admission_outputs_absent": true,
+  "prompt_sha256": "7652c5c71736fc3c0b33845664638aead1c09b2ff84d128618c36bcd20d0db00",
+  "protocol_commit": "02f5186fefa88e9488f0635a5276ce0a9be5999d",
+  "protocol_sha256": "10138337944a3fe709f3dc6f8d1949435fe425129ed9efbe8f820eb14e28e930",
+  "schema": "hlm5-e8-3b-attempt-v1",
+  "status": "POOL_SPENT"
+}
