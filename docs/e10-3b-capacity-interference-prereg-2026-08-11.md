@@ -136,6 +136,8 @@ BF16 target/competitor logits and IDs, margin, prediction, and full-logit hash.
 
 Report exact counts plus minimum/median own-slot attention, minimum target
 margin, maximum non-own score, key coherence, and degree-five max crosstalk.
+Every descriptive median is the float64 linear 0.5 quantile (the arithmetic
+mean of the two middle order statistics when the count is even).
 
 ### Wide locality
 
