@@ -145,6 +145,52 @@ individual contributions.
 No 524K checkpoint was created. The 520K marker and 96-shard aggregate remain
 exact. Evidence is under `results/legacy_g4_hybrid_520k_r2/`.
 
+### R2b — state-complete warm-restart bridge: prepared, not authorized
+
+R2 localized a `+0.20` printed-PPL discontinuity to the model-only restart
+contract. The old checkpoint cannot recover missing AdamW moments or the CUDA
+dropout RNG retroactively. Repeating the same reset is therefore rejected.
+
+R2b is one frozen repair, not a parameter sweep:
+
+- resume the exact 520K model at the original 610K cosine horizon;
+- reconstruct the data-sampling generator by replaying exactly 108,000 draws,
+  matching the last uninterrupted job's 412K-to-520K segment at batch one;
+- acknowledge that optimizer and CUDA RNG remain unavailable at the source;
+- ramp the scheduled LR linearly from `0.1x` to `1.0x` over exactly 2,000
+  updates;
+- evaluate and save at 522K, with no checkpoint pruning;
+- require the same conservative printed-PPL ceiling `<= 15.77`;
+- save AdamW plus rank-local sampling, CPU, and CUDA RNG state in every shard;
+- load the new 522K checkpoint afresh on all 96 ranks with
+  `--require-complete-state --stop-after-resume` before promotion.
+
+The 108,000-draw offset is bound to job `47988845` stdout SHA-256
+`1fddeb1b7259f70bb9936e595df427e2e84ecb33b25fd8b034e35986c0b1015d`,
+which records resume at 412,000, batch/GPU one, continuous execution through
+the 520K save, and no non-finite event.
+
+The trainer is
+`research/legacy_g4_recovery/train_hlm5_lm_fineweb_stateful.py`; the launcher
+is `slurm/legacy_g4_hybrid_520k_stateful_bridge.slurm`. The reviewed trainer
+SHA-256 is `1f10b45c9d35bbaba346e07756c38edb681ea9bb8daee1c4c08ab4d2e58aa0c4`;
+the prepared launcher SHA-256 is
+`d9f0d10c983fab5146933ecc201c07062245c2a71fff33bdffba9b4813292f9a`.
+A valid PPL miss remains a scientific FAIL even if the new state is
+structurally complete. An implementation/load/save error is INVALID; an
+external interruption with no known invalidity is INCOMPLETE. A valid FAIL
+burns this bridge definition and cannot be tuned on the same evidence.
+
+R2b PASS would establish a state-complete 522K recovery anchor only. It would
+license a separately preregistered exact-resume continuity rung; it would not
+license the remaining training ladder, the no-tax claim, or product promotion.
+
+The reviewed files were copied to the registered Leonardo paths and reproduced
+both hashes. A target-environment `--help` import smoke passed. Leonardo accepted
+the exact launcher under `sbatch --test-only` as estimator `51813023`; the
+estimator projected 2026-08-18 under the live queue and was absent from both
+`squeue` and `sacct`, so no job or allocation was created.
+
 ### R3 — matched no-tax recovery: not yet authorized
 
 The baseline is only at step 484,000. A completed hybrid alone cannot establish
