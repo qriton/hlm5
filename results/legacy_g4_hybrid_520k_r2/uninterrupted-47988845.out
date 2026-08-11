@@ -1,0 +1,1340 @@
+job_id=47988845 g4_hybrid FSDP -> 610000 steps batch/GPU=1 lr=2e-4 grad_clip=1.0
+Sun Jun 28 10:14:00 CEST 2026
+-rw-r--r-- 1 mdima000 interactive 240 Jun 27 22:44 runs/g4_hybrid/ckpt_step408000.sharded
+-rw-r--r-- 1 mdima000 interactive 240 Jun 27 23:51 runs/g4_hybrid/ckpt_step412000.sharded
+train tokens=22,080,306,662 val tokens=225,309,251 world=96 eff_batch=96 tok/step=98,304
+grad_checkpointing deferred to FSDP activation checkpointing
+HLM5LM huge3b: 2702.5M params (vocab 65536, memory_layer=True)
+FSDP FULL_SHARD on (use_orig_params=True for tied embed/head)
+FSDP activation checkpointing: ON (non-reentrant)
+fsdp pilot: model-only checkpoints (no optimizer shard)
+FSDP local-state load candidates: strip-root-fsdp, strip-checkpoint-wrapper, strip-all-fsdp-checkpoint-wrappers, raw
+temporarily disabled requires_grad on 429 FSDP params
+FSDP local-state strict=False fallback succeeded with strip-root-fsdp keys missing=0 unexpected=33
+normalized legacy FSDP local-state wrapper keys
+resumed sharded runs/g4_hybrid/ckpt_step412000 rank=0 at step 412000
+step 412000 loss 2.784 lr 4.79e-05 13K tok/s
+step 412100 loss 2.761 lr 4.79e-05 128K tok/s
+step 412200 loss 2.733 lr 4.78e-05 135K tok/s
+step 412300 loss 2.654 lr 4.78e-05 136K tok/s
+step 412400 loss 3.137 lr 4.78e-05 137K tok/s
+step 412500 loss 2.981 lr 4.77e-05 137K tok/s
+step 412600 loss 2.908 lr 4.77e-05 136K tok/s
+step 412700 loss 3.053 lr 4.76e-05 137K tok/s
+step 412800 loss 2.562 lr 4.76e-05 137K tok/s
+step 412900 loss 2.723 lr 4.75e-05 136K tok/s
+step 413000 loss 3.030 lr 4.75e-05 136K tok/s
+step 413100 loss 3.282 lr 4.74e-05 135K tok/s
+step 413200 loss 2.502 lr 4.74e-05 136K tok/s
+step 413300 loss 2.396 lr 4.74e-05 136K tok/s
+step 413400 loss 2.994 lr 4.73e-05 137K tok/s
+step 413500 loss 3.077 lr 4.73e-05 137K tok/s
+step 413600 loss 2.992 lr 4.72e-05 137K tok/s
+step 413700 loss 2.390 lr 4.72e-05 138K tok/s
+step 413800 loss 2.910 lr 4.71e-05 138K tok/s
+step 413900 loss 2.879 lr 4.71e-05 138K tok/s
+  eval at step 413999...
+  val PPL 16.76
+step 414000 loss 2.501 lr 4.70e-05 138K tok/s
+step 414100 loss 2.309 lr 4.70e-05 138K tok/s
+step 414200 loss 2.424 lr 4.70e-05 138K tok/s
+step 414300 loss 2.526 lr 4.69e-05 138K tok/s
+step 414400 loss 2.641 lr 4.69e-05 138K tok/s
+step 414500 loss 2.780 lr 4.68e-05 138K tok/s
+step 414600 loss 2.152 lr 4.68e-05 138K tok/s
+step 414700 loss 2.855 lr 4.67e-05 138K tok/s
+step 414800 loss 2.378 lr 4.67e-05 138K tok/s
+step 414900 loss 2.212 lr 4.67e-05 138K tok/s
+step 415000 loss 2.547 lr 4.66e-05 138K tok/s
+step 415100 loss 2.856 lr 4.66e-05 138K tok/s
+step 415200 loss 2.978 lr 4.65e-05 138K tok/s
+step 415300 loss 2.492 lr 4.65e-05 138K tok/s
+step 415400 loss 3.551 lr 4.64e-05 138K tok/s
+step 415500 loss 2.648 lr 4.64e-05 138K tok/s
+step 415600 loss 2.737 lr 4.63e-05 138K tok/s
+step 415700 loss 1.772 lr 4.63e-05 138K tok/s
+step 415800 loss 2.988 lr 4.63e-05 139K tok/s
+step 415900 loss 2.928 lr 4.62e-05 139K tok/s
+  eval at step 415999...
+  val PPL 16.75
+  checkpoint at step 415999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step416000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step408000
+step 416000 loss 2.883 lr 4.62e-05 138K tok/s
+step 416100 loss 2.840 lr 4.61e-05 138K tok/s
+step 416200 loss 2.493 lr 4.61e-05 138K tok/s
+step 416300 loss 2.711 lr 4.60e-05 138K tok/s
+step 416400 loss 2.974 lr 4.60e-05 138K tok/s
+step 416500 loss 2.820 lr 4.60e-05 138K tok/s
+step 416600 loss 2.802 lr 4.59e-05 138K tok/s
+step 416700 loss 1.871 lr 4.59e-05 138K tok/s
+step 416800 loss 2.847 lr 4.58e-05 138K tok/s
+step 416900 loss 2.620 lr 4.58e-05 137K tok/s
+step 417000 loss 2.611 lr 4.57e-05 137K tok/s
+step 417100 loss 3.726 lr 4.57e-05 138K tok/s
+step 417200 loss 2.956 lr 4.57e-05 138K tok/s
+step 417300 loss 3.292 lr 4.56e-05 138K tok/s
+step 417400 loss 2.850 lr 4.56e-05 138K tok/s
+step 417500 loss 2.871 lr 4.55e-05 138K tok/s
+step 417600 loss 2.981 lr 4.55e-05 138K tok/s
+step 417700 loss 3.324 lr 4.54e-05 138K tok/s
+step 417800 loss 3.010 lr 4.54e-05 138K tok/s
+step 417900 loss 2.366 lr 4.53e-05 138K tok/s
+  eval at step 417999...
+  val PPL 16.70
+step 418000 loss 3.488 lr 4.53e-05 138K tok/s
+step 418100 loss 2.541 lr 4.53e-05 138K tok/s
+step 418200 loss 2.701 lr 4.52e-05 137K tok/s
+step 418300 loss 2.366 lr 4.52e-05 137K tok/s
+step 418400 loss 1.950 lr 4.51e-05 137K tok/s
+step 418500 loss 2.740 lr 4.51e-05 137K tok/s
+step 418600 loss 2.842 lr 4.50e-05 137K tok/s
+step 418700 loss 3.065 lr 4.50e-05 137K tok/s
+step 418800 loss 2.444 lr 4.50e-05 137K tok/s
+step 418900 loss 2.729 lr 4.49e-05 137K tok/s
+step 419000 loss 2.984 lr 4.49e-05 137K tok/s
+step 419100 loss 2.974 lr 4.48e-05 137K tok/s
+step 419200 loss 2.371 lr 4.48e-05 137K tok/s
+step 419300 loss 2.653 lr 4.47e-05 137K tok/s
+step 419400 loss 2.172 lr 4.47e-05 137K tok/s
+step 419500 loss 3.123 lr 4.47e-05 137K tok/s
+step 419600 loss 2.811 lr 4.46e-05 137K tok/s
+step 419700 loss 2.594 lr 4.46e-05 137K tok/s
+step 419800 loss 2.870 lr 4.45e-05 137K tok/s
+step 419900 loss 2.942 lr 4.45e-05 137K tok/s
+  eval at step 419999...
+  val PPL 16.53
+  checkpoint at step 419999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step420000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step412000
+step 420000 loss 2.994 lr 4.44e-05 137K tok/s
+step 420100 loss 3.092 lr 4.44e-05 137K tok/s
+step 420200 loss 2.882 lr 4.44e-05 137K tok/s
+step 420300 loss 1.992 lr 4.43e-05 137K tok/s
+step 420400 loss 2.063 lr 4.43e-05 137K tok/s
+step 420500 loss 2.814 lr 4.42e-05 137K tok/s
+step 420600 loss 3.189 lr 4.42e-05 137K tok/s
+step 420700 loss 2.598 lr 4.41e-05 137K tok/s
+step 420800 loss 3.550 lr 4.41e-05 137K tok/s
+step 420900 loss 2.385 lr 4.41e-05 137K tok/s
+step 421000 loss 2.359 lr 4.40e-05 137K tok/s
+step 421100 loss 3.044 lr 4.40e-05 137K tok/s
+step 421200 loss 2.931 lr 4.39e-05 137K tok/s
+step 421300 loss 2.787 lr 4.39e-05 137K tok/s
+step 421400 loss 2.270 lr 4.38e-05 137K tok/s
+step 421500 loss 2.243 lr 4.38e-05 137K tok/s
+step 421600 loss 2.724 lr 4.38e-05 137K tok/s
+step 421700 loss 2.709 lr 4.37e-05 137K tok/s
+step 421800 loss 2.723 lr 4.37e-05 137K tok/s
+step 421900 loss 2.837 lr 4.36e-05 137K tok/s
+  eval at step 421999...
+  val PPL 16.68
+step 422000 loss 2.489 lr 4.36e-05 137K tok/s
+step 422100 loss 3.762 lr 4.35e-05 137K tok/s
+step 422200 loss 2.397 lr 4.35e-05 137K tok/s
+step 422300 loss 2.883 lr 4.35e-05 137K tok/s
+step 422400 loss 2.542 lr 4.34e-05 137K tok/s
+step 422500 loss 2.537 lr 4.34e-05 137K tok/s
+step 422600 loss 2.774 lr 4.33e-05 137K tok/s
+step 422700 loss 2.851 lr 4.33e-05 137K tok/s
+step 422800 loss 2.745 lr 4.32e-05 137K tok/s
+step 422900 loss 2.797 lr 4.32e-05 137K tok/s
+step 423000 loss 1.723 lr 4.32e-05 137K tok/s
+step 423100 loss 2.537 lr 4.31e-05 137K tok/s
+step 423200 loss 2.436 lr 4.31e-05 137K tok/s
+step 423300 loss 2.551 lr 4.30e-05 137K tok/s
+step 423400 loss 2.718 lr 4.30e-05 137K tok/s
+step 423500 loss 2.790 lr 4.29e-05 137K tok/s
+step 423600 loss 3.037 lr 4.29e-05 137K tok/s
+step 423700 loss 3.084 lr 4.29e-05 137K tok/s
+step 423800 loss 2.829 lr 4.28e-05 137K tok/s
+step 423900 loss 2.947 lr 4.28e-05 137K tok/s
+  eval at step 423999...
+  val PPL 16.64
+  checkpoint at step 423999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step424000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step416000
+step 424000 loss 2.593 lr 4.27e-05 137K tok/s
+step 424100 loss 3.055 lr 4.27e-05 137K tok/s
+step 424200 loss 2.827 lr 4.27e-05 137K tok/s
+step 424300 loss 3.433 lr 4.26e-05 137K tok/s
+step 424400 loss 2.638 lr 4.26e-05 137K tok/s
+step 424500 loss 2.887 lr 4.25e-05 137K tok/s
+step 424600 loss 1.896 lr 4.25e-05 138K tok/s
+step 424700 loss 3.574 lr 4.24e-05 138K tok/s
+step 424800 loss 2.661 lr 4.24e-05 138K tok/s
+step 424900 loss 2.751 lr 4.24e-05 138K tok/s
+step 425000 loss 2.267 lr 4.23e-05 137K tok/s
+step 425100 loss 2.526 lr 4.23e-05 137K tok/s
+step 425200 loss 2.470 lr 4.22e-05 137K tok/s
+step 425300 loss 2.660 lr 4.22e-05 137K tok/s
+step 425400 loss 3.158 lr 4.21e-05 137K tok/s
+step 425500 loss 2.321 lr 4.21e-05 137K tok/s
+step 425600 loss 3.160 lr 4.21e-05 138K tok/s
+step 425700 loss 2.194 lr 4.20e-05 138K tok/s
+step 425800 loss 2.601 lr 4.20e-05 138K tok/s
+step 425900 loss 2.601 lr 4.19e-05 137K tok/s
+  eval at step 425999...
+  val PPL 16.70
+step 426000 loss 2.898 lr 4.19e-05 137K tok/s
+step 426100 loss 3.139 lr 4.19e-05 137K tok/s
+step 426200 loss 2.553 lr 4.18e-05 137K tok/s
+step 426300 loss 2.921 lr 4.18e-05 137K tok/s
+step 426400 loss 2.143 lr 4.17e-05 137K tok/s
+step 426500 loss 2.567 lr 4.17e-05 137K tok/s
+step 426600 loss 2.882 lr 4.16e-05 137K tok/s
+step 426700 loss 2.408 lr 4.16e-05 137K tok/s
+step 426800 loss 2.902 lr 4.16e-05 137K tok/s
+step 426900 loss 2.522 lr 4.15e-05 137K tok/s
+step 427000 loss 2.868 lr 4.15e-05 137K tok/s
+step 427100 loss 3.231 lr 4.14e-05 137K tok/s
+step 427200 loss 2.995 lr 4.14e-05 137K tok/s
+step 427300 loss 2.208 lr 4.13e-05 137K tok/s
+step 427400 loss 2.900 lr 4.13e-05 137K tok/s
+step 427500 loss 3.002 lr 4.13e-05 137K tok/s
+step 427600 loss 3.212 lr 4.12e-05 137K tok/s
+step 427700 loss 2.605 lr 4.12e-05 137K tok/s
+step 427800 loss 2.627 lr 4.11e-05 137K tok/s
+step 427900 loss 4.039 lr 4.11e-05 137K tok/s
+  eval at step 427999...
+  val PPL 16.61
+  checkpoint at step 427999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step428000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step420000
+step 428000 loss 2.593 lr 4.11e-05 137K tok/s
+step 428100 loss 2.872 lr 4.10e-05 137K tok/s
+step 428200 loss 2.633 lr 4.10e-05 137K tok/s
+step 428300 loss 2.505 lr 4.09e-05 137K tok/s
+step 428400 loss 2.773 lr 4.09e-05 137K tok/s
+step 428500 loss 2.209 lr 4.08e-05 137K tok/s
+step 428600 loss 2.289 lr 4.08e-05 137K tok/s
+step 428700 loss 2.652 lr 4.08e-05 137K tok/s
+step 428800 loss 2.743 lr 4.07e-05 137K tok/s
+step 428900 loss 2.801 lr 4.07e-05 138K tok/s
+step 429000 loss 2.148 lr 4.06e-05 138K tok/s
+step 429100 loss 3.698 lr 4.06e-05 138K tok/s
+step 429200 loss 2.879 lr 4.06e-05 138K tok/s
+step 429300 loss 2.399 lr 4.05e-05 138K tok/s
+step 429400 loss 2.810 lr 4.05e-05 138K tok/s
+step 429500 loss 2.600 lr 4.04e-05 138K tok/s
+step 429600 loss 2.893 lr 4.04e-05 138K tok/s
+step 429700 loss 3.916 lr 4.03e-05 138K tok/s
+step 429800 loss 2.842 lr 4.03e-05 138K tok/s
+step 429900 loss 2.921 lr 4.03e-05 138K tok/s
+  eval at step 429999...
+  val PPL 16.77
+step 430000 loss 2.640 lr 4.02e-05 138K tok/s
+step 430100 loss 2.666 lr 4.02e-05 138K tok/s
+step 430200 loss 2.680 lr 4.01e-05 138K tok/s
+step 430300 loss 3.066 lr 4.01e-05 138K tok/s
+step 430400 loss 2.444 lr 4.01e-05 138K tok/s
+step 430500 loss 3.449 lr 4.00e-05 138K tok/s
+step 430600 loss 2.825 lr 4.00e-05 138K tok/s
+step 430700 loss 2.403 lr 3.99e-05 138K tok/s
+step 430800 loss 2.839 lr 3.99e-05 138K tok/s
+step 430900 loss 3.479 lr 3.99e-05 138K tok/s
+step 431000 loss 2.629 lr 3.98e-05 138K tok/s
+step 431100 loss 3.016 lr 3.98e-05 138K tok/s
+step 431200 loss 2.317 lr 3.97e-05 138K tok/s
+step 431300 loss 2.515 lr 3.97e-05 138K tok/s
+step 431400 loss 2.722 lr 3.96e-05 138K tok/s
+step 431500 loss 3.015 lr 3.96e-05 138K tok/s
+step 431600 loss 2.057 lr 3.96e-05 138K tok/s
+step 431700 loss 2.526 lr 3.95e-05 138K tok/s
+step 431800 loss 2.243 lr 3.95e-05 138K tok/s
+step 431900 loss 2.610 lr 3.94e-05 138K tok/s
+  eval at step 431999...
+  val PPL 16.72
+  checkpoint at step 431999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step432000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step424000
+step 432000 loss 2.773 lr 3.94e-05 138K tok/s
+step 432100 loss 2.926 lr 3.94e-05 138K tok/s
+step 432200 loss 2.838 lr 3.93e-05 138K tok/s
+step 432300 loss 2.377 lr 3.93e-05 138K tok/s
+step 432400 loss 2.765 lr 3.92e-05 138K tok/s
+step 432500 loss 3.565 lr 3.92e-05 138K tok/s
+step 432600 loss 2.939 lr 3.92e-05 138K tok/s
+step 432700 loss 2.807 lr 3.91e-05 138K tok/s
+step 432800 loss 2.297 lr 3.91e-05 138K tok/s
+step 432900 loss 2.778 lr 3.90e-05 138K tok/s
+step 433000 loss 2.798 lr 3.90e-05 138K tok/s
+step 433100 loss 2.863 lr 3.89e-05 138K tok/s
+step 433200 loss 2.648 lr 3.89e-05 138K tok/s
+step 433300 loss 2.737 lr 3.89e-05 138K tok/s
+step 433400 loss 2.955 lr 3.88e-05 138K tok/s
+step 433500 loss 3.306 lr 3.88e-05 138K tok/s
+step 433600 loss 3.267 lr 3.87e-05 138K tok/s
+step 433700 loss 2.732 lr 3.87e-05 138K tok/s
+step 433800 loss 2.532 lr 3.87e-05 138K tok/s
+step 433900 loss 1.972 lr 3.86e-05 138K tok/s
+  eval at step 433999...
+  val PPL 16.64
+step 434000 loss 3.048 lr 3.86e-05 138K tok/s
+step 434100 loss 2.630 lr 3.85e-05 138K tok/s
+step 434200 loss 3.225 lr 3.85e-05 138K tok/s
+step 434300 loss 2.506 lr 3.85e-05 138K tok/s
+step 434400 loss 2.063 lr 3.84e-05 138K tok/s
+step 434500 loss 2.871 lr 3.84e-05 138K tok/s
+step 434600 loss 2.963 lr 3.83e-05 138K tok/s
+step 434700 loss 3.264 lr 3.83e-05 138K tok/s
+step 434800 loss 2.161 lr 3.83e-05 138K tok/s
+step 434900 loss 2.822 lr 3.82e-05 138K tok/s
+step 435000 loss 2.568 lr 3.82e-05 138K tok/s
+step 435100 loss 2.564 lr 3.81e-05 138K tok/s
+step 435200 loss 2.043 lr 3.81e-05 138K tok/s
+step 435300 loss 2.682 lr 3.81e-05 138K tok/s
+step 435400 loss 2.843 lr 3.80e-05 138K tok/s
+step 435500 loss 2.758 lr 3.80e-05 138K tok/s
+step 435600 loss 2.652 lr 3.79e-05 138K tok/s
+step 435700 loss 2.497 lr 3.79e-05 138K tok/s
+step 435800 loss 3.168 lr 3.78e-05 138K tok/s
+step 435900 loss 1.950 lr 3.78e-05 138K tok/s
+  eval at step 435999...
+  val PPL 16.72
+  checkpoint at step 435999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step436000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step428000
+step 436000 loss 2.908 lr 3.78e-05 138K tok/s
+step 436100 loss 2.396 lr 3.77e-05 138K tok/s
+step 436200 loss 2.802 lr 3.77e-05 138K tok/s
+step 436300 loss 1.660 lr 3.76e-05 138K tok/s
+step 436400 loss 2.811 lr 3.76e-05 138K tok/s
+step 436500 loss 3.048 lr 3.76e-05 138K tok/s
+step 436600 loss 3.205 lr 3.75e-05 138K tok/s
+step 436700 loss 2.505 lr 3.75e-05 138K tok/s
+step 436800 loss 2.993 lr 3.74e-05 138K tok/s
+step 436900 loss 2.732 lr 3.74e-05 138K tok/s
+step 437000 loss 2.902 lr 3.74e-05 138K tok/s
+step 437100 loss 2.560 lr 3.73e-05 138K tok/s
+step 437200 loss 3.568 lr 3.73e-05 138K tok/s
+step 437300 loss 2.988 lr 3.72e-05 138K tok/s
+step 437400 loss 2.701 lr 3.72e-05 138K tok/s
+step 437500 loss 3.801 lr 3.72e-05 138K tok/s
+step 437600 loss 2.745 lr 3.71e-05 138K tok/s
+step 437700 loss 2.578 lr 3.71e-05 138K tok/s
+step 437800 loss 2.352 lr 3.70e-05 138K tok/s
+step 437900 loss 3.385 lr 3.70e-05 138K tok/s
+  eval at step 437999...
+  val PPL 16.66
+step 438000 loss 2.844 lr 3.70e-05 138K tok/s
+step 438100 loss 2.602 lr 3.69e-05 138K tok/s
+step 438200 loss 2.307 lr 3.69e-05 138K tok/s
+step 438300 loss 2.926 lr 3.68e-05 138K tok/s
+step 438400 loss 2.662 lr 3.68e-05 138K tok/s
+step 438500 loss 2.796 lr 3.68e-05 138K tok/s
+step 438600 loss 2.211 lr 3.67e-05 138K tok/s
+step 438700 loss 4.290 lr 3.67e-05 138K tok/s
+step 438800 loss 2.358 lr 3.66e-05 138K tok/s
+step 438900 loss 2.580 lr 3.66e-05 138K tok/s
+step 439000 loss 3.630 lr 3.66e-05 138K tok/s
+step 439100 loss 2.416 lr 3.65e-05 138K tok/s
+step 439200 loss 2.937 lr 3.65e-05 138K tok/s
+step 439300 loss 2.299 lr 3.64e-05 138K tok/s
+step 439400 loss 2.814 lr 3.64e-05 137K tok/s
+step 439500 loss 2.729 lr 3.64e-05 137K tok/s
+step 439600 loss 3.441 lr 3.63e-05 137K tok/s
+step 439700 loss 3.210 lr 3.63e-05 137K tok/s
+step 439800 loss 2.009 lr 3.62e-05 137K tok/s
+step 439900 loss 3.209 lr 3.62e-05 137K tok/s
+  eval at step 439999...
+  val PPL 16.57
+  checkpoint at step 439999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step440000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step432000
+step 440000 loss 2.825 lr 3.62e-05 137K tok/s
+step 440100 loss 2.525 lr 3.61e-05 137K tok/s
+step 440200 loss 2.536 lr 3.61e-05 137K tok/s
+step 440300 loss 2.017 lr 3.60e-05 137K tok/s
+step 440400 loss 2.216 lr 3.60e-05 137K tok/s
+step 440500 loss 2.034 lr 3.60e-05 137K tok/s
+step 440600 loss 2.647 lr 3.59e-05 137K tok/s
+step 440700 loss 3.267 lr 3.59e-05 137K tok/s
+step 440800 loss 2.544 lr 3.58e-05 137K tok/s
+step 440900 loss 2.525 lr 3.58e-05 137K tok/s
+step 441000 loss 2.908 lr 3.58e-05 137K tok/s
+step 441100 loss 2.524 lr 3.57e-05 137K tok/s
+step 441200 loss 2.739 lr 3.57e-05 137K tok/s
+step 441300 loss 2.690 lr 3.56e-05 137K tok/s
+step 441400 loss 2.606 lr 3.56e-05 137K tok/s
+step 441500 loss 2.628 lr 3.56e-05 137K tok/s
+step 441600 loss 2.529 lr 3.55e-05 137K tok/s
+step 441700 loss 2.726 lr 3.55e-05 137K tok/s
+step 441800 loss 2.471 lr 3.54e-05 137K tok/s
+step 441900 loss 2.454 lr 3.54e-05 137K tok/s
+  eval at step 441999...
+  val PPL 16.55
+step 442000 loss 3.367 lr 3.54e-05 137K tok/s
+step 442100 loss 2.649 lr 3.53e-05 137K tok/s
+step 442200 loss 3.270 lr 3.53e-05 137K tok/s
+step 442300 loss 2.392 lr 3.53e-05 137K tok/s
+step 442400 loss 2.795 lr 3.52e-05 137K tok/s
+step 442500 loss 2.809 lr 3.52e-05 137K tok/s
+step 442600 loss 2.918 lr 3.51e-05 137K tok/s
+step 442700 loss 2.996 lr 3.51e-05 137K tok/s
+step 442800 loss 2.751 lr 3.51e-05 137K tok/s
+step 442900 loss 2.642 lr 3.50e-05 137K tok/s
+step 443000 loss 2.740 lr 3.50e-05 137K tok/s
+step 443100 loss 2.440 lr 3.49e-05 137K tok/s
+step 443200 loss 2.723 lr 3.49e-05 137K tok/s
+step 443300 loss 3.309 lr 3.49e-05 137K tok/s
+step 443400 loss 2.765 lr 3.48e-05 137K tok/s
+step 443500 loss 2.823 lr 3.48e-05 137K tok/s
+step 443600 loss 2.477 lr 3.47e-05 137K tok/s
+step 443700 loss 2.319 lr 3.47e-05 137K tok/s
+step 443800 loss 2.580 lr 3.47e-05 137K tok/s
+step 443900 loss 2.903 lr 3.46e-05 137K tok/s
+  eval at step 443999...
+  val PPL 16.61
+  checkpoint at step 443999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step444000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step436000
+step 444000 loss 2.054 lr 3.46e-05 137K tok/s
+step 444100 loss 2.781 lr 3.45e-05 137K tok/s
+step 444200 loss 2.166 lr 3.45e-05 137K tok/s
+step 444300 loss 2.402 lr 3.45e-05 137K tok/s
+step 444400 loss 2.681 lr 3.44e-05 137K tok/s
+step 444500 loss 2.831 lr 3.44e-05 137K tok/s
+step 444600 loss 1.202 lr 3.44e-05 137K tok/s
+step 444700 loss 2.767 lr 3.43e-05 137K tok/s
+step 444800 loss 2.495 lr 3.43e-05 137K tok/s
+step 444900 loss 2.347 lr 3.42e-05 137K tok/s
+step 445000 loss 2.976 lr 3.42e-05 137K tok/s
+step 445100 loss 2.742 lr 3.42e-05 137K tok/s
+step 445200 loss 2.506 lr 3.41e-05 137K tok/s
+step 445300 loss 2.099 lr 3.41e-05 137K tok/s
+step 445400 loss 2.671 lr 3.40e-05 137K tok/s
+step 445500 loss 2.803 lr 3.40e-05 137K tok/s
+step 445600 loss 3.328 lr 3.40e-05 137K tok/s
+step 445700 loss 2.475 lr 3.39e-05 137K tok/s
+step 445800 loss 2.465 lr 3.39e-05 137K tok/s
+step 445900 loss 3.188 lr 3.38e-05 137K tok/s
+  eval at step 445999...
+  val PPL 16.64
+step 446000 loss 3.152 lr 3.38e-05 137K tok/s
+step 446100 loss 2.183 lr 3.38e-05 137K tok/s
+step 446200 loss 3.054 lr 3.37e-05 137K tok/s
+step 446300 loss 3.081 lr 3.37e-05 137K tok/s
+step 446400 loss 2.814 lr 3.37e-05 137K tok/s
+step 446500 loss 2.683 lr 3.36e-05 137K tok/s
+step 446600 loss 3.182 lr 3.36e-05 137K tok/s
+step 446700 loss 2.510 lr 3.35e-05 137K tok/s
+step 446800 loss 2.776 lr 3.35e-05 137K tok/s
+step 446900 loss 2.647 lr 3.35e-05 137K tok/s
+step 447000 loss 2.862 lr 3.34e-05 136K tok/s
+step 447100 loss 3.196 lr 3.34e-05 136K tok/s
+step 447200 loss 0.998 lr 3.33e-05 136K tok/s
+step 447300 loss 2.953 lr 3.33e-05 136K tok/s
+step 447400 loss 3.345 lr 3.33e-05 136K tok/s
+step 447500 loss 2.379 lr 3.32e-05 136K tok/s
+step 447600 loss 2.743 lr 3.32e-05 136K tok/s
+step 447700 loss 2.904 lr 3.32e-05 136K tok/s
+step 447800 loss 3.154 lr 3.31e-05 136K tok/s
+step 447900 loss 2.782 lr 3.31e-05 136K tok/s
+  eval at step 447999...
+  val PPL 16.60
+  checkpoint at step 447999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step448000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step440000
+step 448000 loss 3.248 lr 3.30e-05 136K tok/s
+step 448100 loss 2.289 lr 3.30e-05 136K tok/s
+step 448200 loss 2.389 lr 3.30e-05 136K tok/s
+step 448300 loss 2.556 lr 3.29e-05 136K tok/s
+step 448400 loss 2.426 lr 3.29e-05 136K tok/s
+step 448500 loss 2.676 lr 3.28e-05 136K tok/s
+step 448600 loss 3.683 lr 3.28e-05 136K tok/s
+step 448700 loss 2.205 lr 3.28e-05 136K tok/s
+step 448800 loss 2.980 lr 3.27e-05 136K tok/s
+step 448900 loss 1.335 lr 3.27e-05 136K tok/s
+step 449000 loss 2.613 lr 3.27e-05 136K tok/s
+step 449100 loss 2.697 lr 3.26e-05 136K tok/s
+step 449200 loss 2.366 lr 3.26e-05 136K tok/s
+step 449300 loss 2.491 lr 3.25e-05 136K tok/s
+step 449400 loss 2.185 lr 3.25e-05 136K tok/s
+step 449500 loss 2.898 lr 3.25e-05 136K tok/s
+step 449600 loss 3.329 lr 3.24e-05 136K tok/s
+step 449700 loss 2.918 lr 3.24e-05 136K tok/s
+step 449800 loss 2.941 lr 3.23e-05 136K tok/s
+step 449900 loss 2.355 lr 3.23e-05 136K tok/s
+  eval at step 449999...
+  val PPL 16.62
+step 450000 loss 2.861 lr 3.23e-05 136K tok/s
+step 450100 loss 2.430 lr 3.22e-05 136K tok/s
+step 450200 loss 2.672 lr 3.22e-05 136K tok/s
+step 450300 loss 3.101 lr 3.22e-05 136K tok/s
+step 450400 loss 2.763 lr 3.21e-05 136K tok/s
+step 450500 loss 2.944 lr 3.21e-05 136K tok/s
+step 450600 loss 2.941 lr 3.20e-05 136K tok/s
+step 450700 loss 2.691 lr 3.20e-05 136K tok/s
+step 450800 loss 2.159 lr 3.20e-05 136K tok/s
+step 450900 loss 2.601 lr 3.19e-05 136K tok/s
+step 451000 loss 2.956 lr 3.19e-05 136K tok/s
+step 451100 loss 2.960 lr 3.19e-05 136K tok/s
+step 451200 loss 2.938 lr 3.18e-05 136K tok/s
+step 451300 loss 2.527 lr 3.18e-05 136K tok/s
+step 451400 loss 2.089 lr 3.17e-05 136K tok/s
+step 451500 loss 2.842 lr 3.17e-05 136K tok/s
+step 451600 loss 2.894 lr 3.17e-05 136K tok/s
+step 451700 loss 2.860 lr 3.16e-05 136K tok/s
+step 451800 loss 3.177 lr 3.16e-05 136K tok/s
+step 451900 loss 2.999 lr 3.16e-05 136K tok/s
+  eval at step 451999...
+  val PPL 16.60
+  checkpoint at step 451999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step452000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step444000
+step 452000 loss 2.728 lr 3.15e-05 136K tok/s
+step 452100 loss 3.048 lr 3.15e-05 136K tok/s
+step 452200 loss 2.563 lr 3.14e-05 136K tok/s
+step 452300 loss 2.924 lr 3.14e-05 136K tok/s
+step 452400 loss 2.972 lr 3.14e-05 136K tok/s
+step 452500 loss 2.785 lr 3.13e-05 136K tok/s
+step 452600 loss 1.743 lr 3.13e-05 135K tok/s
+step 452700 loss 2.812 lr 3.13e-05 135K tok/s
+step 452800 loss 2.776 lr 3.12e-05 135K tok/s
+step 452900 loss 3.007 lr 3.12e-05 135K tok/s
+step 453000 loss 2.535 lr 3.11e-05 135K tok/s
+step 453100 loss 2.447 lr 3.11e-05 135K tok/s
+step 453200 loss 2.689 lr 3.11e-05 135K tok/s
+step 453300 loss 2.916 lr 3.10e-05 135K tok/s
+step 453400 loss 3.186 lr 3.10e-05 135K tok/s
+step 453500 loss 3.210 lr 3.10e-05 135K tok/s
+step 453600 loss 2.469 lr 3.09e-05 135K tok/s
+step 453700 loss 2.974 lr 3.09e-05 135K tok/s
+step 453800 loss 2.471 lr 3.08e-05 135K tok/s
+step 453900 loss 2.565 lr 3.08e-05 135K tok/s
+  eval at step 453999...
+  val PPL 16.50
+step 454000 loss 2.736 lr 3.08e-05 135K tok/s
+step 454100 loss 2.309 lr 3.07e-05 135K tok/s
+step 454200 loss 3.116 lr 3.07e-05 135K tok/s
+step 454300 loss 2.966 lr 3.07e-05 135K tok/s
+step 454400 loss 2.599 lr 3.06e-05 135K tok/s
+step 454500 loss 2.348 lr 3.06e-05 135K tok/s
+step 454600 loss 3.639 lr 3.05e-05 135K tok/s
+step 454700 loss 2.685 lr 3.05e-05 135K tok/s
+step 454800 loss 2.938 lr 3.05e-05 135K tok/s
+step 454900 loss 3.409 lr 3.04e-05 135K tok/s
+step 455000 loss 2.678 lr 3.04e-05 135K tok/s
+step 455100 loss 2.260 lr 3.04e-05 135K tok/s
+step 455200 loss 4.374 lr 3.03e-05 135K tok/s
+step 455300 loss 2.262 lr 3.03e-05 135K tok/s
+step 455400 loss 2.404 lr 3.02e-05 135K tok/s
+step 455500 loss 2.159 lr 3.02e-05 135K tok/s
+step 455600 loss 2.195 lr 3.02e-05 135K tok/s
+step 455700 loss 2.713 lr 3.01e-05 135K tok/s
+step 455800 loss 2.890 lr 3.01e-05 135K tok/s
+step 455900 loss 2.520 lr 3.01e-05 135K tok/s
+  eval at step 455999...
+  val PPL 16.42
+  checkpoint at step 455999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step456000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step448000
+step 456000 loss 2.899 lr 3.00e-05 135K tok/s
+step 456100 loss 3.222 lr 3.00e-05 135K tok/s
+step 456200 loss 2.859 lr 3.00e-05 135K tok/s
+step 456300 loss 2.551 lr 2.99e-05 135K tok/s
+step 456400 loss 2.112 lr 2.99e-05 135K tok/s
+step 456500 loss 2.764 lr 2.98e-05 135K tok/s
+step 456600 loss 2.461 lr 2.98e-05 135K tok/s
+step 456700 loss 3.354 lr 2.98e-05 135K tok/s
+step 456800 loss 2.880 lr 2.97e-05 135K tok/s
+step 456900 loss 1.927 lr 2.97e-05 135K tok/s
+step 457000 loss 2.553 lr 2.97e-05 135K tok/s
+step 457100 loss 2.621 lr 2.96e-05 135K tok/s
+step 457200 loss 2.862 lr 2.96e-05 135K tok/s
+step 457300 loss 2.662 lr 2.95e-05 135K tok/s
+step 457400 loss 2.970 lr 2.95e-05 135K tok/s
+step 457500 loss 2.401 lr 2.95e-05 135K tok/s
+step 457600 loss 2.875 lr 2.94e-05 135K tok/s
+step 457700 loss 2.599 lr 2.94e-05 135K tok/s
+step 457800 loss 2.724 lr 2.94e-05 135K tok/s
+step 457900 loss 2.714 lr 2.93e-05 135K tok/s
+  eval at step 457999...
+  val PPL 16.55
+step 458000 loss 2.840 lr 2.93e-05 135K tok/s
+step 458100 loss 3.072 lr 2.93e-05 135K tok/s
+step 458200 loss 3.097 lr 2.92e-05 135K tok/s
+step 458300 loss 2.542 lr 2.92e-05 135K tok/s
+step 458400 loss 2.479 lr 2.91e-05 134K tok/s
+step 458500 loss 2.716 lr 2.91e-05 134K tok/s
+step 458600 loss 3.019 lr 2.91e-05 134K tok/s
+step 458700 loss 2.721 lr 2.90e-05 134K tok/s
+step 458800 loss 2.935 lr 2.90e-05 134K tok/s
+step 458900 loss 3.358 lr 2.90e-05 134K tok/s
+step 459000 loss 3.232 lr 2.89e-05 134K tok/s
+step 459100 loss 3.085 lr 2.89e-05 134K tok/s
+step 459200 loss 2.279 lr 2.89e-05 134K tok/s
+step 459300 loss 2.851 lr 2.88e-05 134K tok/s
+step 459400 loss 2.263 lr 2.88e-05 134K tok/s
+step 459500 loss 2.263 lr 2.87e-05 134K tok/s
+step 459600 loss 2.606 lr 2.87e-05 134K tok/s
+step 459700 loss 2.769 lr 2.87e-05 134K tok/s
+step 459800 loss 2.364 lr 2.86e-05 134K tok/s
+step 459900 loss 2.928 lr 2.86e-05 134K tok/s
+  eval at step 459999...
+  val PPL 16.49
+  checkpoint at step 459999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step460000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step452000
+step 460000 loss 3.019 lr 2.86e-05 134K tok/s
+step 460100 loss 2.665 lr 2.85e-05 134K tok/s
+step 460200 loss 3.925 lr 2.85e-05 134K tok/s
+step 460300 loss 2.372 lr 2.85e-05 134K tok/s
+step 460400 loss 2.709 lr 2.84e-05 134K tok/s
+step 460500 loss 2.877 lr 2.84e-05 134K tok/s
+step 460600 loss 3.442 lr 2.83e-05 134K tok/s
+step 460700 loss 2.345 lr 2.83e-05 134K tok/s
+step 460800 loss 2.576 lr 2.83e-05 134K tok/s
+step 460900 loss 2.813 lr 2.82e-05 134K tok/s
+step 461000 loss 2.387 lr 2.82e-05 134K tok/s
+step 461100 loss 2.822 lr 2.82e-05 134K tok/s
+step 461200 loss 3.215 lr 2.81e-05 134K tok/s
+step 461300 loss 2.774 lr 2.81e-05 134K tok/s
+step 461400 loss 2.851 lr 2.81e-05 134K tok/s
+step 461500 loss 2.259 lr 2.80e-05 134K tok/s
+step 461600 loss 2.986 lr 2.80e-05 134K tok/s
+step 461700 loss 3.207 lr 2.80e-05 134K tok/s
+step 461800 loss 2.642 lr 2.79e-05 134K tok/s
+step 461900 loss 2.996 lr 2.79e-05 134K tok/s
+  eval at step 461999...
+  val PPL 16.47
+step 462000 loss 2.588 lr 2.78e-05 134K tok/s
+step 462100 loss 3.310 lr 2.78e-05 134K tok/s
+step 462200 loss 2.958 lr 2.78e-05 134K tok/s
+step 462300 loss 2.416 lr 2.77e-05 134K tok/s
+step 462400 loss 3.054 lr 2.77e-05 134K tok/s
+step 462500 loss 2.870 lr 2.77e-05 134K tok/s
+step 462600 loss 2.748 lr 2.76e-05 134K tok/s
+step 462700 loss 3.255 lr 2.76e-05 134K tok/s
+step 462800 loss 2.906 lr 2.76e-05 134K tok/s
+step 462900 loss 3.073 lr 2.75e-05 134K tok/s
+step 463000 loss 2.704 lr 2.75e-05 134K tok/s
+step 463100 loss 3.034 lr 2.75e-05 134K tok/s
+step 463200 loss 2.930 lr 2.74e-05 134K tok/s
+step 463300 loss 2.058 lr 2.74e-05 134K tok/s
+step 463400 loss 2.509 lr 2.73e-05 134K tok/s
+step 463500 loss 2.330 lr 2.73e-05 134K tok/s
+step 463600 loss 2.057 lr 2.73e-05 134K tok/s
+step 463700 loss 2.895 lr 2.72e-05 134K tok/s
+step 463800 loss 2.554 lr 2.72e-05 134K tok/s
+step 463900 loss 2.549 lr 2.72e-05 134K tok/s
+  eval at step 463999...
+  val PPL 16.52
+  checkpoint at step 463999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step464000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step456000
+step 464000 loss 2.326 lr 2.71e-05 134K tok/s
+step 464100 loss 2.283 lr 2.71e-05 134K tok/s
+step 464200 loss 2.763 lr 2.71e-05 134K tok/s
+step 464300 loss 3.043 lr 2.70e-05 134K tok/s
+step 464400 loss 2.717 lr 2.70e-05 134K tok/s
+step 464500 loss 2.586 lr 2.70e-05 134K tok/s
+step 464600 loss 1.842 lr 2.69e-05 134K tok/s
+step 464700 loss 2.489 lr 2.69e-05 134K tok/s
+step 464800 loss 2.664 lr 2.68e-05 134K tok/s
+step 464900 loss 2.927 lr 2.68e-05 134K tok/s
+step 465000 loss 2.947 lr 2.68e-05 134K tok/s
+step 465100 loss 3.228 lr 2.67e-05 134K tok/s
+step 465200 loss 2.587 lr 2.67e-05 134K tok/s
+step 465300 loss 2.724 lr 2.67e-05 134K tok/s
+step 465400 loss 2.460 lr 2.66e-05 134K tok/s
+step 465500 loss 1.840 lr 2.66e-05 134K tok/s
+step 465600 loss 2.799 lr 2.66e-05 134K tok/s
+step 465700 loss 2.641 lr 2.65e-05 134K tok/s
+step 465800 loss 3.139 lr 2.65e-05 134K tok/s
+step 465900 loss 2.707 lr 2.65e-05 134K tok/s
+  eval at step 465999...
+  val PPL 16.43
+step 466000 loss 2.871 lr 2.64e-05 133K tok/s
+step 466100 loss 2.674 lr 2.64e-05 133K tok/s
+step 466200 loss 1.892 lr 2.64e-05 133K tok/s
+step 466300 loss 1.969 lr 2.63e-05 133K tok/s
+step 466400 loss 2.904 lr 2.63e-05 133K tok/s
+step 466500 loss 2.253 lr 2.63e-05 133K tok/s
+step 466600 loss 2.406 lr 2.62e-05 133K tok/s
+step 466700 loss 2.562 lr 2.62e-05 133K tok/s
+step 466800 loss 2.785 lr 2.61e-05 133K tok/s
+step 466900 loss 2.880 lr 2.61e-05 133K tok/s
+step 467000 loss 2.546 lr 2.61e-05 133K tok/s
+step 467100 loss 2.446 lr 2.60e-05 133K tok/s
+step 467200 loss 2.629 lr 2.60e-05 133K tok/s
+step 467300 loss 2.514 lr 2.60e-05 133K tok/s
+step 467400 loss 2.615 lr 2.59e-05 133K tok/s
+step 467500 loss 2.827 lr 2.59e-05 133K tok/s
+step 467600 loss 2.601 lr 2.59e-05 133K tok/s
+step 467700 loss 4.471 lr 2.58e-05 133K tok/s
+step 467800 loss 2.314 lr 2.58e-05 133K tok/s
+step 467900 loss 2.583 lr 2.58e-05 133K tok/s
+  eval at step 467999...
+  val PPL 16.39
+  checkpoint at step 467999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step468000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step460000
+step 468000 loss 2.691 lr 2.57e-05 133K tok/s
+step 468100 loss 2.759 lr 2.57e-05 133K tok/s
+step 468200 loss 3.333 lr 2.57e-05 133K tok/s
+step 468300 loss 2.661 lr 2.56e-05 133K tok/s
+step 468400 loss 2.608 lr 2.56e-05 133K tok/s
+step 468500 loss 2.962 lr 2.56e-05 133K tok/s
+step 468600 loss 2.764 lr 2.55e-05 133K tok/s
+step 468700 loss 2.868 lr 2.55e-05 133K tok/s
+step 468800 loss 3.145 lr 2.55e-05 133K tok/s
+step 468900 loss 3.361 lr 2.54e-05 133K tok/s
+step 469000 loss 3.296 lr 2.54e-05 133K tok/s
+step 469100 loss 2.657 lr 2.54e-05 133K tok/s
+step 469200 loss 2.580 lr 2.53e-05 133K tok/s
+step 469300 loss 2.814 lr 2.53e-05 133K tok/s
+step 469400 loss 2.842 lr 2.52e-05 133K tok/s
+step 469500 loss 2.620 lr 2.52e-05 133K tok/s
+step 469600 loss 3.055 lr 2.52e-05 133K tok/s
+step 469700 loss 2.549 lr 2.51e-05 133K tok/s
+step 469800 loss 2.332 lr 2.51e-05 133K tok/s
+step 469900 loss 3.299 lr 2.51e-05 133K tok/s
+  eval at step 469999...
+  val PPL 16.22
+step 470000 loss 3.017 lr 2.50e-05 133K tok/s
+step 470100 loss 2.588 lr 2.50e-05 133K tok/s
+step 470200 loss 4.025 lr 2.50e-05 133K tok/s
+step 470300 loss 2.488 lr 2.49e-05 133K tok/s
+step 470400 loss 1.917 lr 2.49e-05 133K tok/s
+step 470500 loss 2.767 lr 2.49e-05 133K tok/s
+step 470600 loss 2.924 lr 2.48e-05 133K tok/s
+step 470700 loss 3.430 lr 2.48e-05 133K tok/s
+step 470800 loss 3.755 lr 2.48e-05 133K tok/s
+step 470900 loss 2.810 lr 2.47e-05 133K tok/s
+step 471000 loss 3.078 lr 2.47e-05 133K tok/s
+step 471100 loss 2.524 lr 2.47e-05 133K tok/s
+step 471200 loss 2.849 lr 2.46e-05 133K tok/s
+step 471300 loss 1.571 lr 2.46e-05 133K tok/s
+step 471400 loss 2.656 lr 2.46e-05 133K tok/s
+step 471500 loss 2.319 lr 2.45e-05 133K tok/s
+step 471600 loss 2.721 lr 2.45e-05 133K tok/s
+step 471700 loss 3.118 lr 2.45e-05 133K tok/s
+step 471800 loss 2.440 lr 2.44e-05 133K tok/s
+step 471900 loss 2.617 lr 2.44e-05 133K tok/s
+  eval at step 471999...
+  val PPL 16.11
+  checkpoint at step 471999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step472000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step464000
+step 472000 loss 2.843 lr 2.44e-05 133K tok/s
+step 472100 loss 3.187 lr 2.43e-05 133K tok/s
+step 472200 loss 2.854 lr 2.43e-05 133K tok/s
+step 472300 loss 2.582 lr 2.43e-05 133K tok/s
+step 472400 loss 2.560 lr 2.42e-05 133K tok/s
+step 472500 loss 3.411 lr 2.42e-05 133K tok/s
+step 472600 loss 3.296 lr 2.42e-05 133K tok/s
+step 472700 loss 4.484 lr 2.41e-05 133K tok/s
+step 472800 loss 3.151 lr 2.41e-05 133K tok/s
+step 472900 loss 2.728 lr 2.41e-05 133K tok/s
+step 473000 loss 1.665 lr 2.40e-05 133K tok/s
+step 473100 loss 3.184 lr 2.40e-05 133K tok/s
+step 473200 loss 2.666 lr 2.40e-05 133K tok/s
+step 473300 loss 3.164 lr 2.39e-05 133K tok/s
+step 473400 loss 2.652 lr 2.39e-05 133K tok/s
+step 473500 loss 2.949 lr 2.39e-05 133K tok/s
+step 473600 loss 2.599 lr 2.38e-05 133K tok/s
+step 473700 loss 2.261 lr 2.38e-05 133K tok/s
+step 473800 loss 2.334 lr 2.38e-05 133K tok/s
+step 473900 loss 2.609 lr 2.37e-05 133K tok/s
+  eval at step 473999...
+  val PPL 16.14
+step 474000 loss 3.454 lr 2.37e-05 133K tok/s
+step 474100 loss 2.503 lr 2.37e-05 133K tok/s
+step 474200 loss 3.114 lr 2.36e-05 133K tok/s
+step 474300 loss 2.485 lr 2.36e-05 133K tok/s
+step 474400 loss 3.092 lr 2.36e-05 133K tok/s
+step 474500 loss 2.489 lr 2.35e-05 133K tok/s
+step 474600 loss 2.876 lr 2.35e-05 133K tok/s
+step 474700 loss 2.908 lr 2.35e-05 133K tok/s
+step 474800 loss 1.318 lr 2.34e-05 133K tok/s
+step 474900 loss 2.334 lr 2.34e-05 133K tok/s
+step 475000 loss 3.276 lr 2.34e-05 133K tok/s
+step 475100 loss 2.974 lr 2.33e-05 133K tok/s
+step 475200 loss 2.706 lr 2.33e-05 133K tok/s
+step 475300 loss 3.136 lr 2.33e-05 133K tok/s
+step 475400 loss 2.877 lr 2.32e-05 133K tok/s
+step 475500 loss 2.457 lr 2.32e-05 133K tok/s
+step 475600 loss 3.377 lr 2.32e-05 133K tok/s
+step 475700 loss 2.862 lr 2.31e-05 133K tok/s
+step 475800 loss 2.813 lr 2.31e-05 133K tok/s
+step 475900 loss 2.891 lr 2.31e-05 133K tok/s
+  eval at step 475999...
+  val PPL 16.10
+  checkpoint at step 475999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step476000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step468000
+step 476000 loss 3.170 lr 2.30e-05 133K tok/s
+step 476100 loss 2.853 lr 2.30e-05 133K tok/s
+step 476200 loss 2.690 lr 2.30e-05 133K tok/s
+step 476300 loss 2.643 lr 2.29e-05 133K tok/s
+step 476400 loss 2.915 lr 2.29e-05 133K tok/s
+step 476500 loss 2.569 lr 2.29e-05 133K tok/s
+step 476600 loss 3.449 lr 2.28e-05 133K tok/s
+step 476700 loss 2.836 lr 2.28e-05 133K tok/s
+step 476800 loss 2.567 lr 2.28e-05 133K tok/s
+step 476900 loss 3.819 lr 2.27e-05 133K tok/s
+step 477000 loss 2.973 lr 2.27e-05 133K tok/s
+step 477100 loss 2.284 lr 2.27e-05 133K tok/s
+step 477200 loss 2.794 lr 2.26e-05 133K tok/s
+step 477300 loss 2.760 lr 2.26e-05 133K tok/s
+step 477400 loss 1.402 lr 2.26e-05 133K tok/s
+step 477500 loss 2.830 lr 2.25e-05 133K tok/s
+step 477600 loss 2.664 lr 2.25e-05 133K tok/s
+step 477700 loss 2.582 lr 2.25e-05 133K tok/s
+step 477800 loss 2.688 lr 2.24e-05 133K tok/s
+step 477900 loss 2.749 lr 2.24e-05 133K tok/s
+  eval at step 477999...
+  val PPL 16.08
+step 478000 loss 2.079 lr 2.24e-05 133K tok/s
+step 478100 loss 2.711 lr 2.23e-05 133K tok/s
+step 478200 loss 2.884 lr 2.23e-05 133K tok/s
+step 478300 loss 3.231 lr 2.23e-05 133K tok/s
+step 478400 loss 3.144 lr 2.22e-05 132K tok/s
+step 478500 loss 2.562 lr 2.22e-05 132K tok/s
+step 478600 loss 2.398 lr 2.22e-05 132K tok/s
+step 478700 loss 2.902 lr 2.21e-05 132K tok/s
+step 478800 loss 2.679 lr 2.21e-05 132K tok/s
+step 478900 loss 3.791 lr 2.21e-05 132K tok/s
+step 479000 loss 2.917 lr 2.20e-05 132K tok/s
+step 479100 loss 2.791 lr 2.20e-05 132K tok/s
+step 479200 loss 2.937 lr 2.20e-05 132K tok/s
+step 479300 loss 2.574 lr 2.20e-05 132K tok/s
+step 479400 loss 2.555 lr 2.19e-05 132K tok/s
+step 479500 loss 2.500 lr 2.19e-05 132K tok/s
+step 479600 loss 2.922 lr 2.19e-05 132K tok/s
+step 479700 loss 2.744 lr 2.18e-05 132K tok/s
+step 479800 loss 3.411 lr 2.18e-05 132K tok/s
+step 479900 loss 2.187 lr 2.18e-05 132K tok/s
+  eval at step 479999...
+  val PPL 16.06
+  checkpoint at step 479999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step480000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step472000
+step 480000 loss 2.846 lr 2.17e-05 132K tok/s
+step 480100 loss 2.900 lr 2.17e-05 132K tok/s
+step 480200 loss 3.042 lr 2.17e-05 132K tok/s
+step 480300 loss 2.884 lr 2.16e-05 132K tok/s
+step 480400 loss 3.540 lr 2.16e-05 132K tok/s
+step 480500 loss 3.044 lr 2.16e-05 132K tok/s
+step 480600 loss 2.169 lr 2.15e-05 132K tok/s
+step 480700 loss 2.650 lr 2.15e-05 132K tok/s
+step 480800 loss 2.678 lr 2.15e-05 132K tok/s
+step 480900 loss 2.794 lr 2.14e-05 132K tok/s
+step 481000 loss 2.228 lr 2.14e-05 132K tok/s
+step 481100 loss 2.883 lr 2.14e-05 132K tok/s
+step 481200 loss 2.808 lr 2.13e-05 132K tok/s
+step 481300 loss 2.484 lr 2.13e-05 132K tok/s
+step 481400 loss 2.664 lr 2.13e-05 132K tok/s
+step 481500 loss 2.653 lr 2.12e-05 132K tok/s
+step 481600 loss 2.805 lr 2.12e-05 132K tok/s
+step 481700 loss 2.636 lr 2.12e-05 132K tok/s
+step 481800 loss 2.666 lr 2.11e-05 132K tok/s
+step 481900 loss 3.018 lr 2.11e-05 132K tok/s
+  eval at step 481999...
+  val PPL 15.95
+step 482000 loss 2.333 lr 2.11e-05 132K tok/s
+step 482100 loss 2.844 lr 2.11e-05 132K tok/s
+step 482200 loss 3.086 lr 2.10e-05 132K tok/s
+step 482300 loss 2.298 lr 2.10e-05 132K tok/s
+step 482400 loss 2.842 lr 2.10e-05 132K tok/s
+step 482500 loss 3.037 lr 2.09e-05 132K tok/s
+step 482600 loss 2.481 lr 2.09e-05 132K tok/s
+step 482700 loss 3.001 lr 2.09e-05 132K tok/s
+step 482800 loss 2.610 lr 2.08e-05 132K tok/s
+step 482900 loss 3.093 lr 2.08e-05 132K tok/s
+step 483000 loss 2.755 lr 2.08e-05 132K tok/s
+step 483100 loss 2.655 lr 2.07e-05 132K tok/s
+step 483200 loss 5.073 lr 2.07e-05 132K tok/s
+step 483300 loss 3.175 lr 2.07e-05 132K tok/s
+step 483400 loss 2.802 lr 2.06e-05 132K tok/s
+step 483500 loss 2.728 lr 2.06e-05 132K tok/s
+step 483600 loss 2.895 lr 2.06e-05 132K tok/s
+step 483700 loss 2.719 lr 2.05e-05 132K tok/s
+step 483800 loss 2.507 lr 2.05e-05 132K tok/s
+step 483900 loss 2.760 lr 2.05e-05 132K tok/s
+  eval at step 483999...
+  val PPL 15.98
+  checkpoint at step 483999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step484000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step476000
+step 484000 loss 2.833 lr 2.05e-05 132K tok/s
+step 484100 loss 2.430 lr 2.04e-05 132K tok/s
+step 484200 loss 2.722 lr 2.04e-05 132K tok/s
+step 484300 loss 2.596 lr 2.04e-05 132K tok/s
+step 484400 loss 2.387 lr 2.03e-05 132K tok/s
+step 484500 loss 2.982 lr 2.03e-05 132K tok/s
+step 484600 loss 2.379 lr 2.03e-05 132K tok/s
+step 484700 loss 2.381 lr 2.02e-05 132K tok/s
+step 484800 loss 2.250 lr 2.02e-05 132K tok/s
+step 484900 loss 3.418 lr 2.02e-05 132K tok/s
+step 485000 loss 2.558 lr 2.01e-05 132K tok/s
+step 485100 loss 2.929 lr 2.01e-05 132K tok/s
+step 485200 loss 2.832 lr 2.01e-05 132K tok/s
+step 485300 loss 2.511 lr 2.01e-05 132K tok/s
+step 485400 loss 2.574 lr 2.00e-05 132K tok/s
+step 485500 loss 2.227 lr 2.00e-05 131K tok/s
+step 485600 loss 2.998 lr 2.00e-05 131K tok/s
+step 485700 loss 2.687 lr 1.99e-05 131K tok/s
+step 485800 loss 2.962 lr 1.99e-05 131K tok/s
+step 485900 loss 2.642 lr 1.99e-05 131K tok/s
+  eval at step 485999...
+  val PPL 15.99
+step 486000 loss 2.950 lr 1.98e-05 131K tok/s
+step 486100 loss 3.046 lr 1.98e-05 131K tok/s
+step 486200 loss 3.297 lr 1.98e-05 131K tok/s
+step 486300 loss 3.032 lr 1.97e-05 131K tok/s
+step 486400 loss 1.740 lr 1.97e-05 131K tok/s
+step 486500 loss 2.685 lr 1.97e-05 131K tok/s
+step 486600 loss 2.841 lr 1.96e-05 131K tok/s
+step 486700 loss 2.437 lr 1.96e-05 131K tok/s
+step 486800 loss 2.939 lr 1.96e-05 131K tok/s
+step 486900 loss 2.364 lr 1.96e-05 131K tok/s
+step 487000 loss 2.615 lr 1.95e-05 131K tok/s
+step 487100 loss 2.956 lr 1.95e-05 131K tok/s
+step 487200 loss 2.825 lr 1.95e-05 131K tok/s
+step 487300 loss 3.136 lr 1.94e-05 131K tok/s
+step 487400 loss 3.504 lr 1.94e-05 131K tok/s
+step 487500 loss 2.879 lr 1.94e-05 131K tok/s
+step 487600 loss 2.449 lr 1.93e-05 131K tok/s
+step 487700 loss 2.691 lr 1.93e-05 131K tok/s
+step 487800 loss 4.011 lr 1.93e-05 131K tok/s
+step 487900 loss 2.529 lr 1.93e-05 131K tok/s
+  eval at step 487999...
+  val PPL 15.92
+  checkpoint at step 487999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step488000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step480000
+step 488000 loss 2.464 lr 1.92e-05 131K tok/s
+step 488100 loss 2.953 lr 1.92e-05 131K tok/s
+step 488200 loss 2.565 lr 1.92e-05 131K tok/s
+step 488300 loss 2.815 lr 1.91e-05 131K tok/s
+step 488400 loss 2.920 lr 1.91e-05 131K tok/s
+step 488500 loss 2.661 lr 1.91e-05 131K tok/s
+step 488600 loss 2.568 lr 1.90e-05 131K tok/s
+step 488700 loss 2.689 lr 1.90e-05 131K tok/s
+step 488800 loss 3.029 lr 1.90e-05 131K tok/s
+step 488900 loss 2.740 lr 1.89e-05 131K tok/s
+step 489000 loss 2.778 lr 1.89e-05 131K tok/s
+step 489100 loss 2.684 lr 1.89e-05 131K tok/s
+step 489200 loss 2.705 lr 1.89e-05 131K tok/s
+step 489300 loss 2.984 lr 1.88e-05 131K tok/s
+step 489400 loss 2.651 lr 1.88e-05 131K tok/s
+step 489500 loss 3.653 lr 1.88e-05 131K tok/s
+step 489600 loss 2.750 lr 1.87e-05 131K tok/s
+step 489700 loss 2.809 lr 1.87e-05 131K tok/s
+step 489800 loss 2.595 lr 1.87e-05 131K tok/s
+step 489900 loss 2.809 lr 1.86e-05 131K tok/s
+  eval at step 489999...
+  val PPL 15.94
+step 490000 loss 2.608 lr 1.86e-05 131K tok/s
+step 490100 loss 2.641 lr 1.86e-05 131K tok/s
+step 490200 loss 3.126 lr 1.86e-05 131K tok/s
+step 490300 loss 2.652 lr 1.85e-05 131K tok/s
+step 490400 loss 2.194 lr 1.85e-05 131K tok/s
+step 490500 loss 2.805 lr 1.85e-05 131K tok/s
+step 490600 loss 2.640 lr 1.84e-05 131K tok/s
+step 490700 loss 2.337 lr 1.84e-05 131K tok/s
+step 490800 loss 2.770 lr 1.84e-05 131K tok/s
+step 490900 loss 2.869 lr 1.83e-05 131K tok/s
+step 491000 loss 2.938 lr 1.83e-05 131K tok/s
+step 491100 loss 2.289 lr 1.83e-05 131K tok/s
+step 491200 loss 3.172 lr 1.83e-05 131K tok/s
+step 491300 loss 2.499 lr 1.82e-05 131K tok/s
+step 491400 loss 3.216 lr 1.82e-05 131K tok/s
+step 491500 loss 2.487 lr 1.82e-05 131K tok/s
+step 491600 loss 2.403 lr 1.81e-05 131K tok/s
+step 491700 loss 2.522 lr 1.81e-05 131K tok/s
+step 491800 loss 2.666 lr 1.81e-05 131K tok/s
+step 491900 loss 2.824 lr 1.80e-05 130K tok/s
+  eval at step 491999...
+  val PPL 15.88
+  checkpoint at step 491999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step492000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step484000
+step 492000 loss 2.749 lr 1.80e-05 130K tok/s
+step 492100 loss 2.756 lr 1.80e-05 130K tok/s
+step 492200 loss 2.681 lr 1.80e-05 130K tok/s
+step 492300 loss 2.444 lr 1.79e-05 130K tok/s
+step 492400 loss 2.971 lr 1.79e-05 130K tok/s
+step 492500 loss 2.341 lr 1.79e-05 130K tok/s
+step 492600 loss 2.258 lr 1.78e-05 130K tok/s
+step 492700 loss 3.016 lr 1.78e-05 130K tok/s
+step 492800 loss 2.378 lr 1.78e-05 130K tok/s
+step 492900 loss 4.393 lr 1.78e-05 130K tok/s
+step 493000 loss 4.036 lr 1.77e-05 130K tok/s
+step 493100 loss 2.399 lr 1.77e-05 130K tok/s
+step 493200 loss 2.134 lr 1.77e-05 130K tok/s
+step 493300 loss 3.098 lr 1.76e-05 130K tok/s
+step 493400 loss 2.792 lr 1.76e-05 130K tok/s
+step 493500 loss 2.656 lr 1.76e-05 130K tok/s
+step 493600 loss 2.270 lr 1.75e-05 130K tok/s
+step 493700 loss 3.379 lr 1.75e-05 130K tok/s
+step 493800 loss 2.952 lr 1.75e-05 130K tok/s
+step 493900 loss 2.219 lr 1.75e-05 130K tok/s
+  eval at step 493999...
+  val PPL 15.88
+step 494000 loss 2.878 lr 1.74e-05 130K tok/s
+step 494100 loss 2.732 lr 1.74e-05 130K tok/s
+step 494200 loss 2.753 lr 1.74e-05 130K tok/s
+step 494300 loss 2.990 lr 1.73e-05 130K tok/s
+step 494400 loss 2.626 lr 1.73e-05 130K tok/s
+step 494500 loss 2.814 lr 1.73e-05 130K tok/s
+step 494600 loss 2.349 lr 1.73e-05 130K tok/s
+step 494700 loss 2.470 lr 1.72e-05 130K tok/s
+step 494800 loss 2.507 lr 1.72e-05 130K tok/s
+step 494900 loss 3.410 lr 1.72e-05 130K tok/s
+step 495000 loss 2.742 lr 1.71e-05 130K tok/s
+step 495100 loss 2.192 lr 1.71e-05 130K tok/s
+step 495200 loss 3.407 lr 1.71e-05 130K tok/s
+step 495300 loss 2.121 lr 1.71e-05 130K tok/s
+step 495400 loss 2.749 lr 1.70e-05 130K tok/s
+step 495500 loss 2.757 lr 1.70e-05 130K tok/s
+step 495600 loss 2.338 lr 1.70e-05 130K tok/s
+step 495700 loss 3.005 lr 1.69e-05 130K tok/s
+step 495800 loss 2.929 lr 1.69e-05 130K tok/s
+step 495900 loss 3.166 lr 1.69e-05 130K tok/s
+  eval at step 495999...
+  val PPL 15.86
+  checkpoint at step 495999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step496000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step488000
+step 496000 loss 2.746 lr 1.69e-05 130K tok/s
+step 496100 loss 2.674 lr 1.68e-05 130K tok/s
+step 496200 loss 2.834 lr 1.68e-05 130K tok/s
+step 496300 loss 2.718 lr 1.68e-05 130K tok/s
+step 496400 loss 2.881 lr 1.67e-05 130K tok/s
+step 496500 loss 2.880 lr 1.67e-05 130K tok/s
+step 496600 loss 2.643 lr 1.67e-05 130K tok/s
+step 496700 loss 1.733 lr 1.67e-05 129K tok/s
+step 496800 loss 2.527 lr 1.66e-05 129K tok/s
+step 496900 loss 2.937 lr 1.66e-05 129K tok/s
+step 497000 loss 2.509 lr 1.66e-05 129K tok/s
+step 497100 loss 2.327 lr 1.65e-05 129K tok/s
+step 497200 loss 2.902 lr 1.65e-05 129K tok/s
+step 497300 loss 2.727 lr 1.65e-05 129K tok/s
+step 497400 loss 2.868 lr 1.65e-05 129K tok/s
+step 497500 loss 3.143 lr 1.64e-05 129K tok/s
+step 497600 loss 2.072 lr 1.64e-05 129K tok/s
+step 497700 loss 2.828 lr 1.64e-05 129K tok/s
+step 497800 loss 2.651 lr 1.63e-05 129K tok/s
+step 497900 loss 2.415 lr 1.63e-05 129K tok/s
+  eval at step 497999...
+  val PPL 15.83
+step 498000 loss 3.197 lr 1.63e-05 129K tok/s
+step 498100 loss 2.731 lr 1.63e-05 129K tok/s
+step 498200 loss 2.740 lr 1.62e-05 129K tok/s
+step 498300 loss 2.647 lr 1.62e-05 129K tok/s
+step 498400 loss 1.733 lr 1.62e-05 129K tok/s
+step 498500 loss 2.401 lr 1.61e-05 129K tok/s
+step 498600 loss 2.549 lr 1.61e-05 129K tok/s
+step 498700 loss 2.991 lr 1.61e-05 129K tok/s
+step 498800 loss 2.881 lr 1.61e-05 129K tok/s
+step 498900 loss 2.677 lr 1.60e-05 129K tok/s
+step 499000 loss 3.067 lr 1.60e-05 129K tok/s
+step 499100 loss 3.048 lr 1.60e-05 129K tok/s
+step 499200 loss 2.854 lr 1.59e-05 129K tok/s
+step 499300 loss 2.552 lr 1.59e-05 129K tok/s
+step 499400 loss 1.963 lr 1.59e-05 129K tok/s
+step 499500 loss 3.164 lr 1.59e-05 129K tok/s
+step 499600 loss 2.919 lr 1.58e-05 129K tok/s
+step 499700 loss 3.010 lr 1.58e-05 129K tok/s
+step 499800 loss 2.461 lr 1.58e-05 129K tok/s
+step 499900 loss 2.880 lr 1.58e-05 129K tok/s
+  eval at step 499999...
+  val PPL 15.81
+  checkpoint at step 499999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step500000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step492000
+step 500000 loss 2.511 lr 1.57e-05 129K tok/s
+step 500100 loss 0.928 lr 1.57e-05 129K tok/s
+step 500200 loss 2.937 lr 1.57e-05 129K tok/s
+step 500300 loss 2.497 lr 1.56e-05 129K tok/s
+step 500400 loss 2.807 lr 1.56e-05 129K tok/s
+step 500500 loss 2.667 lr 1.56e-05 129K tok/s
+step 500600 loss 3.289 lr 1.56e-05 129K tok/s
+step 500700 loss 3.341 lr 1.55e-05 129K tok/s
+step 500800 loss 2.524 lr 1.55e-05 129K tok/s
+step 500900 loss 2.765 lr 1.55e-05 129K tok/s
+step 501000 loss 2.796 lr 1.54e-05 129K tok/s
+step 501100 loss 3.002 lr 1.54e-05 128K tok/s
+step 501200 loss 2.587 lr 1.54e-05 128K tok/s
+step 501300 loss 2.683 lr 1.54e-05 128K tok/s
+step 501400 loss 2.733 lr 1.53e-05 128K tok/s
+step 501500 loss 2.688 lr 1.53e-05 128K tok/s
+step 501600 loss 2.680 lr 1.53e-05 128K tok/s
+step 501700 loss 3.146 lr 1.53e-05 128K tok/s
+step 501800 loss 3.006 lr 1.52e-05 128K tok/s
+step 501900 loss 3.453 lr 1.52e-05 128K tok/s
+  eval at step 501999...
+  val PPL 15.85
+step 502000 loss 3.116 lr 1.52e-05 128K tok/s
+step 502100 loss 3.031 lr 1.51e-05 128K tok/s
+step 502200 loss 2.938 lr 1.51e-05 128K tok/s
+step 502300 loss 2.465 lr 1.51e-05 128K tok/s
+step 502400 loss 2.338 lr 1.51e-05 128K tok/s
+step 502500 loss 2.808 lr 1.50e-05 128K tok/s
+step 502600 loss 2.286 lr 1.50e-05 128K tok/s
+step 502700 loss 2.596 lr 1.50e-05 128K tok/s
+step 502800 loss 3.021 lr 1.50e-05 128K tok/s
+step 502900 loss 2.779 lr 1.49e-05 128K tok/s
+step 503000 loss 3.069 lr 1.49e-05 128K tok/s
+step 503100 loss 3.935 lr 1.49e-05 128K tok/s
+step 503200 loss 2.587 lr 1.48e-05 128K tok/s
+step 503300 loss 3.214 lr 1.48e-05 128K tok/s
+step 503400 loss 3.237 lr 1.48e-05 128K tok/s
+step 503500 loss 2.166 lr 1.48e-05 128K tok/s
+step 503600 loss 2.719 lr 1.47e-05 128K tok/s
+step 503700 loss 2.518 lr 1.47e-05 128K tok/s
+step 503800 loss 2.641 lr 1.47e-05 128K tok/s
+step 503900 loss 2.714 lr 1.47e-05 128K tok/s
+  eval at step 503999...
+  val PPL 15.82
+  checkpoint at step 503999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step504000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step496000
+step 504000 loss 2.381 lr 1.46e-05 128K tok/s
+step 504100 loss 2.442 lr 1.46e-05 128K tok/s
+step 504200 loss 3.246 lr 1.46e-05 128K tok/s
+step 504300 loss 3.397 lr 1.45e-05 128K tok/s
+step 504400 loss 2.430 lr 1.45e-05 128K tok/s
+step 504500 loss 2.638 lr 1.45e-05 128K tok/s
+step 504600 loss 3.118 lr 1.45e-05 128K tok/s
+step 504700 loss 2.752 lr 1.44e-05 128K tok/s
+step 504800 loss 2.016 lr 1.44e-05 128K tok/s
+step 504900 loss 3.029 lr 1.44e-05 128K tok/s
+step 505000 loss 2.884 lr 1.44e-05 128K tok/s
+step 505100 loss 1.890 lr 1.43e-05 128K tok/s
+step 505200 loss 3.019 lr 1.43e-05 128K tok/s
+step 505300 loss 2.103 lr 1.43e-05 128K tok/s
+step 505400 loss 2.739 lr 1.43e-05 128K tok/s
+step 505500 loss 2.816 lr 1.42e-05 128K tok/s
+step 505600 loss 2.765 lr 1.42e-05 128K tok/s
+step 505700 loss 3.138 lr 1.42e-05 128K tok/s
+step 505800 loss 2.976 lr 1.41e-05 128K tok/s
+step 505900 loss 2.786 lr 1.41e-05 128K tok/s
+  eval at step 505999...
+  val PPL 15.81
+step 506000 loss 2.113 lr 1.41e-05 128K tok/s
+step 506100 loss 2.538 lr 1.41e-05 128K tok/s
+step 506200 loss 2.849 lr 1.40e-05 127K tok/s
+step 506300 loss 2.785 lr 1.40e-05 127K tok/s
+step 506400 loss 3.153 lr 1.40e-05 127K tok/s
+step 506500 loss 2.482 lr 1.40e-05 127K tok/s
+step 506600 loss 2.884 lr 1.39e-05 127K tok/s
+step 506700 loss 2.565 lr 1.39e-05 127K tok/s
+step 506800 loss 2.035 lr 1.39e-05 127K tok/s
+step 506900 loss 3.699 lr 1.39e-05 127K tok/s
+step 507000 loss 2.502 lr 1.38e-05 127K tok/s
+step 507100 loss 3.156 lr 1.38e-05 127K tok/s
+step 507200 loss 2.503 lr 1.38e-05 127K tok/s
+step 507300 loss 2.520 lr 1.38e-05 127K tok/s
+step 507400 loss 2.408 lr 1.37e-05 127K tok/s
+step 507500 loss 2.868 lr 1.37e-05 127K tok/s
+step 507600 loss 2.441 lr 1.37e-05 127K tok/s
+step 507700 loss 4.820 lr 1.36e-05 127K tok/s
+step 507800 loss 2.882 lr 1.36e-05 127K tok/s
+step 507900 loss 2.640 lr 1.36e-05 127K tok/s
+  eval at step 507999...
+  val PPL 15.75
+  checkpoint at step 507999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step508000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step500000
+step 508000 loss 2.937 lr 1.36e-05 127K tok/s
+step 508100 loss 3.338 lr 1.35e-05 127K tok/s
+step 508200 loss 3.082 lr 1.35e-05 127K tok/s
+step 508300 loss 2.855 lr 1.35e-05 127K tok/s
+step 508400 loss 3.059 lr 1.35e-05 127K tok/s
+step 508500 loss 2.850 lr 1.34e-05 127K tok/s
+step 508600 loss 3.682 lr 1.34e-05 127K tok/s
+step 508700 loss 2.675 lr 1.34e-05 127K tok/s
+step 508800 loss 3.456 lr 1.34e-05 127K tok/s
+step 508900 loss 2.391 lr 1.33e-05 127K tok/s
+step 509000 loss 2.728 lr 1.33e-05 127K tok/s
+step 509100 loss 1.689 lr 1.33e-05 127K tok/s
+step 509200 loss 2.627 lr 1.33e-05 127K tok/s
+step 509300 loss 2.590 lr 1.32e-05 127K tok/s
+step 509400 loss 2.719 lr 1.32e-05 127K tok/s
+step 509500 loss 2.808 lr 1.32e-05 127K tok/s
+step 509600 loss 4.641 lr 1.32e-05 127K tok/s
+step 509700 loss 3.290 lr 1.31e-05 127K tok/s
+step 509800 loss 2.416 lr 1.31e-05 127K tok/s
+step 509900 loss 3.074 lr 1.31e-05 127K tok/s
+  eval at step 509999...
+  val PPL 15.78
+step 510000 loss 2.616 lr 1.31e-05 127K tok/s
+step 510100 loss 2.520 lr 1.30e-05 127K tok/s
+step 510200 loss 2.612 lr 1.30e-05 127K tok/s
+step 510300 loss 3.162 lr 1.30e-05 127K tok/s
+step 510400 loss 3.293 lr 1.30e-05 127K tok/s
+step 510500 loss 2.685 lr 1.29e-05 127K tok/s
+step 510600 loss 2.688 lr 1.29e-05 127K tok/s
+step 510700 loss 2.726 lr 1.29e-05 127K tok/s
+step 510800 loss 2.740 lr 1.29e-05 127K tok/s
+step 510900 loss 2.434 lr 1.28e-05 127K tok/s
+step 511000 loss 2.316 lr 1.28e-05 127K tok/s
+step 511100 loss 2.750 lr 1.28e-05 127K tok/s
+step 511200 loss 2.760 lr 1.28e-05 127K tok/s
+step 511300 loss 2.729 lr 1.27e-05 127K tok/s
+step 511400 loss 3.269 lr 1.27e-05 127K tok/s
+step 511500 loss 2.966 lr 1.27e-05 127K tok/s
+step 511600 loss 3.028 lr 1.26e-05 127K tok/s
+step 511700 loss 3.487 lr 1.26e-05 127K tok/s
+step 511800 loss 3.075 lr 1.26e-05 127K tok/s
+step 511900 loss 2.519 lr 1.26e-05 127K tok/s
+  eval at step 511999...
+  val PPL 15.73
+  checkpoint at step 511999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step512000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step504000
+step 512000 loss 2.968 lr 1.25e-05 126K tok/s
+step 512100 loss 3.260 lr 1.25e-05 126K tok/s
+step 512200 loss 2.385 lr 1.25e-05 126K tok/s
+step 512300 loss 2.901 lr 1.25e-05 126K tok/s
+step 512400 loss 3.259 lr 1.24e-05 126K tok/s
+step 512500 loss 2.611 lr 1.24e-05 126K tok/s
+step 512600 loss 2.741 lr 1.24e-05 126K tok/s
+step 512700 loss 2.624 lr 1.24e-05 126K tok/s
+step 512800 loss 2.967 lr 1.23e-05 126K tok/s
+step 512900 loss 2.918 lr 1.23e-05 126K tok/s
+step 513000 loss 2.548 lr 1.23e-05 126K tok/s
+step 513100 loss 3.284 lr 1.23e-05 126K tok/s
+step 513200 loss 3.023 lr 1.23e-05 126K tok/s
+step 513300 loss 2.599 lr 1.22e-05 126K tok/s
+step 513400 loss 3.354 lr 1.22e-05 126K tok/s
+step 513500 loss 2.975 lr 1.22e-05 126K tok/s
+step 513600 loss 2.865 lr 1.22e-05 126K tok/s
+step 513700 loss 2.699 lr 1.21e-05 126K tok/s
+step 513800 loss 2.584 lr 1.21e-05 126K tok/s
+step 513900 loss 2.479 lr 1.21e-05 126K tok/s
+  eval at step 513999...
+  val PPL 15.69
+step 514000 loss 2.475 lr 1.21e-05 126K tok/s
+step 514100 loss 2.660 lr 1.20e-05 126K tok/s
+step 514200 loss 4.071 lr 1.20e-05 126K tok/s
+step 514300 loss 2.807 lr 1.20e-05 126K tok/s
+step 514400 loss 2.048 lr 1.20e-05 126K tok/s
+step 514500 loss 2.661 lr 1.19e-05 126K tok/s
+step 514600 loss 2.699 lr 1.19e-05 126K tok/s
+step 514700 loss 2.258 lr 1.19e-05 126K tok/s
+step 514800 loss 2.847 lr 1.19e-05 126K tok/s
+step 514900 loss 3.299 lr 1.18e-05 126K tok/s
+step 515000 loss 2.304 lr 1.18e-05 126K tok/s
+step 515100 loss 2.916 lr 1.18e-05 126K tok/s
+step 515200 loss 3.301 lr 1.18e-05 126K tok/s
+step 515300 loss 2.661 lr 1.17e-05 126K tok/s
+step 515400 loss 2.631 lr 1.17e-05 126K tok/s
+step 515500 loss 2.766 lr 1.17e-05 126K tok/s
+step 515600 loss 2.248 lr 1.17e-05 126K tok/s
+step 515700 loss 2.643 lr 1.16e-05 126K tok/s
+step 515800 loss 3.176 lr 1.16e-05 126K tok/s
+step 515900 loss 2.913 lr 1.16e-05 126K tok/s
+  eval at step 515999...
+  val PPL 15.67
+  checkpoint at step 515999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step516000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step508000
+step 516000 loss 2.896 lr 1.16e-05 126K tok/s
+step 516100 loss 2.687 lr 1.15e-05 126K tok/s
+step 516200 loss 3.214 lr 1.15e-05 126K tok/s
+step 516300 loss 2.870 lr 1.15e-05 126K tok/s
+step 516400 loss 2.975 lr 1.15e-05 126K tok/s
+step 516500 loss 2.225 lr 1.14e-05 126K tok/s
+step 516600 loss 2.637 lr 1.14e-05 126K tok/s
+step 516700 loss 3.268 lr 1.14e-05 126K tok/s
+step 516800 loss 2.881 lr 1.14e-05 126K tok/s
+step 516900 loss 2.540 lr 1.13e-05 126K tok/s
+step 517000 loss 2.042 lr 1.13e-05 126K tok/s
+step 517100 loss 2.610 lr 1.13e-05 126K tok/s
+step 517200 loss 2.790 lr 1.13e-05 126K tok/s
+step 517300 loss 2.557 lr 1.13e-05 126K tok/s
+step 517400 loss 2.828 lr 1.12e-05 126K tok/s
+step 517500 loss 2.543 lr 1.12e-05 126K tok/s
+step 517600 loss 2.847 lr 1.12e-05 126K tok/s
+step 517700 loss 2.839 lr 1.12e-05 126K tok/s
+step 517800 loss 3.011 lr 1.11e-05 126K tok/s
+step 517900 loss 2.864 lr 1.11e-05 126K tok/s
+  eval at step 517999...
+  val PPL 15.62
+step 518000 loss 3.254 lr 1.11e-05 126K tok/s
+step 518100 loss 2.196 lr 1.11e-05 126K tok/s
+step 518200 loss 2.446 lr 1.10e-05 126K tok/s
+step 518300 loss 3.117 lr 1.10e-05 126K tok/s
+step 518400 loss 2.880 lr 1.10e-05 126K tok/s
+step 518500 loss 2.647 lr 1.10e-05 126K tok/s
+step 518600 loss 3.012 lr 1.09e-05 126K tok/s
+step 518700 loss 2.694 lr 1.09e-05 126K tok/s
+step 518800 loss 2.392 lr 1.09e-05 126K tok/s
+step 518900 loss 3.059 lr 1.09e-05 126K tok/s
+step 519000 loss 2.068 lr 1.09e-05 126K tok/s
+step 519100 loss 3.136 lr 1.08e-05 125K tok/s
+step 519200 loss 3.018 lr 1.08e-05 125K tok/s
+step 519300 loss 2.886 lr 1.08e-05 125K tok/s
+step 519400 loss 3.150 lr 1.08e-05 125K tok/s
+step 519500 loss 3.318 lr 1.07e-05 125K tok/s
+step 519600 loss 2.913 lr 1.07e-05 125K tok/s
+step 519700 loss 2.988 lr 1.07e-05 125K tok/s
+step 519800 loss 2.480 lr 1.07e-05 125K tok/s
+step 519900 loss 3.374 lr 1.06e-05 125K tok/s
+  eval at step 519999...
+  val PPL 15.58
+  checkpoint at step 519999...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step520000 (96 shards)
+  pruned old sharded checkpoint runs/g4_hybrid/ckpt_step512000
+step 520000 loss 2.758 lr 1.06e-05 125K tok/s
+step 520100 loss 2.619 lr 1.06e-05 125K tok/s
+step 520200 loss 3.024 lr 1.06e-05 125K tok/s
+step 520300 loss 2.449 lr 1.06e-05 125K tok/s
+step 520400 loss 2.787 lr 1.05e-05 125K tok/s
+step 520500 loss 2.881 lr 1.05e-05 125K tok/s
+step 520600 loss 2.870 lr 1.05e-05 125K tok/s
+step 520700 loss 3.186 lr 1.05e-05 125K tok/s
+step 520800 loss 3.620 lr 1.04e-05 125K tok/s
+step 520900 loss 3.032 lr 1.04e-05 125K tok/s
+step 521000 loss 3.017 lr 1.04e-05 125K tok/s
+step 521100 loss 2.868 lr 1.04e-05 125K tok/s
+step 521200 loss 2.376 lr 1.03e-05 125K tok/s
+step 521300 loss 3.178 lr 1.03e-05 125K tok/s
+step 521400 loss 2.740 lr 1.03e-05 125K tok/s
+step 521500 loss 2.663 lr 1.03e-05 125K tok/s
+step 521600 loss 2.812 lr 1.03e-05 125K tok/s
+step 521700 loss 2.833 lr 1.02e-05 125K tok/s
+step 521800 loss 2.171 lr 1.02e-05 125K tok/s
+step 521900 loss 3.026 lr 1.02e-05 125K tok/s
+  eval at step 521999...
+  val PPL 15.59
+step 522000 loss 2.724 lr 1.02e-05 125K tok/s
+step 522100 loss 1.856 lr 1.01e-05 125K tok/s
+step 522200 loss 2.899 lr 1.01e-05 125K tok/s
+step 522300 loss 2.402 lr 1.01e-05 125K tok/s
+step 522400 loss 2.807 lr 1.01e-05 125K tok/s
+step 522500 loss 3.368 lr 1.00e-05 125K tok/s
+step 522600 loss 2.997 lr 1.00e-05 125K tok/s

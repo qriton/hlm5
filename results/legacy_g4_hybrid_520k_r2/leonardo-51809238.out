@@ -1,0 +1,4 @@
+FSDP local-state load candidates: strip-root-fsdp, strip-checkpoint-wrapper, strip-all-fsdp-checkpoint-wrappers, raw
+temporarily disabled requires_grad on 429 FSDP params
+FSDP local-state strict=False fallback succeeded with strip-root-fsdp keys missing=0 unexpected=33
+validated runs/g4_hybrid/ckpt_step520000 marker_step=520000 payload_step=519999 world=96 load_mode=strip-root-fsdp normalized_keys=True

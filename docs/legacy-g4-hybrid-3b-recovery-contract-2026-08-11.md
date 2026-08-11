@@ -2,8 +2,8 @@
 
 Date: 2026-08-11
 
-Status: R0 provenance and R1 latest-checkpoint GPU canary passed; R2 training
-stability rung is not yet authorized.
+Status: R0 provenance and R1 latest-checkpoint GPU canary passed; R2 produced
+a narrow valid stability FAIL at its first binding validation.
 
 ## Recovery conclusion
 
@@ -93,7 +93,7 @@ step 520,000 / payload step 519,999 / world 96, completed the all-rank forward,
 and reproduced the exact checkpoint aggregate afterward. Evidence is under
 `results/legacy_g4_hybrid_520k_canary/`.
 
-### R2 — 4,000-step stability rung: not yet authorized
+### R2 — 4,000-step stability rung: narrow FAIL, stopped at 522K
 
 Only after R1 passes, freeze a separate launcher capped at step 524,000 and a
 two-hour wall. Preserve 520K; write a new 524K checkpoint. Pass requires exact
@@ -126,6 +126,24 @@ Its remote copy matched that hash, and Leonardo accepted the 24-node request
 under `sbatch --test-only` on 2026-08-11. The test-only estimator identifier
 `51803214` was absent from both `squeue` and `sacct`; no R2 job was submitted
 and no R2 training allocation was consumed.
+
+The subsequently authorized registered attempt was Leonardo job `51809238`.
+It resumed exactly at 520K, trained without a NaN, OOM, or traceback through
+logged step 522,000, and measured printed validation PPL `15.79` at step
+521,999. This exceeded the frozen `15.77` ceiling, so the attempt could no
+longer pass. It was stopped after 1,612 seconds / approximately 343.89
+allocation-hours rather than spending the remaining rung.
+
+The miss is narrow: `+0.20835` absolute (`+1.337%`) from the precise 520K
+anchor and `0.02` printed PPL over the conservative ceiling. The prior
+uninterrupted job measured `15.59` at the same step 521,999. R2's `15.79`
+therefore identifies the disclosed model-only restart continuity gap, not a
+damaged 520K checkpoint or an architectural HLM failure. Optimizer moments and
+per-rank sampling RNG were both reset, so this result does not identify their
+individual contributions.
+
+No 524K checkpoint was created. The 520K marker and 96-shard aggregate remain
+exact. Evidence is under `results/legacy_g4_hybrid_520k_r2/`.
 
 ### R3 — matched no-tax recovery: not yet authorized
 

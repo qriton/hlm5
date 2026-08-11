@@ -1,0 +1,1 @@
+{"step": 519999, "world_size": 96, "size": "huge3b", "cfg": {"dim": 2560, "n_layers": 32, "n_heads": 32, "max_len": 1024, "memory_layer": true, "memory_size": 256}, "vocab": 65536, "val_ppl": 15.581647041956762, "best": 15.581647041956762}
