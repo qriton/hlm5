@@ -1,0 +1,53 @@
+{
+  "schema": "hlm5-g4-hybrid-r2d-submission-receipt-v1",
+  "status_at_receipt": "RUNNING",
+  "authorization": {
+    "user_message": "Approve R2d Leonardo submission.",
+    "received_date": "2026-08-11"
+  },
+  "submission": {
+    "job_id": "51824415",
+    "submit_time": "2026-08-11T16:47:23",
+    "start_time": "2026-08-11T16:47:24",
+    "account": "aifac_l14_039",
+    "partition": "boost_usr_prod",
+    "nodes": 24,
+    "tasks": 96,
+    "gpus": 96,
+    "billing_units": 768,
+    "time_limit": "00:30:00",
+    "reason_at_receipt": "None",
+    "allocated_tres_at_receipt": "cpu=768,mem=11550G,node=24,billing=768,gres/gpu=96",
+    "stdout": "/leonardo_work/AIFAC_L14_039/hlm5-g4-hybrid-r2d-51824415.out",
+    "stderr": "/leonardo_work/AIFAC_L14_039/hlm5-g4-hybrid-r2d-51824415.err"
+  },
+  "registration": {
+    "implementation_commit": "789414ad236c4e60289eabec79a45e800777b02a",
+    "launcher_sha256": "773ba9c56ec5d19d08117a45d69b64e4e10f5297df7c8b70506517cd5c93f763",
+    "protocol_sha256": "e94d07d287ef91630c1079af10d41c25b2b656a4d9ae9e31185a0296064716db",
+    "probe_sha256": "65c18f987b488773584a9e6b4d367d792db417c21062c58a383e5d8e0defc991",
+    "comparator_sha256": "2bb5ac0d04b169bd25ad2c0102d04a52f8fe268f6293fe44936256f0ea2d3654",
+    "stateful_trainer_sha256": "1f10b45c9d35bbaba346e07756c38edb681ea9bb8daee1c4c08ab4d2e58aa0c4",
+    "model_sha256": "e3080a257276b6d5b235a72cd9c7e18fb5a4d71e2a3fe8e30daebe5f029fd0d9"
+  },
+  "source": {
+    "step": 522000,
+    "shards": 96,
+    "bytes": 43294668998,
+    "marker_sha256": "8e83af00aed53b74e39aaee0ca090aef81a8232db9d0fd46aad1a16f82fcfe42",
+    "absolute_path_aggregate_sha256": "e32a2b0945e2197cc080d585bd16c7a33a817d63a6e5d96fb436127f8fdecae8",
+    "work_available_bytes_before_submission": 954223316992
+  },
+  "pre_outcome_checks": {
+    "local_full_suite": "248 passed, 1 unrelated dependency warning",
+    "focused_r2c_r2d_suite": "11 passed",
+    "remote_import_and_api_preflight": "PASS",
+    "final_test_only_estimator": "51824405",
+    "test_only_absent_from_queue_and_accounting": true,
+    "single_use_work_root_absent": true,
+    "no_duplicate_active_job": true,
+    "source_absolute_aggregate_reverified": true,
+    "remote_registered_hashes_exact": true
+  },
+  "scope": "Paid R2d one-update localization only; no checkpoint write, repair, completion ladder, or model promotion is authorized."
+}
