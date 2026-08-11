@@ -118,6 +118,7 @@ promoted payload bytes.
 | Frozen public 3B full HLM5 path (fresh registered E8) | **PASS:** raw values admit 29/64; fixed ZCA values admit and succeed 64/64 through multi-slot memory; 0/264 off-support gates; 337/337 exact rollback; exact new-process replay | `results/e8_3b_evidence/result.json`, `results/e8_3b_evidence/verdict.json` |
 | Frozen public 3B wide exact-key locality (registered E9) | **PASS:** 0/12,288 disjoint gates across 4,096 exact-style, 4,096 paraphrase, and 4,096 neighborhood prompts; all closed outputs bit-identical; 64/64 positive anchors live; exact replay | `results/e9_3b_evidence/result.json`, `results/e9_3b_evidence/verdict.json` |
 | Frozen public 3B terminal readout-conditioned capacity (registered E13) | **PASS:** paired ZCA-half 1,023/1,024 vs full Mahalanobis 1,024/1,024 strict wins at K=1,024; 0/12,288 locality gates; exact rollback, bundle, and replay | `results/e13_3b_evidence/result.json`, `results/e13_3b_evidence/verdict.json` |
+| Frozen public 3B residual-router training (registered E14) | **Valid FAIL:** identity routes 273/1,024 held-out paraphrases to their own slots; cosine router falls to 159 and degree-5 HLM router to 2; exact path remains 1,024/1,024, locality 0/2,994, rollback/replay exact | `results/e14_3b_evidence/result.json`, `results/e14_3b_evidence/verdict.json` |
 
 The reachability frontier is the honest core: a *global* edit strength overshoots
 the certified interval and silently fails reachable edits (0.529); the certified
@@ -316,6 +317,13 @@ Adapted from [`results/RESULTS.md`](results/RESULTS.md); no inflation.
   0/12,288 locality gates, exact rollback, and exact replay. This closes the
   capacity line at a measured 1,024 exact keys; it does not establish semantic
   editing, a trained 3B HLM, or attention replacement.
+- **Valid 3B router-training falsification:** the registered E14 low-rank
+  residual routers preserved 1,024/1,024 exact strict wins and 0/2,994 locality
+  gates, but degraded held-out paraphrase own-slot routing from identity's
+  273/1,024 to 159 for the cosine control and 2 for degree-5 HLM. The HLM keys
+  became nearly collinear (coherence 0.9632), so another schedule on the same
+  loss is not licensed; the next live route is separation-constrained alignment
+  or explicit entity-relation canonicalization on a fresh population.
 - **Planned, not measured:** the robust certificate's drift and
   finite-precision calibration (ε_h, ε_r), and the full public-benchmark sweep
   (CounterFact/zsRE/MQuAKE × MEMIT/MEND/SERAC). The paper's Limitations section

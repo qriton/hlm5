@@ -1,0 +1,12 @@
+..............                                                           [100%]
+14 passed in 23.96s
+READY preflight: /leonardo_work/AIFAC_L14_039/hlm5-e14/results/e14_3b_staging/preflight.json
+READY execution receipt: /leonardo_work/AIFAC_L14_039/hlm5-e14/results/e14_3b_staging/execution_receipt.json
+COMPLETE E14 admission: /leonardo_work/AIFAC_L14_039/hlm5-e14/results/e14_3b_staging/admission.json
+COMPLETE E14 replay: /leonardo_work/AIFAC_L14_039/hlm5-e14/results/e14_3b_staging/result.json
+FAIL_3B_ROUTER_TRAINING
+- HLM training own-slot accuracy below 256/256
+- HLM paraphrase own-slot count below 103
+- HLM paraphrase strict count below 103
+- HLM paraphrase own-slot gain below 52
+- HLM paraphrase strict gain below 52

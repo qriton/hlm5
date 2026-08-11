@@ -1,0 +1,71 @@
+{
+  "dependency_sha256": {
+    "hlm5/__init__.py": "6122cf699b74d696a62fc95ee46b3bcde76ae9fd6e4bccda8a17fc55609d0e57",
+    "hlm5/certify.py": "a13544eb242cb1f827496a46a6d943723ad51f35b827fe47d2da641e26a1c210",
+    "hlm5/e10_contract.py": "4d893d9cdc07d3556db7ab25d367b27580ea065ddaba2b2c6e88f365c5447dca",
+    "hlm5/e12_contract.py": "628d47460dd2309f01fb7a2ce93f435dcd572db286f3a29a61e4c3b88211e66e",
+    "hlm5/e13_contract.py": "548119b6d1943e69d92cb166824e1794e5d4361635188e1919a2ece741977026",
+    "hlm5/e13_runtime.py": "855956f8e546b30eb5ece9fe338be8ee43d1039cf94938f3eb408ccd07696687",
+    "hlm5/e7_contract.py": "5b7717f5da089db8b1d9d1d611251a2d01ef8fcbf5a719836692abde4a0fc74d",
+    "hlm5/e7_runtime.py": "c56bda88db7173d11e81c7705f31ef5439b3d9b3b7946117e56578d9059917cc",
+    "hlm5/e7b_contract.py": "606d95ca4972d1febadf6348c441449574f1c33eb2f3b7b71b3f79df27c31119",
+    "hlm5/e7b_runtime.py": "bf6e7b0abfe83d0da0f146ae72dc69d52b0469fcc311689c535a7628ea2fdbc2",
+    "hlm5/e7c_runtime.py": "55b7daf0d1d65303db5a3331ddc9b3db701e512ea45f2823a2dbfece35a58d23",
+    "hlm5/e8_contract.py": "633106728f658ce469c22e7f3d51fc013b38b90af24f5a506c6deb721166fd80",
+    "hlm5/e8_runtime.py": "dc78a1d7bfea929a66b01d69cc0fdf9b7f7634643d918c6d182c8854fb205be4",
+    "hlm5/e9_contract.py": "bf345b9e09ee60672d94a582f2dcea60343a5889bd6410f60af81023cffc5fc7",
+    "hlm5/io.py": "5886ce8331ba42ca0ee75dd67746665be58d174e5f3416ad661f81c7d7685439",
+    "hlm5/key_value.py": "a0bacdfcba80397bfacefa7c7762bcb202fb91363da0e6fa902f9c707c70140a",
+    "hlm5/memory.py": "91cb50810a99079e77056291a775a878483ca6c5ddb05f2c671623c8887db973",
+    "hlm5/model.py": "2f810bde52bbf3e0da9f52640bf36ca924cd665bd6a7036155f0581494b8857c",
+    "hlm5/public_adapter.py": "9a7f77976ef604d318f42821e36491a13a156ae7e00af49a255ca2fec90f650d"
+  },
+  "environment": {
+    "cuda_runtime": "12.1",
+    "cudnn": 90100,
+    "device_capability": [
+      8,
+      0
+    ],
+    "device_count": 1,
+    "device_name": "NVIDIA A100-SXM-64GB",
+    "device_type": "cuda",
+    "node": "lrdn2535.leonardo.local",
+    "platform": "Linux-4.18.0-477.27.1.el8_8.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.6",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.12.1"
+  },
+  "implementation_commit": "67e2a6793634059d014358f8a5b7dd26b5b155c6",
+  "native_runtime": {
+    "autocast_enabled": false,
+    "cuda_matmul_allow_bf16_reduced_precision_reduction": true,
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "deterministic_algorithms": false,
+    "float32_matmul_precision": "highest"
+  },
+  "pre_attempt_outputs_absent": true,
+  "preflight_sha256": "a24eefef4a850e6643bc5e4f4c5d0cdfa13e28dd3bd7546766cc6ca584464437",
+  "registered_commands": [
+    "python scripts/preflight_e14_3b.py",
+    "python scripts/register_e14_3b.py",
+    "python scripts/admit_e14_3b.py",
+    "python scripts/replay_e14_3b.py",
+    "python scripts/verify_e14_3b.py"
+  ],
+  "registered_unix_seconds": 1786415665.8515756,
+  "schema": "hlm5-e14-3b-execution-receipt-v1",
+  "source_sha256": {
+    "hlm5/e14_contract.py": "535389f166dd08405a073786f87eca5eb196c725adcf8dcfad56418f0ab952e5",
+    "hlm5/e14_runtime.py": "e09ee1f9f7ab43df60bd9ddc822a633a757e56faf514edd0e843885ac77f0c25",
+    "scripts/admit_e14_3b.py": "1ce7229db7ffc00c511644486dec9ba3cddcfcc797e9c26ddefddf5957d49fa1",
+    "scripts/preflight_e14_3b.py": "0f73fcccdbcad4fb11f1a1faec6b3c4924e537b755b7872ebd380e13e865bd51",
+    "scripts/register_e14_3b.py": "cc9943b9475db63463cbe00273d56d6c5d70a6336dd5e80767fa51e02510e99b",
+    "scripts/replay_e14_3b.py": "a5b9888f63fcd15585e1b6db6b5e50606230c398f04fba366a13e3fc875dce71",
+    "scripts/verify_e14_3b.py": "97b4b794412ea729c1959cb952e74d3a5e9b8d6f4a42b3922f290276a4209b97",
+    "slurm/e14_3b_leonardo.slurm": "80e39a91e3825b7da311a52a069dbac9a1b2cf739e3335a4846fbe50f232af91",
+    "tests/test_e14_3b.py": "cfdcc8a8cdc1bcc32370a8bf3ef4d4d6bcdbe0dc9aaaf62a254bc8e85c0ed3ed"
+  },
+  "status": "READY"
+}
