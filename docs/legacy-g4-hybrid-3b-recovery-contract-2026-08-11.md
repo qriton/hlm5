@@ -118,6 +118,15 @@ continuation of the original optimization or sample stream. Any later matched
 baseline comparison must use the same reset contract; otherwise it is
 confounded.
 
+The prepared launcher is
+`slurm/legacy_g4_hybrid_520k_to_524k_rung.slurm` at commit
+`229ce67df942d5b192ddf92029d4228e0c286587`, SHA-256
+`068fca79be9f451444430cc50da9a085699c04983642653cd2a8f3764127a2d0`.
+Its remote copy matched that hash, and Leonardo accepted the 24-node request
+under `sbatch --test-only` on 2026-08-11. The test-only estimator identifier
+`51803214` was absent from both `squeue` and `sacct`; no R2 job was submitted
+and no R2 training allocation was consumed.
+
 ### R3 — matched no-tax recovery: not yet authorized
 
 The baseline is only at step 484,000. A completed hybrid alone cannot establish
