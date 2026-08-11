@@ -145,7 +145,7 @@ individual contributions.
 No 524K checkpoint was created. The 520K marker and 96-shard aggregate remain
 exact. Evidence is under `results/legacy_g4_hybrid_520k_r2/`.
 
-### R2b — state-complete warm-restart bridge: prepared, not authorized
+### R2b — state-complete warm-restart bridge: authorized and queued
 
 R2 localized a `+0.20` printed-PPL discontinuity to the model-only restart
 contract. The old checkpoint cannot recover missing AdamW moments or the CUDA
@@ -190,6 +190,13 @@ both hashes. A target-environment `--help` import smoke passed. Leonardo accepte
 the exact launcher under `sbatch --test-only` as estimator `51813023`; the
 estimator projected 2026-08-18 under the live queue and was absent from both
 `squeue` and `sacct`, so no job or allocation was created.
+
+The user subsequently authorized R2b. Leonardo accepted the exact registered
+launcher as job `51813699` at 2026-08-11 12:45:27 CEST. All source hashes and
+single-use output-absence checks passed immediately before submission. The job
+was pending for `Priority` with no start estimate and no allocated TRES when
+the immutable submission receipt was written under
+`results/legacy_g4_hybrid_520k_r2b/`.
 
 ### R3 — matched no-tax recovery: not yet authorized
 
