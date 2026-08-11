@@ -1,0 +1,218 @@
+{
+  "baseline": "zca_half_raw_r1e2",
+  "baseline_tiers": [
+    1024
+  ],
+  "basis_and_directions": {
+    "baseline_directions_sha256": "5186cbf4ddb1be7225c6c692cc662f5ed4da0909e43f02d60dfa132e36af7989",
+    "baseline_name": "zca_half_raw_r1e2",
+    "candidate_directions_sha256": "7edde4d738e9bf448c9b6bbfe8da5d6d2b7899a9a4c5a97d1137a9ae31acae84",
+    "candidate_name": "mahalanobis_raw_r1e2",
+    "candidate_operator_sha256": "6bff110d1fa5f4a751f5f60ec21a3b9489b802a1d42a18d789141fbf671c8919",
+    "candidate_power": 1.0,
+    "direction_dtype": "float64",
+    "direction_shape": [
+      1200,
+      2048
+    ],
+    "eigenvalues_sha256": "7f33aaca070a3539f8c4c65a0e8a56ef82a2813d950ec910335160f971da4971",
+    "eigenvectors_sha256": "d5e1b3f6c5fafa4b9fd46bfbcbf1eddd982a2b19ea9a40542ba236a8ebdb3fad",
+    "mean_sha256": "ae2b4c5d0c3aa902b7ae61dfb320177fea40270c1450f15a9fb5c064bed9e489",
+    "median_positive_eigenvalue": 0.007535659708082676,
+    "operator_dtype": "float64",
+    "operator_sha256": "ac2536bf5a28014c665177fb89ff907ae2456a276c5c096edc767900b4a8d065",
+    "operator_shape": [
+      2048,
+      2048
+    ],
+    "ridge": 7.535659708082676e-05,
+    "ridge_fraction": 0.01
+  },
+  "bound_inputs": {
+    "counterfact_sha256": "d017056125178a13728594e66a801357a8db9ed7973a7425554bb4271de9fc6f",
+    "e10_admission_sha256": "2c8b3a763a1209eb2098b679fa1fcaae9b5361d6c09da53b80dd6ac82c7dea86",
+    "e10_bundle_sha256": "d8b437041c5f902691c1f9e801ef57cdc5bedb1ea7d07a22b77d41aa9c07a3c7",
+    "e10_evidence_commit": "5e37272ecfcfbc9edb40ebe52d9f19c41b83a105",
+    "e10_result_sha256": "824a118add90b163114372e22f55d31d7503a3f90ae4579e9eccf7cf16adaf3e",
+    "e10_verdict": "PASS_3B_CAPACITY_1024",
+    "e10_verdict_sha256": "9e3aa70a01a8f43e39836fa93479beea17b6d1e8535c96c113c1209f6b48ce56",
+    "e11_admission_sha256": "bfaa56c885c5a52316bf77d0799fdaea479c1637db14f5a9067dac0f3971b5c4",
+    "e11_evidence_commit": "a9b139c7e5c7196ce5c6e2c277fd4dca5f8c2683",
+    "e11_result_sha256": "44edb635ce5b564928dac5d0a48823db5b53c60869112adc27d72d8da42f5879",
+    "e11_verdict": "PASS_3B_CROSS_NODE_PORTABLE",
+    "e11_verdict_sha256": "2bbba2db94c82693c87aa631330a2b84607cb862d234780a4bac7aaa3595c129",
+    "e12_admission_sha256": "155c35b7dac2d3805faf6fff2c7c8b2df597d318e3e5246d6d2a2cda4caeb120",
+    "e12_evidence_commit": "ca5de9e927b377e169334886cb1097326e71c845",
+    "e12_result_sha256": "6fb90a9bce3404cc421086b85dbfb02b0df0cb0a450bc51b10ce56200f1fcdd7",
+    "e12_verdict": "FAIL_3B_UNTOUCHED_FINAL",
+    "e12_verdict_sha256": "bea89e68cffc9004db51665cf351d7db6f5525ed433869acdfef45d910096661",
+    "e8_result_sha256": "ec064b4d38c1abb9d88f99bd1c138b01cbfe4f9b15dbdf28edbe415477e678b6",
+    "e9_admission_sha256": "1d67111e3d7d3bba8d59cdd7d04b2197ed380ebce4b3ec00c96982a36a94551e",
+    "e9_result_sha256": "4248a926676b53c7eab005bc87f894d8e7a1277e618135872e1e3ff30ddad0b7",
+    "e9_verdict": "PASS_3B_WIDE_LOCALITY",
+    "e9_verdict_sha256": "a025a56b541423610659ea52e40414fd5cad7454bf4687aabf4991a21e9d90b8"
+  },
+  "branch": "",
+  "candidate": "mahalanobis_raw_r1e2",
+  "candidate_record": {
+    "candidate_count": 1200,
+    "case_id_sha256": "13dfd78f1760d5a3d682744d5fa6a3bb3b54a29d8fb4a8f4cfe92b0ac24263d4",
+    "case_sha256": "97baae5bdf9f0bb983462dabb0b217d8903d62d9ef17ec79026e09de0dc4c86e",
+    "first_case_id": 1247,
+    "last_case_id": 2507,
+    "prompt_sha256": "ba8ebb4d2a45e406d64172f35441434500d7cb16009e0b286d9ef0bfc4ac14c2",
+    "target_id_sha256": "b10544132207124b63b7822346dcbd77a77bc71480dbe62a373717150dab63c8",
+    "target_sha256": "329774d462e8d4549e157ec76d0fe1b36e10a452a6ef8d8c14f9dce63efedcb5"
+  },
+  "candidate_tiers": [
+    256,
+    1024
+  ],
+  "commands": [
+    "python scripts/preflight_e13_3b.py",
+    "python scripts/register_e13_3b.py",
+    "python scripts/admit_e13_3b.py",
+    "python scripts/replay_e13_3b.py",
+    "python scripts/verify_e13_3b.py"
+  ],
+  "dependency_sha256": {
+    "hlm5/__init__.py": "6122cf699b74d696a62fc95ee46b3bcde76ae9fd6e4bccda8a17fc55609d0e57",
+    "hlm5/certify.py": "a13544eb242cb1f827496a46a6d943723ad51f35b827fe47d2da641e26a1c210",
+    "hlm5/e10_contract.py": "4d893d9cdc07d3556db7ab25d367b27580ea065ddaba2b2c6e88f365c5447dca",
+    "hlm5/e10_runtime.py": "09dbb2a71426f21b9c935acb22d15e71f4c80767b59e43cc472f4639516015ef",
+    "hlm5/e12_contract.py": "628d47460dd2309f01fb7a2ce93f435dcd572db286f3a29a61e4c3b88211e66e",
+    "hlm5/e12_runtime.py": "a6b2c8dd01ffeabd57edd65e185c14cca38cf042129a69dcc775ff185f96e315",
+    "hlm5/e7_contract.py": "5b7717f5da089db8b1d9d1d611251a2d01ef8fcbf5a719836692abde4a0fc74d",
+    "hlm5/e7_runtime.py": "c56bda88db7173d11e81c7705f31ef5439b3d9b3b7946117e56578d9059917cc",
+    "hlm5/e7b_contract.py": "606d95ca4972d1febadf6348c441449574f1c33eb2f3b7b71b3f79df27c31119",
+    "hlm5/e7b_runtime.py": "bf6e7b0abfe83d0da0f146ae72dc69d52b0469fcc311689c535a7628ea2fdbc2",
+    "hlm5/e7c_runtime.py": "55b7daf0d1d65303db5a3331ddc9b3db701e512ea45f2823a2dbfece35a58d23",
+    "hlm5/e8_contract.py": "633106728f658ce469c22e7f3d51fc013b38b90af24f5a506c6deb721166fd80",
+    "hlm5/e8_runtime.py": "dc78a1d7bfea929a66b01d69cc0fdf9b7f7634643d918c6d182c8854fb205be4",
+    "hlm5/e9_contract.py": "bf345b9e09ee60672d94a582f2dcea60343a5889bd6410f60af81023cffc5fc7",
+    "hlm5/e9_runtime.py": "7c805950e3eb0618953c4e24d64629c5b427e774a2395d525384a6425643b3f7",
+    "hlm5/memory.py": "91cb50810a99079e77056291a775a878483ca6c5ddb05f2c671623c8887db973",
+    "hlm5/public_adapter.py": "9a7f77976ef604d318f42821e36491a13a156ae7e00af49a255ca2fec90f650d"
+  },
+  "e13_outcomes_computed": false,
+  "environment": {
+    "cuda_runtime": "12.1",
+    "cudnn": 90100,
+    "device_capability": [
+      8,
+      0
+    ],
+    "device_count": 1,
+    "device_name": "NVIDIA A100-SXM-64GB",
+    "device_type": "cuda",
+    "node": "lrdn2723.leonardo.local",
+    "platform": "Linux-4.18.0-477.27.1.el8_8.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.6",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.12.1"
+  },
+  "gate_batch": 256,
+  "implementation_commit": "c75a8b87808658d5bde52f54eaa5c7439619ed07",
+  "memory_size": 1032,
+  "model_file_sha256": {
+    "config.json": "e8336e843aecb733691a043ad4209168e1730158b5e03c2672591cc946036a47",
+    "generation_config.json": "7d830c1a274c4484a50eb34ed68cdbd3611a4981fd4d539c7ec1fed67e01cec4",
+    "model-00001-of-00002.safetensors": "7e270ac568ee1880ddbadad66ccdcd9906d52415e8904e2f300c75250b9c7d49",
+    "model-00002-of-00002.safetensors": "c6a6e7690a66dcc386a6a9b456686e7c308d45cba884d116c928dafa7fa987ae",
+    "model.safetensors.index.json": "e3a7254c086c4a78f95ad5864f435d165ffed1ed8998326ce5107b4423c15b76",
+    "special_tokens_map.json": "9faaa15579bbf433176493a621142ff580ae2d13d81bf4702cb72f4d6902dc62",
+    "tokenizer.json": "ab4da6b2aa68247e9c0fa9b97fc7fcc796505038d01f7e144522a65ce0dbd2e5",
+    "tokenizer_config.json": "f398d9edb0184aac1c9fd1b1bdcd3a5a1527ae560fd847719635a66e2b54e9cd"
+  },
+  "model_files": {
+    "config.json": {
+      "bytes": 943,
+      "sha256": "e8336e843aecb733691a043ad4209168e1730158b5e03c2672591cc946036a47"
+    },
+    "generation_config.json": {
+      "bytes": 126,
+      "sha256": "7d830c1a274c4484a50eb34ed68cdbd3611a4981fd4d539c7ec1fed67e01cec4"
+    },
+    "model-00001-of-00002.safetensors": {
+      "bytes": 4966315264,
+      "sha256": "7e270ac568ee1880ddbadad66ccdcd9906d52415e8904e2f300c75250b9c7d49"
+    },
+    "model-00002-of-00002.safetensors": {
+      "bytes": 1183919744,
+      "sha256": "c6a6e7690a66dcc386a6a9b456686e7c308d45cba884d116c928dafa7fa987ae"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 26899,
+      "sha256": "e3a7254c086c4a78f95ad5864f435d165ffed1ed8998326ce5107b4423c15b76"
+    },
+    "special_tokens_map.json": {
+      "bytes": 151,
+      "sha256": "9faaa15579bbf433176493a621142ff580ae2d13d81bf4702cb72f4d6902dc62"
+    },
+    "tokenizer.json": {
+      "bytes": 17208861,
+      "sha256": "ab4da6b2aa68247e9c0fa9b97fc7fcc796505038d01f7e144522a65ce0dbd2e5"
+    },
+    "tokenizer_config.json": {
+      "bytes": 50405,
+      "sha256": "f398d9edb0184aac1c9fd1b1bdcd3a5a1527ae560fd847719635a66e2b54e9cd"
+    }
+  },
+  "model_forward_batch": 16,
+  "model_id": "HuggingFaceTB/SmolLM3-3B-Base",
+  "model_invariants": {
+    "all_parameters_frozen": true,
+    "class_name": "SmolLM3ForCausalLM",
+    "floating_parameter_dtypes": [
+      "bfloat16"
+    ],
+    "head_bias_is_none": true,
+    "hidden_size": 2048,
+    "layers": 36,
+    "parameter_count": 3075098624,
+    "tied_embeddings": true,
+    "vocab_size": 128256
+  },
+  "model_revision": "d78a42f79198603e614095753484a04c10c2b940",
+  "native_runtime": {
+    "autocast_enabled": false,
+    "cuda_matmul_allow_bf16_reduced_precision_reduction": true,
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "deterministic_algorithms": false,
+    "float32_matmul_precision": "highest"
+  },
+  "population_materialized_without_model": 1200,
+  "protocol_commit": "6d36509ce17c6d80053812ca5b9aa9700074c0ae",
+  "protocol_sha256": "0250a70856f1760fb1cc82a31cc2dcb7e0cfffc27a00fc18b87dbc718b22cd06",
+  "query_record": {
+    "query_case_count": 4096,
+    "query_case_id_sha256": "3f037b021cb8c3c03e5e2f8237b96b47e5d04902d9e1c87b18e7b5d0bcfb8e59",
+    "query_case_start": 2508,
+    "query_count": 12288,
+    "query_kind_sha256": {
+      "exact": "b9add2884e12f69a39f48faf1f7a4fad160dd0277fece9b5b9022e7a177b106d",
+      "neighborhood": "6bd882fe2996689b515dec917c236b0c656f503fe957b98c8ebc7e8f0c024d93",
+      "paraphrase": "039527409f9e5b5f306cfe2b668d20376a3119e089c38c92d4a9619063a46070"
+    },
+    "query_prompt_sha256": "91c16924d49ecdbded39348a75195c88b336d280f918c21eda8bb21429ea79ac",
+    "query_row_sha256": "e2bb44addf8f557ea47ffb97ddfa6de32768d1b977ecd22d314123fa79e61326"
+  },
+  "schema": "hlm5-e13-3b-preflight-v1",
+  "snapshot_selector": "HLM5_E7_SNAPSHOT",
+  "source_sha256": {
+    "hlm5/e13_contract.py": "548119b6d1943e69d92cb166824e1794e5d4361635188e1919a2ece741977026",
+    "hlm5/e13_runtime.py": "855956f8e546b30eb5ece9fe338be8ee43d1039cf94938f3eb408ccd07696687",
+    "scripts/admit_e13_3b.py": "d45430333659d44c7977d4dd4ddd8d9dd37c832b1d9eada282a665c4f01f309e",
+    "scripts/preflight_e13_3b.py": "178b12ab05d65b7c994b342ee4b4067d9c1d06db0c69d287b9604648d6f54762",
+    "scripts/register_e13_3b.py": "8eb2a1e3f10d7c05b96bb33d6aa387d99db9d39a49e6fb418755269d1d4bb89f",
+    "scripts/replay_e13_3b.py": "7ccbdca2090a1f6472b6b46d6178d2bc630c62b2f4f1c537321c551ce4515ed4",
+    "scripts/verify_e13_3b.py": "4847ee71afaa900c03c409cf0f44ed2fae09e4b9c9871c638def10383c67a0a9",
+    "tests/test_e13_3b.py": "4c87a999d324249a8ece2ff6fff9df1d3a308df11e203617cf9f440bed8dc911"
+  },
+  "status": "READY",
+  "test_command": "python -m pytest tests/test_e13_3b.py -q",
+  "tests_returncode": 0,
+  "tests_stderr": "",
+  "tests_stdout": "..........                                                               [100%]\n10 passed in 13.72s"
+}

@@ -117,6 +117,7 @@ promoted payload bytes.
 | Frozen public 3B readout geometry (fresh registered E7c) | **PASS:** raw target rows reach 705/1,200; fixed ZCA-half directions reach and strictly win 1,200/1,200; +495 reachability, 0 raw wins lost; exact new-process replay | `results/e7c_3b_evidence/result.json`, `results/e7c_3b_evidence/verdict.json` |
 | Frozen public 3B full HLM5 path (fresh registered E8) | **PASS:** raw values admit 29/64; fixed ZCA values admit and succeed 64/64 through multi-slot memory; 0/264 off-support gates; 337/337 exact rollback; exact new-process replay | `results/e8_3b_evidence/result.json`, `results/e8_3b_evidence/verdict.json` |
 | Frozen public 3B wide exact-key locality (registered E9) | **PASS:** 0/12,288 disjoint gates across 4,096 exact-style, 4,096 paraphrase, and 4,096 neighborhood prompts; all closed outputs bit-identical; 64/64 positive anchors live; exact replay | `results/e9_3b_evidence/result.json`, `results/e9_3b_evidence/verdict.json` |
+| Frozen public 3B terminal readout-conditioned capacity (registered E13) | **PASS:** paired ZCA-half 1,023/1,024 vs full Mahalanobis 1,024/1,024 strict wins at K=1,024; 0/12,288 locality gates; exact rollback, bundle, and replay | `results/e13_3b_evidence/result.json`, `results/e13_3b_evidence/verdict.json` |
 
 The reachability frontier is the honest core: a *global* edit strength overshoots
 the certified interval and silently fails reachable edits (0.529); the certified
@@ -309,6 +310,12 @@ Adapted from [`results/RESULTS.md`](results/RESULTS.md); no inflation.
   bit-identical native hiddens for every row, kept all 64 positive anchors live,
   and replayed exactly. This remains a finite-pool exact-key result, not semantic
   generalization or a population false-positive bound.
+- **Verified terminal 3B readout repair:** on the paired E13 population, the
+  ZCA-half baseline reproduced a 1,023/1,024 strict result while the frozen
+  full-Mahalanobis value direction passed 1,024/1,024 with minimum margin 4.5,
+  0/12,288 locality gates, exact rollback, and exact replay. This closes the
+  capacity line at a measured 1,024 exact keys; it does not establish semantic
+  editing, a trained 3B HLM, or attention replacement.
 - **Planned, not measured:** the robust certificate's drift and
   finite-precision calibration (ε_h, ε_r), and the full public-benchmark sweep
   (CounterFact/zsRE/MQuAKE × MEMIT/MEND/SERAC). The paper's Limitations section
