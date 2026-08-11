@@ -2,9 +2,8 @@
 #SBATCH --job-name=hlm5-g4-hybrid-520k-canary
 #SBATCH --account=aifac_l14_039
 #SBATCH --partition=boost_usr_prod
-# The fixed 96-rank checkpoint needs 24 four-GPU nodes. lprod is capped at
-# eight nodes / 32 GPUs per account; bprod is the matching large-job queue.
-#SBATCH --qos=boost_qos_bprod
+# Use the partition's normal QOS, matching the historical 24-node lineage.
+# lprod caps at eight nodes, while bprod has a 65-node minimum.
 #SBATCH --nodes=24
 #SBATCH --ntasks-per-node=4
 #SBATCH --gres=gpu:4
