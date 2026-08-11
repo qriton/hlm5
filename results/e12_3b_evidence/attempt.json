@@ -1,0 +1,12 @@
+{
+  "burn_unix_seconds": 1786408317.303905,
+  "candidate_case_sha256": "f4f5357f4fadda156c018d1ab771e7f8cc587ddc297437d82800b49be614f4b6",
+  "execution_receipt_sha256": "7020ddea6da073b4c557dda8ca25dc7714d2fe1dc2dedce7dbaceff77fb1622b",
+  "implementation_commit": "b2e1caf47623b8f6082a6c24eedba6e8f4ffd991",
+  "pre_admission_outputs_absent": true,
+  "protocol_commit": "34c25ca489314ab14ed1594c6fd8badd17bba704",
+  "protocol_sha256": "9198d8abe1a7a7f607276b6492cef638275643a6e7e2efce2cfdf69c27fccbbb",
+  "query_row_sha256": "aa1336a8ca76436deba4cfc0e965fd906ec5eb216ce23044c1193d15562dc34a",
+  "schema": "hlm5-e12-3b-attempt-v1",
+  "status": "POOL_SPENT"
+}
