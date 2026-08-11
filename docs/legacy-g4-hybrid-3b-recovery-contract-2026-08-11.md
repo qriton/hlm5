@@ -2,8 +2,8 @@
 
 Date: 2026-08-11
 
-Status: checkpoint and source provenance bound; latest-checkpoint GPU canary not
-yet authorized or run.
+Status: R0 provenance and R1 latest-checkpoint GPU canary passed; R2 training
+stability rung is not yet authorized.
 
 ## Recovery conclusion
 
@@ -65,7 +65,7 @@ Pass: 96/96 shards exist, aggregate and marker hashes are fixed, exact source
 is in Git, last durable metrics are finite, and later failures occurred before
 Python. All bars passed on 2026-08-11.
 
-### R1 — load-only 96-rank canary: awaiting explicit compute approval
+### R1 — load-only 96-rank canary: passed
 
 Launcher: `slurm/legacy_g4_hybrid_520k_canary.slurm`.
 
@@ -85,6 +85,13 @@ Pass requires:
 - terminal marker is `REPAIR_CANARY_PASS`.
 
 Any failure stops recovery. Do not patch the only checkpoint in place.
+
+Job `51803021` passed on 2026-08-11 with exit `0:0` in 1m14s. The model load
+and forward step took 21 seconds. It selected `strip-root-fsdp`, reported zero
+missing and the 33 known duplicate/internal unexpected keys, matched marker
+step 520,000 / payload step 519,999 / world 96, completed the all-rank forward,
+and reproduced the exact checkpoint aggregate afterward. Evidence is under
+`results/legacy_g4_hybrid_520k_canary/`.
 
 ### R2 — 4,000-step stability rung: not yet authorized
 
@@ -110,6 +117,29 @@ Bind an allocation-hour ceiling, checkpoint cadence, retry policy, node-health
 preflight, and scientific stop bar before submission. Infrastructure launch
 failure may be retried on an unchanged registered job; model load, nonfinite,
 or validation failure may not.
+
+### R5 — consolidate and preserve locally: mandatory after any completion
+
+Completion is not accepted while the only usable model remains as
+Leonardo-specific 96-way FSDP shards. On the final matched checkpoint:
+
+1. preserve the original sharded checkpoint and marker read-only;
+2. run `consolidate_g4.py` at the original 96-rank world size into a new
+   portable checkpoint;
+3. require clean non-FSDP parameter names, exact architecture/config metadata,
+   successful reload into a plain `HLM5LM`, and validation PPL within the
+   preregistered tolerance of the shard marker;
+4. hash the portable checkpoint, tokenizer, model config, source snapshot,
+   training summary, validation report, and original shard manifest;
+5. copy that complete immutable bundle to
+   `D:\HLM2\artifacts\models\demo\hlm5-g4-hybrid-3b\`;
+6. recompute every hash after transfer and add the bundle to the local model
+   manifest before considering any remote cleanup.
+
+Drive D currently has more than 700 GiB free; the expected fp32 portable 3B
+checkpoint is roughly 11 GB, so local preservation is not capacity-blocked.
+No Leonardo checkpoint may be deleted merely because the local copy exists;
+remote cleanup requires a separate verified-backup decision.
 
 ## Relation to the new frozen-trunk work
 
