@@ -102,6 +102,22 @@ validation at 522K and 524K, and no validation regression larger than 0.20
 absolute PPL from the 15.58165 anchor. The rung is expected to consume roughly
 700 allocation hours, with 1,536 as the two-hour hard maximum.
 
+The legacy trainer couples `--steps` to the cosine learning-rate horizon, so
+the R2 launcher must retain the historical 610K horizon and stop the job step
+only after the complete 524K marker appears. Passing `--steps 524000` is not
+allowed because it silently changes the continuation schedule. The source
+prints current validation PPL to two decimals and stores only historical best
+PPL in the checkpoint marker; therefore R2 conservatively binds both printed
+522K/524K values to `<= 15.77` rather than treating marker `best` as current
+validation.
+
+The 520K shards contain model state only. The legacy trainer therefore resets
+both optimizer moments and its per-rank sampling generators on resume. R2 is a
+load/train/save stability test under that disclosed reset, not an exact
+continuation of the original optimization or sample stream. Any later matched
+baseline comparison must use the same reset contract; otherwise it is
+confounded.
+
 ### R3 — matched no-tax recovery: not yet authorized
 
 The baseline is only at step 484,000. A completed hybrid alone cannot establish
