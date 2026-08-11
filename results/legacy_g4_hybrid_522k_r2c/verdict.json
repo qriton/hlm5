@@ -1,0 +1,38 @@
+{
+  "schema": "hlm5-g4-hybrid-r2c-verdict-v1",
+  "formal_verdict": "INVALID_REPRODUCIBILITY",
+  "job_id": "51821287",
+  "terminal_state": "FAILED",
+  "exit_code": "2:0",
+  "elapsed": "00:26:26",
+  "estimated_local_allocation_hours": 338.3466666666667,
+  "source_step": 522000,
+  "midpoint_step": 522500,
+  "restart_segment_executed": false,
+  "source_unchanged": true,
+  "continuous_midpoint_ppl": 15.520899957093135,
+  "split_midpoint_ppl": 15.514838289543917,
+  "split_minus_continuous_ppl": -0.006061667549217554,
+  "mismatching_ranks": 96,
+  "rank_report_count": 96,
+  "mismatch_count_min": 134,
+  "mismatch_count_median_interval": [
+    135,
+    135
+  ],
+  "mismatch_count_max": 623,
+  "maximum_abs_difference_in_retained_samples": 0.000856444239616394,
+  "interpretation": "The independent arms diverged before the restart intervention, so restart continuity is unidentified. This is not evidence of memory-layer failure or practical model-quality regression.",
+  "evidence": {
+    "attempt_sha256": "70a809a48e7b9f2e0deb5ead0fc451433300ce3046508924fb4b94494ace9de5",
+    "result_sha256": "85dfa88ce2158c854496f6c9a71520e8122c700cef71784c95011eb4796288a7",
+    "environment_sha256": "51a3dc0abebc124c317c6523c8483f105c5b282d7ffaf7b3c756e15515e9cae7",
+    "continuous_log_sha256": "cded0ea085d5ddca39e1e41681c346f218ebdedc7ac1731d4b1f28b8a572f61a",
+    "split_pre_restart_log_sha256": "b9feff47b6f9f3e15b1ea217a98168b7bb4f7abaf0ccf356f95fac2803461358",
+    "midpoint_report_sha256": "9eb3b2094457082a01230ab93ba5dab49bba71db912bbf9256a9b8a47a024628",
+    "stdout_sha256": "3bf4a741ef0dacd728c5533923b225142614fce5ef3c3c9fcc8bea0c001de3da",
+    "stderr_sha256": "02b82bc46279cbb7a6cf1e39693fb733adf0a123c11f21d1eef5cf506bbd7a21",
+    "evidence_archive_sha256": "eb1ac486d597253484b0f4136100b865e25f4b0b196cded933f4187db2ad6d6a"
+  },
+  "next_gate": "Outcome-blind two-launch one-update stage localization; no completion ladder is authorized."
+}

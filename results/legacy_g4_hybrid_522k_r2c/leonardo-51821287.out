@@ -1,0 +1,14 @@
+train tokens=22,080,306,662 val tokens=225,309,251 world=96 eff_batch=96 tok/step=98,304
+grad_checkpointing deferred to FSDP activation checkpointing
+HLM5LM huge3b: 2702.5M params (vocab 65536, memory_layer=True)
+FSDP FULL_SHARD on (use_orig_params=True for tied embed/head)
+FSDP activation checkpointing: ON (non-reentrant)
+fsdp state-complete checkpoints: optimizer + rank-local RNG
+FSDP local-state load candidates: strip-root-fsdp, strip-checkpoint-wrapper, strip-all-fsdp-checkpoint-wrappers, raw
+temporarily disabled requires_grad on 429 FSDP params
+FSDP local-state strict=False fallback succeeded with strip-root-fsdp keys missing=0 unexpected=33
+normalized legacy FSDP local-state wrapper keys
+resumed sharded /leonardo/home/userexternal/mdima000/HLM5/runs/g4_hybrid/ckpt_step522000 rank=0 at step 522000
+STATEFUL_RESUME_VALIDATED step=522000 optimizer=True runtime=True
+R2C_TARGET_MARKER_SEEN label=continuous stopping_step=51821287.1
+R2C_TARGET_MARKER_SEEN label=split_pre_restart stopping_step=51821287.2

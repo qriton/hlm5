@@ -212,6 +212,38 @@ created a genuinely restartable anchor. It does not authorize completion or
 the no-tax claim; the next gate is a separately registered exact-resume
 continuity rung from 522K.
 
+### R2c — exact-resume continuity: INVALID before treatment
+
+The registered paired assay ran as Leonardo job `51821287`. Its continuous arm
+advanced 522K to 523K; the split arm independently advanced the same source to
+the common 522.5K midpoint. Before restarting the split arm, the frozen
+reproducibility control found:
+
+- PPL 15.520899957093135 versus 15.514838289543917 (`-0.00606167`);
+- different marker bytes because the precise PPL differed;
+- semantic model/optimizer/RNG payload mismatch on all 96 ranks.
+
+The launcher therefore stopped before the restart intervention and wrote
+`INVALID_REPRODUCIBILITY`. This does not show that checkpoint restore, the
+memory layer, or practical quality failed; it shows that exact restart excess
+cannot be identified while ordinary independent BF16/FSDP launches already
+diverge. Both PPL values improved on the 522K source marker, and the source
+passed its post-control aggregate check unchanged. Evidence is under
+`results/legacy_g4_hybrid_522k_r2c/`.
+
+### R2d — one-update divergence localization: prepared, not authorized
+
+The next bounded gate runs two independent loads and one ordinary update each,
+without checkpoint writes. It hashes model, AdamW, RNG, sampled tokens,
+forward loss/logits, post-reduction gradients, clipped gradients/norm, and
+post-step state on every rank. The earliest exact mismatch distinguishes load,
+sampling, forward, backward/NCCL, clipping, or optimizer nondeterminism.
+
+R2d has a 30-minute / 384-local-hour hard ceiling and an expected cost of
+approximately 50--100 local hours. It cannot authorize completion by itself
+and requires new explicit paid-compute approval after frozen hashes and a
+Leonardo no-allocation preflight.
+
 ### R3 — matched no-tax recovery: not yet authorized
 
 The baseline is only at step 484,000. A completed hybrid alone cannot establish

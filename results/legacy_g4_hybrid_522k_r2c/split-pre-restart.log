@@ -1,0 +1,289 @@
+train tokens=22,080,306,662 val tokens=225,309,251 world=96 eff_batch=96 tok/step=98,304
+grad_checkpointing deferred to FSDP activation checkpointing
+HLM5LM huge3b: 2702.5M params (vocab 65536, memory_layer=True)
+FSDP FULL_SHARD on (use_orig_params=True for tied embed/head)
+FSDP activation checkpointing: ON (non-reentrant)
+fsdp state-complete checkpoints: optimizer + rank-local RNG
+FSDP local-state load candidates: strip-root-fsdp, strip-checkpoint-wrapper, strip-all-fsdp-checkpoint-wrappers, raw
+temporarily disabled requires_grad on 429 FSDP params
+FSDP local-state strict=False fallback succeeded with strip-root-fsdp keys missing=0 unexpected=33
+normalized legacy FSDP local-state wrapper keys
+resumed sharded /leonardo_work/AIFAC_L14_039/hlm5-g4-hybrid-r2c/split/ckpt_step522000 rank=0 at step 522000
+step 522000 loss 2.753 lr 1.02e-05 14K tok/s
+step 522100 loss 1.830 lr 1.01e-05 134K tok/s
+step 522200 loss 2.910 lr 1.01e-05 140K tok/s
+step 522300 loss 2.400 lr 1.01e-05 141K tok/s
+step 522400 loss 2.793 lr 1.01e-05 142K tok/s
+  eval at step 522499...
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/leonardo/prod/opt/libraries/cineca-ai/4.1.1/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:562: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /leonardo/prod/build/libraries/cineca-ai/4.1.1/none/BA_WORK/cineca-ai-4.1.1/work-dir/000004/000000_cineca-ai/work/sources/pytorch/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+  val PPL 15.51
+  checkpoint at step 522499...
+temporarily disabled requires_grad on 429 FSDP params for save
+  saved sharded ckpt_step522500 (96 shards)
+checkpoint pruning disabled
+step 522500 loss 3.379 lr 1.00e-05 141K tok/s
+slurmstepd: error: *** STEP 51821287.2 ON lrdn2309 CANCELLED AT 2026-08-11T15:50:22 ***
+srun: error: lrdn2970: tasks 49-50: Terminated
+srun: Terminating StepId=51821287.2
+srun: error: lrdn2923: task 43: Terminated
+srun: error: lrdn2309: tasks 1-2: Terminated
+srun: error: lrdn3387: task 85: Terminated
+srun: error: lrdn3126: tasks 65-66: Terminated
+srun: error: lrdn2809: tasks 21,23: Terminated
+srun: error: lrdn3278: task 78: Terminated
+srun: error: lrdn2826: tasks 25-26: Terminated
+srun: error: lrdn3428: tasks 93-94: Terminated
+srun: error: lrdn3227: task 74: Terminated
+srun: error: lrdn2892: tasks 33,35: Terminated
+srun: error: lrdn2565: task 13: Terminated
+srun: error: lrdn2414: tasks 5-6: Terminated
+srun: error: lrdn2424: tasks 9-10: Terminated
+srun: error: lrdn2893: tasks 38-39: Terminated
+srun: error: lrdn2966: task 47: Terminated
+srun: error: lrdn3000: task 54: Terminated
+srun: error: lrdn3142: tasks 69-70: Terminated
+srun: error: lrdn3019: tasks 58-59: Terminated
+srun: error: lrdn3311: tasks 82-83: Terminated
+srun: error: lrdn2609: tasks 18-19: Terminated
+srun: error: lrdn2879: tasks 30-31: Terminated
+srun: error: lrdn3403: tasks 90-91: Terminated
+srun: error: lrdn3045: tasks 60-61,63: Terminated
+srun: error: lrdn2923: tasks 40,42: Terminated
+srun: error: lrdn3278: tasks 77,79: Terminated
+srun: error: lrdn3387: tasks 84,87: Terminated
+srun: error: lrdn2966: tasks 44-45: Terminated
+srun: error: lrdn3000: tasks 52-53: Terminated
+srun: error: lrdn3428: task 95: Terminated
+srun: error: lrdn3126: task 67: Terminated
+srun: error: lrdn2309: task 3: Terminated
+srun: error: lrdn3227: tasks 73,75: Terminated
+srun: error: lrdn2826: task 27: Terminated
+srun: error: lrdn2565: tasks 14-15: Terminated
+srun: error: lrdn2414: task 7: Terminated
+srun: error: lrdn2970: task 51: Terminated
+srun: error: lrdn2892: task 34: Terminated
+srun: error: lrdn2609: task 17: Terminated
+srun: error: lrdn2893: task 37: Terminated
+srun: error: lrdn3019: task 57: Terminated
+srun: error: lrdn2424: task 8: Terminated
+srun: error: lrdn3311: task 81: Terminated
+srun: error: lrdn2879: task 28: Terminated
+srun: error: lrdn3403: task 89: Terminated
+srun: error: lrdn2309: task 0: Terminated
+srun: error: lrdn3142: task 71: Terminated
+srun: error: lrdn2809: task 20: Terminated
+srun: error: lrdn3045: task 62: Terminated
+srun: error: lrdn3000: task 55: Terminated
+srun: error: lrdn3428: task 92: Terminated
+srun: error: lrdn2809: task 22: Terminated
+srun: error: lrdn2923: task 41: Terminated
+srun: error: lrdn2826: task 24: Terminated
+srun: error: lrdn3387: task 86: Terminated
+srun: error: lrdn2970: task 48: Terminated
+srun: error: lrdn3278: task 76: Terminated
+srun: error: lrdn2892: task 32: Terminated
+srun: error: lrdn3227: task 72: Terminated
+srun: error: lrdn2966: task 46: Terminated
+srun: error: lrdn3126: task 64: Terminated
+srun: error: lrdn2424: task 11: Terminated
+srun: error: lrdn2414: task 4: Terminated
+srun: error: lrdn2565: task 12: Terminated
+srun: error: lrdn3311: task 80: Terminated
+srun: error: lrdn3019: task 56: Terminated
+srun: error: lrdn2879: task 29: Terminated
+srun: error: lrdn2609: task 16: Terminated
+srun: error: lrdn3142: task 68: Terminated
+srun: error: lrdn2893: task 36: Terminated
+srun: error: lrdn3403: task 88: Terminated
+srun: Force Terminated StepId=51821287.2
