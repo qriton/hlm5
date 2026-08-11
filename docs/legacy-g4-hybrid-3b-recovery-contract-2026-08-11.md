@@ -145,7 +145,7 @@ individual contributions.
 No 524K checkpoint was created. The 520K marker and 96-shard aggregate remain
 exact. Evidence is under `results/legacy_g4_hybrid_520k_r2/`.
 
-### R2b — state-complete warm-restart bridge: authorized and queued
+### R2b — state-complete warm-restart bridge: PASS
 
 R2 localized a `+0.20` printed-PPL discontinuity to the model-only restart
 contract. The old checkpoint cannot recover missing AdamW moments or the CUDA
@@ -197,6 +197,20 @@ single-use output-absence checks passed immediately before submission. The job
 was pending for `Priority` with no start estimate and no allocated TRES when
 the immutable submission receipt was written under
 `results/legacy_g4_hybrid_520k_r2b/`.
+
+Job `51813699` subsequently completed `0:0` in 30m21s. It produced printed
+validation PPL `15.58`, passing the frozen `15.77` ceiling; the precise marker
+value was `15.575561649711549`, `-0.006085392245213` relative to the 520K
+anchor. The target has 96 shards / 43,294,668,998 bytes with aggregate SHA-256
+`e32a2b0945e2197cc080d585bd16c7a33a817d63a6e5d96fb436127f8fdecae8`.
+A fresh 96-rank process then loaded the 522K model, AdamW, and rank-local
+sampling/CPU/CUDA RNG state and emitted
+`STATEFUL_RESUME_VALIDATED step=522000 optimizer=True runtime=True`.
+
+Formal verdict: `PASS_BRIDGE`. R2b repaired the operational restart gap and
+created a genuinely restartable anchor. It does not authorize completion or
+the no-tax claim; the next gate is a separately registered exact-resume
+continuity rung from 522K.
 
 ### R3 — matched no-tax recovery: not yet authorized
 
