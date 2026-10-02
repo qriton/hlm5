@@ -1,11 +1,11 @@
 # HLM5 — Certified Knowledge Editing
 
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21258599-blue.svg)](https://doi.org/10.5281/zenodo.21258599)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21258598-blue.svg)](https://doi.org/10.5281/zenodo.21258598)
 
 **Certified Knowledge Editing: Closed-Form Reachability Guarantees for Additive
 Edits to a Frozen Language Model.**
 Marius Dima (Qriton). Paper: [`paper/hlm5-paper.pdf`](paper/hlm5-paper.pdf) ·
-DOI [10.5281/zenodo.21258599](https://doi.org/10.5281/zenodo.21258599) · arXiv link forthcoming.
+DOI [10.5281/zenodo.21258598](https://doi.org/10.5281/zenodo.21258598) (always the latest version; v1.1.0, 2026-10-02: [10.5281/zenodo.23103486](https://doi.org/10.5281/zenodo.23103486)) · arXiv link forthcoming.
 
 HLM5 attaches a slot memory to a *frozen* decoder-only transformer and asks the
 reverse of the usual editing question: instead of installing a fact and checking
@@ -297,7 +297,7 @@ checkpoint. The on-trunk scripts need the 1B checkpoint in `models/`.
              for Additive Edits to a Frozen Language Model},
   author  = {Dima, Marius},
   year    = {2026},
-  doi     = {10.5281/zenodo.21258599},
+  doi     = {10.5281/zenodo.21258598},
   note    = {arXiv link forthcoming}
 }
 ```
