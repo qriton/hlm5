@@ -112,7 +112,7 @@ promoted payload bytes.
 | No-tax (matched baseline vs. hybrid) | \|ΔPPL\| = 0.018% at 136M, 0.116% at 1B | `g2a_no_tax.json`, `g3a_no_tax.json`, `notax_params.json` |
 | Gate selectivity | perfectly separable (exact-key 1.0, all off-target 0.0); own-slot weight 0.9993 | `gate_roc.json`, `ownslot_weight_certdosed.json` |
 | GPT-2 controlled study (incl. ROME) | HLM5 vs. logit-bias McNemar p = 6e-5; ROME re-impl 0.815/0.854, EasyEdit ref 0.972/0.771 | `gpt2_table1_v2.json`, `rome_gpt2.json`, `rome_easyedit_gpt2.json` |
-| Certificate predicts editors (CounterFact, exploratory) | ROME paraphrase ρ = −0.16, p = 0.005; FT ρ = −0.13, p = 0.023; neighborhood damage ROME/GRACE p < 0.01 | `cert_vs_editors_analysis.json` |
+| Certificate predicts editors (CounterFact, gpt2-xl; **confirmatory**: 600 untouched records, five registered tests, Holm-corrected) | Required strength L vs paraphrase success: ROME ρ = −0.14 (p = 4.7e-4), MEMIT ρ = −0.18 (p = 7.8e-6); FT (dose margin) ρ = −0.18 (p = 6.6e-6). L vs neighbor log-odds lost against the unedited model: ROME ρ = +0.12 (p = 0.0035), MEMIT ρ = +0.11 (p = 0.005). Small effects: AUC 0.59 for flagging zero-paraphrase edits; neighbor flip rates do not differ. The earlier GRACE neighborhood line is withdrawn (it tracked the unedited model, not the edit) | `research/certificate_confirmatory/` (`confirm_analysis.json`); exploratory: `cert_vs_editors_analysis.json` |
 | Frozen public 3B portability (strict registered verdict) | **Valid FAIL:** 1,027/1,028 direct certificates survive ordinary BF16; 11/11 admitted faithful edits succeed; 0/69 off-support gates; 8/8 neutral outputs bit-identical | `e7_3b_result.json`, `e7_3b_verdict.json` |
 
 The reachability frontier is the honest core: a *global* edit strength overshoots
@@ -259,9 +259,12 @@ Adapted from [`results/RESULTS.md`](results/RESULTS.md); no inflation.
   paraphrase transfer is ~0 (exact-key by design); a gate-matched logit bias is
   stronger on efficacy and ties generalization/locality. The GPT-2
   generalization advantage does *not* replicate on the 1B trunk.
-- **Exploratory:** the certificate-predicts-editors correlations on CounterFact
-  (paraphrase: required strength L; neighborhood: certified-dose margin —
-  ROME/FT/GRACE) — signed and significant but exploratory.
+- **Confirmed, small:** the certificate-predicts-editors correlations on CounterFact
+  (paraphrase: required strength L for ROME/MEMIT, dose margin for FT; neighbor
+  margins: ROME/MEMIT) — registered and confirmed on 600 untouched records, with
+  small effects (|ρ| 0.11–0.18): a real signal, not a practical pre-edit screen.
+  It does not predict rewrite failure, and the earlier GRACE neighborhood
+  correlation is withdrawn: it tracked the unedited model's neighborhood score.
 - **Measured strict failure:** the frozen-public-3B adapter test is
   implementation-valid but misses its all-direct-target bar by one BF16 tie
   (1,027/1,028); its full faithful path is 11/11 with zero off-support gates and

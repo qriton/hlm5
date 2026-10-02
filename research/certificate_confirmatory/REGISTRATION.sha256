@@ -1,0 +1,5 @@
+registered 2026-10-01T19:11:14Z, before any confirmatory record was computed
+7f81f7c9ab4281f47906b5aae8c3dbaa3b9fda17272cd38b080af193e39ca7b8  docs/certificate-predicts-editors-confirmatory-2026-10-01.md
+e8a58a3c98c59247c1c25072a629b0bb4fb8243259d3c95a0ee50c5a963648b8  baselines/confirm/cert_window.py
+170bb6299118a190b1bfdbec77d29f1c7bde3afc720d87ed5756afadbed10406  baselines/confirm/editors_window.py
+991fc2fcb613db0cb4128318ae64a6d3eb8a1ebc583028f23ca1a8277461d9ff  baselines/confirm/analyze_confirm.py
