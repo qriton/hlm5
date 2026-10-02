@@ -1,0 +1,105 @@
+loading gpt2-xl ...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/580 [00:00<?, ?it/s]Loading weights:  62%|██████▏   | 362/580 [00:00<00:00, 3309.65it/s]Loading weights: 100%|██████████| 580/580 [00:00<00:00, 5302.75it/s]
+gpt2-xl loaded on cuda in fp32
+head: vocab 50257, dim 1600
+counterfact records: 21919
+[identity check, first record] max|W@h - model logits| = 9.537e-06, argmax match = True (h = hidden_states[-1] post-ln_f, fp32)
+  100/600 usable processed (100 new, 4s)
+  200/600 usable processed (200 new, 8s)
+  300/600 usable processed (300 new, 12s)
+  400/600 usable processed (400 new, 16s)
+  500/600 usable processed (500 new, 20s)
+  600/600 usable processed (600 new, 24s)
+done: 600 usable records, 600 newly computed, 24s
+{
+  "model": "gpt2-xl",
+  "dtype": "fp32",
+  "device": "cuda",
+  "n_records": 600,
+  "identity_check_first_record": {
+    "max_abs_diff_lmhead_vs_logits": 9.5367431640625e-06,
+    "argmax_match": true,
+    "case_id": 5000,
+    "dtype": "fp32"
+  },
+  "risk_label_counts": {
+    "safe": 600
+  },
+  "fraction_reachable": 1.0,
+  "fraction_hard_blocker": 0.0,
+  "fraction_infinite_slack": 1.0,
+  "median_slack_finite_all": null,
+  "median_slack_reachable_finite": null,
+  "fraction_head_reachable": 1.0,
+  "fraction_already_correct": 0.0033,
+  "fraction_single_token_target": 1.0,
+  "case_id_first": 5000,
+  "case_id_last": 5599
+}
+saved -> D:\HLM5-cert-confirm\baselines\confirm\results\cert_window.jsonl
+saved -> D:\HLM5-cert-confirm\baselines\confirm\results\cert_window_summary.json
+loading gpt2-xl ...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/580 [00:00<?, ?it/s]Loading weights: 100%|██████████| 580/580 [00:00<00:00, 9279.79it/s]
+C:\Users\md\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py:1326: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+gpt2-xl loaded on cuda in fp32
+head: vocab 50257, dim 1600
+counterfact records: 21919
+resuming: 600 records already present
+done: 600 usable records, 0 newly computed, 0s
+{
+  "model": "gpt2-xl",
+  "dtype": "fp32",
+  "device": "cuda",
+  "n_records": 600,
+  "identity_check_first_record": "resumed; checked in earlier run",
+  "risk_label_counts": {
+    "safe": 600
+  },
+  "fraction_reachable": 1.0,
+  "fraction_hard_blocker": 0.0,
+  "fraction_infinite_slack": 1.0,
+  "median_slack_finite_all": null,
+  "median_slack_reachable_finite": null,
+  "fraction_head_reachable": 1.0,
+  "fraction_already_correct": 0.0033,
+  "fraction_single_token_target": 1.0,
+  "case_id_first": 5000,
+  "case_id_last": 5599
+}
+saved -> D:\HLM5-cert-confirm\baselines\confirm\results\cert_window.jsonl
+saved -> D:\HLM5-cert-confirm\baselines\confirm\results\cert_window_summary.json
+loading gpt2-xl ...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/580 [00:00<?, ?it/s]Loading weights: 100%|██████████| 580/580 [00:00<00:00, 9280.11it/s]
+C:\Users\md\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py:1326: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+gpt2-xl loaded on cuda in fp32
+head: vocab 50257, dim 1600
+counterfact records: 21919
+resuming: 600 records already present
+done: 600 usable records, 0 newly computed, 0s
+{
+  "model": "gpt2-xl",
+  "dtype": "fp32",
+  "device": "cuda",
+  "n_records": 600,
+  "identity_check_first_record": "resumed; checked in earlier run",
+  "risk_label_counts": {
+    "safe": 600
+  },
+  "fraction_reachable": 1.0,
+  "fraction_hard_blocker": 0.0,
+  "fraction_infinite_slack": 1.0,
+  "median_slack_finite_all": null,
+  "median_slack_reachable_finite": null,
+  "fraction_head_reachable": 1.0,
+  "fraction_already_correct": 0.0033,
+  "fraction_single_token_target": 1.0,
+  "case_id_first": 5000,
+  "case_id_last": 5599
+}
+saved -> D:\HLM5-cert-confirm\baselines\confirm\results\cert_window.jsonl
+saved -> D:\HLM5-cert-confirm\baselines\confirm\results\cert_window_summary.json

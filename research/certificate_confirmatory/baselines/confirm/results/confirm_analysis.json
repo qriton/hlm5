@@ -1,0 +1,119 @@
+{
+ "registration": "docs/certificate-predicts-editors-confirmatory-2026-10-01.md",
+ "inputs": {
+  "cert": "D:\\HLM5-cert-confirm\\baselines\\confirm\\results\\cert_window.jsonl",
+  "editors": "D:\\HLM5-cert-confirm\\baselines\\confirm\\results\\editors_window.jsonl"
+ },
+ "family_alpha": 0.05,
+ "tests": [
+  {
+   "test": "C1",
+   "predictor": "L",
+   "editor": "ROME",
+   "outcome": "paraphrase",
+   "expected_sign": -1,
+   "n": 600,
+   "errors_dropped": 0,
+   "rho": -0.1424,
+   "p": 0.00046919023766076094,
+   "rho_95ci": [
+    -0.2167,
+    -0.0608
+   ],
+   "p_holm": 0.001407570712982283,
+   "confirmed": true
+  },
+  {
+   "test": "C2",
+   "predictor": "L",
+   "editor": "MEMIT",
+   "outcome": "paraphrase",
+   "expected_sign": -1,
+   "n": 600,
+   "errors_dropped": 0,
+   "rho": -0.1813,
+   "p": 7.8356792401869e-06,
+   "rho_95ci": [
+    -0.2588,
+    -0.1016
+   ],
+   "p_holm": 3.317496027142712e-05,
+   "confirmed": true
+  },
+  {
+   "test": "C3",
+   "predictor": "margin_after_heur",
+   "editor": "FT",
+   "outcome": "paraphrase",
+   "expected_sign": -1,
+   "n": 600,
+   "errors_dropped": 0,
+   "rho": -0.1827,
+   "p": 6.634992054285423e-06,
+   "rho_95ci": [
+    -0.2508,
+    -0.1092
+   ],
+   "p_holm": 3.317496027142712e-05,
+   "confirmed": true
+  },
+  {
+   "test": "C4",
+   "predictor": "L",
+   "editor": "ROME",
+   "outcome": "damage",
+   "expected_sign": 1,
+   "n": 600,
+   "errors_dropped": 0,
+   "rho": 0.119,
+   "p": 0.00351119886957186,
+   "rho_95ci": [
+    0.0379,
+    0.1987
+   ],
+   "p_holm": 0.00702239773914372,
+   "confirmed": true
+  },
+  {
+   "test": "C5",
+   "predictor": "L",
+   "editor": "MEMIT",
+   "outcome": "damage",
+   "expected_sign": 1,
+   "n": 600,
+   "errors_dropped": 0,
+   "rho": 0.1146,
+   "p": 0.004952786550810618,
+   "rho_95ci": [
+    0.0353,
+    0.1931
+   ],
+   "p_holm": 0.00702239773914372,
+   "confirmed": true
+  }
+ ],
+ "diagnostics": {
+  "confound_L_vs_BASE_neighborhood_score": {
+   "rho": 0.1827,
+   "p": 6.660278590814415e-06,
+   "n": 600
+  },
+  "auc_L_flags_zero_paraphrase_ROME": {
+   "auc": 0.586327952233525,
+   "zero_paraphrase": 68,
+   "n": 600
+  },
+  "auc_L_flags_zero_paraphrase_MEMIT": {
+   "auc": 0.5938965034965035,
+   "zero_paraphrase": 275,
+   "n": 600
+  }
+ },
+ "records": {
+  "BASE": 600,
+  "ROME": 600,
+  "MEMIT": 600,
+  "FT": 600
+ },
+ "errors": {}
+}

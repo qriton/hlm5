@@ -1,0 +1,22 @@
+C1                 L -> ROME  paraphrase n=600 rho=-0.142 [-0.2167, -0.0608] p=0.00047 holm=0.0014 CONFIRMED
+C2                 L -> MEMIT paraphrase n=600 rho=-0.181 [-0.2588, -0.1016] p=7.8e-06 holm=3.3e-05 CONFIRMED
+C3 margin_after_heur -> FT    paraphrase n=600 rho=-0.183 [-0.2508, -0.1092] p=6.6e-06 holm=3.3e-05 CONFIRMED
+C4                 L -> ROME  damage     n=600 rho=+0.119 [0.0379, 0.1987] p=0.0035 holm=0.007 CONFIRMED
+C5                 L -> MEMIT damage     n=600 rho=+0.115 [0.0353, 0.1931] p=0.005 holm=0.007 CONFIRMED
+{
+ "confound_L_vs_BASE_neighborhood_score": {
+  "rho": 0.1827,
+  "p": 6.660278590814415e-06,
+  "n": 600
+ },
+ "auc_L_flags_zero_paraphrase_ROME": {
+  "auc": 0.586327952233525,
+  "zero_paraphrase": 68,
+  "n": 600
+ },
+ "auc_L_flags_zero_paraphrase_MEMIT": {
+  "auc": 0.5938965034965035,
+  "zero_paraphrase": 275,
+  "n": 600
+ }
+}

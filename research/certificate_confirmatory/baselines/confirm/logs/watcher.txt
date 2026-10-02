@@ -1,0 +1,3 @@
+2026-10-01T22:03:37 watching for >= 11500 MiB free GPU memory
+2026-10-01T23:31:19 19622 MiB free: starting run_all.cmd
+2026-10-02T02:40:20 run_all.cmd finished
