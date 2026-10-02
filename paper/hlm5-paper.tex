@@ -64,14 +64,17 @@ $60$ keys---and readout-level residual synthesis rescues $40/40$ sampled
 unreachable targets (median $\beta=20$). The certificate also \emph{doses}
 each edit: a global strength overshoots the certified interval, silently
 failing reachable edits (efficacy $0.529$); the certified $\beta^{\star}$
-flips exactly the certificate-reachable set ($0.765$); synthesis rescues the
-rest ($1.000$)---at off-support locality $1.000$, zero gradients, paraphrase
-transfer $0.020$. A gate-matched static logit bias matches the dosed pipeline
-on every measured axis: the value is the a-priori admission test, certified
-dose, synthesis rescue, and audit trail, not raw editing power. On $300$
-CounterFact records, pre-edit certificate difficulty predicts ROME's
-paraphrase transfer ($p<0.01$; fine-tuning directionally, $p=0.02$) and
-neighborhood damage for ROME and GRACE ($p<0.01$). Fine-tuning generalizes
+flips exactly the certificate-reachable set ($0.765$); synthesis rescues two
+of the remaining four ($0.882$)---at off-support locality $1.000$, zero
+gradients, paraphrase transfer $0.020$. A gate-matched static logit bias is
+stronger on efficacy ($1.000$) and matches the dosed pipeline on generalization
+and locality: the value is the a-priori admission test, certified dose,
+synthesis rescue, and audit trail, not raw editing power. On CounterFact,
+pre-edit certificate difficulty predicts how well ROME, MEMIT, and fine-tuning
+edits transfer to paraphrases and how far they erode neighboring facts'
+margins; a registered confirmatory run on $600$ untouched records confirms all
+five tests after Holm correction, with small effects ($|\rho|=0.11$--$0.18$).
+Fine-tuning generalizes
 only by collapsing locality; HLM5 is a zero-gradient, certificate-gated,
 exact-key editor whose every operation emits a verifiable receipt. Full
 head-to-head evaluation against MEMIT, MEND, and SERAC on standard benchmarks
@@ -1247,7 +1250,7 @@ $3$ editors $\times$ $3$ certificate features $\times$ $2$ outcomes ($18$
 Spearman tests, all reported in Appendix~\ref{app:certpredict18} with
 Benjamini--Hochberg FDR control at $q=0.05$); the primary pre-specified
 predictor is the required strength $L$, and the two margin features are
-reported for completeness. Three findings.
+reported for completeness. Four findings.
 \textbf{(i) The reachability frontier is model-dependent.} On GPT-2-XL all
 $1{,}000$ targets are certified reachable---a measured $99.82\%$ of its tokens
 ($50{,}166/50{,}257$, fp32 self-NN under the tied head;
@@ -1257,8 +1260,8 @@ rate (\S\ref{sec:envelope}); consequently every editor succeeds almost everywher
 (efficacy $0.97$--$1.00$) and rewrite \emph{failure} is unpredictable from the
 certificate (a ceiling effect, and the registered failure-prediction criterion is
 not met).
-\textbf{(ii) The certificate predicts generalization and collateral before the
-edit.} The required strength $L$ predicts paraphrase transfer for ROME
+\textbf{(ii) The certificate predicts generalization before the edit.} The
+required strength $L$ predicts paraphrase transfer for ROME
 ($\rho=-0.16$, $p=0.005$) and, directionally, for FT ($\rho=-0.13$, $p=0.023$);
 FT's strongest paraphrase predictor is instead the post-heuristic dosed margin
 (\texttt{margin\_after\_heur}: $\rho=-0.16$, $p=0.007$). GRACE also shows a
@@ -1267,18 +1270,33 @@ count it as a paraphrase-prediction result: GRACE's aggregate paraphrase
 success is $0.005$ (Table~\ref{tab:certpredict}), a degenerate base rate over
 which a rank correlation carries little evidence. ROME's paraphrase success
 drops from $0.82$ on the lowest-$L$ quartile to $0.62$ on the highest
-(Figure~\ref{fig:certpredictfig}). The worst-case certificate margin
-(\texttt{margin\_at\_beta\_star}) predicts neighborhood damage for ROME
-($\rho=-0.17$, $p=0.0035$) and GRACE ($\rho=-0.18$, $p=0.0014$). All six
-correlations quoted in this paragraph survive Benjamini--Hochberg FDR control
-at $q=0.05$ over the full $18$-test grid ($10$ of $18$ cells survive;
-Appendix~\ref{app:certpredict18}).
-Across editors, high-$L$ targets generalize
-worse but bleed less---the certificate measures how embedded a target is in the
-model's output geometry, and that embedding governs the
-generalization/collateral trade regardless of editing method. Effect sizes are
-modest ($|\rho|=0.13$--$0.23$) on one model; scaling this study is future work.
-\textbf{(iii) The exact-key trade is a family signature.} GRACE---the closest
+(Figure~\ref{fig:certpredictfig}). These four correlations survive
+Benjamini--Hochberg FDR control at $q=0.05$ over the full $18$-test grid
+(Appendix~\ref{app:certpredict18}). The grid's neighborhood cells do not
+measure collateral, although an earlier version of this paper read them that
+way: GRACE changes no neighborhood prediction on these records, yet its
+correlation with $L$ is identical to the unedited model's ($\rho=-0.2262$ for
+both), so those cells track how well the \emph{unedited} model knows a
+record's neighbors, not damage done by the edit.
+\textbf{(iii) A registered confirmatory run confirms the signal, and its
+size.} We registered five tests before computing any further record and ran
+them on $600$ untouched CounterFact records (case ids $5000$--$5599$) with
+ROME, MEMIT \citep{meng2022memit}, and FT, measuring collateral against the
+unedited model as the loss in the neighborhood prompts' log-odds margin for
+the true target. All five confirm with the registered sign after
+Holm--Bonferroni correction (Table~\ref{tab:certconfirm}): $L$ predicts lower
+paraphrase transfer for ROME and MEMIT, the dosed margin does for FT, and $L$
+predicts a larger margin loss for ROME and MEMIT. The effects are small. From
+the lowest-$L$ quartile to the highest, paraphrase success falls from $0.80$
+to $0.68$ for ROME and from $0.53$ to $0.35$ for MEMIT; as a screen for edits
+with zero paraphrase transfer, $L$ reaches AUC $0.59$; and the rate at which
+neighbors' argmax actually flips does not differ between the two quartiles.
+High-$L$ targets thus generalize worse and erode their neighbors' margins
+slightly more---the certificate measures how embedded a target is in the
+model's output geometry, and that embedding shapes what an edit does
+regardless of editing method. The study covers one model, and the
+failure-prediction criterion of (i) was not retested.
+\textbf{(iv) The exact-key trade is a family signature.} GRACE---the closest
 published wrapper editor---scores efficacy $1.000$, paraphrase $0.005$, and the
 best neighborhood preservation ($0.776$) over the $300$ records: the same
 profile as our deployed gate (Table~\ref{tab:trunk}). Gate-protected editors buy
@@ -1300,13 +1318,39 @@ FT (constrained) & $0.967$ & $0.068$ & $0.680$ & $10$ \\
 from a fresh model; argmax metrics; neighborhood = fraction of neighborhood
 prompts where the true target still wins). GRACE reproduces the exact-key
 profile of the deployed HLM5 gate. Certificate features computed pre-edit
-predict paraphrase transfer (ROME, $p<0.01$; FT directionally, $p=0.02$) and
-neighborhood damage (ROME, GRACE; $p<0.01$); the full $18$-cell correlation
-grid with FDR control is in Appendix~\ref{app:certpredict18}; artifacts:
+predict paraphrase transfer (ROME, $p<0.01$; FT directionally, $p=0.02$); the
+grid's neighborhood cells track the unedited model, not the edit (see text).
+The full $18$-cell correlation grid with FDR control is in
+Appendix~\ref{app:certpredict18}; artifacts:
 \texttt{cert\_counterfact\_gpt2xl.jsonl},
 \texttt{editors\_counterfact\_gpt2xl.jsonl},
 \texttt{cert\_vs\_editors\_analysis.json}.}
 \label{tab:certpredict}
+\end{table}
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{l l l r r}
+\toprule
+Editor & Certificate feature & Outcome & $\rho$ [$95\%$ CI] & Holm $p$ \\
+\midrule
+ROME  & $L$ & paraphrase success & $-0.142$ [$-0.217$, $-0.061$] & $0.0014$ \\
+MEMIT & $L$ & paraphrase success & $-0.181$ [$-0.259$, $-0.102$] & $3.3\times10^{-5}$ \\
+FT    & \texttt{margin\_after\_heur} & paraphrase success & $-0.183$ [$-0.251$, $-0.109$] & $3.3\times10^{-5}$ \\
+ROME  & $L$ & neighbor margin lost & $+0.119$ [$0.038$, $0.199$] & $0.0070$ \\
+MEMIT & $L$ & neighbor margin lost & $+0.115$ [$0.035$, $0.193$] & $0.0070$ \\
+\bottomrule
+\end{tabular}
+\caption{The five registered confirmatory tests ($600$ untouched CounterFact
+records, GPT-2-XL; two-sided Spearman, Holm--Bonferroni over the five;
+bootstrap intervals from $2{,}000$ resamples). Neighbor margin lost is the
+unedited model's mean log-odds margin for the true target on the record's
+neighborhood prompts, minus the edited model's. On this window ROME scores
+efficacy $0.998$, paraphrase $0.747$, neighborhood $0.641$; MEMIT $0.772$,
+$0.403$, $0.782$; FT $0.978$, $0.096$, $0.720$; the unedited model's
+neighborhood score is $0.7885$. Registration, deviations, per-record results,
+and logs: \texttt{research/certificate\_confirmatory/}.}
+\label{tab:certconfirm}
 \end{table}
 
 \begin{figure}[t]
@@ -1395,7 +1439,8 @@ claims are falsifiable rather than merely incomplete.
   certificate predicts each method's behavior; \emph{fail:} a baseline
   dominates HLM5 on locality at equal cost. (Partially closed: reference ROME on
   GPT-2, \S\ref{sec:controlled}; ROME/GRACE/FT single-edit on $300$ CounterFact
-  records with neighborhood specificity, \S\ref{sec:certpredict}.)
+  records with neighborhood specificity, and ROME/MEMIT/FT on $600$ further
+  records, \S\ref{sec:certpredict}.)
   \item \textbf{E2: on-support neighborhood specificity.} Beyond the perfectly
   separable gate ROC (\S\ref{sec:envelope}), evaluate CounterFact neighborhood
   prompts (same subject/other relation; same relation/other subject) for HLM5
@@ -1451,9 +1496,11 @@ co-trained memory layer whose perplexity cost is below measurement noise;
 residual synthesis further shows that the rare failures are failures of value
 choice, not head geometry, and certificate-governed dosing shows that apparent
 efficacy failures can be dosing failures: dosed at $\beta^{\star}$ with
-synthesis rescue, the deployed pipeline reaches full efficacy at bit-identical
-off-support locality. Against a static logit patch the boundary is then not
-editing power---the two match on every axis measured here---but contract: HLM5
+synthesis rescue, the deployed pipeline reaches $0.882$ ($15/17$) at
+bit-identical off-support locality, and the two remaining facts stay
+uncertified and fail as predicted. Against a static logit patch the boundary
+is then not editing power---the patch is stronger on efficacy, and the two
+match on generalization and locality---but contract: HLM5
 is preferable when the a-priori certificate, the certified dose, residual-space
 rescue, an edit/forget registry, and an audit trail matter.
 The scope is the single-token counterfactual fact; the open gap---head-to-head
@@ -1553,8 +1600,16 @@ outcomes---of which the body quotes only a subset. Table~\ref{tab:certpredict18}
 reports every cell, transcribed from
 \texttt{cert\_vs\_editors\_analysis.json} ($n=300$ CounterFact records per
 editor). Applying the Benjamini--Hochberg step-up procedure at $q=0.05$ across
-all $18$ $p$-values, $10$ cells survive (largest surviving $p=0.0245$); the six
-correlations quoted in the body are all among the survivors.
+all $18$ $p$-values, $10$ cells survive (largest surviving $p=0.0245$); the four
+paraphrase correlations quoted in the body are all among the survivors. The
+neighborhood columns are kept as transcribed but are confounded: they
+correlate certificate features with the edited model's neighborhood score,
+which mostly reflects how well the \emph{unedited} model knows a record's
+neighbors. GRACE, whose edits change no neighborhood prediction on these
+records, shows exactly the unedited model's correlation with $L$
+($\rho=-0.2262$). The confirmatory run of Section~\ref{sec:certpredict}
+therefore measures collateral against the unedited model
+(Table~\ref{tab:certconfirm}).
 
 \begin{table}[t]
 \centering\small
@@ -1584,7 +1639,8 @@ $L$ is the certificate's required strength;
 \texttt{margin\_after\_heur} is the worst-case competitor margin after dosing
 at the heuristic $\beta=1.05L+1$; \texttt{margin\_at\_beta\_star} is the
 worst-case margin at the optimized $\beta^{\star}$. Outcomes: per-record
-paraphrase success rate and neighborhood preservation. $\rho$ values are
+paraphrase success rate and neighborhood damage ($1$ minus the neighborhood
+score, not corrected for the unedited model). $\rho$ values are
 verbatim from the artifact; $p$ values rounded to four decimals (smaller
 values in scientific notation).
 \textbf{Bold}: the $10$ cells that survive Benjamini--Hochberg FDR control at
