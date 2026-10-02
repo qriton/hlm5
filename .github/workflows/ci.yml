@@ -16,7 +16,8 @@ jobs:
       - name: Install (CPU torch)
         run: |
           pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install -e . ruff pytest
+          # matplotlib: tests/test_certificate_refresh_contract.py loads scripts/make_figures.py
+          pip install -e . ruff pytest matplotlib
       - name: Lint (errors only)
         run: ruff check hlm5 scripts --select E9,F63,F7,F82
       - name: Tests (CPU; checkpoint-dependent tests skip when weights absent)
